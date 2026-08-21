@@ -293,10 +293,13 @@ async function rehearsePromotionRollback(candidateRoot, artifacts) {
       success.releaseRoot,
       `wow-feral-trainer-web-${releaseId}/demo`,
     );
-    assert.equal(realpathSync(resolve(success.siteBase, "wow-feral-trainer")), expectedTarget);
+    assert.equal(
+      realpathSync(resolve(success.siteBase, "wow-feral-trainer")),
+      realpathSync(expectedTarget),
+    );
     assert.equal(
       realpathSync(resolve(success.siteBase, `wow-feral-trainer.previous-${releaseId}`)),
-      success.oldSite,
+      realpathSync(success.oldSite),
     );
     assert.equal(existsSync(resolve(success.releaseRoot, "deployment.txt")), true);
   } finally {
@@ -326,14 +329,17 @@ async function rehearsePromotionRollback(candidateRoot, artifacts) {
     }
     assert(rejected, "健康检查失败时发布脚本必须返回非零");
     assert.match(rejected.message, /failed \(11\)/);
-    assert.equal(realpathSync(resolve(failure.siteBase, "wow-feral-trainer")), failure.oldSite);
+    assert.equal(
+      realpathSync(resolve(failure.siteBase, "wow-feral-trainer")),
+      realpathSync(failure.oldSite),
+    );
     const expectedFailedTarget = resolve(
       failure.releaseRoot,
       `wow-feral-trainer-web-${releaseId}/demo`,
     );
     assert.equal(
       realpathSync(resolve(failure.siteBase, `wow-feral-trainer.failed-${releaseId}`)),
-      expectedFailedTarget,
+      realpathSync(expectedFailedTarget),
     );
     assert.equal(existsSync(resolve(failure.siteBase, `wow-feral-trainer.previous-${releaseId}`)), false);
   } finally {
