@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import {
-  cpFileSync,
+  copyFileSync,
   existsSync,
   mkdirSync,
   mkdtempSync,
@@ -261,7 +261,7 @@ async function rehearsePromotionRollback(candidateRoot, artifacts) {
     mkdirSync(siteBase, { recursive: true });
     mkdirSync(oldSite, { recursive: true });
     writeFileSync(resolve(oldSite, "index.html"), "old stable release\n");
-    cpFileSync(sourceArchive, resolve(releaseRoot, basename(sourceArchive)));
+    copyFileSync(sourceArchive, resolve(releaseRoot, basename(sourceArchive)));
     symlinkSync(oldSite, resolve(siteBase, "wow-feral-trainer"), "dir");
     return { root, releaseBase, releaseRoot, siteBase, oldSite };
   }

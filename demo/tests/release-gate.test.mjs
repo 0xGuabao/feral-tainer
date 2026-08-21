@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
 import {
   existsSync,
   mkdirSync,
@@ -20,6 +21,17 @@ import {
   verifyChecksumManifest,
   withStagedRelease,
 } from "../../scripts/lib/release-gate.mjs";
+
+test("release gate entrypoint resolves every runtime import before parsing options", () => {
+  const repositoryRoot = new URL("../../", import.meta.url).pathname;
+  const result = spawnSync(process.execPath, ["scripts/run-release-gate.mjs"], {
+    cwd: repositoryRoot,
+    encoding: "utf8",
+  });
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /--release-id is required/);
+  assert.doesNotMatch(result.stderr, /SyntaxError/);
+});
 
 test("release IDs and checksum manifests reject unsafe input", () => {
   assert.equal(assertReleaseId("20260821-g5-rc1"), "20260821-g5-rc1");
