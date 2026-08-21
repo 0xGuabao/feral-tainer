@@ -1,16 +1,16 @@
 {
-  "releaseId": "20260821-g4-local-v1",
+  "releaseId": "20260821-g5-v3",
   "schemaVersion": 1,
   "gameVersion": "12.1.0.69299",
   "gameBuild": 69299,
   "simcCommit": "5b82654ba96c9dc7f611f527a41584dc94e17677",
-  "runtimeHash": "db33b954554793451163bfb3df1fe92abf5eeed100892233dc3ef2796f820928",
+  "runtimeHash": "d78dc6c391a8272c6eaddda568c71d223f15d626a47facde9f18d0907f296b87",
   "catalogHash": "66d087833cf788ae64adc08e44b49038c77e5ce97934c41d134efc6b5e011275",
   "aplHash": "c3cb3bda4ce62eeda8389fb131b3ae57e23fe3ac3d8395fe746d3cd37e17a694",
   "iconManifestHash": "f46a3ae87c141080e3e68af5fd847213a26997c07f33f898f4b6385e5984396b",
   "minimumCompatibleProfileSchema": 1,
   "profileCacheNamespace": "wow-feral:69299:e71acf35764e:p1:66d087833cf7",
-  "createdAt": "2026-08-21T03:28:00.000Z",
+  "createdAt": "2026-08-21T13:26:00+08:00",
   "cachePolicy": {
     "indexAndManifest": "no-cache",
     "hashedResources": "public, max-age=31536000, immutable",
@@ -38,8 +38,8 @@
     {
       "path": "app.js",
       "group": "runtime",
-      "bytes": 55451,
-      "sha256": "771335ea130735c7e57097598778ef9c077748b55881bdf9f54dfd983a6250bc"
+      "bytes": 56711,
+      "sha256": "bb013dd02cf7da5f60a2317f4aa0eba353965eff35705c816094690d59b8a0f1"
     },
     {
       "path": "assets/icons/1033484.jpg",
@@ -518,8 +518,8 @@
     {
       "path": "release.generated.js",
       "group": "metadata",
-      "bytes": 10402,
-      "sha256": "c95ce543aa2ba299e19b9668ae92e416ebbdda8e7ff68f1edc0fd5ed87eb620a"
+      "bytes": 10397,
+      "sha256": "b286e9038fa6f940be77a5cb4b3104dc6e2d4d7979ac28c0ae71d39534e52c62"
     },
     {
       "path": "runtime/action-result-resolver.js",

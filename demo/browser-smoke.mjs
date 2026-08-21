@@ -94,17 +94,84 @@ const wait = (milliseconds) => new Promise((resolve) => setTimeout(resolve, mill
 async function waitForPageReady(timeoutMs = pageReadyTimeoutMs) {
   const startedAt = Date.now();
   while (Date.now() - startedAt < timeoutMs) {
-    const ready = await evaluate(`Boolean(
-      document.readyState !== "loading"
-      && document.querySelector(".buff-tracker")
-      && document.querySelector(".monitor-stack")
-      && document.querySelector(".skill-button")
-      && [...document.querySelectorAll(".wow-icon-image")].every((image) => image.complete && image.naturalWidth > 0)
-    )`);
-    if (ready) return;
+    const state = await evaluate(`(() => {
+      const images = [...document.querySelectorAll(".wow-icon-image")];
+      return {
+        failedIconSources: [...new Set(images
+          .filter((image) => image.dataset.iconLoadStatus === "failed")
+          .map((image) => image.dataset.iconSource || image.src))],
+        ready: Boolean(
+          document.readyState !== "loading"
+          && document.querySelector(".buff-tracker")
+          && document.querySelector(".monitor-stack")
+          && document.querySelector(".skill-button")
+          && images.every((image) => image.complete
+            && image.naturalWidth > 0
+            && image.dataset.iconLoadStatus !== "retrying")
+        ),
+      };
+    })()`);
+    if (state.failedIconSources.length) {
+      throw new Error(`图标资源重试后仍失败：${state.failedIconSources.join(", ")}`);
+    }
+    if (state.ready) return;
     await wait(100);
   }
   throw new Error(`Demo 页面在 ${timeoutMs}ms 内未完成初始化`);
+}
+
+async function waitForIconLoads(selector = ".wow-icon-image", timeoutMs = pageReadyTimeoutMs) {
+  const startedAt = Date.now();
+  while (Date.now() - startedAt < timeoutMs) {
+    const state = await evaluate(`(() => {
+      const images = [...document.querySelectorAll(${JSON.stringify(selector)})];
+      return {
+        failedIconSources: [...new Set(images
+          .filter((image) => image.dataset.iconLoadStatus === "failed")
+          .map((image) => image.dataset.iconSource || image.src))],
+        ready: images.every((image) => image.complete
+          && image.naturalWidth === 56
+          && image.naturalHeight === 56
+          && image.dataset.iconLoadStatus !== "retrying"),
+      };
+    })()`);
+    if (state.failedIconSources.length) {
+      throw new Error(`图标资源重试后仍失败：${state.failedIconSources.join(", ")}`);
+    }
+    if (state.ready) return;
+    await wait(100);
+  }
+  throw new Error(`图标资源在 ${timeoutMs}ms 内未完成加载：${selector}`);
+}
+
+async function verifyTransientIconRecovery() {
+  const recovery = await evaluate(`new Promise((resolve, reject) => {
+    const source = document.querySelector(".wow-icon-image")?.dataset.iconSource;
+    if (!source) return reject(new Error("没有可用于重试验证的图标"));
+    const image = document.createElement("img");
+    image.className = "wow-icon-image";
+    image.dataset.iconSource = source;
+    image.dataset.iconLoadStatus = "pending";
+    image.hidden = true;
+    const timeout = setTimeout(() => {
+      image.remove();
+      reject(new Error("图标瞬时失败重试验证超时"));
+    }, 5000);
+    image.addEventListener("load", () => {
+      clearTimeout(timeout);
+      const result = {
+        status: image.dataset.iconLoadStatus,
+        retries: image.dataset.iconRetryCount,
+        width: image.naturalWidth,
+        height: image.naturalHeight,
+      };
+      image.remove();
+      resolve(result);
+    }, { once: true });
+    image.src = "data:image/jpeg;base64,broken";
+    document.body.append(image);
+  })`);
+  assert.deepEqual(recovery, { status: "loaded", retries: "1", width: 56, height: 56 });
 }
 
 try {
@@ -117,6 +184,7 @@ try {
     mobile: false,
   });
   await waitForPageReady();
+  await verifyTransientIconRecovery();
   await evaluate(`{
     for (const key of Object.keys(localStorage)) {
       if (key.startsWith("ashamane-lab-")) localStorage.removeItem(key);
@@ -557,13 +625,7 @@ try {
     select.value = "primalWrath";
     select.dispatchEvent(new Event("change", { bubbles: true }));
   })()`);
-  await evaluate(`Promise.all([...document.querySelectorAll(".skill-button .wow-icon-image")].map((image) => {
-    if (image.complete && image.naturalWidth === 56) return Promise.resolve();
-    return new Promise((resolve, reject) => {
-      image.addEventListener("load", resolve, { once: true });
-      image.addEventListener("error", reject, { once: true });
-    });
-  }))`);
+  await waitForIconLoads(".skill-button .wow-icon-image");
   const switchedBuild = await evaluate(`({
       actionIds: [...document.querySelectorAll(".skill-button")].map((button) => button.dataset.skillId),
       disabledText: document.querySelector("#feedback").textContent,
@@ -585,13 +647,7 @@ try {
     select.value = "simcWildstalker";
     select.dispatchEvent(new Event("change", { bubbles: true }));
   })()`);
-  await evaluate(`Promise.all([...document.querySelectorAll(".wow-icon-image")].map((image) => {
-    if (image.complete && image.naturalWidth === 56) return Promise.resolve();
-    return new Promise((resolve, reject) => {
-      image.addEventListener("load", resolve, { once: true });
-      image.addEventListener("error", reject, { once: true });
-    });
-  }))`);
+  await waitForIconLoads();
   const wildstalkerCatalog = await evaluate(`({
     bloodseekerIcon: document.querySelector('.dot-monitor-item[data-dot-id="bloodseekerVines"] .wow-icon-image')?.dataset.iconFileId,
     implantIcon: document.querySelector('.buff-card[data-buff="implant"] .wow-icon-image')?.dataset.iconFileId,
@@ -620,13 +676,7 @@ try {
     select.value = "simcMid1Equipped";
     select.dispatchEvent(new Event("change", { bubbles: true }));
   })()`);
-  await evaluate(`Promise.all([...document.querySelectorAll(".wow-icon-image")].map((image) => {
-    if (image.complete && image.naturalWidth === 56) return Promise.resolve();
-    return new Promise((resolve, reject) => {
-      image.addEventListener("load", resolve, { once: true });
-      image.addEventListener("error", reject, { once: true });
-    });
-  }))`);
+  await waitForIconLoads();
   const equippedCatalog = await evaluate(`({
     buildValue: document.querySelector("#build-select").value,
     puzzleAction: Boolean(document.querySelector('.skill-button[data-skill-id="algetharPuzzleBox"]')),

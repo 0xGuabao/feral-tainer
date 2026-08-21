@@ -18,6 +18,7 @@ const DURATION_STORAGE_KEY = "ashamane-lab-session-duration-v1";
 const MAX_SIMC_PROFILE_BYTES = 512 * 1024;
 const MIN_DURATION_SECONDS = 15;
 const MAX_DURATION_SECONDS = 600;
+const ICON_RETRY_DELAYS_MS = [250, 1000, 2500];
 const controller = new FeralTrainerController();
 const fixtureEntries = Object.entries(BUILD_FIXTURES);
 
@@ -258,11 +259,38 @@ function formatClockDuration(milliseconds) {
   return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 }
 
+function installIconLoadRecovery() {
+  document.addEventListener("load", (event) => {
+    const image = event.target;
+    if (!(image instanceof HTMLImageElement) || !image.classList.contains("wow-icon-image")) return;
+    image.dataset.iconLoadStatus = "loaded";
+  }, true);
+  document.addEventListener("error", (event) => {
+    const image = event.target;
+    if (!(image instanceof HTMLImageElement) || !image.classList.contains("wow-icon-image")) return;
+    const retryCount = Number(image.dataset.iconRetryCount ?? 0);
+    if (retryCount >= ICON_RETRY_DELAYS_MS.length) {
+      image.dataset.iconLoadStatus = "failed";
+      return;
+    }
+    const nextRetryCount = retryCount + 1;
+    image.dataset.iconRetryCount = String(nextRetryCount);
+    image.dataset.iconLoadStatus = "retrying";
+    setTimeout(() => {
+      if (!image.isConnected) return;
+      const retryUrl = new URL(image.dataset.iconSource, document.baseURI);
+      retryUrl.searchParams.set("retry", String(nextRetryCount));
+      image.src = retryUrl.href;
+    }, ICON_RETRY_DELAYS_MS[retryCount]);
+  }, true);
+}
+
 function iconMarkup(definition) {
   const icon = definition?.icon;
   if (!icon?.path) return '<span class="wow-icon-missing" aria-hidden="true"></span>';
   const iconKey = icon.fileDataId ?? icon.iconName;
-  return `<img class="wow-icon-image" src="${versionedAssetUrl(icon.path)}" data-icon-file-id="${iconKey}" alt="" draggable="false" />`;
+  const iconSource = versionedAssetUrl(icon.path);
+  return `<img class="wow-icon-image" src="${iconSource}" data-icon-source="${iconSource}" data-icon-load-status="pending" data-icon-file-id="${iconKey}" alt="" draggable="false" />`;
 }
 
 function getSkillForCode(code) {
@@ -1239,6 +1267,7 @@ for (const dialog of [elements.keybindDialog, elements.auraMonitorDialog, elemen
   });
 }
 document.addEventListener("keydown", onGlobalKeydown, true);
+installIconLoadRecovery();
 
 createBuildOptions();
 prepareSession();
