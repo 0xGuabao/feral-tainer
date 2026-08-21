@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta
+      name="description"
+      content="魔兽世界 12.1 野性德鲁伊可切换天赋构筑木桩循环训练器交互 Demo"
+    />
+    <title>Ashamane Lab · 野性德鲁伊训练器 Demo</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>"
+    />
+    <link rel="stylesheet" href="./wow-hud.css?v=20260821-dialog-hotfix-v1" />
+    <link rel="stylesheet" href="./reference-layout.css?v=20260821-dialog-hotfix-v1" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <div class="brand-mark" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <div>
+            <div class="eyebrow">ASHAMANE LAB</div>
+            <h1>野性德鲁伊循环训练器</h1>
+          </div>
+        </div>
+
+        <div class="version-strip" aria-label="训练配置">
+          <span id="version-game">12.1</span>
+          <span>野性</span>
+          <span>MID2 四件套</span>
+          <span class="demo-chip">交互 Demo</span>
+        </div>
+
+        <button id="open-keybinds" class="button button-ghost" type="button">
+          <span aria-hidden="true">⌨</span>
+          配置键位
+        </button>
+      </header>
+
+      <section class="control-rail" aria-label="训练控制">
+        <div class="control-group build-control">
+          <label class="control-label" for="build-select">天赋构筑</label>
+          <div class="build-picker-row">
+            <select id="build-select" class="build-select"></select>
+            <button id="open-simc-import" class="button button-quiet simc-import-button" type="button">
+              导入 SimC
+            </button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">木桩数量</span>
+          <div class="segmented" id="target-count-control">
+            <button type="button" data-target-count="1" class="is-active">单体</button>
+            <button type="button" data-target-count="3">3 目标</button>
+            <button type="button" data-target-count="5">5 目标</button>
+          </div>
+        </div>
+
+        <div class="control-group duration-control">
+          <span class="control-label">训练时长</span>
+          <div class="segmented duration-presets" id="duration-presets" aria-label="训练时长预设">
+            <button type="button" data-duration-seconds="30">30 秒</button>
+            <button type="button" data-duration-seconds="60" class="is-active">60 秒</button>
+            <button type="button" data-duration-seconds="180">3 分钟</button>
+          </div>
+          <label class="duration-input" for="custom-duration">
+            <span class="visually-hidden">自定义训练时长（秒）</span>
+            <input id="custom-duration" type="number" min="15" max="600" step="5" inputmode="numeric" value="60" />
+            <span>秒</span>
+          </label>
+        </div>
+
+        <div class="session-clock">
+          <div class="clock-row">
+            <span id="session-time">00:00.0</span>
+            <span id="session-duration-total" class="clock-total">/ 01:00</span>
+          </div>
+          <div class="session-progress" aria-hidden="true">
+            <span id="session-progress-fill"></span>
+          </div>
+        </div>
+
+        <div class="session-actions">
+          <button id="start-pause" class="button button-primary" type="button" title="空格：开始或暂停训练">
+            <span class="button-icon" aria-hidden="true">▶</span>
+            <span class="button-label">开始训练</span>
+          </button>
+          <button id="restart" class="button button-quiet" type="button" title="退格键：重置训练">重新开始</button>
+        </div>
+      </section>
+
+      <main class="workspace">
+        <section class="trainer-column">
+          <div class="panel encounter-panel">
+            <div class="panel-heading">
+              <div>
+                <span class="section-kicker">TARGET FRAME</span>
+                <h2>训练木桩</h2>
+              </div>
+              <div class="status-indicator" id="session-status">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span class="status-copy">等待开始</span>
+              </div>
+            </div>
+
+            <div class="arena-window" aria-hidden="true">
+              <span class="arena-status">训练场 · 静止目标</span>
+              <div class="dummy dummy-left"><i></i></div>
+              <div class="dummy dummy-center"><i></i></div>
+              <div class="dummy dummy-right"><i></i></div>
+              <span class="range-readout">5 m</span>
+            </div>
+
+            <div class="recommendation-card" id="recommendation-card">
+              <div class="recommendation-copy">
+                <span class="recommendation-label">下一步推荐</span>
+                <div class="recommendation-title-row">
+                  <span id="recommendation-icon" class="skill-glyph"></span>
+                  <div>
+                    <strong id="recommendation-name">猛虎之怒</strong>
+                    <span id="recommendation-target">不限定目标</span>
+                  </div>
+                </div>
+                <p id="recommendation-reason">先用猛虎之怒覆盖爆发窗口</p>
+              </div>
+              <div class="recommendation-key">
+                <span>按键</span>
+                <kbd id="recommendation-key">Q</kbd>
+              </div>
+            </div>
+
+            <section class="buff-tracker" aria-labelledby="buff-tracker-heading">
+              <div class="buff-tracker-toolbar">
+                <span id="buff-tracker-heading" class="buff-tracker-title">增益监控</span>
+                <label class="buff-filter-control" for="buff-filter">
+                  <span class="visually-hidden">筛选增益</span>
+                  <input id="buff-filter" type="search" autocomplete="off" placeholder="名称 / 法术 ID 筛选" />
+                </label>
+                <span id="buff-filter-count" class="buff-filter-count" aria-live="polite"></span>
+              </div>
+              <div class="buff-row" id="buff-row"></div>
+            </section>
+
+            <div id="feedback" class="visually-hidden" aria-live="polite">
+              点击“开始训练”，随后使用键位或技能按钮施法。
+            </div>
+          </div>
+
+          <section class="action-section" aria-labelledby="action-heading">
+            <div class="section-heading-row">
+              <div>
+                <span class="section-kicker">ACTION BAR</span>
+                <h2 id="action-heading">技能栏</h2>
+              </div>
+              <p>键位可自由配置，鼠标点击同样会记录施法。</p>
+            </div>
+            <div class="cooldown-manager" aria-label="资源、技能冷却、增益与当前目标 DoT">
+              <div class="resource-bars" aria-label="角色资源">
+                <div class="combo-resource-bar" aria-label="连击点">
+                  <div class="combo-points" id="combo-points" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span>
+                  </div>
+                  <strong id="combo-value">0</strong>
+                </div>
+                <div class="energy-resource-bar" aria-label="能量">
+                  <span id="energy-fill" aria-hidden="true"></span>
+                  <strong id="energy-value">100</strong>
+                  <span id="energy-max" class="visually-hidden">100</span>
+                </div>
+                <div id="channel-bar" class="channel-resource-bar" role="progressbar" aria-label="持续施法" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden>
+                  <span id="channel-fill" aria-hidden="true"></span>
+                  <span id="channel-name">持续施法</span>
+                  <strong id="channel-time">0.0</strong>
+                </div>
+              </div>
+
+              <div class="monitor-stack">
+                <div class="monitor-row aura-monitor-row">
+                  <div class="monitor-row-heading">
+                    <span class="monitor-row-label">已选增益</span>
+                    <button id="open-aura-monitor" class="monitor-config-button" type="button">配置增益</button>
+                  </div>
+                  <div id="selected-aura-strip" class="selected-aura-strip" aria-label="已选择的增益监控"></div>
+                </div>
+                <div class="monitor-row cooldown-monitor-row">
+                  <span class="monitor-row-label">技能冷却</span>
+                  <div id="cooldown-strip" class="cooldown-strip"></div>
+                </div>
+                <div class="monitor-row dot-monitor-row">
+                  <div class="monitor-row-heading">
+                    <span class="monitor-row-label">当前目标 DoT</span>
+                    <div id="target-list" class="target-list" aria-label="切换当前目标"></div>
+                  </div>
+                  <div id="dot-monitor-strip" class="dot-monitor-strip"></div>
+                </div>
+              </div>
+            </div>
+            <div id="action-feedback" class="action-feedback action-feedback-info" role="status" aria-live="polite">
+              点击技能后会在这里显示施放结果或阻挡原因。
+            </div>
+            <div id="skill-bar" class="skill-bar"></div>
+          </section>
+
+          <section class="metric-grid" aria-label="训练统计">
+            <article class="metric-card">
+              <span>推荐命中率</span>
+              <strong id="metric-accuracy">—</strong>
+              <small id="metric-perfect">0 / 0 次</small>
+            </article>
+            <article class="metric-card">
+              <span>当前连对</span>
+              <strong id="metric-streak">0</strong>
+              <small id="metric-best">最佳 0</small>
+            </article>
+            <article class="metric-card">
+              <span>操作频率</span>
+              <strong id="metric-apm">0</strong>
+              <small>每分钟施法</small>
+            </article>
+            <article class="metric-card">
+              <span>成功施法</span>
+              <strong id="metric-casts">0</strong>
+              <small>仅记录实际施放</small>
+            </article>
+          </section>
+        </section>
+
+        <aside class="panel sequence-panel" aria-labelledby="sequence-heading">
+          <div class="panel-heading sequence-heading">
+            <div>
+              <span class="section-kicker">CAST SEQUENCE</span>
+              <h2 id="sequence-heading">用户施法顺序</h2>
+            </div>
+            <span id="sequence-count" class="count-badge">0 次</span>
+          </div>
+
+          <div id="sequence-list" class="sequence-list">
+            <div class="empty-sequence">
+              <div class="empty-rings" aria-hidden="true"><span></span><span></span></div>
+              <strong>尚无施法记录</strong>
+              <p>成功施法会按时间从左到右显示。</p>
+            </div>
+          </div>
+
+          <div class="sequence-actions">
+            <button id="copy-sequence" class="button button-quiet" type="button">复制顺序</button>
+            <button id="clear-sequence" class="button button-quiet" type="button">清空记录</button>
+          </div>
+
+          <div class="legend">
+            <span><i class="legend-dot perfect"></i>命中推荐</span>
+            <span><i class="legend-dot alternate"></i>可施放但非首选</span>
+            <span><i class="legend-dot wrong-target"></i>目标不符</span>
+          </div>
+        </aside>
+
+        <aside class="combat-log-panel" aria-labelledby="combat-log-heading">
+          <div class="combat-log-heading">
+            <div>
+              <span class="section-kicker">COMBAT LOG</span>
+              <h2 id="combat-log-heading">战斗记录</h2>
+            </div>
+            <span id="combat-log-count">0 条</span>
+          </div>
+          <div id="combat-log-list" class="combat-log-list" aria-live="polite">
+            <p class="combat-log-system">训练尚未开始。</p>
+          </div>
+        </aside>
+      </main>
+
+      <footer class="app-footer">
+        <p>
+          当前为可切换构筑的交互 Demo；技能栏、Buff、DoT 与推荐均由 ResolvedProfile 动态生成。
+        </p>
+        <span id="footer-profile">12.1 野性 · MID2 四件套 · 60 秒 Patchwerk</span>
+      </footer>
+    </div>
+
+    <dialog id="keybind-dialog" class="keybind-dialog">
+      <form method="dialog" class="dialog-shell">
+        <div class="dialog-heading">
+          <div>
+            <span class="section-kicker">KEY BINDINGS</span>
+            <h2>配置技能键位</h2>
+            <p>点击一个键位，再按下新的按键。冲突键位会自动从原技能移除。</p>
+          </div>
+          <button class="dialog-close" type="button" data-dialog-close aria-label="关闭键位配置">×</button>
+        </div>
+
+        <div id="keybind-list" class="keybind-list"></div>
+
+        <div class="dialog-footer">
+          <span id="keybind-hint">键位会自动保存在当前浏览器。</span>
+          <div>
+            <button id="reset-keybinds" class="button button-quiet" type="button">恢复默认</button>
+            <button class="button button-primary" type="button" data-dialog-close>完成</button>
+          </div>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="aura-monitor-dialog" class="keybind-dialog aura-monitor-dialog">
+      <form method="dialog" class="dialog-shell">
+        <div class="dialog-heading">
+          <div>
+            <span class="section-kicker">AURA MONITOR</span>
+            <h2>配置增益监控</h2>
+            <p>从当前构筑可追踪的增益中选择；选择会保存在此构筑的当前浏览器中。</p>
+          </div>
+          <button class="dialog-close" type="button" data-dialog-close aria-label="关闭增益监控配置">×</button>
+        </div>
+
+        <div class="aura-monitor-toolbar">
+          <label class="aura-monitor-filter-control" for="aura-monitor-filter">
+            <span class="visually-hidden">筛选可监控增益</span>
+            <input id="aura-monitor-filter" type="search" autocomplete="off" placeholder="名称 / 法术 ID 筛选" />
+          </label>
+          <span id="aura-monitor-filter-count" class="aura-monitor-filter-count" aria-live="polite"></span>
+        </div>
+        <div id="aura-monitor-list" class="aura-monitor-list"></div>
+
+        <div class="dialog-footer">
+          <span id="aura-monitor-hint">未选择时，此行只显示配置提示。</span>
+          <div>
+            <button id="clear-aura-monitors" class="button button-quiet" type="button">清空选择</button>
+            <button class="button button-primary" type="button" data-dialog-close>完成</button>
+          </div>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="simc-import-dialog" class="keybind-dialog simc-import-dialog">
+      <form method="dialog" class="dialog-shell">
+        <div class="dialog-heading">
+          <div>
+            <span class="section-kicker">SIMC PROFILE</span>
+            <h2>导入 SimulationCraft</h2>
+            <p>粘贴游戏内 /simc 导出的完整文本。当前仅接受 12.1 野性德鲁伊，必须包含 talents=。</p>
+          </div>
+          <button class="dialog-close" type="button" data-dialog-close aria-label="关闭 SimC 导入">×</button>
+        </div>
+
+        <div class="simc-import-body">
+          <label for="simc-profile-input">SimC Profile</label>
+          <textarea
+            id="simc-profile-input"
+            autocomplete="off"
+            autocapitalize="off"
+            spellcheck="false"
+            placeholder="druid=角色名&#10;spec=feral&#10;level=90&#10;talents=...&#10;head=..."
+          ></textarea>
+          <p class="simc-import-help">最多 512 KiB。无法识别或尚未实现的字段和效果会列出，不会静默忽略。</p>
+          <div id="simc-import-status" class="simc-import-status is-idle" role="status" aria-live="polite">
+            尚未解析 Profile。
+          </div>
+        </div>
+
+        <div class="dialog-footer">
+          <span id="simc-import-hint">成功导入后会保存在当前浏览器，并作为独立构筑出现在下拉框中。</span>
+          <div>
+            <button id="clear-simc-import" class="button button-quiet" type="button">清除已保存导入</button>
+            <button id="apply-simc-import" class="button button-primary" type="button">解析并使用</button>
+          </div>
+        </div>
+      </form>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script type="module" src="./app.js?v=20260821-dialog-hotfix-v1"></script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "profiles": [
+    {
+      "id": "MID1_Druid_Feral",
+      "profile": "vendor/simc/profiles/MID1/MID1_Druid_Feral.simc",
+      "oracle": "validation/oracles/mid1-feral-profile-oracle.json"
+    }
+  ]
+}

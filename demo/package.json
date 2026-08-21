@@ -1,0 +1,13 @@
+{
+  "name": "feral-trainer-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "node browser-smoke.mjs",
+    "generate:version": "node ../scripts/generate-simc-version-module.mjs",
+    "generate:acceptance": "node ../scripts/generate-architecture-acceptance.mjs",
+    "generate:tier-sets": "node ../scripts/generate-feral-tier-set-catalog.mjs",
+    "generate:simc-oracle": "node ../scripts/generate-simc-profile-oracle.mjs"
+  }
+}

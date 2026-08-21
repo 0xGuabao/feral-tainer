@@ -1,0 +1,21 @@
+Feral Trainer is free software licensed under the GNU General Public License,
+version 3 or (at your option) any later version.
+
+Copyright (C) 2026 0xGuabao and contributors
+
+SPDX-License-Identifier: GPL-3.0-or-later
+
+The complete, unmodified GNU GPL version 3 license text is distributed with
+this repository at vendor/simc/COPYING and is incorporated here by reference:
+
+  https://www.gnu.org/licenses/gpl-3.0.txt
+
+This license applies to the original source code of this project. It does not
+relicense third-party works. SimulationCraft files retain their upstream
+licenses and notices. World of Warcraft names, trademarks, game data, and icon
+assets remain the property of Blizzard Entertainment and are expressly
+excluded from this license. See THIRD_PARTY_NOTICES.md for the exact boundary.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for details.

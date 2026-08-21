@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/simulationcraft/simc.git",
+  "branch": "midnight",
+  "simcCommit": "5b82654ba96c9dc7f611f527a41584dc94e17677",
+  "simcCommitVerification": "partial-source-match",
+  "simcVersion": "1210-01",
+  "wowVersion": "12.1.0.69299",
+  "wowBuild": 69299,
+  "hotfixDate": "2026-08-15",
+  "hotfixBuild": 69299,
+  "hotfixHash": "053d0278b09f333cb943d4307c586bc0b1250cf563eea5435f249f9738b52ce7",
+  "channel": "release",
+  "snapshotKind": "mixed",
+  "vendorFingerprint": "e71acf35764e9bbd16f5b0ca17c14e4a0e497e1b49c91ef70256340dbde07341",
+  "commitEvidence": {
+    "matchedPaths": [
+      "engine/class_modules/sc_druid.cpp",
+      "engine/class_modules/apl/druid/feral_apl.inc"
+    ],
+    "note": "The local vendor directory has no .git metadata. The two Feral source files match simcCommit exactly, while generated DBC and unique gear files are locked by their own SHA-256 values. simcCommit alone does not identify this mixed snapshot."
+  },
+  "vendorFiles": {
+    "engine/class_modules/apl/druid/feral_apl.inc": "9882cb431b35144e46fa76316d590f0b87fb56b090da3c296ab3ae21c9e0b73e",
+    "engine/class_modules/sc_druid.cpp": "3d5f1cb1c4fb40ba7cbb7e0bb7b85927476ab3921356ce52a971a3bc4b55acdc",
+    "engine/dbc/generated/item_effect.inc": "5bcf2e3440e4e60bca6c74edb4638d3db895973f9abe40dee112d4aaa22c9b15",
+    "engine/dbc/generated/item_set_bonus.inc": "dc63d8a0463b2cce935aefe60570ddc388c53ee8ba2da148233cbb02802c27f5",
+    "engine/dbc/generated/sc_spell_data.inc": "0bd6a4b4c4965f5acd14f62d578e6809a584101cdd762aab099e3c87c17750f8",
+    "engine/dbc/generated/trait_data.inc": "2471472ebeef6028016a189f38cb6852f86cdfdbe809bc938a0d67428a9cf1ca",
+    "engine/player/unique_gear_midnight.cpp": "871ab618c5727f29ffce6d2ba612dbae9ffaf08cc5a0d4fbccfd4f41984537b0"
+  }
+}

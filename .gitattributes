@@ -1,0 +1,10 @@
+* text=auto eol=lf
+*.jpg binary
+*.png binary
+*.wasm binary
+*.zip binary
+*.gz binary
+
+vendor/simc/** linguist-vendored
+demo/data/**/*.generated.js linguist-generated
+validation/**/*.json linguist-generated

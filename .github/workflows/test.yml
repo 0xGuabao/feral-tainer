@@ -1,0 +1,25 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  unit-and-architecture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Unit and architecture tests
+        working-directory: demo
+        run: npm test
+      - name: JavaScript syntax
+        run: find demo scripts validation/wasm-smoke -type f \( -name '*.js' -o -name '*.mjs' \) -print0 | xargs -0 -n 1 node --check
+      - name: Shell syntax
+        run: bash -n validation/run-matrix.sh validation/wasm-smoke/build.sh

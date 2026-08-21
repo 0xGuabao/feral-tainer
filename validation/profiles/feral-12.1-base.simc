@@ -1,0 +1,30 @@
+# WoW 12.1 Feral Druid trainer validation profile.
+#
+# V0 intentionally accepts only a Blizzard talent export string. Gear uses
+# SimulationCraft's normalized default profile until a complete /simc export is
+# available. The validation runner always enables the current 2-piece and
+# 4-piece bonuses together.
+
+druid=FeralTrainer
+spec=feral
+level=90
+race=tauren
+role=attack
+position=back
+
+talents=CcGADBD3hSPCL9Y9gz68WcKvMAAAAAAwgZwYmZmxstMPwyYbmZGzMDAAAAbgZzwYmBzYWGzMzYMDDAAAAAgBGAAAAmZZWmZmZWmZxsMzyGMz8AALmBDAgZGMzGGA
+
+load_default_gear=1
+default_actions=1
+
+# Keep the first validation deterministic and fast. These values are overridden
+# by matrix runs when validating target count.
+iterations=20
+fixed_time=1
+max_time=60
+vary_combat_length=0
+fight_style=Patchwerk
+optimal_raid=0
+target_error=0
+threads=1
+seed=1210001

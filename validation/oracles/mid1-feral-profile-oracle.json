@@ -1,0 +1,322 @@
+{
+  "schemaVersion": 1,
+  "profileId": "MID1_Druid_Feral",
+  "profilePath": "vendor/simc/profiles/MID1/MID1_Druid_Feral.simc",
+  "profileSha256": "78319c9c2bb2936e1e47ba8b5b1362d4f46f96985ccf017bb6a4640ea36570f7",
+  "reportVersion": "3.0.0-alpha1",
+  "simc": {
+    "version": "1210-01",
+    "gameVersion": "12.1.0.69299",
+    "build": 69299,
+    "hotfixDate": "2026-08-15",
+    "hotfixBuild": 69299,
+    "hotfixHash": "053d0278b09f333cb943d4307c586bc0b1250cf563eea5435f249f9738b52ce7",
+    "noNetworking": true
+  },
+  "character": {
+    "name": "MID1_Druid_Feral_Wildstalker",
+    "race": "night_elf",
+    "level": 90,
+    "role": "attack",
+    "specialization": "Feral Druid",
+    "talentCode": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjZwMzMzMmtFPwyMbzYGzMDAAAALBzGMmZUzYWYmZGjZmZAAAAAAAGAAAABAz2MLNbzssBmZAWMDGAAzMAYA"
+  },
+  "consumables": {
+    "potion": "lights_potential_2",
+    "flask": "magisters_2",
+    "food": "harandar_celebration",
+    "augmentation": "void_touched",
+    "temporaryEnchant": "main_hand:thalassian_phoenix_oil_2"
+  },
+  "baseEnergyRegenPerSecond": 12.649999999999999,
+  "buffedStats": {
+    "attribute": {
+      "strength": 265,
+      "agility": 2040,
+      "stamina": 30198,
+      "intellect": 638
+    },
+    "resources": {
+      "energy": 140
+    },
+    "stats": {
+      "attack_power": 2142,
+      "spell_crit": 0.21434782608695652,
+      "attack_crit": 0.21434782608695652,
+      "spell_haste": 0.7692017493465891,
+      "attack_haste": 0.7692017493465891,
+      "spell_cast_speed": 0.7692017493465891,
+      "auto_attack_speed": 0.7692017493465891,
+      "mastery_value": 0.7226086956521739,
+      "damage_versatility": 0.06685185185185186,
+      "heal_versatility": 0.06685185185185186,
+      "mitigation_versatility": 0.03342592592592593,
+      "crit_rating": 526,
+      "crit_pct": 0.21434782608695652,
+      "haste_rating": 943,
+      "haste_pct": 0.3000490454545457,
+      "mastery_rating": 1202,
+      "mastery_pct": 0.7226086956521739,
+      "versatility_rating": 37,
+      "versatility_pct": 0.06685185185185186,
+      "avoidance_rating": 200,
+      "avoidance_pct": 0.054347050297581745,
+      "leech_rating": 28,
+      "leech_pct": 0.004057913089253662,
+      "speed_pct": 8.19,
+      "manareg_per_second": 2560,
+      "armor": 927.5,
+      "dodge": 0.1495934002736832
+    }
+  },
+  "itemVariantKeys": [
+    "item:193701|ilevel:289|bonus:|gems:|enchant:none|crafted:",
+    "item:244576|ilevel:285|bonus:1808/8790/8960/12214/12214/12214/12214/12214/12214/12214/12214/12384|gems:240892|enchant:none|crafted:32/49",
+    "item:249343|ilevel:289|bonus:|gems:|enchant:none|crafted:",
+    "item:249374|ilevel:289|bonus:1808/4795|gems:240892|enchant:none|crafted:",
+    "item:249382|ilevel:289|bonus:|gems:|enchant:7993|crafted:",
+    "item:249920|ilevel:289|bonus:40/12806/13335/13534|gems:240892/240892|enchant:7967|crafted:",
+    "item:250023|ilevel:289|bonus:13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575|gems:|enchant:8159|crafted:",
+    "item:250024|ilevel:289|bonus:1808/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575|gems:240983|enchant:8017|crafted:",
+    "item:250025|ilevel:289|bonus:13574/13574/13574/13574/13574/13574/13574/13574/13574/13574/13574/13574|gems:|enchant:none|crafted:",
+    "item:250027|ilevel:289|bonus:13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575|gems:|enchant:7987|crafted:",
+    "item:250247|ilevel:289|bonus:12806/13577/13668|gems:240892/240892|enchant:none|crafted:",
+    "item:251077|ilevel:289|bonus:|gems:|enchant:8039|crafted:",
+    "item:251092|ilevel:289|bonus:4795|gems:|enchant:8001|crafted:",
+    "item:251513|ilevel:285|bonus:8960/8960/9627/12066/12214/12214|gems:240892|enchant:7967|crafted:",
+    "item:260312|ilevel:289|bonus:4795|gems:|enchant:none|crafted:"
+  ],
+  "itemVariants": {
+    "item:193701|ilevel:289|bonus:|gems:|enchant:none|crafted:": {
+      "key": "item:193701|ilevel:289|bonus:|gems:|enchant:none|crafted:",
+      "itemId": 193701,
+      "itemLevel": 289,
+      "name": "algethar_puzzle_box",
+      "slot": "trinket1",
+      "encodedItem": "algethar_puzzle_box,id=193701,ilevel=289",
+      "stats": {
+        "stragi": 118
+      },
+      "effectsStatus": "pending-m3-m5",
+      "sourceProfileSha256": "78319c9c2bb2936e1e47ba8b5b1362d4f46f96985ccf017bb6a4640ea36570f7"
+    },
+    "item:244576|ilevel:285|bonus:1808/8790/8960/12214/12214/12214/12214/12214/12214/12214/12214/12384|gems:240892|enchant:none|crafted:32/49": {
+      "key": "item:244576|ilevel:285|bonus:1808/8790/8960/12214/12214/12214/12214/12214/12214/12214/12214/12384|gems:240892|enchant:none|crafted:32/49",
+      "itemId": 244576,
+      "itemLevel": 285,
+      "name": "silvermoon_agents_deflectors",
+      "slot": "wrist",
+      "encodedItem": "silvermoon_agents_deflectors,id=244576,bonus_id=1808/8790/8960/12214/12214/12214/12214/12214/12214/12214/12214/12384,ilevel=285,gem_id=240892,crafted_stats=32/49",
+      "stats": {
+        "agiint": 67,
+        "crit_rating": 45,
+        "haste_rating": 45,
+        "stamina": 1248
+      },
+      "effectsStatus": "pending-m3-m5",
+      "sourceProfileSha256": "78319c9c2bb2936e1e47ba8b5b1362d4f46f96985ccf017bb6a4640ea36570f7"
+    },
+    "item:249343|ilevel:289|bonus:|gems:|enchant:none|crafted:": {
+      "key": "item:249343|ilevel:289|bonus:|gems:|enchant:none|crafted:",
+      "itemId": 249343,
+      "itemLevel": 289,
+      "name": "gaze_of_the_alnseer",
+      "slot": "trinket2",
+      "encodedItem": "gaze_of_the_alnseer,id=249343,ilevel=289",
+      "stats": {
+        "mastery_rating": 117
+      },
+      "effectsStatus": "pending-m3-m5",
+      "sourceProfileSha256": "78319c9c2bb2936e1e47ba8b5b1362d4f46f96985ccf017bb6a4640ea36570f7"
+    },
+    "item:249374|ilevel:289|bonus:1808/4795|gems:240892|enchant:none|crafted:": {
+      "key": "item:249374|ilevel:289|bonus:1808/4795|gems:240892|enchant:none|crafted:",
+      "itemId": 249374,
+      "itemLevel": 289,
+      "name": "scornscarred_shulkas_belt",
+      "slot": "waist",
+      "encodedItem": "scornscarred_shulkas_belt,id=249374,bonus_id=1808/4795,ilevel=289,gem_id=240892",
+      "stats": {
+        "agiint": 93,
+        "crit_rating": 38,
+        "haste_rating": 85,
+        "stamina": 1745
+      },
+      "effectsStatus": "pending-m3-m5",
+      "sourceProfileSha256": "78319c9c2bb2936e1e47ba8b5b1362d4f46f96985ccf017bb6a4640ea36570f7"
+    },
+    "item:249382|ilevel:289|bonus:|gems:|enchant:7993|crafted:": {
+      "key": "item:249382|ilevel:289|bonus:|gems:|enchant:7993|crafted:",
+      "itemId": 249382,
+      "itemLevel": 289,
+      "name": "canopy_walkers_footwraps",
+      "slot": "feet",
+      "encodedItem": "canopy_walkers_footwraps,id=249382,ilevel=289,enchant_id=7993",
+      "stats": {
+        "agiint": 93,
+        "crit_rating": 43,
+        "mastery_rating": 81,
+        "stamina": 1745
+      },
+      "effectsStatus": "pending-m3-m5",
+      "sourceProfileSha256": "78319c9c2bb2936e1e47ba8b5b1362d4f46f96985ccf017bb6a4640ea36570f7"
+    },
+    "item:249920|ilevel:289|bonus:40/12806/13335/13534|gems:240892/240892|enchant:7967|crafted:": {
+      "key": "item:249920|ilevel:289|bonus:40/12806/13335/13534|gems:240892/240892|enchant:7967|crafted:",
+      "itemId": 249920,
+      "itemLevel": 289,
+      "name": "eye_of_midnight",
+      "slot": "finger1",
+      "encodedItem": "eye_of_midnight,id=249920,bonus_id=40/12806/13335/13534,ilevel=289,gem_id=240892/240892,enchant_id=7967",
+      "stats": {
+        "avoidance_rating": 52,
+        "haste_rating": 303,
+        "stamina": 1309
+      },
+      "effectsStatus": "pending-m3-m5",
+      "sourceProfileSha256": "78319c9c2bb2936e1e47ba8b5b1362d4f46f96985ccf017bb6a4640ea36570f7"
+    },
+    "item:250023|ilevel:289|bonus:13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575|gems:|enchant:8159|crafted:": {
+      "key": "item:250023|ilevel:289|bonus:13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575|gems:|enchant:8159|crafted:",
+      "itemId": 250023,
+      "itemLevel": 289,
+      "name": "phloemwraps_of_the_luminous_bloom",
+      "slot": "legs",
+      "encodedItem": "phloemwraps_of_the_luminous_bloom,id=250023,bonus_id=13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575,ilevel=289,enchant_id=8159",
+      "stats": {
+        "agiint": 124,
+        "haste_rating": 49,
+        "mastery_rating": 115,
+        "stamina": 2326
+      },
+      "effectsStatus": "pending-m3-m5",
+      "sourceProfileSha256": "78319c9c2bb2936e1e47ba8b5b1362d4f46f96985ccf017bb6a4640ea36570f7"
+    },
+    "item:250024|ilevel:289|bonus:1808/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575|gems:240983|enchant:8017|crafted:": {
+      "key": "item:250024|ilevel:289|bonus:1808/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575|gems:240983|enchant:8017|crafted:",
+      "itemId": 250024,
+      "itemLevel": 289,
+      "name": "branches_of_the_luminous_bloom",
+      "slot": "head",
+      "encodedItem": "branches_of_the_luminous_bloom,id=250024,bonus_id=1808/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575,ilevel=289,gem_id=240983,enchant_id=8017",
+      "stats": {
+        "agiint": 124,
+        "haste_rating": 111,
+        "mastery_rating": 54,
+        "stamina": 2326
+      },
+      "effectsStatus": "pending-m3-m5",
+      "sourceProfileSha256": "78319c9c2bb2936e1e47ba8b5b1362d4f46f96985ccf017bb6a4640ea36570f7"
+    },
+    "item:250025|ilevel:289|bonus:13574/13574/13574/13574/13574/13574/13574/13574/13574/13574/13574/13574|gems:|enchant:none|crafted:": {
+      "key": "item:250025|ilevel:289|bonus:13574/13574/13574/13574/13574/13574/13574/13574/13574/13574/13574/13574|gems:|enchant:none|crafted:",
+      "itemId": 250025,
+      "itemLevel": 289,
+      "name": "arbortenders_of_the_luminous_bloom",
+      "slot": "hands",
+      "encodedItem": "arbortenders_of_the_luminous_bloom,id=250025,bonus_id=13574/13574/13574/13574/13574/13574/13574/13574/13574/13574/13574/13574,ilevel=289",
+      "stats": {
+        "agiint": 93,
+        "haste_rating": 86,
+        "stamina": 1745,
+        "versatility_rating": 37
+      },
+      "effectsStatus": "pending-m3-m5",
+      "sourceProfileSha256": "78319c9c2bb2936e1e47ba8b5b1362d4f46f96985ccf017bb6a4640ea36570f7"
+    },
+    "item:250027|ilevel:289|bonus:13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575|gems:|enchant:7987|crafted:": {
+      "key": "item:250027|ilevel:289|bonus:13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575|gems:|enchant:7987|crafted:",
+      "itemId": 250027,
+      "itemLevel": 289,
+      "name": "trunk_of_the_luminous_bloom",
+      "slot": "chest",
+      "encodedItem": "trunk_of_the_luminous_bloom,id=250027,bonus_id=13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575/13575,ilevel=289,enchant_id=7987",
+      "stats": {
+        "agiint": 124,
+        "crit_rating": 113,
+        "mastery_rating": 52,
+        "stamina": 2326
+      },
+      "effectsStatus": "pending-m3-m5",
+      "sourceProfileSha256": "78319c9c2bb2936e1e47ba8b5b1362d4f46f96985ccf017bb6a4640ea36570f7"
+    },
+    "item:250247|ilevel:289|bonus:12806/13577/13668|gems:240892/240892|enchant:none|crafted:": {
+      "key": "item:250247|ilevel:289|bonus:12806/13577/13668|gems:240892/240892|enchant:none|crafted:",
+      "itemId": 250247,
+      "itemLevel": 289,
+      "name": "amulet_of_the_abyssal_hymn",
+      "slot": "neck",
+      "encodedItem": "amulet_of_the_abyssal_hymn,id=250247,bonus_id=12806/13577/13668,ilevel=289,gem_id=240892/240892",
+      "stats": {
+        "haste_rating": 43,
+        "mastery_rating": 260,
+        "stamina": 1309
+      },
+      "effectsStatus": "pending-m3-m5",
+      "sourceProfileSha256": "78319c9c2bb2936e1e47ba8b5b1362d4f46f96985ccf017bb6a4640ea36570f7"
+    },
+    "item:251077|ilevel:289|bonus:|gems:|enchant:8039|crafted:": {
+      "key": "item:251077|ilevel:289|bonus:|gems:|enchant:8039|crafted:",
+      "itemId": 251077,
+      "itemLevel": 289,
+      "name": "roostwardens_bough",
+      "slot": "main_hand",
+      "encodedItem": "roostwardens_bough,id=251077,ilevel=289,enchant_id=8039",
+      "stats": {
+        "agility": 124,
+        "crit_rating": 61,
+        "mastery_rating": 103,
+        "stamina": 2326
+      },
+      "effectsStatus": "pending-m3-m5",
+      "sourceProfileSha256": "78319c9c2bb2936e1e47ba8b5b1362d4f46f96985ccf017bb6a4640ea36570f7"
+    },
+    "item:251092|ilevel:289|bonus:4795|gems:|enchant:8001|crafted:": {
+      "key": "item:251092|ilevel:289|bonus:4795|gems:|enchant:8001|crafted:",
+      "itemId": 251092,
+      "itemLevel": 289,
+      "name": "fallen_grunts_mantle",
+      "slot": "shoulder",
+      "encodedItem": "fallen_grunts_mantle,id=251092,bonus_id=4795,ilevel=289,enchant_id=8001",
+      "stats": {
+        "agiint": 93,
+        "haste_rating": 43,
+        "mastery_rating": 80,
+        "stamina": 1745
+      },
+      "effectsStatus": "pending-m3-m5",
+      "sourceProfileSha256": "78319c9c2bb2936e1e47ba8b5b1362d4f46f96985ccf017bb6a4640ea36570f7"
+    },
+    "item:251513|ilevel:285|bonus:8960/8960/9627/12066/12214/12214|gems:240892|enchant:7967|crafted:": {
+      "key": "item:251513|ilevel:285|bonus:8960/8960/9627/12066/12214/12214|gems:240892|enchant:7967|crafted:",
+      "itemId": 251513,
+      "itemLevel": 285,
+      "name": "loa_worshipers_band",
+      "slot": "finger2",
+      "encodedItem": "loa_worshipers_band,id=251513,bonus_id=8960/8960/12066/12214/12214/9627,ilevel=285,gem_id=240892,enchant_id=7967",
+      "stats": {
+        "crit_rating": 168,
+        "mastery_rating": 126,
+        "stamina": 1248
+      },
+      "effectsStatus": "pending-m3-m5",
+      "sourceProfileSha256": "78319c9c2bb2936e1e47ba8b5b1362d4f46f96985ccf017bb6a4640ea36570f7"
+    },
+    "item:260312|ilevel:289|bonus:4795|gems:|enchant:none|crafted:": {
+      "key": "item:260312|ilevel:289|bonus:4795|gems:|enchant:none|crafted:",
+      "itemId": 260312,
+      "itemLevel": 289,
+      "name": "defiant_defenders_drape",
+      "slot": "back",
+      "encodedItem": "defiant_defenders_drape,id=260312,bonus_id=4795,ilevel=289",
+      "stats": {
+        "crit_rating": 42,
+        "haste_rating": 50,
+        "stamina": 1309,
+        "stragiint": 70
+      },
+      "effectsStatus": "pending-m3-m5",
+      "sourceProfileSha256": "78319c9c2bb2936e1e47ba8b5b1362d4f46f96985ccf017bb6a4640ea36570f7"
+    }
+  }
+}

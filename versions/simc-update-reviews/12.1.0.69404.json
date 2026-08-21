@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "g1-20260821-b458aea-69404",
+  "reviewedAt": "2026-08-21",
+  "targetCommit": "b458aea6898f3b169310ed243e9934bfa37044bd",
+  "targetWowVersion": "12.1.0.69404",
+  "reviewedCategories": {
+    "new_generic_mechanism": {
+      "expectedLineCount": 11,
+      "disposition": "reviewed_no_current_profile_impact",
+      "reason": "The additions are SimC stats attribution, buff construction and callback registration lines in unique gear code. They do not add a Feral action, resource, aura or APL rule to the current trainer profile."
+    },
+    "custom_mechanism_candidate": {
+      "expectedLineCount": 7,
+      "disposition": "reviewed_structured_unsupported_if_adopted",
+      "reason": "The custom callback implements Venomcursed Ascendance random-stat selection. Its spell/item identifiers are absent from the current MID1 profile, equipment oracle and item-effect catalog. A future adoption must emit it as a structured unsupported item effect until a generic handler exists."
+    }
+  },
+  "semanticGroups": [
+    {
+      "id": "simc-stats-attribution-bookkeeping",
+      "paths": [
+        "engine/player/unique_gear_midnight.cpp"
+      ],
+      "symbols": [
+        "weighted_boomshots",
+        "devouring_banding",
+        "polished_lightwood_channeler",
+        "sporecallers_blooming_loop",
+        "create_mrm_action"
+      ],
+      "decision": "No trainer runtime change. The delta changes SimC report ownership through dual/actions and stats action_list bookkeeping."
+    },
+    {
+      "id": "simc-existing-buff-refresh-corrections",
+      "paths": [
+        "engine/player/unique_gear_midnight.cpp"
+      ],
+      "symbols": [
+        "liquid_luster",
+        "void_execution_mandate",
+        "venomcursed"
+      ],
+      "decision": "No current-profile change. Keep visible in the update report; reassess only if one of these effects enters an imported profile."
+    },
+    {
+      "id": "venomcursed-ascendance-random-stat-callback",
+      "paths": [
+        "engine/player/unique_gear_midnight.cpp",
+        "engine/dbc/generated/item_effect.inc"
+      ],
+      "symbols": [
+        "venomcursed_ascendance",
+        "venomcursed_cb_t"
+      ],
+      "identifiers": [
+        1317036,
+        1317582
+      ],
+      "decision": "Do not implement in G1. If an adopted/imported build references it, emit a structured unsupported item-effect record; never silently ignore it."
+    }
+  ],
+  "scopeChecks": {
+    "feralCoreSourceChanged": false,
+    "feralAplChanged": false,
+    "currentProfileReferencesReviewedIdentifiers": false,
+    "trainerCatalogReferencesReviewedIdentifiers": false
+  }
+}

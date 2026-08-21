@@ -1,0 +1,59 @@
+.DS_Store
+node_modules/
+*.log
+*.tmp
+.env
+.env.*
+!.env.example
+
+# Local releases, rollback material, generated run output, and deployment facts.
+releases/
+validation/baselines/
+validation/results/
+validation/G0_BASELINE_REPORT.md
+validation/VALIDATION_REPORT.md
+validation/M7_UI_H5_REPORT.md
+validation/M8_RELEASE_REPORT.md
+validation/M9_DEPLOYMENT_REPORT.md
+validation/M10_SIMC_IMPORT_DEPLOYMENT_REPORT.md
+validation/M11_DIALOG_HOTFIX_DEPLOYMENT_REPORT.md
+validation/wasm-smoke/*.wasm
+scripts/promote-remote-release.sh
+
+# Local visual references and smoke-test screenshots are not source inputs.
+demo/*.png
+
+# Keep only the auditable SimC subset required by the lock, generators, and tests.
+# Local binaries, object files, build trees, broad DBC dumps, and unrelated source
+# remain available in a developer checkout but are not published by this repo.
+vendor/simc/**
+!vendor/simc/COPYING
+!vendor/simc/LICENSE
+!vendor/simc/LICENSE.*
+!vendor/simc/README.md
+!vendor/simc/engine/
+vendor/simc/engine/**
+!vendor/simc/engine/class_modules/
+vendor/simc/engine/class_modules/**
+!vendor/simc/engine/class_modules/sc_druid.cpp
+!vendor/simc/engine/class_modules/apl/
+vendor/simc/engine/class_modules/apl/**
+!vendor/simc/engine/class_modules/apl/druid/
+vendor/simc/engine/class_modules/apl/druid/**
+!vendor/simc/engine/class_modules/apl/druid/feral_apl.inc
+!vendor/simc/engine/dbc/
+vendor/simc/engine/dbc/**
+!vendor/simc/engine/dbc/generated/
+vendor/simc/engine/dbc/generated/**
+!vendor/simc/engine/dbc/generated/item_effect.inc
+!vendor/simc/engine/dbc/generated/item_set_bonus.inc
+!vendor/simc/engine/dbc/generated/sc_spell_data.inc
+!vendor/simc/engine/dbc/generated/trait_data.inc
+!vendor/simc/engine/player/
+vendor/simc/engine/player/**
+!vendor/simc/engine/player/unique_gear_midnight.cpp
+!vendor/simc/profiles/
+vendor/simc/profiles/**
+!vendor/simc/profiles/MID1/
+vendor/simc/profiles/MID1/**
+!vendor/simc/profiles/MID1/MID1_Druid_Feral.simc
