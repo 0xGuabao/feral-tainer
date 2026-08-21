@@ -193,7 +193,8 @@ async function verifyBrowserPackage(candidateRoot) {
   let chromeProcess;
   try {
     serverProcess = startManagedProcess("python3", [
-      resolve(repositoryRoot, "packaging/cache_server.py"),
+      resolve(webRoot, "cache_server.py"),
+      "--bind", "127.0.0.1",
       "--directory", webRoot,
       "--port", String(httpPort),
     ]);

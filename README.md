@@ -116,6 +116,12 @@ The final `releases/RELEASE_ID` directory appears only after every gate passes.
 Failure removes the hidden staging directory and never publishes a partial
 candidate. This command does not upload files or deploy the public site.
 
+The Web archive also contains `cache_server.py` and the reviewed
+`deploy/wow-feral-trainer.service`. The desktop launchers keep the server on
+`127.0.0.1`; public Linux deployment must explicitly pass `--bind 0.0.0.0`,
+retain the existing firewall boundary, and verify the no-cache/immutable
+response headers before the release is accepted.
+
 For packaging diagnostics only, without a release claim, create local macOS,
 Windows, and web archives with:
 

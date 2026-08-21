@@ -127,6 +127,13 @@ export function verifyReleaseArtifacts(releaseRoot) {
   const packages = packageNames.map((name) => {
     const packageRoot = resolve(unpackedRoot, name);
     const files = verifyChecksumManifest(packageRoot, resolve(packageRoot, "FILES.sha256"));
+    if (name.startsWith("wow-feral-trainer-web-")) {
+      for (const path of ["cache_server.py", "deploy/wow-feral-trainer.service"]) {
+        if (!existsSync(pathInside(packageRoot, path))) {
+          throw new Error(`Web 发行包缺少生产部署文件：${path}`);
+        }
+      }
+    }
     return { name, files: files.length, legal: assertLegalNotices(packageRoot) };
   });
 

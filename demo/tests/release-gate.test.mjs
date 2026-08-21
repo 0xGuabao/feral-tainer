@@ -40,6 +40,24 @@ test("release gate entrypoint resolves every runtime import before parsing optio
   assert.doesNotMatch(result.stderr, /SyntaxError/);
 });
 
+test("production cache server accepts an explicit bind address and the systemd unit uses it", () => {
+  const repositoryRoot = new URL("../../", import.meta.url).pathname;
+  const help = spawnSync("python3", ["packaging/cache_server.py", "--help"], {
+    cwd: repositoryRoot,
+    encoding: "utf8",
+  });
+  assert.equal(help.status, 0);
+  assert.match(help.stdout, /--bind BIND/);
+
+  const service = readFileSync(resolve(
+    repositoryRoot,
+    "packaging/systemd/wow-feral-trainer.service",
+  ), "utf8");
+  assert.match(service, /cache_server\.py --bind 0\.0\.0\.0 --port 8787/);
+  assert.match(service, /--directory \/home\/ubuntu\/sites\/wow-feral-trainer/);
+  assert.match(service, /NoNewPrivileges=true/);
+});
+
 test("release IDs and checksum manifests reject unsafe input", () => {
   assert.equal(assertReleaseId("20260821-g5-rc1"), "20260821-g5-rc1");
   assert.throws(() => assertReleaseId("../escape"), /非法 RELEASE_ID/);

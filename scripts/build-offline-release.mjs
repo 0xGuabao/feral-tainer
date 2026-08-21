@@ -109,6 +109,12 @@ const webName = `wow-feral-trainer-web-${releaseId}`;
 const webRoot = join(unpackedRoot, webName);
 mkdirSync(webRoot, { recursive: true });
 copySite(webRoot);
+cpSync(join(repositoryRoot, "packaging", "cache_server.py"), join(webRoot, "cache_server.py"));
+mkdirSync(join(webRoot, "deploy"), { recursive: true });
+cpSync(
+  join(repositoryRoot, "packaging", "systemd", "wow-feral-trainer.service"),
+  join(webRoot, "deploy", "wow-feral-trainer.service"),
+);
 cpSync(join(repositoryRoot, "packaging", "使用说明.txt"), join(webRoot, "README.zh-CN.txt"));
 copyLegalNotices(webRoot);
 writeFileManifest(webRoot);
