@@ -1569,6 +1569,7 @@ export class InteractiveController {
         setBonuses: this.profile.build.setBonuses,
         unsupportedFieldCount: this.profile.unsupportedFields.length,
         unsupportedEffectCount: this.profile.unsupportedEffects.length,
+        unsupportedAplRuleCount: this.profile.unsupportedAplRules.length,
       },
       session: {
         id: this.state.sessionId,
@@ -1619,6 +1620,7 @@ export class InteractiveController {
         tracked: this.profile.tracked,
         unsupportedFields: this.profile.unsupportedFields,
         unsupportedEffects: this.profile.unsupportedEffects,
+        unsupportedAplRules: this.profile.unsupportedAplRules,
       },
     });
   }

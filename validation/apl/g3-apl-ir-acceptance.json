@@ -1,0 +1,3064 @@
+{
+  "schemaVersion": 1,
+  "purpose": "G3 controlled APL IR, exact Profile binding, 1/3/5 target reuse and zero-silent-drop evidence",
+  "versionLock": {
+    "schemaVersion": 1,
+    "simcCommit": "5b82654ba96c9dc7f611f527a41584dc94e17677",
+    "simcCommitVerification": "partial-source-match",
+    "simcVersion": "1210-01",
+    "wowVersion": "12.1.0.69299",
+    "wowBuild": 69299,
+    "hotfixDate": "2026-08-15",
+    "hotfixBuild": 69299,
+    "hotfixHash": "053d0278b09f333cb943d4307c586bc0b1250cf563eea5435f249f9738b52ce7",
+    "channel": "release",
+    "snapshotKind": "mixed",
+    "vendorFingerprint": "e71acf35764e9bbd16f5b0ca17c14e4a0e497e1b49c91ef70256340dbde07341",
+    "profileCacheSchemaVersion": 1,
+    "profileCacheNamespace": "wow-feral:69299:e71acf35764e"
+  },
+  "ir": {
+    "schemaVersion": 1,
+    "ruleCount": 16,
+    "operators": [
+      "and",
+      "or",
+      "not",
+      "eq",
+      "ne",
+      "lt",
+      "lte",
+      "gt",
+      "gte",
+      "add",
+      "multiply",
+      "min",
+      "if",
+      "in"
+    ],
+    "valueKinds": [
+      "target_count",
+      "combo_points",
+      "fight_remaining_ms",
+      "last_gcd_action_id",
+      "aura_up",
+      "aura_remaining",
+      "cooldown_remaining",
+      "dot_remaining",
+      "dot_refreshable",
+      "dot_up",
+      "refreshable_dot_count",
+      "non_refreshable_dot_count",
+      "talent_selected",
+      "action_available",
+      "action_channel_duration",
+      "action_channel_field"
+    ],
+    "targetKinds": [
+      "none",
+      "active",
+      "index",
+      "dot"
+    ],
+    "ruleIds": [
+      "default.tigers_fury",
+      "default.stealth_rake",
+      "cooldown.berserk",
+      "cooldown.feral_frenzy",
+      "cooldown.convoke",
+      "default.apex_bite",
+      "finisher.rip",
+      "finisher.bite",
+      "aoe.primal_wrath",
+      "aoe.rip",
+      "aoe.rake",
+      "aoe.moonfire",
+      "aoe.swipe",
+      "builder.rake",
+      "builder.moonfire",
+      "builder.shred"
+    ]
+  },
+  "builds": {
+    "userValidation": {
+      "id": "feral-user-validation-4pc",
+      "actionIds": [
+        "tigersFury",
+        "berserk",
+        "rake",
+        "shred",
+        "swipe",
+        "moonfire",
+        "rip",
+        "ferociousBite",
+        "feralFrenzy",
+        "convoke"
+      ],
+      "aplRuleIds": [
+        "default.tigers_fury",
+        "default.stealth_rake",
+        "cooldown.berserk",
+        "cooldown.feral_frenzy",
+        "cooldown.convoke",
+        "default.apex_bite",
+        "finisher.rip",
+        "finisher.bite",
+        "aoe.rip",
+        "aoe.rake",
+        "aoe.moonfire",
+        "aoe.swipe",
+        "builder.rake",
+        "builder.moonfire",
+        "builder.shred"
+      ],
+      "filteredAplRules": [
+        {
+          "ruleId": "aoe.primal_wrath",
+          "actionId": "primalWrath",
+          "reason": "action-unavailable-in-resolved-profile"
+        }
+      ],
+      "unsupportedEffectCount": 45,
+      "unsupportedAplRuleCount": 0
+    },
+    "primalWrath": {
+      "id": "feral-primal-wrath-4pc",
+      "actionIds": [
+        "tigersFury",
+        "berserk",
+        "rake",
+        "shred",
+        "swipe",
+        "rip",
+        "ferociousBite",
+        "primalWrath",
+        "feralFrenzy",
+        "convoke"
+      ],
+      "aplRuleIds": [
+        "default.tigers_fury",
+        "default.stealth_rake",
+        "cooldown.berserk",
+        "cooldown.feral_frenzy",
+        "cooldown.convoke",
+        "default.apex_bite",
+        "finisher.rip",
+        "finisher.bite",
+        "aoe.primal_wrath",
+        "aoe.rip",
+        "aoe.rake",
+        "aoe.swipe",
+        "builder.rake",
+        "builder.shred"
+      ],
+      "filteredAplRules": [
+        {
+          "ruleId": "aoe.moonfire",
+          "actionId": "moonfire",
+          "reason": "action-unavailable-in-resolved-profile"
+        },
+        {
+          "ruleId": "builder.moonfire",
+          "actionId": "moonfire",
+          "reason": "action-unavailable-in-resolved-profile"
+        }
+      ],
+      "unsupportedEffectCount": 45,
+      "unsupportedAplRuleCount": 0
+    }
+  },
+  "resolvedProfileDiff": {
+    "talentChanges": [
+      {
+        "token": "lunar_inspiration",
+        "left": 1,
+        "right": 0
+      },
+      {
+        "token": "primal_wrath",
+        "left": 0,
+        "right": 1
+      }
+    ],
+    "actionChanges": [
+      {
+        "id": "moonfire",
+        "leftEnabled": true,
+        "rightEnabled": false
+      },
+      {
+        "id": "primalWrath",
+        "leftEnabled": false,
+        "rightEnabled": true
+      }
+    ],
+    "internalActionChanges": [],
+    "effectChanges": [],
+    "resourceChanges": [],
+    "combatStatChanges": [],
+    "modifierChanges": [],
+    "unsupportedEffects": {
+      "left": 45,
+      "right": 45
+    },
+    "unsupportedAplRules": {
+      "left": 0,
+      "right": 0
+    }
+  },
+  "traces": [
+    {
+      "fixtureKey": "userValidation",
+      "buildId": "feral-user-validation-4pc",
+      "targetCount": 1,
+      "availableActionIds": [
+        "tigersFury",
+        "berserk",
+        "rake",
+        "shred",
+        "swipe",
+        "moonfire",
+        "rip",
+        "ferociousBite",
+        "feralFrenzy",
+        "convoke"
+      ],
+      "recommendedSkillIds": [
+        "tigersFury",
+        "rake",
+        "berserk",
+        "feralFrenzy",
+        "rip",
+        "convoke",
+        "ferociousBite",
+        "shred",
+        "moonfire"
+      ],
+      "unavailableRecommendations": [],
+      "decisions": [
+        {
+          "index": 0,
+          "timestampMs": 0,
+          "ruleId": "default.tigers_fury",
+          "skillId": "tigersFury",
+          "targetIndex": null,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 0,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 1,
+          "timestampMs": 0,
+          "ruleId": "default.stealth_rake",
+          "skillId": "rake",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 0,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 2,
+          "timestampMs": 910,
+          "ruleId": "cooldown.berserk",
+          "skillId": "berserk",
+          "targetIndex": null,
+          "waitMs": 0,
+          "energy": 120.828,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 3,
+          "timestampMs": 910,
+          "ruleId": "cooldown.feral_frenzy",
+          "skillId": "feralFrenzy",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 120.828,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 4,
+          "timestampMs": 1820,
+          "ruleId": "finisher.rip",
+          "skillId": "rip",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 111.657,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 5,
+          "timestampMs": 2730,
+          "ruleId": "cooldown.convoke",
+          "skillId": "convoke",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 117.485,
+          "comboPoints": 3,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 6,
+          "timestampMs": 2730,
+          "ruleId": "channel.wait",
+          "skillId": null,
+          "targetIndex": null,
+          "waitMs": 4000,
+          "energy": 117.485,
+          "comboPoints": 3,
+          "castOk": null,
+          "castCode": null
+        },
+        {
+          "index": 7,
+          "timestampMs": 6730,
+          "ruleId": "finisher.bite",
+          "skillId": "ferociousBite",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 8,
+          "timestampMs": 7557,
+          "ruleId": "builder.shred",
+          "skillId": "shred",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 115.823,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 9,
+          "timestampMs": 8384,
+          "ruleId": "builder.shred",
+          "skillId": "shred",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 129.642,
+          "comboPoints": 3,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 10,
+          "timestampMs": 9294,
+          "ruleId": "finisher.bite",
+          "skillId": "ferociousBite",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 102.305,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 11,
+          "timestampMs": 10204,
+          "ruleId": "builder.rake",
+          "skillId": "rake",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 74.968,
+          "comboPoints": 3,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 12,
+          "timestampMs": 11114,
+          "ruleId": "finisher.bite",
+          "skillId": "ferociousBite",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 52.63,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 13,
+          "timestampMs": 12024,
+          "ruleId": "resource.pool",
+          "skillId": null,
+          "targetIndex": null,
+          "waitMs": 1057,
+          "energy": 25.293,
+          "comboPoints": 1,
+          "castOk": null,
+          "castCode": null
+        },
+        {
+          "index": 14,
+          "timestampMs": 13081,
+          "ruleId": "resource.pool",
+          "skillId": null,
+          "targetIndex": null,
+          "waitMs": 36,
+          "energy": 39.557,
+          "comboPoints": 2,
+          "castOk": null,
+          "castCode": null
+        },
+        {
+          "index": 15,
+          "timestampMs": 13117,
+          "ruleId": "builder.shred",
+          "skillId": "shred",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 40.013,
+          "comboPoints": 2,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 16,
+          "timestampMs": 14117,
+          "ruleId": "resource.pool",
+          "skillId": null,
+          "targetIndex": null,
+          "waitMs": 2952,
+          "energy": 12.663,
+          "comboPoints": 5,
+          "castOk": null,
+          "castCode": null
+        },
+        {
+          "index": 17,
+          "timestampMs": 17069,
+          "ruleId": "finisher.rip",
+          "skillId": "rip",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 50.005,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 18,
+          "timestampMs": 18069,
+          "ruleId": "builder.moonfire",
+          "skillId": "moonfire",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 52.655,
+          "comboPoints": 3,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 19,
+          "timestampMs": 19069,
+          "ruleId": "resource.pool",
+          "skillId": null,
+          "targetIndex": null,
+          "waitMs": 1162,
+          "energy": 35.305,
+          "comboPoints": 5,
+          "castOk": null,
+          "castCode": null
+        }
+      ]
+    },
+    {
+      "fixtureKey": "userValidation",
+      "buildId": "feral-user-validation-4pc",
+      "targetCount": 3,
+      "availableActionIds": [
+        "tigersFury",
+        "berserk",
+        "rake",
+        "shred",
+        "swipe",
+        "moonfire",
+        "rip",
+        "ferociousBite",
+        "feralFrenzy",
+        "convoke"
+      ],
+      "recommendedSkillIds": [
+        "tigersFury",
+        "rake",
+        "berserk",
+        "feralFrenzy",
+        "rip",
+        "convoke",
+        "moonfire",
+        "swipe",
+        "ferociousBite"
+      ],
+      "unavailableRecommendations": [],
+      "decisions": [
+        {
+          "index": 0,
+          "timestampMs": 0,
+          "ruleId": "default.tigers_fury",
+          "skillId": "tigersFury",
+          "targetIndex": null,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 0,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 1,
+          "timestampMs": 0,
+          "ruleId": "default.stealth_rake",
+          "skillId": "rake",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 0,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 2,
+          "timestampMs": 910,
+          "ruleId": "cooldown.berserk",
+          "skillId": "berserk",
+          "targetIndex": null,
+          "waitMs": 0,
+          "energy": 120.828,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 3,
+          "timestampMs": 910,
+          "ruleId": "cooldown.feral_frenzy",
+          "skillId": "feralFrenzy",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 120.828,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 4,
+          "timestampMs": 1820,
+          "ruleId": "aoe.rip",
+          "skillId": "rip",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 111.657,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 5,
+          "timestampMs": 2730,
+          "ruleId": "cooldown.convoke",
+          "skillId": "convoke",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 117.485,
+          "comboPoints": 3,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 6,
+          "timestampMs": 2730,
+          "ruleId": "channel.wait",
+          "skillId": null,
+          "targetIndex": null,
+          "waitMs": 4000,
+          "energy": 117.485,
+          "comboPoints": 3,
+          "castOk": null,
+          "castCode": null
+        },
+        {
+          "index": 7,
+          "timestampMs": 6730,
+          "ruleId": "aoe.rip",
+          "skillId": "rip",
+          "targetIndex": 1,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 8,
+          "timestampMs": 7557,
+          "ruleId": "aoe.moonfire",
+          "skillId": "moonfire",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 9,
+          "timestampMs": 8384,
+          "ruleId": "aoe.swipe",
+          "skillId": "swipe",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 123.819,
+          "comboPoints": 3,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 10,
+          "timestampMs": 9294,
+          "ruleId": "aoe.rip",
+          "skillId": "rip",
+          "targetIndex": 2,
+          "waitMs": 0,
+          "energy": 136.482,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 11,
+          "timestampMs": 10204,
+          "ruleId": "aoe.rake",
+          "skillId": "rake",
+          "targetIndex": 2,
+          "waitMs": 0,
+          "energy": 139.145,
+          "comboPoints": 3,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 12,
+          "timestampMs": 11114,
+          "ruleId": "finisher.bite",
+          "skillId": "ferociousBite",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 116.807,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 13,
+          "timestampMs": 12024,
+          "ruleId": "aoe.swipe",
+          "skillId": "swipe",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 89.47,
+          "comboPoints": 2,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 14,
+          "timestampMs": 12934,
+          "ruleId": "finisher.bite",
+          "skillId": "ferociousBite",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 102.133,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 15,
+          "timestampMs": 13844,
+          "ruleId": "aoe.rake",
+          "skillId": "rake",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 74.795,
+          "comboPoints": 0,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 16,
+          "timestampMs": 14754,
+          "ruleId": "aoe.moonfire",
+          "skillId": "moonfire",
+          "targetIndex": 2,
+          "waitMs": 0,
+          "energy": 52.458,
+          "comboPoints": 4,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 17,
+          "timestampMs": 15664,
+          "ruleId": "aoe.rip",
+          "skillId": "rip",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 34.652,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 18,
+          "timestampMs": 16664,
+          "ruleId": "aoe.moonfire",
+          "skillId": "moonfire",
+          "targetIndex": 1,
+          "waitMs": 0,
+          "energy": 37.302,
+          "comboPoints": 2,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 19,
+          "timestampMs": 17664,
+          "ruleId": "resource.pool",
+          "skillId": null,
+          "targetIndex": null,
+          "waitMs": 2376,
+          "energy": 19.952,
+          "comboPoints": 5,
+          "castOk": null,
+          "castCode": null
+        }
+      ]
+    },
+    {
+      "fixtureKey": "userValidation",
+      "buildId": "feral-user-validation-4pc",
+      "targetCount": 5,
+      "availableActionIds": [
+        "tigersFury",
+        "berserk",
+        "rake",
+        "shred",
+        "swipe",
+        "moonfire",
+        "rip",
+        "ferociousBite",
+        "feralFrenzy",
+        "convoke"
+      ],
+      "recommendedSkillIds": [
+        "tigersFury",
+        "rake",
+        "berserk",
+        "feralFrenzy",
+        "rip",
+        "convoke",
+        "moonfire",
+        "swipe",
+        "ferociousBite"
+      ],
+      "unavailableRecommendations": [],
+      "decisions": [
+        {
+          "index": 0,
+          "timestampMs": 0,
+          "ruleId": "default.tigers_fury",
+          "skillId": "tigersFury",
+          "targetIndex": null,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 0,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 1,
+          "timestampMs": 0,
+          "ruleId": "default.stealth_rake",
+          "skillId": "rake",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 0,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 2,
+          "timestampMs": 910,
+          "ruleId": "cooldown.berserk",
+          "skillId": "berserk",
+          "targetIndex": null,
+          "waitMs": 0,
+          "energy": 120.828,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 3,
+          "timestampMs": 910,
+          "ruleId": "cooldown.feral_frenzy",
+          "skillId": "feralFrenzy",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 120.828,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 4,
+          "timestampMs": 1820,
+          "ruleId": "aoe.rip",
+          "skillId": "rip",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 111.657,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 5,
+          "timestampMs": 2730,
+          "ruleId": "cooldown.convoke",
+          "skillId": "convoke",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 117.485,
+          "comboPoints": 3,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 6,
+          "timestampMs": 2730,
+          "ruleId": "channel.wait",
+          "skillId": null,
+          "targetIndex": null,
+          "waitMs": 4000,
+          "energy": 117.485,
+          "comboPoints": 3,
+          "castOk": null,
+          "castCode": null
+        },
+        {
+          "index": 7,
+          "timestampMs": 6730,
+          "ruleId": "aoe.rip",
+          "skillId": "rip",
+          "targetIndex": 1,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 8,
+          "timestampMs": 7557,
+          "ruleId": "aoe.moonfire",
+          "skillId": "moonfire",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 9,
+          "timestampMs": 8384,
+          "ruleId": "aoe.moonfire",
+          "skillId": "moonfire",
+          "targetIndex": 1,
+          "waitMs": 0,
+          "energy": 123.819,
+          "comboPoints": 3,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 10,
+          "timestampMs": 9294,
+          "ruleId": "aoe.rip",
+          "skillId": "rip",
+          "targetIndex": 2,
+          "waitMs": 0,
+          "energy": 106.482,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 11,
+          "timestampMs": 10204,
+          "ruleId": "aoe.swipe",
+          "skillId": "swipe",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 109.145,
+          "comboPoints": 2,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 12,
+          "timestampMs": 11114,
+          "ruleId": "aoe.rip",
+          "skillId": "rip",
+          "targetIndex": 3,
+          "waitMs": 0,
+          "energy": 121.807,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 13,
+          "timestampMs": 12024,
+          "ruleId": "aoe.swipe",
+          "skillId": "swipe",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 124.47,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 14,
+          "timestampMs": 12934,
+          "ruleId": "aoe.rip",
+          "skillId": "rip",
+          "targetIndex": 4,
+          "waitMs": 0,
+          "energy": 137.133,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 15,
+          "timestampMs": 13844,
+          "ruleId": "aoe.rake",
+          "skillId": "rake",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 139.795,
+          "comboPoints": 0,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 16,
+          "timestampMs": 14754,
+          "ruleId": "aoe.rake",
+          "skillId": "rake",
+          "targetIndex": 2,
+          "waitMs": 0,
+          "energy": 117.458,
+          "comboPoints": 4,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 17,
+          "timestampMs": 15664,
+          "ruleId": "aoe.rip",
+          "skillId": "rip",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 94.652,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 18,
+          "timestampMs": 16664,
+          "ruleId": "aoe.moonfire",
+          "skillId": "moonfire",
+          "targetIndex": 4,
+          "waitMs": 0,
+          "energy": 97.302,
+          "comboPoints": 3,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 19,
+          "timestampMs": 17664,
+          "ruleId": "finisher.bite",
+          "skillId": "ferociousBite",
+          "targetIndex": 1,
+          "waitMs": 0,
+          "energy": 79.952,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        }
+      ]
+    },
+    {
+      "fixtureKey": "primalWrath",
+      "buildId": "feral-primal-wrath-4pc",
+      "targetCount": 1,
+      "availableActionIds": [
+        "tigersFury",
+        "berserk",
+        "rake",
+        "shred",
+        "swipe",
+        "rip",
+        "ferociousBite",
+        "primalWrath",
+        "feralFrenzy",
+        "convoke"
+      ],
+      "recommendedSkillIds": [
+        "tigersFury",
+        "rake",
+        "berserk",
+        "feralFrenzy",
+        "rip",
+        "convoke",
+        "ferociousBite",
+        "shred"
+      ],
+      "unavailableRecommendations": [],
+      "decisions": [
+        {
+          "index": 0,
+          "timestampMs": 0,
+          "ruleId": "default.tigers_fury",
+          "skillId": "tigersFury",
+          "targetIndex": null,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 0,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 1,
+          "timestampMs": 0,
+          "ruleId": "default.stealth_rake",
+          "skillId": "rake",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 0,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 2,
+          "timestampMs": 910,
+          "ruleId": "cooldown.berserk",
+          "skillId": "berserk",
+          "targetIndex": null,
+          "waitMs": 0,
+          "energy": 120.828,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 3,
+          "timestampMs": 910,
+          "ruleId": "cooldown.feral_frenzy",
+          "skillId": "feralFrenzy",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 120.828,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 4,
+          "timestampMs": 1820,
+          "ruleId": "finisher.rip",
+          "skillId": "rip",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 111.657,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 5,
+          "timestampMs": 2730,
+          "ruleId": "cooldown.convoke",
+          "skillId": "convoke",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 117.485,
+          "comboPoints": 3,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 6,
+          "timestampMs": 2730,
+          "ruleId": "channel.wait",
+          "skillId": null,
+          "targetIndex": null,
+          "waitMs": 4000,
+          "energy": 117.485,
+          "comboPoints": 3,
+          "castOk": null,
+          "castCode": null
+        },
+        {
+          "index": 7,
+          "timestampMs": 6730,
+          "ruleId": "finisher.bite",
+          "skillId": "ferociousBite",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 8,
+          "timestampMs": 7557,
+          "ruleId": "builder.shred",
+          "skillId": "shred",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 115.823,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 9,
+          "timestampMs": 8384,
+          "ruleId": "builder.shred",
+          "skillId": "shred",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 129.642,
+          "comboPoints": 3,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 10,
+          "timestampMs": 9294,
+          "ruleId": "finisher.bite",
+          "skillId": "ferociousBite",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 102.305,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 11,
+          "timestampMs": 10204,
+          "ruleId": "builder.rake",
+          "skillId": "rake",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 74.968,
+          "comboPoints": 3,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 12,
+          "timestampMs": 11114,
+          "ruleId": "finisher.bite",
+          "skillId": "ferociousBite",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 52.63,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 13,
+          "timestampMs": 12024,
+          "ruleId": "resource.pool",
+          "skillId": null,
+          "targetIndex": null,
+          "waitMs": 1057,
+          "energy": 25.293,
+          "comboPoints": 1,
+          "castOk": null,
+          "castCode": null
+        },
+        {
+          "index": 14,
+          "timestampMs": 13081,
+          "ruleId": "resource.pool",
+          "skillId": null,
+          "targetIndex": null,
+          "waitMs": 36,
+          "energy": 39.557,
+          "comboPoints": 2,
+          "castOk": null,
+          "castCode": null
+        },
+        {
+          "index": 15,
+          "timestampMs": 13117,
+          "ruleId": "builder.shred",
+          "skillId": "shred",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 40.013,
+          "comboPoints": 2,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 16,
+          "timestampMs": 14117,
+          "ruleId": "resource.pool",
+          "skillId": null,
+          "targetIndex": null,
+          "waitMs": 2952,
+          "energy": 12.663,
+          "comboPoints": 5,
+          "castOk": null,
+          "castCode": null
+        },
+        {
+          "index": 17,
+          "timestampMs": 17069,
+          "ruleId": "finisher.rip",
+          "skillId": "rip",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 50.005,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 18,
+          "timestampMs": 18069,
+          "ruleId": "builder.shred",
+          "skillId": "shred",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 52.655,
+          "comboPoints": 3,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 19,
+          "timestampMs": 19069,
+          "ruleId": "finisher.bite",
+          "skillId": "ferociousBite",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 65.305,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        }
+      ]
+    },
+    {
+      "fixtureKey": "primalWrath",
+      "buildId": "feral-primal-wrath-4pc",
+      "targetCount": 3,
+      "availableActionIds": [
+        "tigersFury",
+        "berserk",
+        "rake",
+        "shred",
+        "swipe",
+        "rip",
+        "ferociousBite",
+        "primalWrath",
+        "feralFrenzy",
+        "convoke"
+      ],
+      "recommendedSkillIds": [
+        "tigersFury",
+        "rake",
+        "berserk",
+        "feralFrenzy",
+        "primalWrath",
+        "convoke",
+        "swipe"
+      ],
+      "unavailableRecommendations": [],
+      "decisions": [
+        {
+          "index": 0,
+          "timestampMs": 0,
+          "ruleId": "default.tigers_fury",
+          "skillId": "tigersFury",
+          "targetIndex": null,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 0,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 1,
+          "timestampMs": 0,
+          "ruleId": "default.stealth_rake",
+          "skillId": "rake",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 0,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 2,
+          "timestampMs": 910,
+          "ruleId": "cooldown.berserk",
+          "skillId": "berserk",
+          "targetIndex": null,
+          "waitMs": 0,
+          "energy": 120.828,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 3,
+          "timestampMs": 910,
+          "ruleId": "cooldown.feral_frenzy",
+          "skillId": "feralFrenzy",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 120.828,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 4,
+          "timestampMs": 1820,
+          "ruleId": "aoe.primal_wrath",
+          "skillId": "primalWrath",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 111.657,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 5,
+          "timestampMs": 2730,
+          "ruleId": "cooldown.convoke",
+          "skillId": "convoke",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 112.485,
+          "comboPoints": 3,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 6,
+          "timestampMs": 2730,
+          "ruleId": "channel.wait",
+          "skillId": null,
+          "targetIndex": null,
+          "waitMs": 4000,
+          "energy": 112.485,
+          "comboPoints": 3,
+          "castOk": null,
+          "castCode": null
+        },
+        {
+          "index": 7,
+          "timestampMs": 6730,
+          "ruleId": "aoe.primal_wrath",
+          "skillId": "primalWrath",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 8,
+          "timestampMs": 7557,
+          "ruleId": "aoe.swipe",
+          "skillId": "swipe",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 9,
+          "timestampMs": 8384,
+          "ruleId": "aoe.swipe",
+          "skillId": "swipe",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 4,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 10,
+          "timestampMs": 9294,
+          "ruleId": "aoe.primal_wrath",
+          "skillId": "primalWrath",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 117.663,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 11,
+          "timestampMs": 10204,
+          "ruleId": "aoe.rake",
+          "skillId": "rake",
+          "targetIndex": 2,
+          "waitMs": 0,
+          "energy": 115.325,
+          "comboPoints": 4,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 12,
+          "timestampMs": 11114,
+          "ruleId": "aoe.primal_wrath",
+          "skillId": "primalWrath",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 92.502,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 13,
+          "timestampMs": 12114,
+          "ruleId": "aoe.swipe",
+          "skillId": "swipe",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 90.152,
+          "comboPoints": 2,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 14,
+          "timestampMs": 13114,
+          "ruleId": "aoe.primal_wrath",
+          "skillId": "primalWrath",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 67.802,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 15,
+          "timestampMs": 14114,
+          "ruleId": "aoe.rake",
+          "skillId": "rake",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 66.717,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 16,
+          "timestampMs": 15024,
+          "ruleId": "aoe.swipe",
+          "skillId": "swipe",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 44.38,
+          "comboPoints": 4,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 17,
+          "timestampMs": 15934,
+          "ruleId": "resource.pool",
+          "skillId": null,
+          "targetIndex": null,
+          "waitMs": 213,
+          "energy": 22.042,
+          "comboPoints": 5,
+          "castOk": null,
+          "castCode": null
+        },
+        {
+          "index": 18,
+          "timestampMs": 16147,
+          "ruleId": "aoe.primal_wrath",
+          "skillId": "primalWrath",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 25.006,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 19,
+          "timestampMs": 17057,
+          "ruleId": "aoe.swipe",
+          "skillId": "swipe",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 22.669,
+          "comboPoints": 3,
+          "castOk": true,
+          "castCode": null
+        }
+      ]
+    },
+    {
+      "fixtureKey": "primalWrath",
+      "buildId": "feral-primal-wrath-4pc",
+      "targetCount": 5,
+      "availableActionIds": [
+        "tigersFury",
+        "berserk",
+        "rake",
+        "shred",
+        "swipe",
+        "rip",
+        "ferociousBite",
+        "primalWrath",
+        "feralFrenzy",
+        "convoke"
+      ],
+      "recommendedSkillIds": [
+        "tigersFury",
+        "rake",
+        "berserk",
+        "feralFrenzy",
+        "primalWrath",
+        "convoke",
+        "swipe"
+      ],
+      "unavailableRecommendations": [],
+      "decisions": [
+        {
+          "index": 0,
+          "timestampMs": 0,
+          "ruleId": "default.tigers_fury",
+          "skillId": "tigersFury",
+          "targetIndex": null,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 0,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 1,
+          "timestampMs": 0,
+          "ruleId": "default.stealth_rake",
+          "skillId": "rake",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 0,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 2,
+          "timestampMs": 910,
+          "ruleId": "cooldown.berserk",
+          "skillId": "berserk",
+          "targetIndex": null,
+          "waitMs": 0,
+          "energy": 120.828,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 3,
+          "timestampMs": 910,
+          "ruleId": "cooldown.feral_frenzy",
+          "skillId": "feralFrenzy",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 120.828,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 4,
+          "timestampMs": 1820,
+          "ruleId": "aoe.primal_wrath",
+          "skillId": "primalWrath",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 111.657,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 5,
+          "timestampMs": 2730,
+          "ruleId": "cooldown.convoke",
+          "skillId": "convoke",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 112.485,
+          "comboPoints": 3,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 6,
+          "timestampMs": 2730,
+          "ruleId": "channel.wait",
+          "skillId": null,
+          "targetIndex": null,
+          "waitMs": 4000,
+          "energy": 112.485,
+          "comboPoints": 3,
+          "castOk": null,
+          "castCode": null
+        },
+        {
+          "index": 7,
+          "timestampMs": 6730,
+          "ruleId": "aoe.primal_wrath",
+          "skillId": "primalWrath",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 8,
+          "timestampMs": 7557,
+          "ruleId": "aoe.swipe",
+          "skillId": "swipe",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 2,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 9,
+          "timestampMs": 8384,
+          "ruleId": "aoe.primal_wrath",
+          "skillId": "primalWrath",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 140,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 10,
+          "timestampMs": 9294,
+          "ruleId": "aoe.rake",
+          "skillId": "rake",
+          "targetIndex": 1,
+          "waitMs": 0,
+          "energy": 137.663,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 11,
+          "timestampMs": 10204,
+          "ruleId": "aoe.swipe",
+          "skillId": "swipe",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 115.325,
+          "comboPoints": 4,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 12,
+          "timestampMs": 11114,
+          "ruleId": "aoe.primal_wrath",
+          "skillId": "primalWrath",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 92.988,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 13,
+          "timestampMs": 12024,
+          "ruleId": "aoe.rake",
+          "skillId": "rake",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 90.651,
+          "comboPoints": 3,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 14,
+          "timestampMs": 12934,
+          "ruleId": "aoe.primal_wrath",
+          "skillId": "primalWrath",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 67.739,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 15,
+          "timestampMs": 13934,
+          "ruleId": "aoe.swipe",
+          "skillId": "swipe",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 65.389,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 16,
+          "timestampMs": 14934,
+          "ruleId": "aoe.primal_wrath",
+          "skillId": "primalWrath",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 78.039,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 17,
+          "timestampMs": 15934,
+          "ruleId": "aoe.swipe",
+          "skillId": "swipe",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 75.689,
+          "comboPoints": 1,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 18,
+          "timestampMs": 16934,
+          "ruleId": "aoe.swipe",
+          "skillId": "swipe",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 53.339,
+          "comboPoints": 4,
+          "castOk": true,
+          "castCode": null
+        },
+        {
+          "index": 19,
+          "timestampMs": 17934,
+          "ruleId": "aoe.primal_wrath",
+          "skillId": "primalWrath",
+          "targetIndex": 0,
+          "waitMs": 0,
+          "energy": 30.989,
+          "comboPoints": 5,
+          "castOk": true,
+          "castCode": null
+        }
+      ]
+    }
+  ],
+  "fullProfileApl": {
+    "profileRuleCount": 70,
+    "compiledRuleCount": 15,
+    "filteredRuleCount": 1,
+    "unsupportedRuleCount": 54,
+    "accountedProfileRuleCount": 70,
+    "compiledRules": [
+      {
+        "ruleId": "default.tigers_fury",
+        "actionId": "tigersFury",
+        "profileLineNumber": 48
+      },
+      {
+        "ruleId": "default.stealth_rake",
+        "actionId": "rake",
+        "profileLineNumber": 50
+      },
+      {
+        "ruleId": "cooldown.berserk",
+        "actionId": "berserk",
+        "profileLineNumber": 133
+      },
+      {
+        "ruleId": "cooldown.feral_frenzy",
+        "actionId": "feralFrenzy",
+        "profileLineNumber": 135
+      },
+      {
+        "ruleId": "cooldown.convoke",
+        "actionId": "convoke",
+        "profileLineNumber": 139
+      },
+      {
+        "ruleId": "default.apex_bite",
+        "actionId": "ferociousBite",
+        "profileLineNumber": 55
+      },
+      {
+        "ruleId": "finisher.rip",
+        "actionId": "rip",
+        "profileLineNumber": 142
+      },
+      {
+        "ruleId": "finisher.bite",
+        "actionId": "ferociousBite",
+        "profileLineNumber": 144
+      },
+      {
+        "ruleId": "aoe.rip",
+        "actionId": "rip",
+        "profileLineNumber": 83
+      },
+      {
+        "ruleId": "aoe.rake",
+        "actionId": "rake",
+        "profileLineNumber": 63
+      },
+      {
+        "ruleId": "aoe.moonfire",
+        "actionId": "moonfire",
+        "profileLineNumber": 65
+      },
+      {
+        "ruleId": "aoe.swipe",
+        "actionId": "swipe",
+        "profileLineNumber": 76
+      },
+      {
+        "ruleId": "builder.rake",
+        "actionId": "rake",
+        "profileLineNumber": 96
+      },
+      {
+        "ruleId": "builder.moonfire",
+        "actionId": "moonfire",
+        "profileLineNumber": 98
+      },
+      {
+        "ruleId": "builder.shred",
+        "actionId": "shred",
+        "profileLineNumber": 100
+      }
+    ],
+    "filteredRules": [
+      {
+        "ruleId": "aoe.primal_wrath",
+        "actionId": "primalWrath",
+        "lineNumber": 87,
+        "reason": "action-unavailable-in-resolved-profile"
+      }
+    ],
+    "unsupportedRules": [
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:28:actions.precombat",
+        "sourceKind": "simc-profile-apl",
+        "list": "precombat",
+        "action": "snapshot_stats",
+        "condition": null,
+        "targetIf": null,
+        "options": {},
+        "lineNumber": 28,
+        "rawLine": "actions.precombat=snapshot_stats",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 28"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:30:actions.precombat",
+        "sourceKind": "simc-profile-apl",
+        "list": "precombat",
+        "action": "variable",
+        "condition": null,
+        "targetIf": null,
+        "options": {
+          "name": "regrowth",
+          "op": "reset"
+        },
+        "lineNumber": 30,
+        "rawLine": "actions.precombat+=/variable,name=regrowth,op=reset",
+        "reasonCode": "control_flow_not_whitelisted",
+        "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 30"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:32:actions.precombat",
+        "sourceKind": "simc-profile-apl",
+        "list": "precombat",
+        "action": "variable",
+        "condition": null,
+        "targetIf": null,
+        "options": {
+          "name": "dotc_rake_threshold",
+          "op": "set",
+          "value": "99"
+        },
+        "lineNumber": 32,
+        "rawLine": "actions.precombat+=/variable,name=dotc_rake_threshold,op=set,value=99",
+        "reasonCode": "control_flow_not_whitelisted",
+        "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 32"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:33:actions.precombat",
+        "sourceKind": "simc-profile-apl",
+        "list": "precombat",
+        "action": "variable",
+        "condition": "talent.wild_slashes&talent.merciless_claws",
+        "targetIf": null,
+        "options": {
+          "name": "dotc_rake_threshold",
+          "op": "set",
+          "if": "talent.wild_slashes&talent.merciless_claws",
+          "value": "5"
+        },
+        "lineNumber": 33,
+        "rawLine": "actions.precombat+=/variable,name=dotc_rake_threshold,op=set,if=talent.wild_slashes&talent.merciless_claws,value=5",
+        "reasonCode": "control_flow_not_whitelisted",
+        "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 33"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:34:actions.precombat",
+        "sourceKind": "simc-profile-apl",
+        "list": "precombat",
+        "action": "variable",
+        "condition": "talent.wild_slashes&!talent.merciless_claws",
+        "targetIf": null,
+        "options": {
+          "name": "dotc_rake_threshold",
+          "op": "set",
+          "if": "talent.wild_slashes&!talent.merciless_claws",
+          "value": "8"
+        },
+        "lineNumber": 34,
+        "rawLine": "actions.precombat+=/variable,name=dotc_rake_threshold,op=set,if=talent.wild_slashes&!talent.merciless_claws,value=8",
+        "reasonCode": "control_flow_not_whitelisted",
+        "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 34"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:36:actions.precombat",
+        "sourceKind": "simc-profile-apl",
+        "list": "precombat",
+        "action": "variable",
+        "condition": "trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff",
+        "targetIf": null,
+        "options": {
+          "name": "algethar_puzzle_box_precombat_cast",
+          "value": "3",
+          "if": "trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff"
+        },
+        "lineNumber": 36,
+        "rawLine": "actions.precombat+=/variable,name=algethar_puzzle_box_precombat_cast,value=3,if=trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff",
+        "reasonCode": "control_flow_not_whitelisted",
+        "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 36"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:37:actions.precombat",
+        "sourceKind": "simc-profile-apl",
+        "list": "precombat",
+        "action": "use_item",
+        "condition": "trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff",
+        "targetIf": null,
+        "options": {
+          "name": "algethar_puzzle_box",
+          "if": "trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff"
+        },
+        "lineNumber": 37,
+        "rawLine": "actions.precombat+=/use_item,name=algethar_puzzle_box,if=trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 37"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:38:actions.precombat",
+        "sourceKind": "simc-profile-apl",
+        "list": "precombat",
+        "action": "cat_form",
+        "condition": "buff.cat_form.down",
+        "targetIf": null,
+        "options": {
+          "if": "buff.cat_form.down"
+        },
+        "lineNumber": 38,
+        "rawLine": "actions.precombat+=/cat_form,if=buff.cat_form.down",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 38"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:39:actions.precombat",
+        "sourceKind": "simc-profile-apl",
+        "list": "precombat",
+        "action": "prowl",
+        "condition": null,
+        "targetIf": null,
+        "options": {},
+        "lineNumber": 39,
+        "rawLine": "actions.precombat+=/prowl",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 39"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:42:actions",
+        "sourceKind": "simc-profile-apl",
+        "list": "default",
+        "action": "prowl",
+        "condition": "buff.bs_inc.down&!buff.prowl.up&!buff.shadowmeld.up",
+        "targetIf": null,
+        "options": {
+          "if": "buff.bs_inc.down&!buff.prowl.up&!buff.shadowmeld.up"
+        },
+        "lineNumber": 42,
+        "rawLine": "actions=prowl,if=buff.bs_inc.down&!buff.prowl.up&!buff.shadowmeld.up",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 42"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:43:actions",
+        "sourceKind": "simc-profile-apl",
+        "list": "default",
+        "action": "cat_form",
+        "condition": "!buff.cat_form.up&!talent.fluid_form",
+        "targetIf": null,
+        "options": {
+          "if": "!buff.cat_form.up&!talent.fluid_form"
+        },
+        "lineNumber": 43,
+        "rawLine": "actions+=/cat_form,if=!buff.cat_form.up&!talent.fluid_form",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 43"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:45:actions",
+        "sourceKind": "simc-profile-apl",
+        "list": "default",
+        "action": "invoke_external_buff",
+        "condition": "buff.bs_inc.up|!talent.berserk_heart_of_the_lion",
+        "targetIf": null,
+        "options": {
+          "name": "power_infusion",
+          "if": "buff.bs_inc.up|!talent.berserk_heart_of_the_lion"
+        },
+        "lineNumber": 45,
+        "rawLine": "actions+=/invoke_external_buff,name=power_infusion,if=buff.bs_inc.up|!talent.berserk_heart_of_the_lion",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 45"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:46:actions",
+        "sourceKind": "simc-profile-apl",
+        "list": "default",
+        "action": "auto_attack",
+        "condition": "!buff.prowl.up&!buff.shadowmeld.up",
+        "targetIf": null,
+        "options": {
+          "if": "!buff.prowl.up&!buff.shadowmeld.up"
+        },
+        "lineNumber": 46,
+        "rawLine": "actions+=/auto_attack,if=!buff.prowl.up&!buff.shadowmeld.up",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 46"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:52:actions",
+        "sourceKind": "simc-profile-apl",
+        "list": "default",
+        "action": "chomp",
+        "condition": "buff.chomp_enabler.up",
+        "targetIf": null,
+        "options": {
+          "if": "buff.chomp_enabler.up"
+        },
+        "lineNumber": 52,
+        "rawLine": "actions+=/chomp,if=buff.chomp_enabler.up",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 52"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:53:actions",
+        "sourceKind": "simc-profile-apl",
+        "list": "default",
+        "action": "call_action_list",
+        "condition": null,
+        "targetIf": null,
+        "options": {
+          "name": "cooldown"
+        },
+        "lineNumber": 53,
+        "rawLine": "actions+=/call_action_list,name=cooldown",
+        "reasonCode": "control_flow_not_whitelisted",
+        "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 53"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:56:actions",
+        "sourceKind": "simc-profile-apl",
+        "list": "default",
+        "action": "call_action_list",
+        "condition": "spell_targets=1",
+        "targetIf": null,
+        "options": {
+          "name": "finisher",
+          "if": "spell_targets=1"
+        },
+        "lineNumber": 56,
+        "rawLine": "actions+=/call_action_list,name=finisher,if=spell_targets=1",
+        "reasonCode": "control_flow_not_whitelisted",
+        "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 56"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:57:actions",
+        "sourceKind": "simc-profile-apl",
+        "list": "default",
+        "action": "call_action_list",
+        "condition": "spell_targets>=2",
+        "targetIf": null,
+        "options": {
+          "name": "aoe_finisher",
+          "if": "spell_targets>=2"
+        },
+        "lineNumber": 57,
+        "rawLine": "actions+=/call_action_list,name=aoe_finisher,if=spell_targets>=2",
+        "reasonCode": "control_flow_not_whitelisted",
+        "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 57"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:58:actions",
+        "sourceKind": "simc-profile-apl",
+        "list": "default",
+        "action": "call_action_list",
+        "condition": "spell_targets=1&combo_points<=4",
+        "targetIf": null,
+        "options": {
+          "name": "builder",
+          "if": "spell_targets=1&combo_points<=4"
+        },
+        "lineNumber": 58,
+        "rawLine": "actions+=/call_action_list,name=builder,if=spell_targets=1&combo_points<=4",
+        "reasonCode": "control_flow_not_whitelisted",
+        "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 58"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:59:actions",
+        "sourceKind": "simc-profile-apl",
+        "list": "default",
+        "action": "call_action_list",
+        "condition": "spell_targets>1&combo_points<=4",
+        "targetIf": null,
+        "options": {
+          "name": "aoe_builder",
+          "if": "spell_targets>1&combo_points<=4"
+        },
+        "lineNumber": 59,
+        "rawLine": "actions+=/call_action_list,name=aoe_builder,if=spell_targets>1&combo_points<=4",
+        "reasonCode": "control_flow_not_whitelisted",
+        "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 59"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:60:actions",
+        "sourceKind": "simc-profile-apl",
+        "list": "default",
+        "action": "regrowth",
+        "condition": "buff.predatory_swiftness.up&variable.regrowth",
+        "targetIf": null,
+        "options": {
+          "if": "buff.predatory_swiftness.up&variable.regrowth"
+        },
+        "lineNumber": 60,
+        "rawLine": "actions+=/regrowth,if=buff.predatory_swiftness.up&variable.regrowth",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 60"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:67:actions.aoe_builder",
+        "sourceKind": "simc-profile-apl",
+        "list": "aoe_builder",
+        "action": "swipe_cat",
+        "condition": "hero_tree.druid_of_the_claw&buff.bs_inc.up|buff.clearcasting.react&(hero_tree.druid_of_the_claw|spell_targets<7)",
+        "targetIf": null,
+        "options": {
+          "if": "hero_tree.druid_of_the_claw&buff.bs_inc.up|buff.clearcasting.react&(hero_tree.druid_of_the_claw|spell_targets<7)"
+        },
+        "lineNumber": 67,
+        "rawLine": "actions.aoe_builder+=/swipe_cat,if=hero_tree.druid_of_the_claw&buff.bs_inc.up|buff.clearcasting.react&(hero_tree.druid_of_the_claw|spell_targets<7)",
+        "reasonCode": "condition_not_whitelisted",
+        "reason": "动作已知，但该条件或 target_if 尚未翻译为经过测试的白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 67"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:69:actions.aoe_builder",
+        "sourceKind": "simc-profile-apl",
+        "list": "aoe_builder",
+        "action": "swipe_cat",
+        "condition": "buff.sudden_ambush.up&spell_targets.swipe_cat>=5+(2*hero_tree.wildstalker)",
+        "targetIf": null,
+        "options": {
+          "if": "buff.sudden_ambush.up&spell_targets.swipe_cat>=5+(2*hero_tree.wildstalker)"
+        },
+        "lineNumber": 69,
+        "rawLine": "actions.aoe_builder+=/swipe_cat,if=buff.sudden_ambush.up&spell_targets.swipe_cat>=5+(2*hero_tree.wildstalker)",
+        "reasonCode": "condition_not_whitelisted",
+        "reason": "动作已知，但该条件或 target_if 尚未翻译为经过测试的白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 69"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:71:actions.aoe_builder",
+        "sourceKind": "simc-profile-apl",
+        "list": "aoe_builder",
+        "action": "rake",
+        "condition": "hero_tree.wildstalker|spell_targets.swipe_cat<=variable.dotc_rake_threshold",
+        "targetIf": "refreshable",
+        "options": {
+          "target_if": "refreshable",
+          "if": "hero_tree.wildstalker|spell_targets.swipe_cat<=variable.dotc_rake_threshold"
+        },
+        "lineNumber": 71,
+        "rawLine": "actions.aoe_builder+=/rake,target_if=refreshable,if=hero_tree.wildstalker|spell_targets.swipe_cat<=variable.dotc_rake_threshold",
+        "reasonCode": "condition_not_whitelisted",
+        "reason": "动作已知，但该条件或 target_if 尚未翻译为经过测试的白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 71"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:73:actions.aoe_builder",
+        "sourceKind": "simc-profile-apl",
+        "list": "aoe_builder",
+        "action": "rake",
+        "condition": "persistent_multiplier>pmultiplier&spell_targets=2",
+        "targetIf": "min:pmultiplier",
+        "options": {
+          "target_if": "min:pmultiplier",
+          "if": "persistent_multiplier>pmultiplier&spell_targets=2"
+        },
+        "lineNumber": 73,
+        "rawLine": "actions.aoe_builder+=/rake,target_if=min:pmultiplier,if=persistent_multiplier>pmultiplier&spell_targets=2",
+        "reasonCode": "condition_not_whitelisted",
+        "reason": "动作已知，但该条件或 target_if 尚未翻译为经过测试的白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 73"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:75:actions.aoe_builder",
+        "sourceKind": "simc-profile-apl",
+        "list": "aoe_builder",
+        "action": "shred",
+        "condition": "combo_points<=1&spell_targets=2&talent.panthers_guile",
+        "targetIf": null,
+        "options": {
+          "if": "combo_points<=1&spell_targets=2&talent.panthers_guile"
+        },
+        "lineNumber": 75,
+        "rawLine": "actions.aoe_builder+=/shred,if=combo_points<=1&spell_targets=2&talent.panthers_guile",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 75"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:79:actions.aoe_finisher",
+        "sourceKind": "simc-profile-apl",
+        "list": "aoe_finisher",
+        "action": "primal_wrath",
+        "condition": "combo_points>=5&spell_targets.primal_wrath>1&(dot.primal_wrath.remains<6.5&!buff.bs_inc.up|dot.primal_wrath.refreshable)",
+        "targetIf": "min:remains",
+        "options": {
+          "target_if": "min:remains",
+          "if": "combo_points>=5&spell_targets.primal_wrath>1&(dot.primal_wrath.remains<6.5&!buff.bs_inc.up|dot.primal_wrath.refreshable)"
+        },
+        "lineNumber": 79,
+        "rawLine": "actions.aoe_finisher=primal_wrath,target_if=min:remains,if=combo_points>=5&spell_targets.primal_wrath>1&(dot.primal_wrath.remains<6.5&!buff.bs_inc.up|dot.primal_wrath.refreshable)",
+        "reasonCode": "condition_not_whitelisted",
+        "reason": "动作已知，但该条件或 target_if 尚未翻译为经过测试的白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 79"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:81:actions.aoe_finisher",
+        "sourceKind": "simc-profile-apl",
+        "list": "aoe_finisher",
+        "action": "ferocious_bite",
+        "condition": "buff.ravage.up&combo_points>=5&!talent.primal_wrath&spell_targets>=2+(3*!talent.rampant_ferocity)",
+        "targetIf": null,
+        "options": {
+          "if": "buff.ravage.up&combo_points>=5&!talent.primal_wrath&spell_targets>=2+(3*!talent.rampant_ferocity)"
+        },
+        "lineNumber": 81,
+        "rawLine": "actions.aoe_finisher+=/ferocious_bite,if=buff.ravage.up&combo_points>=5&!talent.primal_wrath&spell_targets>=2+(3*!talent.rampant_ferocity)",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 81"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:85:actions.aoe_finisher",
+        "sourceKind": "simc-profile-apl",
+        "list": "aoe_finisher",
+        "action": "ferocious_bite",
+        "condition": "combo_points>=5&(talent.rampant_ferocity|buff.ravage.up&spell_targets<8|dot.bloodseeker_vines.ticking&spell_targets<5)",
+        "targetIf": "min:dot.rip.remains",
+        "options": {
+          "target_if": "min:dot.rip.remains",
+          "if": "combo_points>=5&(talent.rampant_ferocity|buff.ravage.up&spell_targets<8|dot.bloodseeker_vines.ticking&spell_targets<5)"
+        },
+        "lineNumber": 85,
+        "rawLine": "actions.aoe_finisher+=/ferocious_bite,target_if=min:dot.rip.remains,if=combo_points>=5&(talent.rampant_ferocity|buff.ravage.up&spell_targets<8|dot.bloodseeker_vines.ticking&spell_targets<5)",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 85"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:89:actions.aoe_finisher",
+        "sourceKind": "simc-profile-apl",
+        "list": "aoe_finisher",
+        "action": "ferocious_bite",
+        "condition": "combo_points>=5",
+        "targetIf": "min:dot.rip.remains",
+        "options": {
+          "target_if": "min:dot.rip.remains",
+          "if": "combo_points>=5"
+        },
+        "lineNumber": 89,
+        "rawLine": "actions.aoe_finisher+=/ferocious_bite,target_if=min:dot.rip.remains,if=combo_points>=5",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 89"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:91:actions.builder",
+        "sourceKind": "simc-profile-apl",
+        "list": "builder",
+        "action": "prowl",
+        "condition": "!buff.shadowmeld.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)",
+        "targetIf": null,
+        "options": {
+          "if": "!buff.shadowmeld.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)"
+        },
+        "lineNumber": 91,
+        "rawLine": "actions.builder=prowl,if=!buff.shadowmeld.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 91"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:92:actions.builder",
+        "sourceKind": "simc-profile-apl",
+        "list": "builder",
+        "action": "shadowmeld",
+        "condition": "!buff.prowl.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)",
+        "targetIf": null,
+        "options": {
+          "if": "!buff.prowl.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)"
+        },
+        "lineNumber": 92,
+        "rawLine": "actions.builder+=/shadowmeld,if=!buff.prowl.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 92"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:94:actions.builder",
+        "sourceKind": "simc-profile-apl",
+        "list": "builder",
+        "action": "shred",
+        "condition": "buff.sudden_ambush.up&hero_tree.druid_of_the_claw",
+        "targetIf": null,
+        "options": {
+          "if": "buff.sudden_ambush.up&hero_tree.druid_of_the_claw"
+        },
+        "lineNumber": 94,
+        "rawLine": "actions.builder+=/shred,if=buff.sudden_ambush.up&hero_tree.druid_of_the_claw",
+        "reasonCode": "condition_not_whitelisted",
+        "reason": "动作已知，但该条件或 target_if 尚未翻译为经过测试的白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 94"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:103:actions.cd_variable",
+        "sourceKind": "simc-profile-apl",
+        "list": "cd_variable",
+        "action": "variable",
+        "condition": null,
+        "targetIf": null,
+        "options": {
+          "name": "convokeCountRemaining",
+          "value": "floor(cooldown.convoke_the_spirits.charges_fractional+fight_remains%cooldown.convoke_the_spirits.duration-0.05)"
+        },
+        "lineNumber": 103,
+        "rawLine": "actions.cd_variable=variable,name=convokeCountRemaining,value=floor(cooldown.convoke_the_spirits.charges_fractional+fight_remains%cooldown.convoke_the_spirits.duration-0.05)",
+        "reasonCode": "control_flow_not_whitelisted",
+        "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 103"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:104:actions.cd_variable",
+        "sourceKind": "simc-profile-apl",
+        "list": "cd_variable",
+        "action": "variable",
+        "condition": null,
+        "targetIf": null,
+        "options": {
+          "name": "zerkCountRemaining",
+          "value": "floor(cooldown.bs_inc.charges_fractional+fight_remains%cooldown.bs_inc.duration-0.05)"
+        },
+        "lineNumber": 104,
+        "rawLine": "actions.cd_variable+=/variable,name=zerkCountRemaining,value=floor(cooldown.bs_inc.charges_fractional+fight_remains%cooldown.bs_inc.duration-0.05)",
+        "reasonCode": "control_flow_not_whitelisted",
+        "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 104"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:105:actions.cd_variable",
+        "sourceKind": "simc-profile-apl",
+        "list": "cd_variable",
+        "action": "variable",
+        "condition": null,
+        "targetIf": null,
+        "options": {
+          "name": "potCountRemaining",
+          "value": "floor(cooldown.potion.charges_fractional+fight_remains%cooldown.potion.duration-0.06)"
+        },
+        "lineNumber": 105,
+        "rawLine": "actions.cd_variable+=/variable,name=potCountRemaining,value=floor(cooldown.potion.charges_fractional+fight_remains%cooldown.potion.duration-0.06)",
+        "reasonCode": "control_flow_not_whitelisted",
+        "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 105"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:106:actions.cd_variable",
+        "sourceKind": "simc-profile-apl",
+        "list": "cd_variable",
+        "action": "variable",
+        "condition": null,
+        "targetIf": null,
+        "options": {
+          "name": "slot1CountRemaining",
+          "value": "floor(trinket.1.cooldown.charges_fractional+fight_remains%trinket.1.cooldown.duration-0.05)"
+        },
+        "lineNumber": 106,
+        "rawLine": "actions.cd_variable+=/variable,name=slot1CountRemaining,value=floor(trinket.1.cooldown.charges_fractional+fight_remains%trinket.1.cooldown.duration-0.05)",
+        "reasonCode": "control_flow_not_whitelisted",
+        "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 106"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:107:actions.cd_variable",
+        "sourceKind": "simc-profile-apl",
+        "list": "cd_variable",
+        "action": "variable",
+        "condition": null,
+        "targetIf": null,
+        "options": {
+          "name": "slot2CountRemaining",
+          "value": "floor(trinket.2.cooldown.charges_fractional+fight_remains%trinket.2.cooldown.duration-0.05)"
+        },
+        "lineNumber": 107,
+        "rawLine": "actions.cd_variable+=/variable,name=slot2CountRemaining,value=floor(trinket.2.cooldown.charges_fractional+fight_remains%trinket.2.cooldown.duration-0.05)",
+        "reasonCode": "control_flow_not_whitelisted",
+        "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 107"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:109:actions.cd_variable",
+        "sourceKind": "simc-profile-apl",
+        "list": "cd_variable",
+        "action": "variable",
+        "condition": null,
+        "targetIf": null,
+        "options": {
+          "name": "holdBerserk",
+          "value": "variable.zerkCountRemaining=1&variable.potCountRemaining=1&cooldown.potion.remains"
+        },
+        "lineNumber": 109,
+        "rawLine": "actions.cd_variable+=/variable,name=holdBerserk,value=variable.zerkCountRemaining=1&variable.potCountRemaining=1&cooldown.potion.remains",
+        "reasonCode": "control_flow_not_whitelisted",
+        "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 109"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:111:actions.cd_variable",
+        "sourceKind": "simc-profile-apl",
+        "list": "cd_variable",
+        "action": "variable",
+        "condition": null,
+        "targetIf": null,
+        "options": {
+          "name": "holdPot",
+          "value": "variable.potCountRemaining=floor((fight_remains-cooldown.bs_inc.remains-10)%cooldown.potion.duration+(fight_remains>cooldown.bs_inc.remains))"
+        },
+        "lineNumber": 111,
+        "rawLine": "actions.cd_variable+=/variable,name=holdPot,value=variable.potCountRemaining=floor((fight_remains-cooldown.bs_inc.remains-10)%cooldown.potion.duration+(fight_remains>cooldown.bs_inc.remains))",
+        "reasonCode": "control_flow_not_whitelisted",
+        "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 111"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:113:actions.cd_variable",
+        "sourceKind": "simc-profile-apl",
+        "list": "cd_variable",
+        "action": "variable",
+        "condition": null,
+        "targetIf": null,
+        "options": {
+          "name": "highestCDremaining",
+          "op": "setif",
+          "condition": "talent.convoke_the_spirits",
+          "value": "cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains<?cooldown.potion.remains",
+          "value_else": "cooldown.bs_inc.remains<?cooldown.potion.remains"
+        },
+        "lineNumber": 113,
+        "rawLine": "actions.cd_variable+=/variable,name=highestCDremaining,op=setif,condition=talent.convoke_the_spirits,value=cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains<?cooldown.potion.remains,value_else=cooldown.bs_inc.remains<?cooldown.potion.remains",
+        "reasonCode": "control_flow_not_whitelisted",
+        "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 113"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:114:actions.cd_variable",
+        "sourceKind": "simc-profile-apl",
+        "list": "cd_variable",
+        "action": "variable",
+        "condition": null,
+        "targetIf": null,
+        "options": {
+          "name": "lowestCDremaining",
+          "op": "setif",
+          "condition": "talent.convoke_the_spirits",
+          "value": "cooldown.convoke_the_spirits.remains>?cooldown.bs_inc.remains>?cooldown.potion.remains",
+          "value_else": "cooldown.bs_inc.remains>?cooldown.potion.remains"
+        },
+        "lineNumber": 114,
+        "rawLine": "actions.cd_variable+=/variable,name=lowestCDremaining,op=setif,condition=talent.convoke_the_spirits,value=cooldown.convoke_the_spirits.remains>?cooldown.bs_inc.remains>?cooldown.potion.remains,value_else=cooldown.bs_inc.remains>?cooldown.potion.remains",
+        "reasonCode": "control_flow_not_whitelisted",
+        "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 114"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:115:actions.cd_variable",
+        "sourceKind": "simc-profile-apl",
+        "list": "cd_variable",
+        "action": "variable",
+        "condition": null,
+        "targetIf": null,
+        "options": {
+          "name": "secondLowestCDremaining",
+          "op": "setif",
+          "condition": "cooldown.convoke_the_spirits.remains>cooldown.bs_inc.remains",
+          "value": "cooldown.convoke_the_spirits.remains>?cooldown.potion.remains",
+          "value_else": "cooldown.bs_inc.remains>?cooldown.potion.remains"
+        },
+        "lineNumber": 115,
+        "rawLine": "actions.cd_variable+=/variable,name=secondLowestCDremaining,op=setif,condition=cooldown.convoke_the_spirits.remains>cooldown.bs_inc.remains,value=cooldown.convoke_the_spirits.remains>?cooldown.potion.remains,value_else=cooldown.bs_inc.remains>?cooldown.potion.remains",
+        "reasonCode": "control_flow_not_whitelisted",
+        "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 115"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:118:actions.cooldown",
+        "sourceKind": "simc-profile-apl",
+        "list": "cooldown",
+        "action": "call_action_list",
+        "condition": "!cooldown.bs_inc.remains|!cooldown.potion.remains|!trinket.1.cooldown.remains|!trinket.2.cooldown.remains",
+        "targetIf": null,
+        "options": {
+          "name": "cd_variable",
+          "if": "!cooldown.bs_inc.remains|!cooldown.potion.remains|!trinket.1.cooldown.remains|!trinket.2.cooldown.remains"
+        },
+        "lineNumber": 118,
+        "rawLine": "actions.cooldown=call_action_list,name=cd_variable,if=!cooldown.bs_inc.remains|!cooldown.potion.remains|!trinket.1.cooldown.remains|!trinket.2.cooldown.remains",
+        "reasonCode": "control_flow_not_whitelisted",
+        "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 118"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:120:actions.cooldown",
+        "sourceKind": "simc-profile-apl",
+        "list": "cooldown",
+        "action": "use_item",
+        "condition": "trinket.1.has_use_damage&(trinket.2.cooldown.remains>20|!trinket.2.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.1.is.font_of_venomous_rage|!buff.bs_inc.up)",
+        "targetIf": null,
+        "options": {
+          "slot": "trinket1",
+          "if": "trinket.1.has_use_damage&(trinket.2.cooldown.remains>20|!trinket.2.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.1.is.font_of_venomous_rage|!buff.bs_inc.up)"
+        },
+        "lineNumber": 120,
+        "rawLine": "actions.cooldown+=/use_item,slot=trinket1,if=trinket.1.has_use_damage&(trinket.2.cooldown.remains>20|!trinket.2.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.1.is.font_of_venomous_rage|!buff.bs_inc.up)",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 120"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:121:actions.cooldown",
+        "sourceKind": "simc-profile-apl",
+        "list": "cooldown",
+        "action": "use_item",
+        "condition": "trinket.2.has_use_damage&(trinket.1.cooldown.remains>20|!trinket.1.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.2.is.font_of_venomous_rage|!buff.bs_inc.up)",
+        "targetIf": null,
+        "options": {
+          "slot": "trinket2",
+          "if": "trinket.2.has_use_damage&(trinket.1.cooldown.remains>20|!trinket.1.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.2.is.font_of_venomous_rage|!buff.bs_inc.up)"
+        },
+        "lineNumber": 121,
+        "rawLine": "actions.cooldown+=/use_item,slot=trinket2,if=trinket.2.has_use_damage&(trinket.1.cooldown.remains>20|!trinket.1.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.2.is.font_of_venomous_rage|!buff.bs_inc.up)",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 121"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:122:actions.cooldown",
+        "sourceKind": "simc-profile-apl",
+        "list": "cooldown",
+        "action": "berserking",
+        "condition": null,
+        "targetIf": null,
+        "options": {},
+        "lineNumber": 122,
+        "rawLine": "actions.cooldown+=/berserking",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 122"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:124:actions.cooldown",
+        "sourceKind": "simc-profile-apl",
+        "list": "cooldown",
+        "action": "potion",
+        "condition": "buff.bs_inc.up|fight_remains<32|buff.tigers_fury.up&!variable.holdPot",
+        "targetIf": null,
+        "options": {
+          "if": "buff.bs_inc.up|fight_remains<32|buff.tigers_fury.up&!variable.holdPot"
+        },
+        "lineNumber": 124,
+        "rawLine": "actions.cooldown+=/potion,if=buff.bs_inc.up|fight_remains<32|buff.tigers_fury.up&!variable.holdPot",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 124"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:126:actions.cooldown",
+        "sourceKind": "simc-profile-apl",
+        "list": "cooldown",
+        "action": "use_items",
+        "condition": null,
+        "targetIf": null,
+        "options": {},
+        "lineNumber": 126,
+        "rawLine": "actions.cooldown+=/use_items",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 126"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:128:actions.cooldown",
+        "sourceKind": "simc-profile-apl",
+        "list": "cooldown",
+        "action": "use_item",
+        "condition": "trinket.1.has_use_buff&(cooldown.tigers_fury.remains>=25|trinket.1.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&cooldown.tigers_fury.remains<2)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.1.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.1.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.1.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining+1&buff.potion.up|trinket.2.has_use_buff&(variable.secondLowestCDremaining>trinket.1.cooldown.duration&variable.lowestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.2.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))",
+        "targetIf": null,
+        "options": {
+          "slot": "trinket1",
+          "use_off_gcd": "1",
+          "if": "trinket.1.has_use_buff&(cooldown.tigers_fury.remains>=25|trinket.1.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&cooldown.tigers_fury.remains<2)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.1.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.1.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.1.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining+1&buff.potion.up|trinket.2.has_use_buff&(variable.secondLowestCDremaining>trinket.1.cooldown.duration&variable.lowestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.2.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))"
+        },
+        "lineNumber": 128,
+        "rawLine": "actions.cooldown+=/use_item,slot=trinket1,use_off_gcd=1,if=trinket.1.has_use_buff&(cooldown.tigers_fury.remains>=25|trinket.1.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&cooldown.tigers_fury.remains<2)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.1.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.1.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.1.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining+1&buff.potion.up|trinket.2.has_use_buff&(variable.secondLowestCDremaining>trinket.1.cooldown.duration&variable.lowestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.2.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 128"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:129:actions.cooldown",
+        "sourceKind": "simc-profile-apl",
+        "list": "cooldown",
+        "action": "use_item",
+        "condition": "trinket.2.has_use_buff&(!trinket.1.has_use_buff|trinket.1.cooldown.remains>20)&(cooldown.tigers_fury.remains>=25|trinket.2.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&(cooldown.tigers_fury.remains<2|buff.tigers_fury.up))&(buff.potion.up|variable.slot2CountRemaining!=variable.potCountRemaining)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.2.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.2.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.2.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining-1&buff.potion.up|trinket.1.has_use_buff&(variable.secondLowestCDremaining>trinket.2.cooldown.duration&variable.lowestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.1.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))",
+        "targetIf": null,
+        "options": {
+          "slot": "trinket2",
+          "use_off_gcd": "1",
+          "if": "trinket.2.has_use_buff&(!trinket.1.has_use_buff|trinket.1.cooldown.remains>20)&(cooldown.tigers_fury.remains>=25|trinket.2.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&(cooldown.tigers_fury.remains<2|buff.tigers_fury.up))&(buff.potion.up|variable.slot2CountRemaining!=variable.potCountRemaining)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.2.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.2.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.2.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining-1&buff.potion.up|trinket.1.has_use_buff&(variable.secondLowestCDremaining>trinket.2.cooldown.duration&variable.lowestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.1.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))"
+        },
+        "lineNumber": 129,
+        "rawLine": "actions.cooldown+=/use_item,slot=trinket2,use_off_gcd=1,if=trinket.2.has_use_buff&(!trinket.1.has_use_buff|trinket.1.cooldown.remains>20)&(cooldown.tigers_fury.remains>=25|trinket.2.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&(cooldown.tigers_fury.remains<2|buff.tigers_fury.up))&(buff.potion.up|variable.slot2CountRemaining!=variable.potCountRemaining)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.2.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.2.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.2.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining-1&buff.potion.up|trinket.1.has_use_buff&(variable.secondLowestCDremaining>trinket.2.cooldown.duration&variable.lowestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.1.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 129"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:131:actions.cooldown",
+        "sourceKind": "simc-profile-apl",
+        "list": "cooldown",
+        "action": "use_item",
+        "condition": "fight_remains<=(21<?trinket.1.proc.any_dps.duration)",
+        "targetIf": null,
+        "options": {
+          "slot": "trinket1",
+          "if": "fight_remains<=(21<?trinket.1.proc.any_dps.duration)"
+        },
+        "lineNumber": 131,
+        "rawLine": "actions.cooldown+=/use_item,slot=trinket1,if=fight_remains<=(21<?trinket.1.proc.any_dps.duration)",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 131"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:132:actions.cooldown",
+        "sourceKind": "simc-profile-apl",
+        "list": "cooldown",
+        "action": "use_item",
+        "condition": "fight_remains<=(21<?trinket.2.proc.any_dps.duration)",
+        "targetIf": null,
+        "options": {
+          "slot": "trinket2",
+          "if": "fight_remains<=(21<?trinket.2.proc.any_dps.duration)"
+        },
+        "lineNumber": 132,
+        "rawLine": "actions.cooldown+=/use_item,slot=trinket2,if=fight_remains<=(21<?trinket.2.proc.any_dps.duration)",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 132"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:137:actions.cooldown",
+        "sourceKind": "simc-profile-apl",
+        "list": "cooldown",
+        "action": "frantic_frenzy",
+        "condition": "(!fight_style.dungeonroute&!fight_style.dungeonslice|raid_event.adds.remains>5)&(buff.tigers_fury.up&spell_targets>=2|combo_points<=2+(2*buff.bs_inc.up))",
+        "targetIf": null,
+        "options": {
+          "if": "(!fight_style.dungeonroute&!fight_style.dungeonslice|raid_event.adds.remains>5)&(buff.tigers_fury.up&spell_targets>=2|combo_points<=2+(2*buff.bs_inc.up))"
+        },
+        "lineNumber": 137,
+        "rawLine": "actions.cooldown+=/frantic_frenzy,if=(!fight_style.dungeonroute&!fight_style.dungeonslice|raid_event.adds.remains>5)&(buff.tigers_fury.up&spell_targets>=2|combo_points<=2+(2*buff.bs_inc.up))",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 137"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "ruleId": "profile-apl:line:143:actions.finisher",
+        "sourceKind": "simc-profile-apl",
+        "list": "finisher",
+        "action": "pool_resource",
+        "condition": null,
+        "targetIf": null,
+        "options": {
+          "for_next": "1"
+        },
+        "lineNumber": 143,
+        "rawLine": "actions.finisher+=/pool_resource,for_next=1",
+        "reasonCode": "action_or_command_not_supported",
+        "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+        "impact": "recommendation-fidelity",
+        "evidenceRefs": [
+          "SimC profile line 143"
+        ]
+      }
+    ],
+    "remainingUnsupportedFieldKinds": {
+      "consumable": 5,
+      "simulation-option": 1
+    }
+  },
+  "gates": {
+    "twoDifferentialBuilds": true,
+    "sameControllerForAllTraces": true,
+    "targetCountsCovered": [
+      1,
+      3,
+      5
+    ],
+    "unavailableRecommendationCount": 0,
+    "fullProfileAplAccountingDelta": 0,
+    "actionListFieldsLeftInUnsupportedFields": 0
+  }
+}

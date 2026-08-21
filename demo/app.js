@@ -390,7 +390,7 @@ function renderSimcImportStatus({ type = "idle", message, snapshot: reportSnapsh
   if (!reportSnapshot) return;
 
   const summary = document.createElement("p");
-  summary.textContent = `${reportSnapshot.catalog.actions.length} 个可用技能 · ${reportSnapshot.profile.unsupportedFieldCount} 个未应用字段 · ${reportSnapshot.profile.unsupportedEffectCount} 个未实现效果`;
+  summary.textContent = `${reportSnapshot.catalog.actions.length} 个可用技能 · ${reportSnapshot.profile.unsupportedFieldCount} 个未应用字段 · ${reportSnapshot.profile.unsupportedEffectCount} 个未实现效果 · ${reportSnapshot.profile.unsupportedAplRuleCount} 条未支持 APL`;
   elements.simcImportStatus.append(summary);
 
   const unsupported = [
@@ -401,6 +401,10 @@ function renderSimcImportStatus({ type = "idle", message, snapshot: reportSnapsh
     ...reportSnapshot.catalog.unsupportedEffects.map((effect) => ({
       label: effect.sourceName ?? effect.effectId,
       reason: effect.reason,
+    })),
+    ...reportSnapshot.catalog.unsupportedAplRules.map((rule) => ({
+      label: `APL 第 ${rule.lineNumber ?? "?"} 行 · ${rule.list}/${rule.action}`,
+      reason: rule.reason,
     })),
   ];
   if (!unsupported.length) return;
@@ -489,7 +493,7 @@ function prepareSession({ preserveStarted = false } = {}) {
   sequenceStartIndex = 0;
   feedback = {
     type: "info",
-    message: `${snapshot.profile.label} 已加载；${snapshot.catalog.actions.length} 个可用技能，${snapshot.profile.unsupportedFieldCount} 个字段和 ${snapshot.profile.unsupportedEffectCount} 项效果已结构化标记为未支持。`,
+    message: `${snapshot.profile.label} 已加载；${snapshot.catalog.actions.length} 个可用技能，${snapshot.profile.unsupportedFieldCount} 个字段、${snapshot.profile.unsupportedEffectCount} 项效果和 ${snapshot.profile.unsupportedAplRuleCount} 条 APL 已结构化标记为未支持。`,
   };
   syncDefaultKeybinds();
   rebuildActionSurfaces();

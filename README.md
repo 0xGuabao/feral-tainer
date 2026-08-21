@@ -16,7 +16,8 @@ version-locked SimulationCraft evidence.
   resources, tracked auras/DoTs, and an APL subset into one `ResolvedProfile`.
 - Supports 1, 3, and 5 stationary targets, configurable keybinds, deterministic
   proc seeds, desktop layouts, and a 390×844 mobile layout.
-- Preserves unsupported fields and mechanics as structured output.
+- Preserves unsupported fields, mechanics, and unmatched Profile APL rules as
+  structured output.
 - Keeps the UI and `InteractiveController` free of talent/ability-specific
   mechanism branches.
 
@@ -40,7 +41,7 @@ cd demo
 npm test
 ```
 
-The current suite contains 54 deterministic unit and architecture tests. The
+The current suite contains 60 deterministic unit and architecture tests. The
 local browser smoke test is documented in `demo/browser-smoke.mjs` and requires
 Chromium DevTools on port 9223.
 

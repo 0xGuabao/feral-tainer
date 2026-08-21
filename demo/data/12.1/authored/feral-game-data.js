@@ -1,4 +1,5 @@
 import { SIMC_VERSION_LOCK } from "../generated/version.generated.js";
+export { FERAL_APL_IR as APL_CATALOG } from "./feral-apl-ir.js";
 
 export const FERAL_VERSION = Object.freeze({
   gameVersion: SIMC_VERSION_LOCK.wowVersion,
@@ -1126,25 +1127,6 @@ export const TALENT_EFFECT_COVERAGE = Object.freeze({
     },
   },
 });
-
-export const APL_CATALOG = Object.freeze([
-  { id: "default.tigers_fury", actionId: "tigersFury", list: "default", line: 23, condition: "tigers_fury", fidelity: "simplified" },
-  { id: "default.stealth_rake", actionId: "rake", list: "default", line: 24, condition: "stealth_rake", fidelity: "exact" },
-  { id: "cooldown.berserk", actionId: "berserk", list: "cooldown", line: 82, condition: "berserk", fidelity: "subset" },
-  { id: "cooldown.feral_frenzy", actionId: "feralFrenzy", list: "cooldown", line: 83, condition: "feral_frenzy", fidelity: "subset" },
-  { id: "cooldown.convoke", actionId: "convoke", list: "cooldown", line: 85, condition: "convoke", fidelity: "simplified" },
-  { id: "default.apex_bite", actionId: "ferociousBite", list: "default", line: 27, condition: "apex_bite", fidelity: "exact" },
-  { id: "finisher.rip", actionId: "rip", list: "finisher", line: 57, condition: "single_rip", fidelity: "subset" },
-  { id: "finisher.bite", actionId: "ferociousBite", list: "finisher", line: 59, condition: "bite", fidelity: "subset" },
-  { id: "aoe.primal_wrath", actionId: "primalWrath", list: "aoe_finisher", line: 50, condition: "primal_wrath", fidelity: "subset" },
-  { id: "aoe.rip", actionId: "rip", list: "aoe_finisher", line: 52, condition: "multi_rip", fidelity: "subset" },
-  { id: "aoe.rake", actionId: "rake", list: "aoe_builder", line: 34, condition: "multi_rake", fidelity: "simplified-target-if" },
-  { id: "aoe.moonfire", actionId: "moonfire", list: "aoe_builder", line: 35, condition: "multi_moonfire", fidelity: "subset" },
-  { id: "aoe.swipe", actionId: "swipe", list: "aoe_builder", line: 41, condition: "multi_swipe", fidelity: "subset" },
-  { id: "builder.rake", actionId: "rake", list: "builder", line: 46, condition: "single_rake", fidelity: "simplified-snapshot" },
-  { id: "builder.moonfire", actionId: "moonfire", list: "builder", line: 47, condition: "single_moonfire", fidelity: "simplified-snapshot" },
-  { id: "builder.shred", actionId: "shred", list: "builder", line: 48, condition: "single_shred", fidelity: "exact-fallback" },
-]);
 
 export const CUSTOM_HANDLER_DECLARATIONS = Object.freeze([
   Object.freeze({

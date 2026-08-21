@@ -4,7 +4,7 @@
 
 固定天赋码只是一号验收样本。更换同版本野性德鲁伊构筑时，正常路径只新增输入数据；不得修改 UI 或 `InteractiveController`，已覆盖的通用机制也不得新增技能专用分支。
 
-当前运行时覆盖技能可用性、天赋等级、静态基础/二级属性、宝石与附魔静态修正、装备触发、能量与连击点、逐目标命中/暴击结果、DoT/Buff 时间、概率/PPM/RPPM/累加器触发、可重叠 DoT 实例、万灵之召与隐秘捕食者的内部技能、荒野追猎者血棘藤蔓、四件套联动和交互式 APL 子集，不计算伤害，也不承诺随机序列或完整 APL 与 SimulationCraft 等价。所有已选但未实现或明确排除的效果必须出现在 `unsupportedEffects`，不得静默丢弃。
+当前运行时覆盖技能可用性、天赋等级、静态基础/二级属性、宝石与附魔静态修正、装备触发、能量与连击点、逐目标命中/暴击结果、DoT/Buff 时间、概率/PPM/RPPM/累加器触发、可重叠 DoT 实例、万灵之召与隐秘捕食者的内部技能、荒野追猎者血棘藤蔓、四件套联动和交互式 APL 子集，不计算伤害，也不承诺随机序列或完整 APL 与 SimulationCraft 等价。所有已选但未实现或明确排除的效果必须出现在 `unsupportedEffects`；未进入白名单 IR 的 Profile APL 必须出现在 `unsupportedAplRules`，不得静默丢弃。
 
 ## 模块流
 
@@ -37,7 +37,7 @@ flowchart LR
 | 层 | 目录 | 内容 | 修改方式 |
 | --- | --- | --- | --- |
 | Generated facts | `data/12.1/generated/` | SimC 版本锁、天赋树、套装 DBC、Profile Oracle | 只允许对应 `scripts/generate-*.mjs` 生成，禁止手改，也禁止反向依赖 authored 层 |
-| Authored semantics | `data/12.1/authored/` | Action/Effect/APL、装备机制、属性映射、验收输入和证据索引 | 人工评审后修改；可读取锁定的 generated facts，不得把某套构筑复制成新引擎 |
+| Authored semantics | `data/12.1/authored/` | Action/Effect、受控 APL IR、装备机制、属性映射、验收输入和证据索引 | 人工评审后修改；可读取锁定的 generated facts，不得把某套构筑复制成新引擎 |
 | Compatibility facades | `data/12.1/*.js` | 对旧导入路径的纯 re-export | 不保存数据、不变换数据、不实现行为 |
 
 机器可读边界由 `data/12.1/catalog-layer-manifest.js` 声明，架构测试会检查目录、生成器目标、依赖方向、Facade 同一性以及 UI/控制器不能直接读取内部层。`data/12.1/feral-semantic-provenance.js` 为每条手写运行时规则记录游戏/SimC 版本、来源、Spell/Talent/Item/Enchant/Set 标识和验证测试。证据精度只有两类：`explicit` 表示条目或直接关联条目存在具体引用，`catalog-default` 表示只有权威目录级来源；后者不得伪造行号。
@@ -65,14 +65,17 @@ flowchart LR
 | `core/set-bonus-resolver.js` | 从装备物品 ID 自动识别 2/4 件套，并报告显式配置与装备赛季冲突 | 把不同赛季套装视作同一效果 |
 | `data/12.1/feral-stat-data.js`（Facade）/ `authored/feral-stat-data.js` | 固化 12.1/90 级基础属性、评分分母、递减曲线和野性精通/AP 系数 | 保存某个 Profile 的最终 buffed 面板 |
 | `core/stat-resolver.js` | 汇总角色与装备静态属性，按 SimC 规则计算暴击、急速、精通、全能和 AP，并保留完成度 | 在缺少换算依据时伪造完整面板属性 |
-| `core/build-resolver.js` | 计算 requirements、资源修正、替换技能、过滤 APL，输出 `ResolvedProfile` | 执行战斗、渲染 UI |
-| `data/12.1/feral-game-data.js`（Facade）/ `authored/feral-game-data.js` | 版本化 Action/InternalAction/Effect/APL/套装目录与覆盖状态 | 保存某套构筑专用的启用布尔值 |
+| `core/build-resolver.js` | 计算 requirements、资源修正、替换技能、编译/过滤 APL，输出 `ResolvedProfile` | 执行战斗、渲染 UI |
+| `data/12.1/feral-game-data.js`（Facade）/ `authored/feral-game-data.js` | 版本化 Action/InternalAction/Effect/套装目录与覆盖状态 | 保存某套构筑专用的启用布尔值 |
+| `data/12.1/feral-apl-ir.js`（Facade）/ `authored/feral-apl-ir.js` | 保存受控表达式 AST、目标选择器和 SimC list/action/condition/target_if 精确绑定 | 执行表达式或把未匹配 Profile 规则视作已支持 |
 | `data/12.1/feral-item-effect-data.js`（Facade）/ `authored/feral-item-effect-data.js` | 保存精确装备变体、物品动作、触发效果、静态宝石/附魔修正及覆盖状态 | 在控制器中按物品名执行特效 |
 | `data/12.1/feral-semantic-provenance.js`（Facade）/ `authored/feral-semantic-provenance.js` | 追溯每条手写规则的版本、来源、业务 ID 和验证测试 | 参与运行时机制决策或掩盖目录级证据精度 |
 | `runtime/effect-runtime.js` | 执行通用 hook、触发、ICD、Aura 和资源操作 | 读取 DOM 或选择推荐技能 |
 | `runtime/action-result-resolver.js` | 用独立随机流生成逐目标 hit/crit 结果并输出统一事件 | 直接实现具体天赋触发 |
 | `runtime/custom-handler-registry.js` | 集中登记不可通用化的特殊机制 | 允许特殊机制散落到控制器/UI |
-| `apl/feral-apl-adapter.js` | 在已过滤规则上做交互式推荐 | 推荐 `ResolvedProfile` 中不存在的技能 |
+| `apl/apl-ir.js` | 校验并解释通用白名单表达式/目标选择 IR | 按具体技能或天赋名分派条件 |
+| `apl/apl-compiler.js` | 按精确来源绑定编译 Profile APL、过滤不可用动作、结构化未匹配规则 | 猜测或宽松接受发生漂移的 SimC 条件 |
+| `apl/feral-apl-adapter.js` | 在已编译和过滤的规则上做交互式推荐 | 推荐 `ResolvedProfile` 中不存在的技能 |
 | `core/interactive-controller.js` | 提供稳定训练接口，维护时间轴并输出 Snapshot/Events | 按具体天赋名称改变公开接口 |
 | `app.js` | 从 Catalog、Snapshot、Events 动态渲染和转发输入 | 判断天赋机制、触发概率或技能数值 |
 
@@ -85,11 +88,19 @@ flowchart LR
 - 已启用/禁用 Action 与 Effect；
 - 资源、替换关系、可追踪 DoT/Buff；
 - 每项启用效果的 `resolvedModifiers`，包含实际天赋等级、套装条件、解析操作、运行时 modifier 与 hook；
-- 已过滤的 APL 规则；
-- 结构化 `unsupportedFields` 与 `unsupportedEffects`；
+- APL 来源、已编译规则、已过滤规则及 Profile 规则核算数；
+- 结构化 `unsupportedFields`、`unsupportedEffects` 与 `unsupportedAplRules`；
 - 明确的真实性边界。
 
 控制器接口固定为 `startSession`、`pressAction`、`advanceTime`、`setActiveTarget`、`getSnapshot`、`getRecommendation`、`drainEvents`、`resetSession`。切换构筑通过 `startSession({ buildInput })` 完成。
+
+## 受控 APL IR 与 Profile 核算
+
+手写的野性优先级保存在 `authored/feral-apl-ir.js`，每条规则只使用 `apl/apl-ir.js` 公布的运算符、状态值和目标选择器。`feral-apl-adapter.js` 不再维护按名称分派的条件函数；它只解释 `ResolvedProfile.apl.rules`。技能和天赋标识只存在于版本化 Catalog 数据中，UI 与 `InteractiveController` 只展示结构化结果和调用稳定接口。
+
+含 `actions` 的 SimC Profile 使用精确四元组 `list + action + condition + target_if` 绑定白名单规则。匹配后动作在当前构筑不可用时进入 `apl.filteredRules`；无法匹配、重复或超出白名单的规则进入 `unsupportedAplRules`，保留原始行、行号、原因码、影响和证据引用。`profileRuleCount` 必须严格等于“已编译 + 已过滤 + unsupported”的 `accountedProfileRuleCount`，否则 `ResolvedProfile` 契约直接失败。没有 Profile APL 的天赋码输入继续使用同一 authored IR，并按 `ResolvedProfile.actionById` 过滤。
+
+G3 的机器验收 `validation/apl/g3-apl-ir-acceptance.json` 使用同一个 `InteractiveController` 对两套差异天赋分别生成 1/3/5 目标、每组 20 次决策 trace。完整 MID1 Profile 当前 70 条 APL 的核算结果为 15 条编译、1 条构筑过滤、54 条结构化 unsupported；这不代表其余 54 条已获得行为支持。
 
 ## 效果机制
 
@@ -118,7 +129,7 @@ flowchart LR
 - 1/2 级不竭能量、1/4 级隐秘捕食者会得到不同的最终资源和机制；
 - 未激活的英雄天赋子树不得进入 `ResolvedProfile`；
 - 所有监控状态必须解析为 12.1 `SpellMisc.SpellIconFileDataID`，且本地图标文件存在；
-- 验收产物必须包含完整 `ResolvedProfile diff` 及两侧 `unsupportedEffects`。
+- 验收产物必须包含完整 `ResolvedProfile diff` 及两侧 `unsupportedEffects` / `unsupportedAplRules`。
 
 荒野追猎者另使用 Implant 与 Twin Sprouts 两套同版本构筑交叉验收：
 
@@ -142,12 +153,12 @@ flowchart LR
 ## 扩展一套同版本构筑
 
 1. 传入新天赋码或包含 `talents=` 的 SimC Profile。
-2. 查看生成的 `ResolvedProfile` 和 `unsupportedEffects`。
+2. 查看生成的 `ResolvedProfile`、`unsupportedEffects` 与 `unsupportedAplRules`。
 3. 如果新构筑只使用已覆盖机制，不修改引擎、控制器或 UI。
 4. 如果出现新机制，优先用 Catalog 中的通用 hook/operation 表达；确实无法通用化时才集中增加 `customHandler`。
 5. 把新构筑加入门禁测试，检查技能启停、资源、DoT/Buff、触发和 APL 差异。
 
-网页导入器只负责输入适配：它限制文本大小、调用 `BuildInput normalizer` 和同一控制器做预解析，成功后才持久化并通过既有 `startSession({ buildInput })` 切换构筑。构筑名称始终按纯文本写入 DOM；解析失败保留当前构筑和旧 Profile。UI 展示的未支持统计来自 Snapshot 中的 `unsupportedFields` / `unsupportedEffects`，不会自行判断装备、天赋或技能机制。
+网页导入器只负责输入适配：它限制文本大小、调用 `BuildInput normalizer` 和同一控制器做预解析，成功后才持久化并通过既有 `startSession({ buildInput })` 切换构筑。构筑名称始终按纯文本写入 DOM；解析失败保留当前构筑和旧 Profile。UI 展示的未支持统计来自 Snapshot 中的 `unsupportedFields` / `unsupportedEffects` / `unsupportedAplRules`，不会自行判断装备、天赋或技能机制。
 
 完整 SimC Profile 已可无损保留字段和行号，并解析角色信息、15 个装备槽、物品等级、奖励 ID、宝石、附魔与制造属性。`validation/oracles/simc-profile-manifest.json` 登记的 Profile 会由本地锁定版 SimC 批量生成、合并为浏览器可用的装备变体目录；新增样本不修改引擎。已登记变体的物品静态属性以及 Equipment Modifier Catalog 中的宝石/附魔修正会进入 `baseStats`，装备中的套装物品会自动推导 2/4 件套。未知装备变体与未识别宝石仍保留结构化门禁；未进入 Effect Catalog 的饰品、附魔和套装战斗效果进入 `unsupportedEffects`，不得因为静态属性已解析而被视作完整支持。
 

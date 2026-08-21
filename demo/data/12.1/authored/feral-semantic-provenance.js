@@ -100,6 +100,7 @@ function collectSourceRefs(value, refs = new Set()) {
 function collectRequirements(value, result = { talents: new Set(), setBonuses: new Set() }) {
   if (!value || typeof value !== "object") return result;
   if (typeof value.talent === "string") result.talents.add(value.talent);
+  if (value.value === "talent_selected" && typeof value.token === "string") result.talents.add(value.token);
   if (typeof value.setBonus === "string") result.setBonuses.add(value.setBonus);
   for (const nested of Object.values(value)) collectRequirements(nested, result);
   return result;

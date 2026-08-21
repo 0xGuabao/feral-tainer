@@ -12,6 +12,7 @@ import {
   ITEM_ACTION_CATALOG,
   ITEM_EFFECT_CATALOG,
 } from "../data/12.1/feral-item-effect-data.js";
+import { compileApl } from "../apl/apl-compiler.js";
 import { TalentDecoder } from "./talent-decoder.js";
 import { normalizeBuildInput } from "./build-input.js";
 import { resolveCharacter } from "./character-resolver.js";
@@ -370,12 +371,12 @@ export class BuildResolver {
     const actions = [...actionById.values()];
     const internalActions = [...internalActionById.values()];
     const availableActionIds = new Set(actions.map((action) => action.id));
-    const aplRules = APL_CATALOG
-      .map((rule) => ({
-        ...clone(rule),
-        actionId: resolutionState.replacements.get(rule.actionId) ?? rule.actionId,
-      }))
-      .filter((rule) => availableActionIds.has(rule.actionId));
+    const aplResolution = compileApl({
+      catalog: APL_CATALOG,
+      simcProfile: input.simcProfile,
+      availableActionIds,
+      replacements: resolutionState.replacements,
+    });
     const tracked = collectTrackedCatalog([...actions, ...internalActions], effectResolution.enabled);
     const unsupportedEffects = buildUnsupportedEffects(talents, context);
 
@@ -471,6 +472,7 @@ export class BuildResolver {
       ...characterResolution.consumedFieldIds,
       ...setBonusResolution.consumedFieldIds,
       ...equipment.consumedFieldIds,
+      ...aplResolution.consumedFieldIds,
     ]);
     const unsupportedFields = input.unsupportedFields.filter((field) => !consumedFieldIds.has(field.fieldId));
 
@@ -528,9 +530,18 @@ export class BuildResolver {
       resolvedModifiers: buildResolvedModifiers(effectResolution.enabled, context),
       replacements: Object.fromEntries(resolutionState.replacements),
       tracked,
-      apl: { adapter: "feral-12.1-interactive-subset", rules: aplRules },
+      apl: {
+        adapter: "feral-12.1-controlled-ir",
+        schemaVersion: aplResolution.schemaVersion,
+        source: aplResolution.source,
+        rules: aplResolution.rules,
+        filteredRules: aplResolution.filteredRules,
+        profileRuleCount: aplResolution.profileRuleCount,
+        accountedProfileRuleCount: aplResolution.accountedProfileRuleCount,
+      },
       unsupportedFields: clone(unsupportedFields),
       unsupportedEffects,
+      unsupportedAplRules: aplResolution.unsupportedRules,
       fidelity: {
         damageCalculated: false,
         procRngMatchesSimcSequence: false,

@@ -30,8 +30,14 @@ export const CATALOG_LAYER_MANIFEST = Object.freeze({
     Object.freeze({
       id: "feral-runtime-semantics",
       module: "authored/feral-game-data.js",
-      role: "action, internal-action, effect, APL, coverage and custom-handler mappings",
+      role: "action, internal-action, effect, coverage and custom-handler mappings",
       evidencePolicy: "Each runtime entry carries a versioned source reference or explicit coverage evidence.",
+    }),
+    Object.freeze({
+      id: "feral-apl-controlled-ir",
+      module: "authored/feral-apl-ir.js",
+      role: "whitelisted Feral APL expressions, target selectors and exact SimC source bindings",
+      evidencePolicy: "Only exact source bindings compile; every unmatched Profile rule remains structured unsupported.",
     }),
     Object.freeze({
       id: "equipment-runtime-semantics",
@@ -64,6 +70,7 @@ export const CATALOG_LAYER_MANIFEST = Object.freeze({
     "feral-tier-sets.generated.js",
     "simc-oracle-catalog.generated.js",
     "feral-game-data.js",
+    "feral-apl-ir.js",
     "feral-item-effect-data.js",
     "feral-stat-data.js",
     "build-fixtures.js",

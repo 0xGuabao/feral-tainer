@@ -35,7 +35,7 @@ async function assertFacadeIdentity(facadePath, layeredPath) {
 test("catalog manifest separates generated facts from authored semantics and every declared path exists", async () => {
   assert.equal(CATALOG_LAYER_MANIFEST.schemaVersion, 1);
   assert.equal(CATALOG_LAYER_MANIFEST.generated.length, 4);
-  assert.equal(CATALOG_LAYER_MANIFEST.authored.length, 5);
+  assert.equal(CATALOG_LAYER_MANIFEST.authored.length, 6);
   assert.equal(CATALOG_LAYER_MANIFEST.dependencyRules.generatedMayImportAuthored, false);
   assert.equal(CATALOG_LAYER_MANIFEST.dependencyRules.uiMayReadLayerInternalsDirectly, false);
   assert.equal(CATALOG_LAYER_MANIFEST.dependencyRules.controllerMayReadLayerInternalsDirectly, false);
@@ -73,6 +73,7 @@ test("legacy catalog paths are behavior-free compatibility facades with identica
   }
 
   await assertFacadeIdentity("../data/12.1/feral-game-data.js", "../data/12.1/authored/feral-game-data.js");
+  await assertFacadeIdentity("../data/12.1/feral-apl-ir.js", "../data/12.1/authored/feral-apl-ir.js");
   await assertFacadeIdentity("../data/12.1/feral-item-effect-data.js", "../data/12.1/authored/feral-item-effect-data.js");
   await assertFacadeIdentity("../data/12.1/feral-stat-data.js", "../data/12.1/authored/feral-stat-data.js");
   await assertFacadeIdentity("../data/12.1/build-fixtures.js", "../data/12.1/authored/build-fixtures.js");

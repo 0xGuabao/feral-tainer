@@ -91,8 +91,14 @@ export function assertResolvedProfile(profile) {
   invariant(Array.isArray(profile?.effects), "ResolvedProfile.effects must be an array");
   invariant(Array.isArray(profile?.resolvedModifiers), "ResolvedProfile.resolvedModifiers must be an array");
   invariant(Array.isArray(profile?.apl?.rules), "ResolvedProfile.apl.rules must be an array");
+  invariant(Array.isArray(profile?.apl?.filteredRules), "ResolvedProfile.apl.filteredRules must be an array");
   invariant(Array.isArray(profile?.unsupportedFields), "ResolvedProfile.unsupportedFields must be an array");
   invariant(Array.isArray(profile?.unsupportedEffects), "ResolvedProfile.unsupportedEffects must be an array");
+  invariant(Array.isArray(profile?.unsupportedAplRules), "ResolvedProfile.unsupportedAplRules must be an array");
+  invariant(
+    profile.apl.profileRuleCount === profile.apl.accountedProfileRuleCount,
+    "Every SimC Profile APL rule must be compiled, filtered, or structured as unsupported",
+  );
 
   const actionIds = new Set();
   for (const action of profile.actions) {

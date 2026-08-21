@@ -33,6 +33,7 @@ test("ResolvedProfile v2 gives talent-only and full SimC inputs the same stable 
     assert.ok(profile.derivedStats);
     assert.ok(Array.isArray(profile.setBonuses.enabled));
     assert.ok(Array.isArray(profile.itemEffects));
+    assert.ok(Array.isArray(profile.unsupportedAplRules));
     assert.ok(profile.sourceMap && typeof profile.sourceMap === "object");
   }
 
@@ -134,7 +135,16 @@ test("ResolvedProfile v2 gives talent-only and full SimC inputs the same stable 
   }
   assert.equal(full.unsupportedFields.some((field) => field.key === "timeofday"), true);
   assert.equal(full.unsupportedFields.some((field) => field.fieldKind === "equipment"), false);
-  assert.equal(full.unsupportedFields.some((field) => field.fieldKind === "action-list"), true);
+  assert.equal(full.unsupportedFields.some((field) => field.fieldKind === "action-list"), false);
+  assert.equal(full.apl.source, "simc-profile");
+  assert.equal(full.apl.profileRuleCount, 70);
+  assert.equal(full.apl.accountedProfileRuleCount, 70);
+  assert.equal(full.apl.rules.length, 15);
+  assert.equal(full.apl.filteredRules.length, 1);
+  assert.equal(full.unsupportedAplRules.length, 54);
+  assert.ok(full.unsupportedAplRules.every(
+    (rule) => rule.ruleId && rule.reasonCode && rule.reason && rule.impact && rule.rawLine,
+  ));
 });
 
 test("ResolvedProfile v2 diff includes character, equipment and set bonus changes", async () => {

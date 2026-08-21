@@ -31,6 +31,7 @@ export function createLegacyRuntimeProfile(profile) {
     apl: profile.apl,
     unsupportedFields: profile.unsupportedFields,
     unsupportedEffects: profile.unsupportedEffects,
+    unsupportedAplRules: profile.unsupportedAplRules,
     fidelity: profile.fidelity,
   });
 }

@@ -78,12 +78,19 @@ test("normalization and BuildResolver expose parser evidence without changing co
   assert.equal(profile.source.simcProfileSchemaVersion, 1);
   assert.equal(profile.source.parsedFieldCount, 9);
   assert.deepEqual(profile.source.sourceMap.actions.map((entry) => entry.operator), ["=", "+="]);
-  assert.equal(profile.unsupportedFields.length, 6);
+  assert.equal(profile.unsupportedFields.length, 3);
   assert.equal(profile.unsupportedFields.some((field) => field.key === "level"), false);
+  assert.equal(profile.unsupportedFields.some((field) => field.fieldKind === "action-list"), false);
   assert.deepEqual(
     profile.unsupportedFields.map((field) => field.fieldId),
-    input.unsupportedFields.filter((field) => field.key !== "level").map((field) => field.fieldId),
+    input.unsupportedFields
+      .filter((field) => field.key !== "level" && field.fieldKind !== "action-list")
+      .map((field) => field.fieldId),
   );
+  assert.equal(profile.apl.profileRuleCount, 3);
+  assert.equal(profile.apl.accountedProfileRuleCount, 3);
+  assert.equal(profile.unsupportedAplRules.length, 3);
+  assert.ok(profile.unsupportedAplRules.every((rule) => rule.sourceKind === "simc-profile-apl"));
   assert.ok(profile.actionById.moonfire);
   assert.equal(profile.actionById.primalWrath, undefined);
 });

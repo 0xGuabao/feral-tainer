@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "purpose": "12.1 Feral build-switch architecture acceptance",
   "versionLock": {
     "schemaVersion": 1,
@@ -988,68 +988,82 @@
         "stalkingPredator",
         "halazzisFury"
       ],
-      "aplRules": [
-        {
-          "id": "default.tigers_fury",
-          "actionId": "tigersFury"
-        },
-        {
-          "id": "default.stealth_rake",
-          "actionId": "rake"
-        },
-        {
-          "id": "cooldown.berserk",
-          "actionId": "berserk"
-        },
-        {
-          "id": "cooldown.feral_frenzy",
-          "actionId": "feralFrenzy"
-        },
-        {
-          "id": "cooldown.convoke",
-          "actionId": "convoke"
-        },
-        {
-          "id": "default.apex_bite",
-          "actionId": "ferociousBite"
-        },
-        {
-          "id": "finisher.rip",
-          "actionId": "rip"
-        },
-        {
-          "id": "finisher.bite",
-          "actionId": "ferociousBite"
-        },
-        {
-          "id": "aoe.rip",
-          "actionId": "rip"
-        },
-        {
-          "id": "aoe.rake",
-          "actionId": "rake"
-        },
-        {
-          "id": "aoe.moonfire",
-          "actionId": "moonfire"
-        },
-        {
-          "id": "aoe.swipe",
-          "actionId": "swipe"
-        },
-        {
-          "id": "builder.rake",
-          "actionId": "rake"
-        },
-        {
-          "id": "builder.moonfire",
-          "actionId": "moonfire"
-        },
-        {
-          "id": "builder.shred",
-          "actionId": "shred"
-        }
-      ],
+      "apl": {
+        "adapter": "feral-12.1-controlled-ir",
+        "schemaVersion": 1,
+        "source": "authored-default",
+        "profileRuleCount": 0,
+        "accountedProfileRuleCount": 0,
+        "rules": [
+          {
+            "id": "default.tigers_fury",
+            "actionId": "tigersFury"
+          },
+          {
+            "id": "default.stealth_rake",
+            "actionId": "rake"
+          },
+          {
+            "id": "cooldown.berserk",
+            "actionId": "berserk"
+          },
+          {
+            "id": "cooldown.feral_frenzy",
+            "actionId": "feralFrenzy"
+          },
+          {
+            "id": "cooldown.convoke",
+            "actionId": "convoke"
+          },
+          {
+            "id": "default.apex_bite",
+            "actionId": "ferociousBite"
+          },
+          {
+            "id": "finisher.rip",
+            "actionId": "rip"
+          },
+          {
+            "id": "finisher.bite",
+            "actionId": "ferociousBite"
+          },
+          {
+            "id": "aoe.rip",
+            "actionId": "rip"
+          },
+          {
+            "id": "aoe.rake",
+            "actionId": "rake"
+          },
+          {
+            "id": "aoe.moonfire",
+            "actionId": "moonfire"
+          },
+          {
+            "id": "aoe.swipe",
+            "actionId": "swipe"
+          },
+          {
+            "id": "builder.rake",
+            "actionId": "rake"
+          },
+          {
+            "id": "builder.moonfire",
+            "actionId": "moonfire"
+          },
+          {
+            "id": "builder.shred",
+            "actionId": "shred"
+          }
+        ],
+        "filteredRules": [
+          {
+            "ruleId": "aoe.primal_wrath",
+            "actionId": "primalWrath",
+            "reason": "action-unavailable-in-resolved-profile"
+          }
+        ]
+      },
       "convoke": {
         "cooldownMs": 120000,
         "channel": {
@@ -1087,6 +1101,11 @@
         "count": 0,
         "byKind": {},
         "fields": []
+      },
+      "unsupportedAplSummary": {
+        "count": 0,
+        "byReason": {},
+        "rules": []
       }
     },
     {
@@ -2059,64 +2078,83 @@
         "stalkingPredator",
         "halazzisFury"
       ],
-      "aplRules": [
-        {
-          "id": "default.tigers_fury",
-          "actionId": "tigersFury"
-        },
-        {
-          "id": "default.stealth_rake",
-          "actionId": "rake"
-        },
-        {
-          "id": "cooldown.berserk",
-          "actionId": "berserk"
-        },
-        {
-          "id": "cooldown.feral_frenzy",
-          "actionId": "feralFrenzy"
-        },
-        {
-          "id": "cooldown.convoke",
-          "actionId": "convoke"
-        },
-        {
-          "id": "default.apex_bite",
-          "actionId": "ferociousBite"
-        },
-        {
-          "id": "finisher.rip",
-          "actionId": "rip"
-        },
-        {
-          "id": "finisher.bite",
-          "actionId": "ferociousBite"
-        },
-        {
-          "id": "aoe.primal_wrath",
-          "actionId": "primalWrath"
-        },
-        {
-          "id": "aoe.rip",
-          "actionId": "rip"
-        },
-        {
-          "id": "aoe.rake",
-          "actionId": "rake"
-        },
-        {
-          "id": "aoe.swipe",
-          "actionId": "swipe"
-        },
-        {
-          "id": "builder.rake",
-          "actionId": "rake"
-        },
-        {
-          "id": "builder.shred",
-          "actionId": "shred"
-        }
-      ],
+      "apl": {
+        "adapter": "feral-12.1-controlled-ir",
+        "schemaVersion": 1,
+        "source": "authored-default",
+        "profileRuleCount": 0,
+        "accountedProfileRuleCount": 0,
+        "rules": [
+          {
+            "id": "default.tigers_fury",
+            "actionId": "tigersFury"
+          },
+          {
+            "id": "default.stealth_rake",
+            "actionId": "rake"
+          },
+          {
+            "id": "cooldown.berserk",
+            "actionId": "berserk"
+          },
+          {
+            "id": "cooldown.feral_frenzy",
+            "actionId": "feralFrenzy"
+          },
+          {
+            "id": "cooldown.convoke",
+            "actionId": "convoke"
+          },
+          {
+            "id": "default.apex_bite",
+            "actionId": "ferociousBite"
+          },
+          {
+            "id": "finisher.rip",
+            "actionId": "rip"
+          },
+          {
+            "id": "finisher.bite",
+            "actionId": "ferociousBite"
+          },
+          {
+            "id": "aoe.primal_wrath",
+            "actionId": "primalWrath"
+          },
+          {
+            "id": "aoe.rip",
+            "actionId": "rip"
+          },
+          {
+            "id": "aoe.rake",
+            "actionId": "rake"
+          },
+          {
+            "id": "aoe.swipe",
+            "actionId": "swipe"
+          },
+          {
+            "id": "builder.rake",
+            "actionId": "rake"
+          },
+          {
+            "id": "builder.shred",
+            "actionId": "shred"
+          }
+        ],
+        "filteredRules": [
+          {
+            "ruleId": "aoe.moonfire",
+            "actionId": "moonfire",
+            "reason": "action-unavailable-in-resolved-profile"
+          },
+          {
+            "ruleId": "builder.moonfire",
+            "actionId": "moonfire",
+            "reason": "action-unavailable-in-resolved-profile"
+          }
+        ]
+      },
       "convoke": {
         "cooldownMs": 120000,
         "channel": {
@@ -2154,6 +2192,11 @@
         "count": 0,
         "byKind": {},
         "fields": []
+      },
+      "unsupportedAplSummary": {
+        "count": 0,
+        "byReason": {},
+        "rules": []
       }
     },
     {
@@ -3200,68 +3243,82 @@
         "stalkingPredator",
         "halazzisFury"
       ],
-      "aplRules": [
-        {
-          "id": "default.tigers_fury",
-          "actionId": "tigersFury"
-        },
-        {
-          "id": "default.stealth_rake",
-          "actionId": "rake"
-        },
-        {
-          "id": "cooldown.berserk",
-          "actionId": "berserk"
-        },
-        {
-          "id": "cooldown.feral_frenzy",
-          "actionId": "feralFrenzy"
-        },
-        {
-          "id": "cooldown.convoke",
-          "actionId": "convoke"
-        },
-        {
-          "id": "default.apex_bite",
-          "actionId": "ferociousBite"
-        },
-        {
-          "id": "finisher.rip",
-          "actionId": "rip"
-        },
-        {
-          "id": "finisher.bite",
-          "actionId": "ferociousBite"
-        },
-        {
-          "id": "aoe.rip",
-          "actionId": "rip"
-        },
-        {
-          "id": "aoe.rake",
-          "actionId": "rake"
-        },
-        {
-          "id": "aoe.moonfire",
-          "actionId": "moonfire"
-        },
-        {
-          "id": "aoe.swipe",
-          "actionId": "swipe"
-        },
-        {
-          "id": "builder.rake",
-          "actionId": "rake"
-        },
-        {
-          "id": "builder.moonfire",
-          "actionId": "moonfire"
-        },
-        {
-          "id": "builder.shred",
-          "actionId": "shred"
-        }
-      ],
+      "apl": {
+        "adapter": "feral-12.1-controlled-ir",
+        "schemaVersion": 1,
+        "source": "authored-default",
+        "profileRuleCount": 0,
+        "accountedProfileRuleCount": 0,
+        "rules": [
+          {
+            "id": "default.tigers_fury",
+            "actionId": "tigersFury"
+          },
+          {
+            "id": "default.stealth_rake",
+            "actionId": "rake"
+          },
+          {
+            "id": "cooldown.berserk",
+            "actionId": "berserk"
+          },
+          {
+            "id": "cooldown.feral_frenzy",
+            "actionId": "feralFrenzy"
+          },
+          {
+            "id": "cooldown.convoke",
+            "actionId": "convoke"
+          },
+          {
+            "id": "default.apex_bite",
+            "actionId": "ferociousBite"
+          },
+          {
+            "id": "finisher.rip",
+            "actionId": "rip"
+          },
+          {
+            "id": "finisher.bite",
+            "actionId": "ferociousBite"
+          },
+          {
+            "id": "aoe.rip",
+            "actionId": "rip"
+          },
+          {
+            "id": "aoe.rake",
+            "actionId": "rake"
+          },
+          {
+            "id": "aoe.moonfire",
+            "actionId": "moonfire"
+          },
+          {
+            "id": "aoe.swipe",
+            "actionId": "swipe"
+          },
+          {
+            "id": "builder.rake",
+            "actionId": "rake"
+          },
+          {
+            "id": "builder.moonfire",
+            "actionId": "moonfire"
+          },
+          {
+            "id": "builder.shred",
+            "actionId": "shred"
+          }
+        ],
+        "filteredRules": [
+          {
+            "ruleId": "aoe.primal_wrath",
+            "actionId": "primalWrath",
+            "reason": "action-unavailable-in-resolved-profile"
+          }
+        ]
+      },
       "convoke": {
         "cooldownMs": 60000,
         "channel": {
@@ -3299,6 +3356,11 @@
         "count": 0,
         "byKind": {},
         "fields": []
+      },
+      "unsupportedAplSummary": {
+        "count": 0,
+        "byReason": {},
+        "rules": []
       }
     },
     {
@@ -4342,68 +4404,82 @@
         "stalkingPredator",
         "halazzisFury"
       ],
-      "aplRules": [
-        {
-          "id": "default.tigers_fury",
-          "actionId": "tigersFury"
-        },
-        {
-          "id": "default.stealth_rake",
-          "actionId": "rake"
-        },
-        {
-          "id": "cooldown.berserk",
-          "actionId": "berserk"
-        },
-        {
-          "id": "cooldown.feral_frenzy",
-          "actionId": "feralFrenzy"
-        },
-        {
-          "id": "cooldown.convoke",
-          "actionId": "convoke"
-        },
-        {
-          "id": "default.apex_bite",
-          "actionId": "ferociousBite"
-        },
-        {
-          "id": "finisher.rip",
-          "actionId": "rip"
-        },
-        {
-          "id": "finisher.bite",
-          "actionId": "ferociousBite"
-        },
-        {
-          "id": "aoe.rip",
-          "actionId": "rip"
-        },
-        {
-          "id": "aoe.rake",
-          "actionId": "rake"
-        },
-        {
-          "id": "aoe.moonfire",
-          "actionId": "moonfire"
-        },
-        {
-          "id": "aoe.swipe",
-          "actionId": "swipe"
-        },
-        {
-          "id": "builder.rake",
-          "actionId": "rake"
-        },
-        {
-          "id": "builder.moonfire",
-          "actionId": "moonfire"
-        },
-        {
-          "id": "builder.shred",
-          "actionId": "shred"
-        }
-      ],
+      "apl": {
+        "adapter": "feral-12.1-controlled-ir",
+        "schemaVersion": 1,
+        "source": "authored-default",
+        "profileRuleCount": 0,
+        "accountedProfileRuleCount": 0,
+        "rules": [
+          {
+            "id": "default.tigers_fury",
+            "actionId": "tigersFury"
+          },
+          {
+            "id": "default.stealth_rake",
+            "actionId": "rake"
+          },
+          {
+            "id": "cooldown.berserk",
+            "actionId": "berserk"
+          },
+          {
+            "id": "cooldown.feral_frenzy",
+            "actionId": "feralFrenzy"
+          },
+          {
+            "id": "cooldown.convoke",
+            "actionId": "convoke"
+          },
+          {
+            "id": "default.apex_bite",
+            "actionId": "ferociousBite"
+          },
+          {
+            "id": "finisher.rip",
+            "actionId": "rip"
+          },
+          {
+            "id": "finisher.bite",
+            "actionId": "ferociousBite"
+          },
+          {
+            "id": "aoe.rip",
+            "actionId": "rip"
+          },
+          {
+            "id": "aoe.rake",
+            "actionId": "rake"
+          },
+          {
+            "id": "aoe.moonfire",
+            "actionId": "moonfire"
+          },
+          {
+            "id": "aoe.swipe",
+            "actionId": "swipe"
+          },
+          {
+            "id": "builder.rake",
+            "actionId": "rake"
+          },
+          {
+            "id": "builder.moonfire",
+            "actionId": "moonfire"
+          },
+          {
+            "id": "builder.shred",
+            "actionId": "shred"
+          }
+        ],
+        "filteredRules": [
+          {
+            "ruleId": "aoe.primal_wrath",
+            "actionId": "primalWrath",
+            "reason": "action-unavailable-in-resolved-profile"
+          }
+        ]
+      },
       "convoke": {
         "cooldownMs": 60000,
         "channel": {
@@ -4441,6 +4517,11 @@
         "count": 0,
         "byKind": {},
         "fields": []
+      },
+      "unsupportedAplSummary": {
+        "count": 0,
+        "byReason": {},
+        "rules": []
       }
     },
     {
@@ -5477,68 +5558,82 @@
         "stalkingPredator",
         "halazzisFury"
       ],
-      "aplRules": [
-        {
-          "id": "default.tigers_fury",
-          "actionId": "tigersFury"
-        },
-        {
-          "id": "default.stealth_rake",
-          "actionId": "rake"
-        },
-        {
-          "id": "cooldown.berserk",
-          "actionId": "berserk"
-        },
-        {
-          "id": "cooldown.feral_frenzy",
-          "actionId": "feralFrenzy"
-        },
-        {
-          "id": "cooldown.convoke",
-          "actionId": "convoke"
-        },
-        {
-          "id": "default.apex_bite",
-          "actionId": "ferociousBite"
-        },
-        {
-          "id": "finisher.rip",
-          "actionId": "rip"
-        },
-        {
-          "id": "finisher.bite",
-          "actionId": "ferociousBite"
-        },
-        {
-          "id": "aoe.rip",
-          "actionId": "rip"
-        },
-        {
-          "id": "aoe.rake",
-          "actionId": "rake"
-        },
-        {
-          "id": "aoe.moonfire",
-          "actionId": "moonfire"
-        },
-        {
-          "id": "aoe.swipe",
-          "actionId": "swipe"
-        },
-        {
-          "id": "builder.rake",
-          "actionId": "rake"
-        },
-        {
-          "id": "builder.moonfire",
-          "actionId": "moonfire"
-        },
-        {
-          "id": "builder.shred",
-          "actionId": "shred"
-        }
-      ],
+      "apl": {
+        "adapter": "feral-12.1-controlled-ir",
+        "schemaVersion": 1,
+        "source": "authored-default",
+        "profileRuleCount": 0,
+        "accountedProfileRuleCount": 0,
+        "rules": [
+          {
+            "id": "default.tigers_fury",
+            "actionId": "tigersFury"
+          },
+          {
+            "id": "default.stealth_rake",
+            "actionId": "rake"
+          },
+          {
+            "id": "cooldown.berserk",
+            "actionId": "berserk"
+          },
+          {
+            "id": "cooldown.feral_frenzy",
+            "actionId": "feralFrenzy"
+          },
+          {
+            "id": "cooldown.convoke",
+            "actionId": "convoke"
+          },
+          {
+            "id": "default.apex_bite",
+            "actionId": "ferociousBite"
+          },
+          {
+            "id": "finisher.rip",
+            "actionId": "rip"
+          },
+          {
+            "id": "finisher.bite",
+            "actionId": "ferociousBite"
+          },
+          {
+            "id": "aoe.rip",
+            "actionId": "rip"
+          },
+          {
+            "id": "aoe.rake",
+            "actionId": "rake"
+          },
+          {
+            "id": "aoe.moonfire",
+            "actionId": "moonfire"
+          },
+          {
+            "id": "aoe.swipe",
+            "actionId": "swipe"
+          },
+          {
+            "id": "builder.rake",
+            "actionId": "rake"
+          },
+          {
+            "id": "builder.moonfire",
+            "actionId": "moonfire"
+          },
+          {
+            "id": "builder.shred",
+            "actionId": "shred"
+          }
+        ],
+        "filteredRules": [
+          {
+            "ruleId": "aoe.primal_wrath",
+            "actionId": "primalWrath",
+            "reason": "action-unavailable-in-resolved-profile"
+          }
+        ]
+      },
       "convoke": {
         "cooldownMs": 60000,
         "channel": {
@@ -5576,6 +5671,11 @@
         "count": 0,
         "byKind": {},
         "fields": []
+      },
+      "unsupportedAplSummary": {
+        "count": 0,
+        "byReason": {},
+        "rules": []
       }
     },
     {
@@ -8702,68 +8802,143 @@
         "alnsight",
         "algetharPuzzleMastery"
       ],
-      "aplRules": [
-        {
-          "id": "default.tigers_fury",
-          "actionId": "tigersFury"
-        },
-        {
-          "id": "default.stealth_rake",
-          "actionId": "rake"
-        },
-        {
-          "id": "cooldown.berserk",
-          "actionId": "berserk"
-        },
-        {
-          "id": "cooldown.feral_frenzy",
-          "actionId": "feralFrenzy"
-        },
-        {
-          "id": "cooldown.convoke",
-          "actionId": "convoke"
-        },
-        {
-          "id": "default.apex_bite",
-          "actionId": "ferociousBite"
-        },
-        {
-          "id": "finisher.rip",
-          "actionId": "rip"
-        },
-        {
-          "id": "finisher.bite",
-          "actionId": "ferociousBite"
-        },
-        {
-          "id": "aoe.rip",
-          "actionId": "rip"
-        },
-        {
-          "id": "aoe.rake",
-          "actionId": "rake"
-        },
-        {
-          "id": "aoe.moonfire",
-          "actionId": "moonfire"
-        },
-        {
-          "id": "aoe.swipe",
-          "actionId": "swipe"
-        },
-        {
-          "id": "builder.rake",
-          "actionId": "rake"
-        },
-        {
-          "id": "builder.moonfire",
-          "actionId": "moonfire"
-        },
-        {
-          "id": "builder.shred",
-          "actionId": "shred"
-        }
-      ],
+      "apl": {
+        "adapter": "feral-12.1-controlled-ir",
+        "schemaVersion": 1,
+        "source": "simc-profile",
+        "profileRuleCount": 70,
+        "accountedProfileRuleCount": 70,
+        "rules": [
+          {
+            "id": "default.tigers_fury",
+            "actionId": "tigersFury",
+            "profileSource": {
+              "lineNumber": 48,
+              "rawLine": "actions+=/tigers_fury,if=(cooldown.bs_inc.remains<=1|cooldown.bs_inc.remains>10|variable.holdBerserk)&(cooldown.frantic_frenzy.remains<buff.tigers_fury.duration-1.5|cooldown.frantic_frenzy.remains>22|!talent.frantic_frenzy|spell_targets=1|fight_style.dungeonroute|fight_style.dungeonslice)"
+            }
+          },
+          {
+            "id": "default.stealth_rake",
+            "actionId": "rake",
+            "profileSource": {
+              "lineNumber": 50,
+              "rawLine": "actions+=/rake,if=buff.prowl.up|buff.shadowmeld.up"
+            }
+          },
+          {
+            "id": "cooldown.berserk",
+            "actionId": "berserk",
+            "profileSource": {
+              "lineNumber": 133,
+              "rawLine": "actions.cooldown+=/berserk,if=buff.tigers_fury.up&!variable.holdBerserk"
+            }
+          },
+          {
+            "id": "cooldown.feral_frenzy",
+            "actionId": "feralFrenzy",
+            "profileSource": {
+              "lineNumber": 135,
+              "rawLine": "actions.cooldown+=/feral_frenzy,if=!talent.frantic_frenzy&combo_points<=2+(2*buff.bs_inc.up)"
+            }
+          },
+          {
+            "id": "cooldown.convoke",
+            "actionId": "convoke",
+            "profileSource": {
+              "lineNumber": 139,
+              "rawLine": "actions.cooldown+=/convoke_the_spirits,if=(buff.bs_inc.up|talent.ashamanes_guidance&(cooldown.bs_inc.remains>45|variable.holdBerserk))&buff.tigers_fury.up&(prev_gcd.1.rip|prev_gcd.1.ferocious_bite|prev_gcd.1.primal_wrath|buff.tigers_fury.remains<=1+action.convoke_the_spirits.execute_time)|fight_remains<5"
+            }
+          },
+          {
+            "id": "default.apex_bite",
+            "actionId": "ferociousBite",
+            "profileSource": {
+              "lineNumber": 55,
+              "rawLine": "actions+=/ferocious_bite,if=buff.apex_predators_craving.up"
+            }
+          },
+          {
+            "id": "finisher.rip",
+            "actionId": "rip",
+            "profileSource": {
+              "lineNumber": 142,
+              "rawLine": "actions.finisher=rip,if=combo_points>=5&refreshable&(buff.tigers_fury.up|remains<cooldown.tigers_fury.remains)"
+            }
+          },
+          {
+            "id": "finisher.bite",
+            "actionId": "ferociousBite",
+            "profileSource": {
+              "lineNumber": 144,
+              "rawLine": "actions.finisher+=/ferocious_bite,max_energy=1,if=combo_points>=5"
+            }
+          },
+          {
+            "id": "aoe.rip",
+            "actionId": "rip",
+            "profileSource": {
+              "lineNumber": 83,
+              "rawLine": "actions.aoe_finisher+=/rip,target_if=min:remains,if=combo_points>=5&!talent.primal_wrath&refreshable"
+            }
+          },
+          {
+            "id": "aoe.rake",
+            "actionId": "rake",
+            "profileSource": {
+              "lineNumber": 63,
+              "rawLine": "actions.aoe_builder=rake,target_if=refreshable,if=(talent.doubleclawed_rake&(!talent.lunar_inspiration|!talent.panthers_guile|active_dot.rake<5))|hero_tree.wildstalker&(active_dot.rake<2+!talent.panthers_guile+talent.lunar_inspiration)"
+            }
+          },
+          {
+            "id": "aoe.moonfire",
+            "actionId": "moonfire",
+            "profileSource": {
+              "lineNumber": 65,
+              "rawLine": "actions.aoe_builder+=/moonfire_cat,target_if=refreshable"
+            }
+          },
+          {
+            "id": "aoe.swipe",
+            "actionId": "swipe",
+            "profileSource": {
+              "lineNumber": 76,
+              "rawLine": "actions.aoe_builder+=/swipe_cat,if=combo_points>1|spell_targets>2|!talent.panthers_guile"
+            }
+          },
+          {
+            "id": "builder.rake",
+            "actionId": "rake",
+            "profileSource": {
+              "lineNumber": 96,
+              "rawLine": "actions.builder+=/rake,if=(buff.tigers_fury.up|remains<cooldown.tigers_fury.remains)&(refreshable&persistent_multiplier>=pmultiplier|remains<2|persistent_multiplier>pmultiplier)"
+            }
+          },
+          {
+            "id": "builder.moonfire",
+            "actionId": "moonfire",
+            "profileSource": {
+              "lineNumber": 98,
+              "rawLine": "actions.builder+=/moonfire_cat,if=(buff.tigers_fury.up|remains<cooldown.tigers_fury.remains)&(refreshable&persistent_multiplier>=pmultiplier|remains<2|persistent_multiplier>pmultiplier)"
+            }
+          },
+          {
+            "id": "builder.shred",
+            "actionId": "shred",
+            "profileSource": {
+              "lineNumber": 100,
+              "rawLine": "actions.builder+=/shred"
+            }
+          }
+        ],
+        "filteredRules": [
+          {
+            "ruleId": "aoe.primal_wrath",
+            "actionId": "primalWrath",
+            "lineNumber": 87,
+            "reason": "action-unavailable-in-resolved-profile"
+          }
+        ]
+      },
       "convoke": {
         "cooldownMs": 60000,
         "channel": {
@@ -8833,11 +9008,10 @@
         ]
       },
       "unsupportedFieldSummary": {
-        "count": 76,
+        "count": 6,
         "byKind": {
           "simulation-option": 1,
-          "consumable": 5,
-          "action-list": 70
+          "consumable": 5
         },
         "fields": [
           {
@@ -8917,916 +9091,1138 @@
             "fieldKind": "consumable",
             "reason": "消耗品字段已解析并保留，等待 ItemResolver 应用。",
             "impact": "combat-or-build-semantics"
-          },
+          }
+        ]
+      },
+      "unsupportedAplSummary": {
+        "count": 54,
+        "byReason": {
+          "action_or_command_not_supported": 27,
+          "control_flow_not_whitelisted": 21,
+          "condition_not_whitelisted": 6
+        },
+        "rules": [
           {
             "schemaVersion": 1,
-            "fieldId": "line:28:actions.precombat",
-            "key": "actions.precombat",
-            "operator": "=",
-            "value": "snapshot_stats",
-            "rawValue": "snapshot_stats",
+            "ruleId": "profile-apl:line:28:actions.precombat",
+            "sourceKind": "simc-profile-apl",
+            "list": "precombat",
+            "action": "snapshot_stats",
+            "condition": null,
+            "targetIf": null,
+            "options": {},
             "lineNumber": 28,
             "rawLine": "actions.precombat=snapshot_stats",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 28"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:30:actions.precombat",
-            "key": "actions.precombat",
-            "operator": "+=",
-            "value": "/variable,name=regrowth,op=reset",
-            "rawValue": "/variable,name=regrowth,op=reset",
+            "ruleId": "profile-apl:line:30:actions.precombat",
+            "sourceKind": "simc-profile-apl",
+            "list": "precombat",
+            "action": "variable",
+            "condition": null,
+            "targetIf": null,
+            "options": {
+              "name": "regrowth",
+              "op": "reset"
+            },
             "lineNumber": 30,
             "rawLine": "actions.precombat+=/variable,name=regrowth,op=reset",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "control_flow_not_whitelisted",
+            "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 30"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:32:actions.precombat",
-            "key": "actions.precombat",
-            "operator": "+=",
-            "value": "/variable,name=dotc_rake_threshold,op=set,value=99",
-            "rawValue": "/variable,name=dotc_rake_threshold,op=set,value=99",
+            "ruleId": "profile-apl:line:32:actions.precombat",
+            "sourceKind": "simc-profile-apl",
+            "list": "precombat",
+            "action": "variable",
+            "condition": null,
+            "targetIf": null,
+            "options": {
+              "name": "dotc_rake_threshold",
+              "op": "set",
+              "value": "99"
+            },
             "lineNumber": 32,
             "rawLine": "actions.precombat+=/variable,name=dotc_rake_threshold,op=set,value=99",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "control_flow_not_whitelisted",
+            "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 32"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:33:actions.precombat",
-            "key": "actions.precombat",
-            "operator": "+=",
-            "value": "/variable,name=dotc_rake_threshold,op=set,if=talent.wild_slashes&talent.merciless_claws,value=5",
-            "rawValue": "/variable,name=dotc_rake_threshold,op=set,if=talent.wild_slashes&talent.merciless_claws,value=5",
+            "ruleId": "profile-apl:line:33:actions.precombat",
+            "sourceKind": "simc-profile-apl",
+            "list": "precombat",
+            "action": "variable",
+            "condition": "talent.wild_slashes&talent.merciless_claws",
+            "targetIf": null,
+            "options": {
+              "name": "dotc_rake_threshold",
+              "op": "set",
+              "if": "talent.wild_slashes&talent.merciless_claws",
+              "value": "5"
+            },
             "lineNumber": 33,
             "rawLine": "actions.precombat+=/variable,name=dotc_rake_threshold,op=set,if=talent.wild_slashes&talent.merciless_claws,value=5",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "control_flow_not_whitelisted",
+            "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 33"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:34:actions.precombat",
-            "key": "actions.precombat",
-            "operator": "+=",
-            "value": "/variable,name=dotc_rake_threshold,op=set,if=talent.wild_slashes&!talent.merciless_claws,value=8",
-            "rawValue": "/variable,name=dotc_rake_threshold,op=set,if=talent.wild_slashes&!talent.merciless_claws,value=8",
+            "ruleId": "profile-apl:line:34:actions.precombat",
+            "sourceKind": "simc-profile-apl",
+            "list": "precombat",
+            "action": "variable",
+            "condition": "talent.wild_slashes&!talent.merciless_claws",
+            "targetIf": null,
+            "options": {
+              "name": "dotc_rake_threshold",
+              "op": "set",
+              "if": "talent.wild_slashes&!talent.merciless_claws",
+              "value": "8"
+            },
             "lineNumber": 34,
             "rawLine": "actions.precombat+=/variable,name=dotc_rake_threshold,op=set,if=talent.wild_slashes&!talent.merciless_claws,value=8",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "control_flow_not_whitelisted",
+            "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 34"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:36:actions.precombat",
-            "key": "actions.precombat",
-            "operator": "+=",
-            "value": "/variable,name=algethar_puzzle_box_precombat_cast,value=3,if=trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff",
-            "rawValue": "/variable,name=algethar_puzzle_box_precombat_cast,value=3,if=trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff",
+            "ruleId": "profile-apl:line:36:actions.precombat",
+            "sourceKind": "simc-profile-apl",
+            "list": "precombat",
+            "action": "variable",
+            "condition": "trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff",
+            "targetIf": null,
+            "options": {
+              "name": "algethar_puzzle_box_precombat_cast",
+              "value": "3",
+              "if": "trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff"
+            },
             "lineNumber": 36,
             "rawLine": "actions.precombat+=/variable,name=algethar_puzzle_box_precombat_cast,value=3,if=trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "control_flow_not_whitelisted",
+            "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 36"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:37:actions.precombat",
-            "key": "actions.precombat",
-            "operator": "+=",
-            "value": "/use_item,name=algethar_puzzle_box,if=trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff",
-            "rawValue": "/use_item,name=algethar_puzzle_box,if=trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff",
+            "ruleId": "profile-apl:line:37:actions.precombat",
+            "sourceKind": "simc-profile-apl",
+            "list": "precombat",
+            "action": "use_item",
+            "condition": "trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff",
+            "targetIf": null,
+            "options": {
+              "name": "algethar_puzzle_box",
+              "if": "trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff"
+            },
             "lineNumber": 37,
             "rawLine": "actions.precombat+=/use_item,name=algethar_puzzle_box,if=trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 37"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:38:actions.precombat",
-            "key": "actions.precombat",
-            "operator": "+=",
-            "value": "/cat_form,if=buff.cat_form.down",
-            "rawValue": "/cat_form,if=buff.cat_form.down",
+            "ruleId": "profile-apl:line:38:actions.precombat",
+            "sourceKind": "simc-profile-apl",
+            "list": "precombat",
+            "action": "cat_form",
+            "condition": "buff.cat_form.down",
+            "targetIf": null,
+            "options": {
+              "if": "buff.cat_form.down"
+            },
             "lineNumber": 38,
             "rawLine": "actions.precombat+=/cat_form,if=buff.cat_form.down",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 38"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:39:actions.precombat",
-            "key": "actions.precombat",
-            "operator": "+=",
-            "value": "/prowl",
-            "rawValue": "/prowl",
+            "ruleId": "profile-apl:line:39:actions.precombat",
+            "sourceKind": "simc-profile-apl",
+            "list": "precombat",
+            "action": "prowl",
+            "condition": null,
+            "targetIf": null,
+            "options": {},
             "lineNumber": 39,
             "rawLine": "actions.precombat+=/prowl",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 39"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:42:actions",
-            "key": "actions",
-            "operator": "=",
-            "value": "prowl,if=buff.bs_inc.down&!buff.prowl.up&!buff.shadowmeld.up",
-            "rawValue": "prowl,if=buff.bs_inc.down&!buff.prowl.up&!buff.shadowmeld.up",
+            "ruleId": "profile-apl:line:42:actions",
+            "sourceKind": "simc-profile-apl",
+            "list": "default",
+            "action": "prowl",
+            "condition": "buff.bs_inc.down&!buff.prowl.up&!buff.shadowmeld.up",
+            "targetIf": null,
+            "options": {
+              "if": "buff.bs_inc.down&!buff.prowl.up&!buff.shadowmeld.up"
+            },
             "lineNumber": 42,
             "rawLine": "actions=prowl,if=buff.bs_inc.down&!buff.prowl.up&!buff.shadowmeld.up",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 42"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:43:actions",
-            "key": "actions",
-            "operator": "+=",
-            "value": "/cat_form,if=!buff.cat_form.up&!talent.fluid_form",
-            "rawValue": "/cat_form,if=!buff.cat_form.up&!talent.fluid_form",
+            "ruleId": "profile-apl:line:43:actions",
+            "sourceKind": "simc-profile-apl",
+            "list": "default",
+            "action": "cat_form",
+            "condition": "!buff.cat_form.up&!talent.fluid_form",
+            "targetIf": null,
+            "options": {
+              "if": "!buff.cat_form.up&!talent.fluid_form"
+            },
             "lineNumber": 43,
             "rawLine": "actions+=/cat_form,if=!buff.cat_form.up&!talent.fluid_form",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 43"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:45:actions",
-            "key": "actions",
-            "operator": "+=",
-            "value": "/invoke_external_buff,name=power_infusion,if=buff.bs_inc.up|!talent.berserk_heart_of_the_lion",
-            "rawValue": "/invoke_external_buff,name=power_infusion,if=buff.bs_inc.up|!talent.berserk_heart_of_the_lion",
+            "ruleId": "profile-apl:line:45:actions",
+            "sourceKind": "simc-profile-apl",
+            "list": "default",
+            "action": "invoke_external_buff",
+            "condition": "buff.bs_inc.up|!talent.berserk_heart_of_the_lion",
+            "targetIf": null,
+            "options": {
+              "name": "power_infusion",
+              "if": "buff.bs_inc.up|!talent.berserk_heart_of_the_lion"
+            },
             "lineNumber": 45,
             "rawLine": "actions+=/invoke_external_buff,name=power_infusion,if=buff.bs_inc.up|!talent.berserk_heart_of_the_lion",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 45"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:46:actions",
-            "key": "actions",
-            "operator": "+=",
-            "value": "/auto_attack,if=!buff.prowl.up&!buff.shadowmeld.up",
-            "rawValue": "/auto_attack,if=!buff.prowl.up&!buff.shadowmeld.up",
+            "ruleId": "profile-apl:line:46:actions",
+            "sourceKind": "simc-profile-apl",
+            "list": "default",
+            "action": "auto_attack",
+            "condition": "!buff.prowl.up&!buff.shadowmeld.up",
+            "targetIf": null,
+            "options": {
+              "if": "!buff.prowl.up&!buff.shadowmeld.up"
+            },
             "lineNumber": 46,
             "rawLine": "actions+=/auto_attack,if=!buff.prowl.up&!buff.shadowmeld.up",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 46"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:48:actions",
-            "key": "actions",
-            "operator": "+=",
-            "value": "/tigers_fury,if=(cooldown.bs_inc.remains<=1|cooldown.bs_inc.remains>10|variable.holdBerserk)&(cooldown.frantic_frenzy.remains<buff.tigers_fury.duration-1.5|cooldown.frantic_frenzy.remains>22|!talent.frantic_frenzy|spell_targets=1|fight_style.dungeonroute|fight_style.dungeonslice)",
-            "rawValue": "/tigers_fury,if=(cooldown.bs_inc.remains<=1|cooldown.bs_inc.remains>10|variable.holdBerserk)&(cooldown.frantic_frenzy.remains<buff.tigers_fury.duration-1.5|cooldown.frantic_frenzy.remains>22|!talent.frantic_frenzy|spell_targets=1|fight_style.dungeonroute|fight_style.dungeonslice)",
-            "lineNumber": 48,
-            "rawLine": "actions+=/tigers_fury,if=(cooldown.bs_inc.remains<=1|cooldown.bs_inc.remains>10|variable.holdBerserk)&(cooldown.frantic_frenzy.remains<buff.tigers_fury.duration-1.5|cooldown.frantic_frenzy.remains>22|!talent.frantic_frenzy|spell_targets=1|fight_style.dungeonroute|fight_style.dungeonslice)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
-          },
-          {
-            "schemaVersion": 1,
-            "fieldId": "line:50:actions",
-            "key": "actions",
-            "operator": "+=",
-            "value": "/rake,if=buff.prowl.up|buff.shadowmeld.up",
-            "rawValue": "/rake,if=buff.prowl.up|buff.shadowmeld.up",
-            "lineNumber": 50,
-            "rawLine": "actions+=/rake,if=buff.prowl.up|buff.shadowmeld.up",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
-          },
-          {
-            "schemaVersion": 1,
-            "fieldId": "line:52:actions",
-            "key": "actions",
-            "operator": "+=",
-            "value": "/chomp,if=buff.chomp_enabler.up",
-            "rawValue": "/chomp,if=buff.chomp_enabler.up",
+            "ruleId": "profile-apl:line:52:actions",
+            "sourceKind": "simc-profile-apl",
+            "list": "default",
+            "action": "chomp",
+            "condition": "buff.chomp_enabler.up",
+            "targetIf": null,
+            "options": {
+              "if": "buff.chomp_enabler.up"
+            },
             "lineNumber": 52,
             "rawLine": "actions+=/chomp,if=buff.chomp_enabler.up",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 52"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:53:actions",
-            "key": "actions",
-            "operator": "+=",
-            "value": "/call_action_list,name=cooldown",
-            "rawValue": "/call_action_list,name=cooldown",
+            "ruleId": "profile-apl:line:53:actions",
+            "sourceKind": "simc-profile-apl",
+            "list": "default",
+            "action": "call_action_list",
+            "condition": null,
+            "targetIf": null,
+            "options": {
+              "name": "cooldown"
+            },
             "lineNumber": 53,
             "rawLine": "actions+=/call_action_list,name=cooldown",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "control_flow_not_whitelisted",
+            "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 53"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:55:actions",
-            "key": "actions",
-            "operator": "+=",
-            "value": "/ferocious_bite,if=buff.apex_predators_craving.up",
-            "rawValue": "/ferocious_bite,if=buff.apex_predators_craving.up",
-            "lineNumber": 55,
-            "rawLine": "actions+=/ferocious_bite,if=buff.apex_predators_craving.up",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
-          },
-          {
-            "schemaVersion": 1,
-            "fieldId": "line:56:actions",
-            "key": "actions",
-            "operator": "+=",
-            "value": "/call_action_list,name=finisher,if=spell_targets=1",
-            "rawValue": "/call_action_list,name=finisher,if=spell_targets=1",
+            "ruleId": "profile-apl:line:56:actions",
+            "sourceKind": "simc-profile-apl",
+            "list": "default",
+            "action": "call_action_list",
+            "condition": "spell_targets=1",
+            "targetIf": null,
+            "options": {
+              "name": "finisher",
+              "if": "spell_targets=1"
+            },
             "lineNumber": 56,
             "rawLine": "actions+=/call_action_list,name=finisher,if=spell_targets=1",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "control_flow_not_whitelisted",
+            "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 56"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:57:actions",
-            "key": "actions",
-            "operator": "+=",
-            "value": "/call_action_list,name=aoe_finisher,if=spell_targets>=2",
-            "rawValue": "/call_action_list,name=aoe_finisher,if=spell_targets>=2",
+            "ruleId": "profile-apl:line:57:actions",
+            "sourceKind": "simc-profile-apl",
+            "list": "default",
+            "action": "call_action_list",
+            "condition": "spell_targets>=2",
+            "targetIf": null,
+            "options": {
+              "name": "aoe_finisher",
+              "if": "spell_targets>=2"
+            },
             "lineNumber": 57,
             "rawLine": "actions+=/call_action_list,name=aoe_finisher,if=spell_targets>=2",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "control_flow_not_whitelisted",
+            "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 57"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:58:actions",
-            "key": "actions",
-            "operator": "+=",
-            "value": "/call_action_list,name=builder,if=spell_targets=1&combo_points<=4",
-            "rawValue": "/call_action_list,name=builder,if=spell_targets=1&combo_points<=4",
+            "ruleId": "profile-apl:line:58:actions",
+            "sourceKind": "simc-profile-apl",
+            "list": "default",
+            "action": "call_action_list",
+            "condition": "spell_targets=1&combo_points<=4",
+            "targetIf": null,
+            "options": {
+              "name": "builder",
+              "if": "spell_targets=1&combo_points<=4"
+            },
             "lineNumber": 58,
             "rawLine": "actions+=/call_action_list,name=builder,if=spell_targets=1&combo_points<=4",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "control_flow_not_whitelisted",
+            "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 58"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:59:actions",
-            "key": "actions",
-            "operator": "+=",
-            "value": "/call_action_list,name=aoe_builder,if=spell_targets>1&combo_points<=4",
-            "rawValue": "/call_action_list,name=aoe_builder,if=spell_targets>1&combo_points<=4",
+            "ruleId": "profile-apl:line:59:actions",
+            "sourceKind": "simc-profile-apl",
+            "list": "default",
+            "action": "call_action_list",
+            "condition": "spell_targets>1&combo_points<=4",
+            "targetIf": null,
+            "options": {
+              "name": "aoe_builder",
+              "if": "spell_targets>1&combo_points<=4"
+            },
             "lineNumber": 59,
             "rawLine": "actions+=/call_action_list,name=aoe_builder,if=spell_targets>1&combo_points<=4",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "control_flow_not_whitelisted",
+            "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 59"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:60:actions",
-            "key": "actions",
-            "operator": "+=",
-            "value": "/regrowth,if=buff.predatory_swiftness.up&variable.regrowth",
-            "rawValue": "/regrowth,if=buff.predatory_swiftness.up&variable.regrowth",
+            "ruleId": "profile-apl:line:60:actions",
+            "sourceKind": "simc-profile-apl",
+            "list": "default",
+            "action": "regrowth",
+            "condition": "buff.predatory_swiftness.up&variable.regrowth",
+            "targetIf": null,
+            "options": {
+              "if": "buff.predatory_swiftness.up&variable.regrowth"
+            },
             "lineNumber": 60,
             "rawLine": "actions+=/regrowth,if=buff.predatory_swiftness.up&variable.regrowth",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 60"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:63:actions.aoe_builder",
-            "key": "actions.aoe_builder",
-            "operator": "=",
-            "value": "rake,target_if=refreshable,if=(talent.doubleclawed_rake&(!talent.lunar_inspiration|!talent.panthers_guile|active_dot.rake<5))|hero_tree.wildstalker&(active_dot.rake<2+!talent.panthers_guile+talent.lunar_inspiration)",
-            "rawValue": "rake,target_if=refreshable,if=(talent.doubleclawed_rake&(!talent.lunar_inspiration|!talent.panthers_guile|active_dot.rake<5))|hero_tree.wildstalker&(active_dot.rake<2+!talent.panthers_guile+talent.lunar_inspiration)",
-            "lineNumber": 63,
-            "rawLine": "actions.aoe_builder=rake,target_if=refreshable,if=(talent.doubleclawed_rake&(!talent.lunar_inspiration|!talent.panthers_guile|active_dot.rake<5))|hero_tree.wildstalker&(active_dot.rake<2+!talent.panthers_guile+talent.lunar_inspiration)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
-          },
-          {
-            "schemaVersion": 1,
-            "fieldId": "line:65:actions.aoe_builder",
-            "key": "actions.aoe_builder",
-            "operator": "+=",
-            "value": "/moonfire_cat,target_if=refreshable",
-            "rawValue": "/moonfire_cat,target_if=refreshable",
-            "lineNumber": 65,
-            "rawLine": "actions.aoe_builder+=/moonfire_cat,target_if=refreshable",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
-          },
-          {
-            "schemaVersion": 1,
-            "fieldId": "line:67:actions.aoe_builder",
-            "key": "actions.aoe_builder",
-            "operator": "+=",
-            "value": "/swipe_cat,if=hero_tree.druid_of_the_claw&buff.bs_inc.up|buff.clearcasting.react&(hero_tree.druid_of_the_claw|spell_targets<7)",
-            "rawValue": "/swipe_cat,if=hero_tree.druid_of_the_claw&buff.bs_inc.up|buff.clearcasting.react&(hero_tree.druid_of_the_claw|spell_targets<7)",
+            "ruleId": "profile-apl:line:67:actions.aoe_builder",
+            "sourceKind": "simc-profile-apl",
+            "list": "aoe_builder",
+            "action": "swipe_cat",
+            "condition": "hero_tree.druid_of_the_claw&buff.bs_inc.up|buff.clearcasting.react&(hero_tree.druid_of_the_claw|spell_targets<7)",
+            "targetIf": null,
+            "options": {
+              "if": "hero_tree.druid_of_the_claw&buff.bs_inc.up|buff.clearcasting.react&(hero_tree.druid_of_the_claw|spell_targets<7)"
+            },
             "lineNumber": 67,
             "rawLine": "actions.aoe_builder+=/swipe_cat,if=hero_tree.druid_of_the_claw&buff.bs_inc.up|buff.clearcasting.react&(hero_tree.druid_of_the_claw|spell_targets<7)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "condition_not_whitelisted",
+            "reason": "动作已知，但该条件或 target_if 尚未翻译为经过测试的白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 67"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:69:actions.aoe_builder",
-            "key": "actions.aoe_builder",
-            "operator": "+=",
-            "value": "/swipe_cat,if=buff.sudden_ambush.up&spell_targets.swipe_cat>=5+(2*hero_tree.wildstalker)",
-            "rawValue": "/swipe_cat,if=buff.sudden_ambush.up&spell_targets.swipe_cat>=5+(2*hero_tree.wildstalker)",
+            "ruleId": "profile-apl:line:69:actions.aoe_builder",
+            "sourceKind": "simc-profile-apl",
+            "list": "aoe_builder",
+            "action": "swipe_cat",
+            "condition": "buff.sudden_ambush.up&spell_targets.swipe_cat>=5+(2*hero_tree.wildstalker)",
+            "targetIf": null,
+            "options": {
+              "if": "buff.sudden_ambush.up&spell_targets.swipe_cat>=5+(2*hero_tree.wildstalker)"
+            },
             "lineNumber": 69,
             "rawLine": "actions.aoe_builder+=/swipe_cat,if=buff.sudden_ambush.up&spell_targets.swipe_cat>=5+(2*hero_tree.wildstalker)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "condition_not_whitelisted",
+            "reason": "动作已知，但该条件或 target_if 尚未翻译为经过测试的白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 69"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:71:actions.aoe_builder",
-            "key": "actions.aoe_builder",
-            "operator": "+=",
-            "value": "/rake,target_if=refreshable,if=hero_tree.wildstalker|spell_targets.swipe_cat<=variable.dotc_rake_threshold",
-            "rawValue": "/rake,target_if=refreshable,if=hero_tree.wildstalker|spell_targets.swipe_cat<=variable.dotc_rake_threshold",
+            "ruleId": "profile-apl:line:71:actions.aoe_builder",
+            "sourceKind": "simc-profile-apl",
+            "list": "aoe_builder",
+            "action": "rake",
+            "condition": "hero_tree.wildstalker|spell_targets.swipe_cat<=variable.dotc_rake_threshold",
+            "targetIf": "refreshable",
+            "options": {
+              "target_if": "refreshable",
+              "if": "hero_tree.wildstalker|spell_targets.swipe_cat<=variable.dotc_rake_threshold"
+            },
             "lineNumber": 71,
             "rawLine": "actions.aoe_builder+=/rake,target_if=refreshable,if=hero_tree.wildstalker|spell_targets.swipe_cat<=variable.dotc_rake_threshold",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "condition_not_whitelisted",
+            "reason": "动作已知，但该条件或 target_if 尚未翻译为经过测试的白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 71"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:73:actions.aoe_builder",
-            "key": "actions.aoe_builder",
-            "operator": "+=",
-            "value": "/rake,target_if=min:pmultiplier,if=persistent_multiplier>pmultiplier&spell_targets=2",
-            "rawValue": "/rake,target_if=min:pmultiplier,if=persistent_multiplier>pmultiplier&spell_targets=2",
+            "ruleId": "profile-apl:line:73:actions.aoe_builder",
+            "sourceKind": "simc-profile-apl",
+            "list": "aoe_builder",
+            "action": "rake",
+            "condition": "persistent_multiplier>pmultiplier&spell_targets=2",
+            "targetIf": "min:pmultiplier",
+            "options": {
+              "target_if": "min:pmultiplier",
+              "if": "persistent_multiplier>pmultiplier&spell_targets=2"
+            },
             "lineNumber": 73,
             "rawLine": "actions.aoe_builder+=/rake,target_if=min:pmultiplier,if=persistent_multiplier>pmultiplier&spell_targets=2",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "condition_not_whitelisted",
+            "reason": "动作已知，但该条件或 target_if 尚未翻译为经过测试的白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 73"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:75:actions.aoe_builder",
-            "key": "actions.aoe_builder",
-            "operator": "+=",
-            "value": "/shred,if=combo_points<=1&spell_targets=2&talent.panthers_guile",
-            "rawValue": "/shred,if=combo_points<=1&spell_targets=2&talent.panthers_guile",
+            "ruleId": "profile-apl:line:75:actions.aoe_builder",
+            "sourceKind": "simc-profile-apl",
+            "list": "aoe_builder",
+            "action": "shred",
+            "condition": "combo_points<=1&spell_targets=2&talent.panthers_guile",
+            "targetIf": null,
+            "options": {
+              "if": "combo_points<=1&spell_targets=2&talent.panthers_guile"
+            },
             "lineNumber": 75,
             "rawLine": "actions.aoe_builder+=/shred,if=combo_points<=1&spell_targets=2&talent.panthers_guile",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 75"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:76:actions.aoe_builder",
-            "key": "actions.aoe_builder",
-            "operator": "+=",
-            "value": "/swipe_cat,if=combo_points>1|spell_targets>2|!talent.panthers_guile",
-            "rawValue": "/swipe_cat,if=combo_points>1|spell_targets>2|!talent.panthers_guile",
-            "lineNumber": 76,
-            "rawLine": "actions.aoe_builder+=/swipe_cat,if=combo_points>1|spell_targets>2|!talent.panthers_guile",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
-          },
-          {
-            "schemaVersion": 1,
-            "fieldId": "line:79:actions.aoe_finisher",
-            "key": "actions.aoe_finisher",
-            "operator": "=",
-            "value": "primal_wrath,target_if=min:remains,if=combo_points>=5&spell_targets.primal_wrath>1&(dot.primal_wrath.remains<6.5&!buff.bs_inc.up|dot.primal_wrath.refreshable)",
-            "rawValue": "primal_wrath,target_if=min:remains,if=combo_points>=5&spell_targets.primal_wrath>1&(dot.primal_wrath.remains<6.5&!buff.bs_inc.up|dot.primal_wrath.refreshable)",
+            "ruleId": "profile-apl:line:79:actions.aoe_finisher",
+            "sourceKind": "simc-profile-apl",
+            "list": "aoe_finisher",
+            "action": "primal_wrath",
+            "condition": "combo_points>=5&spell_targets.primal_wrath>1&(dot.primal_wrath.remains<6.5&!buff.bs_inc.up|dot.primal_wrath.refreshable)",
+            "targetIf": "min:remains",
+            "options": {
+              "target_if": "min:remains",
+              "if": "combo_points>=5&spell_targets.primal_wrath>1&(dot.primal_wrath.remains<6.5&!buff.bs_inc.up|dot.primal_wrath.refreshable)"
+            },
             "lineNumber": 79,
             "rawLine": "actions.aoe_finisher=primal_wrath,target_if=min:remains,if=combo_points>=5&spell_targets.primal_wrath>1&(dot.primal_wrath.remains<6.5&!buff.bs_inc.up|dot.primal_wrath.refreshable)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "condition_not_whitelisted",
+            "reason": "动作已知，但该条件或 target_if 尚未翻译为经过测试的白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 79"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:81:actions.aoe_finisher",
-            "key": "actions.aoe_finisher",
-            "operator": "+=",
-            "value": "/ferocious_bite,if=buff.ravage.up&combo_points>=5&!talent.primal_wrath&spell_targets>=2+(3*!talent.rampant_ferocity)",
-            "rawValue": "/ferocious_bite,if=buff.ravage.up&combo_points>=5&!talent.primal_wrath&spell_targets>=2+(3*!talent.rampant_ferocity)",
+            "ruleId": "profile-apl:line:81:actions.aoe_finisher",
+            "sourceKind": "simc-profile-apl",
+            "list": "aoe_finisher",
+            "action": "ferocious_bite",
+            "condition": "buff.ravage.up&combo_points>=5&!talent.primal_wrath&spell_targets>=2+(3*!talent.rampant_ferocity)",
+            "targetIf": null,
+            "options": {
+              "if": "buff.ravage.up&combo_points>=5&!talent.primal_wrath&spell_targets>=2+(3*!talent.rampant_ferocity)"
+            },
             "lineNumber": 81,
             "rawLine": "actions.aoe_finisher+=/ferocious_bite,if=buff.ravage.up&combo_points>=5&!talent.primal_wrath&spell_targets>=2+(3*!talent.rampant_ferocity)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 81"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:83:actions.aoe_finisher",
-            "key": "actions.aoe_finisher",
-            "operator": "+=",
-            "value": "/rip,target_if=min:remains,if=combo_points>=5&!talent.primal_wrath&refreshable",
-            "rawValue": "/rip,target_if=min:remains,if=combo_points>=5&!talent.primal_wrath&refreshable",
-            "lineNumber": 83,
-            "rawLine": "actions.aoe_finisher+=/rip,target_if=min:remains,if=combo_points>=5&!talent.primal_wrath&refreshable",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
-          },
-          {
-            "schemaVersion": 1,
-            "fieldId": "line:85:actions.aoe_finisher",
-            "key": "actions.aoe_finisher",
-            "operator": "+=",
-            "value": "/ferocious_bite,target_if=min:dot.rip.remains,if=combo_points>=5&(talent.rampant_ferocity|buff.ravage.up&spell_targets<8|dot.bloodseeker_vines.ticking&spell_targets<5)",
-            "rawValue": "/ferocious_bite,target_if=min:dot.rip.remains,if=combo_points>=5&(talent.rampant_ferocity|buff.ravage.up&spell_targets<8|dot.bloodseeker_vines.ticking&spell_targets<5)",
+            "ruleId": "profile-apl:line:85:actions.aoe_finisher",
+            "sourceKind": "simc-profile-apl",
+            "list": "aoe_finisher",
+            "action": "ferocious_bite",
+            "condition": "combo_points>=5&(talent.rampant_ferocity|buff.ravage.up&spell_targets<8|dot.bloodseeker_vines.ticking&spell_targets<5)",
+            "targetIf": "min:dot.rip.remains",
+            "options": {
+              "target_if": "min:dot.rip.remains",
+              "if": "combo_points>=5&(talent.rampant_ferocity|buff.ravage.up&spell_targets<8|dot.bloodseeker_vines.ticking&spell_targets<5)"
+            },
             "lineNumber": 85,
             "rawLine": "actions.aoe_finisher+=/ferocious_bite,target_if=min:dot.rip.remains,if=combo_points>=5&(talent.rampant_ferocity|buff.ravage.up&spell_targets<8|dot.bloodseeker_vines.ticking&spell_targets<5)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 85"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:87:actions.aoe_finisher",
-            "key": "actions.aoe_finisher",
-            "operator": "+=",
-            "value": "/primal_wrath,if=combo_points>=5",
-            "rawValue": "/primal_wrath,if=combo_points>=5",
-            "lineNumber": 87,
-            "rawLine": "actions.aoe_finisher+=/primal_wrath,if=combo_points>=5",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
-          },
-          {
-            "schemaVersion": 1,
-            "fieldId": "line:89:actions.aoe_finisher",
-            "key": "actions.aoe_finisher",
-            "operator": "+=",
-            "value": "/ferocious_bite,target_if=min:dot.rip.remains,if=combo_points>=5",
-            "rawValue": "/ferocious_bite,target_if=min:dot.rip.remains,if=combo_points>=5",
+            "ruleId": "profile-apl:line:89:actions.aoe_finisher",
+            "sourceKind": "simc-profile-apl",
+            "list": "aoe_finisher",
+            "action": "ferocious_bite",
+            "condition": "combo_points>=5",
+            "targetIf": "min:dot.rip.remains",
+            "options": {
+              "target_if": "min:dot.rip.remains",
+              "if": "combo_points>=5"
+            },
             "lineNumber": 89,
             "rawLine": "actions.aoe_finisher+=/ferocious_bite,target_if=min:dot.rip.remains,if=combo_points>=5",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 89"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:91:actions.builder",
-            "key": "actions.builder",
-            "operator": "=",
-            "value": "prowl,if=!buff.shadowmeld.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)",
-            "rawValue": "prowl,if=!buff.shadowmeld.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)",
+            "ruleId": "profile-apl:line:91:actions.builder",
+            "sourceKind": "simc-profile-apl",
+            "list": "builder",
+            "action": "prowl",
+            "condition": "!buff.shadowmeld.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)",
+            "targetIf": null,
+            "options": {
+              "if": "!buff.shadowmeld.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)"
+            },
             "lineNumber": 91,
             "rawLine": "actions.builder=prowl,if=!buff.shadowmeld.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 91"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:92:actions.builder",
-            "key": "actions.builder",
-            "operator": "+=",
-            "value": "/shadowmeld,if=!buff.prowl.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)",
-            "rawValue": "/shadowmeld,if=!buff.prowl.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)",
+            "ruleId": "profile-apl:line:92:actions.builder",
+            "sourceKind": "simc-profile-apl",
+            "list": "builder",
+            "action": "shadowmeld",
+            "condition": "!buff.prowl.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)",
+            "targetIf": null,
+            "options": {
+              "if": "!buff.prowl.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)"
+            },
             "lineNumber": 92,
             "rawLine": "actions.builder+=/shadowmeld,if=!buff.prowl.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 92"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:94:actions.builder",
-            "key": "actions.builder",
-            "operator": "+=",
-            "value": "/shred,if=buff.sudden_ambush.up&hero_tree.druid_of_the_claw",
-            "rawValue": "/shred,if=buff.sudden_ambush.up&hero_tree.druid_of_the_claw",
+            "ruleId": "profile-apl:line:94:actions.builder",
+            "sourceKind": "simc-profile-apl",
+            "list": "builder",
+            "action": "shred",
+            "condition": "buff.sudden_ambush.up&hero_tree.druid_of_the_claw",
+            "targetIf": null,
+            "options": {
+              "if": "buff.sudden_ambush.up&hero_tree.druid_of_the_claw"
+            },
             "lineNumber": 94,
             "rawLine": "actions.builder+=/shred,if=buff.sudden_ambush.up&hero_tree.druid_of_the_claw",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "condition_not_whitelisted",
+            "reason": "动作已知，但该条件或 target_if 尚未翻译为经过测试的白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 94"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:96:actions.builder",
-            "key": "actions.builder",
-            "operator": "+=",
-            "value": "/rake,if=(buff.tigers_fury.up|remains<cooldown.tigers_fury.remains)&(refreshable&persistent_multiplier>=pmultiplier|remains<2|persistent_multiplier>pmultiplier)",
-            "rawValue": "/rake,if=(buff.tigers_fury.up|remains<cooldown.tigers_fury.remains)&(refreshable&persistent_multiplier>=pmultiplier|remains<2|persistent_multiplier>pmultiplier)",
-            "lineNumber": 96,
-            "rawLine": "actions.builder+=/rake,if=(buff.tigers_fury.up|remains<cooldown.tigers_fury.remains)&(refreshable&persistent_multiplier>=pmultiplier|remains<2|persistent_multiplier>pmultiplier)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
-          },
-          {
-            "schemaVersion": 1,
-            "fieldId": "line:98:actions.builder",
-            "key": "actions.builder",
-            "operator": "+=",
-            "value": "/moonfire_cat,if=(buff.tigers_fury.up|remains<cooldown.tigers_fury.remains)&(refreshable&persistent_multiplier>=pmultiplier|remains<2|persistent_multiplier>pmultiplier)",
-            "rawValue": "/moonfire_cat,if=(buff.tigers_fury.up|remains<cooldown.tigers_fury.remains)&(refreshable&persistent_multiplier>=pmultiplier|remains<2|persistent_multiplier>pmultiplier)",
-            "lineNumber": 98,
-            "rawLine": "actions.builder+=/moonfire_cat,if=(buff.tigers_fury.up|remains<cooldown.tigers_fury.remains)&(refreshable&persistent_multiplier>=pmultiplier|remains<2|persistent_multiplier>pmultiplier)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
-          },
-          {
-            "schemaVersion": 1,
-            "fieldId": "line:100:actions.builder",
-            "key": "actions.builder",
-            "operator": "+=",
-            "value": "/shred",
-            "rawValue": "/shred",
-            "lineNumber": 100,
-            "rawLine": "actions.builder+=/shred",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
-          },
-          {
-            "schemaVersion": 1,
-            "fieldId": "line:103:actions.cd_variable",
-            "key": "actions.cd_variable",
-            "operator": "=",
-            "value": "variable,name=convokeCountRemaining,value=floor(cooldown.convoke_the_spirits.charges_fractional+fight_remains%cooldown.convoke_the_spirits.duration-0.05)",
-            "rawValue": "variable,name=convokeCountRemaining,value=floor(cooldown.convoke_the_spirits.charges_fractional+fight_remains%cooldown.convoke_the_spirits.duration-0.05)",
+            "ruleId": "profile-apl:line:103:actions.cd_variable",
+            "sourceKind": "simc-profile-apl",
+            "list": "cd_variable",
+            "action": "variable",
+            "condition": null,
+            "targetIf": null,
+            "options": {
+              "name": "convokeCountRemaining",
+              "value": "floor(cooldown.convoke_the_spirits.charges_fractional+fight_remains%cooldown.convoke_the_spirits.duration-0.05)"
+            },
             "lineNumber": 103,
             "rawLine": "actions.cd_variable=variable,name=convokeCountRemaining,value=floor(cooldown.convoke_the_spirits.charges_fractional+fight_remains%cooldown.convoke_the_spirits.duration-0.05)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "control_flow_not_whitelisted",
+            "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 103"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:104:actions.cd_variable",
-            "key": "actions.cd_variable",
-            "operator": "+=",
-            "value": "/variable,name=zerkCountRemaining,value=floor(cooldown.bs_inc.charges_fractional+fight_remains%cooldown.bs_inc.duration-0.05)",
-            "rawValue": "/variable,name=zerkCountRemaining,value=floor(cooldown.bs_inc.charges_fractional+fight_remains%cooldown.bs_inc.duration-0.05)",
+            "ruleId": "profile-apl:line:104:actions.cd_variable",
+            "sourceKind": "simc-profile-apl",
+            "list": "cd_variable",
+            "action": "variable",
+            "condition": null,
+            "targetIf": null,
+            "options": {
+              "name": "zerkCountRemaining",
+              "value": "floor(cooldown.bs_inc.charges_fractional+fight_remains%cooldown.bs_inc.duration-0.05)"
+            },
             "lineNumber": 104,
             "rawLine": "actions.cd_variable+=/variable,name=zerkCountRemaining,value=floor(cooldown.bs_inc.charges_fractional+fight_remains%cooldown.bs_inc.duration-0.05)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "control_flow_not_whitelisted",
+            "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 104"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:105:actions.cd_variable",
-            "key": "actions.cd_variable",
-            "operator": "+=",
-            "value": "/variable,name=potCountRemaining,value=floor(cooldown.potion.charges_fractional+fight_remains%cooldown.potion.duration-0.06)",
-            "rawValue": "/variable,name=potCountRemaining,value=floor(cooldown.potion.charges_fractional+fight_remains%cooldown.potion.duration-0.06)",
+            "ruleId": "profile-apl:line:105:actions.cd_variable",
+            "sourceKind": "simc-profile-apl",
+            "list": "cd_variable",
+            "action": "variable",
+            "condition": null,
+            "targetIf": null,
+            "options": {
+              "name": "potCountRemaining",
+              "value": "floor(cooldown.potion.charges_fractional+fight_remains%cooldown.potion.duration-0.06)"
+            },
             "lineNumber": 105,
             "rawLine": "actions.cd_variable+=/variable,name=potCountRemaining,value=floor(cooldown.potion.charges_fractional+fight_remains%cooldown.potion.duration-0.06)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "control_flow_not_whitelisted",
+            "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 105"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:106:actions.cd_variable",
-            "key": "actions.cd_variable",
-            "operator": "+=",
-            "value": "/variable,name=slot1CountRemaining,value=floor(trinket.1.cooldown.charges_fractional+fight_remains%trinket.1.cooldown.duration-0.05)",
-            "rawValue": "/variable,name=slot1CountRemaining,value=floor(trinket.1.cooldown.charges_fractional+fight_remains%trinket.1.cooldown.duration-0.05)",
+            "ruleId": "profile-apl:line:106:actions.cd_variable",
+            "sourceKind": "simc-profile-apl",
+            "list": "cd_variable",
+            "action": "variable",
+            "condition": null,
+            "targetIf": null,
+            "options": {
+              "name": "slot1CountRemaining",
+              "value": "floor(trinket.1.cooldown.charges_fractional+fight_remains%trinket.1.cooldown.duration-0.05)"
+            },
             "lineNumber": 106,
             "rawLine": "actions.cd_variable+=/variable,name=slot1CountRemaining,value=floor(trinket.1.cooldown.charges_fractional+fight_remains%trinket.1.cooldown.duration-0.05)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "control_flow_not_whitelisted",
+            "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 106"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:107:actions.cd_variable",
-            "key": "actions.cd_variable",
-            "operator": "+=",
-            "value": "/variable,name=slot2CountRemaining,value=floor(trinket.2.cooldown.charges_fractional+fight_remains%trinket.2.cooldown.duration-0.05)",
-            "rawValue": "/variable,name=slot2CountRemaining,value=floor(trinket.2.cooldown.charges_fractional+fight_remains%trinket.2.cooldown.duration-0.05)",
+            "ruleId": "profile-apl:line:107:actions.cd_variable",
+            "sourceKind": "simc-profile-apl",
+            "list": "cd_variable",
+            "action": "variable",
+            "condition": null,
+            "targetIf": null,
+            "options": {
+              "name": "slot2CountRemaining",
+              "value": "floor(trinket.2.cooldown.charges_fractional+fight_remains%trinket.2.cooldown.duration-0.05)"
+            },
             "lineNumber": 107,
             "rawLine": "actions.cd_variable+=/variable,name=slot2CountRemaining,value=floor(trinket.2.cooldown.charges_fractional+fight_remains%trinket.2.cooldown.duration-0.05)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "control_flow_not_whitelisted",
+            "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 107"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:109:actions.cd_variable",
-            "key": "actions.cd_variable",
-            "operator": "+=",
-            "value": "/variable,name=holdBerserk,value=variable.zerkCountRemaining=1&variable.potCountRemaining=1&cooldown.potion.remains",
-            "rawValue": "/variable,name=holdBerserk,value=variable.zerkCountRemaining=1&variable.potCountRemaining=1&cooldown.potion.remains",
+            "ruleId": "profile-apl:line:109:actions.cd_variable",
+            "sourceKind": "simc-profile-apl",
+            "list": "cd_variable",
+            "action": "variable",
+            "condition": null,
+            "targetIf": null,
+            "options": {
+              "name": "holdBerserk",
+              "value": "variable.zerkCountRemaining=1&variable.potCountRemaining=1&cooldown.potion.remains"
+            },
             "lineNumber": 109,
             "rawLine": "actions.cd_variable+=/variable,name=holdBerserk,value=variable.zerkCountRemaining=1&variable.potCountRemaining=1&cooldown.potion.remains",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "control_flow_not_whitelisted",
+            "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 109"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:111:actions.cd_variable",
-            "key": "actions.cd_variable",
-            "operator": "+=",
-            "value": "/variable,name=holdPot,value=variable.potCountRemaining=floor((fight_remains-cooldown.bs_inc.remains-10)%cooldown.potion.duration+(fight_remains>cooldown.bs_inc.remains))",
-            "rawValue": "/variable,name=holdPot,value=variable.potCountRemaining=floor((fight_remains-cooldown.bs_inc.remains-10)%cooldown.potion.duration+(fight_remains>cooldown.bs_inc.remains))",
+            "ruleId": "profile-apl:line:111:actions.cd_variable",
+            "sourceKind": "simc-profile-apl",
+            "list": "cd_variable",
+            "action": "variable",
+            "condition": null,
+            "targetIf": null,
+            "options": {
+              "name": "holdPot",
+              "value": "variable.potCountRemaining=floor((fight_remains-cooldown.bs_inc.remains-10)%cooldown.potion.duration+(fight_remains>cooldown.bs_inc.remains))"
+            },
             "lineNumber": 111,
             "rawLine": "actions.cd_variable+=/variable,name=holdPot,value=variable.potCountRemaining=floor((fight_remains-cooldown.bs_inc.remains-10)%cooldown.potion.duration+(fight_remains>cooldown.bs_inc.remains))",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "control_flow_not_whitelisted",
+            "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 111"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:113:actions.cd_variable",
-            "key": "actions.cd_variable",
-            "operator": "+=",
-            "value": "/variable,name=highestCDremaining,op=setif,condition=talent.convoke_the_spirits,value=cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains<?cooldown.potion.remains,value_else=cooldown.bs_inc.remains<?cooldown.potion.remains",
-            "rawValue": "/variable,name=highestCDremaining,op=setif,condition=talent.convoke_the_spirits,value=cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains<?cooldown.potion.remains,value_else=cooldown.bs_inc.remains<?cooldown.potion.remains",
+            "ruleId": "profile-apl:line:113:actions.cd_variable",
+            "sourceKind": "simc-profile-apl",
+            "list": "cd_variable",
+            "action": "variable",
+            "condition": null,
+            "targetIf": null,
+            "options": {
+              "name": "highestCDremaining",
+              "op": "setif",
+              "condition": "talent.convoke_the_spirits",
+              "value": "cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains<?cooldown.potion.remains",
+              "value_else": "cooldown.bs_inc.remains<?cooldown.potion.remains"
+            },
             "lineNumber": 113,
             "rawLine": "actions.cd_variable+=/variable,name=highestCDremaining,op=setif,condition=talent.convoke_the_spirits,value=cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains<?cooldown.potion.remains,value_else=cooldown.bs_inc.remains<?cooldown.potion.remains",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "control_flow_not_whitelisted",
+            "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 113"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:114:actions.cd_variable",
-            "key": "actions.cd_variable",
-            "operator": "+=",
-            "value": "/variable,name=lowestCDremaining,op=setif,condition=talent.convoke_the_spirits,value=cooldown.convoke_the_spirits.remains>?cooldown.bs_inc.remains>?cooldown.potion.remains,value_else=cooldown.bs_inc.remains>?cooldown.potion.remains",
-            "rawValue": "/variable,name=lowestCDremaining,op=setif,condition=talent.convoke_the_spirits,value=cooldown.convoke_the_spirits.remains>?cooldown.bs_inc.remains>?cooldown.potion.remains,value_else=cooldown.bs_inc.remains>?cooldown.potion.remains",
+            "ruleId": "profile-apl:line:114:actions.cd_variable",
+            "sourceKind": "simc-profile-apl",
+            "list": "cd_variable",
+            "action": "variable",
+            "condition": null,
+            "targetIf": null,
+            "options": {
+              "name": "lowestCDremaining",
+              "op": "setif",
+              "condition": "talent.convoke_the_spirits",
+              "value": "cooldown.convoke_the_spirits.remains>?cooldown.bs_inc.remains>?cooldown.potion.remains",
+              "value_else": "cooldown.bs_inc.remains>?cooldown.potion.remains"
+            },
             "lineNumber": 114,
             "rawLine": "actions.cd_variable+=/variable,name=lowestCDremaining,op=setif,condition=talent.convoke_the_spirits,value=cooldown.convoke_the_spirits.remains>?cooldown.bs_inc.remains>?cooldown.potion.remains,value_else=cooldown.bs_inc.remains>?cooldown.potion.remains",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "control_flow_not_whitelisted",
+            "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 114"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:115:actions.cd_variable",
-            "key": "actions.cd_variable",
-            "operator": "+=",
-            "value": "/variable,name=secondLowestCDremaining,op=setif,condition=cooldown.convoke_the_spirits.remains>cooldown.bs_inc.remains,value=cooldown.convoke_the_spirits.remains>?cooldown.potion.remains,value_else=cooldown.bs_inc.remains>?cooldown.potion.remains",
-            "rawValue": "/variable,name=secondLowestCDremaining,op=setif,condition=cooldown.convoke_the_spirits.remains>cooldown.bs_inc.remains,value=cooldown.convoke_the_spirits.remains>?cooldown.potion.remains,value_else=cooldown.bs_inc.remains>?cooldown.potion.remains",
+            "ruleId": "profile-apl:line:115:actions.cd_variable",
+            "sourceKind": "simc-profile-apl",
+            "list": "cd_variable",
+            "action": "variable",
+            "condition": null,
+            "targetIf": null,
+            "options": {
+              "name": "secondLowestCDremaining",
+              "op": "setif",
+              "condition": "cooldown.convoke_the_spirits.remains>cooldown.bs_inc.remains",
+              "value": "cooldown.convoke_the_spirits.remains>?cooldown.potion.remains",
+              "value_else": "cooldown.bs_inc.remains>?cooldown.potion.remains"
+            },
             "lineNumber": 115,
             "rawLine": "actions.cd_variable+=/variable,name=secondLowestCDremaining,op=setif,condition=cooldown.convoke_the_spirits.remains>cooldown.bs_inc.remains,value=cooldown.convoke_the_spirits.remains>?cooldown.potion.remains,value_else=cooldown.bs_inc.remains>?cooldown.potion.remains",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "control_flow_not_whitelisted",
+            "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 115"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:118:actions.cooldown",
-            "key": "actions.cooldown",
-            "operator": "=",
-            "value": "call_action_list,name=cd_variable,if=!cooldown.bs_inc.remains|!cooldown.potion.remains|!trinket.1.cooldown.remains|!trinket.2.cooldown.remains",
-            "rawValue": "call_action_list,name=cd_variable,if=!cooldown.bs_inc.remains|!cooldown.potion.remains|!trinket.1.cooldown.remains|!trinket.2.cooldown.remains",
+            "ruleId": "profile-apl:line:118:actions.cooldown",
+            "sourceKind": "simc-profile-apl",
+            "list": "cooldown",
+            "action": "call_action_list",
+            "condition": "!cooldown.bs_inc.remains|!cooldown.potion.remains|!trinket.1.cooldown.remains|!trinket.2.cooldown.remains",
+            "targetIf": null,
+            "options": {
+              "name": "cd_variable",
+              "if": "!cooldown.bs_inc.remains|!cooldown.potion.remains|!trinket.1.cooldown.remains|!trinket.2.cooldown.remains"
+            },
             "lineNumber": 118,
             "rawLine": "actions.cooldown=call_action_list,name=cd_variable,if=!cooldown.bs_inc.remains|!cooldown.potion.remains|!trinket.1.cooldown.remains|!trinket.2.cooldown.remains",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "control_flow_not_whitelisted",
+            "reason": "该 SimC APL 控制流或变量规则尚未进入交互训练器白名单 IR。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 118"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:120:actions.cooldown",
-            "key": "actions.cooldown",
-            "operator": "+=",
-            "value": "/use_item,slot=trinket1,if=trinket.1.has_use_damage&(trinket.2.cooldown.remains>20|!trinket.2.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.1.is.font_of_venomous_rage|!buff.bs_inc.up)",
-            "rawValue": "/use_item,slot=trinket1,if=trinket.1.has_use_damage&(trinket.2.cooldown.remains>20|!trinket.2.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.1.is.font_of_venomous_rage|!buff.bs_inc.up)",
+            "ruleId": "profile-apl:line:120:actions.cooldown",
+            "sourceKind": "simc-profile-apl",
+            "list": "cooldown",
+            "action": "use_item",
+            "condition": "trinket.1.has_use_damage&(trinket.2.cooldown.remains>20|!trinket.2.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.1.is.font_of_venomous_rage|!buff.bs_inc.up)",
+            "targetIf": null,
+            "options": {
+              "slot": "trinket1",
+              "if": "trinket.1.has_use_damage&(trinket.2.cooldown.remains>20|!trinket.2.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.1.is.font_of_venomous_rage|!buff.bs_inc.up)"
+            },
             "lineNumber": 120,
             "rawLine": "actions.cooldown+=/use_item,slot=trinket1,if=trinket.1.has_use_damage&(trinket.2.cooldown.remains>20|!trinket.2.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.1.is.font_of_venomous_rage|!buff.bs_inc.up)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 120"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:121:actions.cooldown",
-            "key": "actions.cooldown",
-            "operator": "+=",
-            "value": "/use_item,slot=trinket2,if=trinket.2.has_use_damage&(trinket.1.cooldown.remains>20|!trinket.1.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.2.is.font_of_venomous_rage|!buff.bs_inc.up)",
-            "rawValue": "/use_item,slot=trinket2,if=trinket.2.has_use_damage&(trinket.1.cooldown.remains>20|!trinket.1.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.2.is.font_of_venomous_rage|!buff.bs_inc.up)",
+            "ruleId": "profile-apl:line:121:actions.cooldown",
+            "sourceKind": "simc-profile-apl",
+            "list": "cooldown",
+            "action": "use_item",
+            "condition": "trinket.2.has_use_damage&(trinket.1.cooldown.remains>20|!trinket.1.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.2.is.font_of_venomous_rage|!buff.bs_inc.up)",
+            "targetIf": null,
+            "options": {
+              "slot": "trinket2",
+              "if": "trinket.2.has_use_damage&(trinket.1.cooldown.remains>20|!trinket.1.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.2.is.font_of_venomous_rage|!buff.bs_inc.up)"
+            },
             "lineNumber": 121,
             "rawLine": "actions.cooldown+=/use_item,slot=trinket2,if=trinket.2.has_use_damage&(trinket.1.cooldown.remains>20|!trinket.1.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.2.is.font_of_venomous_rage|!buff.bs_inc.up)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 121"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:122:actions.cooldown",
-            "key": "actions.cooldown",
-            "operator": "+=",
-            "value": "/berserking",
-            "rawValue": "/berserking",
+            "ruleId": "profile-apl:line:122:actions.cooldown",
+            "sourceKind": "simc-profile-apl",
+            "list": "cooldown",
+            "action": "berserking",
+            "condition": null,
+            "targetIf": null,
+            "options": {},
             "lineNumber": 122,
             "rawLine": "actions.cooldown+=/berserking",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 122"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:124:actions.cooldown",
-            "key": "actions.cooldown",
-            "operator": "+=",
-            "value": "/potion,if=buff.bs_inc.up|fight_remains<32|buff.tigers_fury.up&!variable.holdPot",
-            "rawValue": "/potion,if=buff.bs_inc.up|fight_remains<32|buff.tigers_fury.up&!variable.holdPot",
+            "ruleId": "profile-apl:line:124:actions.cooldown",
+            "sourceKind": "simc-profile-apl",
+            "list": "cooldown",
+            "action": "potion",
+            "condition": "buff.bs_inc.up|fight_remains<32|buff.tigers_fury.up&!variable.holdPot",
+            "targetIf": null,
+            "options": {
+              "if": "buff.bs_inc.up|fight_remains<32|buff.tigers_fury.up&!variable.holdPot"
+            },
             "lineNumber": 124,
             "rawLine": "actions.cooldown+=/potion,if=buff.bs_inc.up|fight_remains<32|buff.tigers_fury.up&!variable.holdPot",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 124"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:126:actions.cooldown",
-            "key": "actions.cooldown",
-            "operator": "+=",
-            "value": "/use_items",
-            "rawValue": "/use_items",
+            "ruleId": "profile-apl:line:126:actions.cooldown",
+            "sourceKind": "simc-profile-apl",
+            "list": "cooldown",
+            "action": "use_items",
+            "condition": null,
+            "targetIf": null,
+            "options": {},
             "lineNumber": 126,
             "rawLine": "actions.cooldown+=/use_items",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 126"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:128:actions.cooldown",
-            "key": "actions.cooldown",
-            "operator": "+=",
-            "value": "/use_item,slot=trinket1,use_off_gcd=1,if=trinket.1.has_use_buff&(cooldown.tigers_fury.remains>=25|trinket.1.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&cooldown.tigers_fury.remains<2)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.1.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.1.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.1.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining+1&buff.potion.up|trinket.2.has_use_buff&(variable.secondLowestCDremaining>trinket.1.cooldown.duration&variable.lowestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.2.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))",
-            "rawValue": "/use_item,slot=trinket1,use_off_gcd=1,if=trinket.1.has_use_buff&(cooldown.tigers_fury.remains>=25|trinket.1.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&cooldown.tigers_fury.remains<2)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.1.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.1.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.1.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining+1&buff.potion.up|trinket.2.has_use_buff&(variable.secondLowestCDremaining>trinket.1.cooldown.duration&variable.lowestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.2.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))",
+            "ruleId": "profile-apl:line:128:actions.cooldown",
+            "sourceKind": "simc-profile-apl",
+            "list": "cooldown",
+            "action": "use_item",
+            "condition": "trinket.1.has_use_buff&(cooldown.tigers_fury.remains>=25|trinket.1.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&cooldown.tigers_fury.remains<2)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.1.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.1.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.1.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining+1&buff.potion.up|trinket.2.has_use_buff&(variable.secondLowestCDremaining>trinket.1.cooldown.duration&variable.lowestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.2.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))",
+            "targetIf": null,
+            "options": {
+              "slot": "trinket1",
+              "use_off_gcd": "1",
+              "if": "trinket.1.has_use_buff&(cooldown.tigers_fury.remains>=25|trinket.1.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&cooldown.tigers_fury.remains<2)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.1.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.1.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.1.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining+1&buff.potion.up|trinket.2.has_use_buff&(variable.secondLowestCDremaining>trinket.1.cooldown.duration&variable.lowestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.2.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))"
+            },
             "lineNumber": 128,
             "rawLine": "actions.cooldown+=/use_item,slot=trinket1,use_off_gcd=1,if=trinket.1.has_use_buff&(cooldown.tigers_fury.remains>=25|trinket.1.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&cooldown.tigers_fury.remains<2)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.1.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.1.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.1.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining+1&buff.potion.up|trinket.2.has_use_buff&(variable.secondLowestCDremaining>trinket.1.cooldown.duration&variable.lowestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.2.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 128"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:129:actions.cooldown",
-            "key": "actions.cooldown",
-            "operator": "+=",
-            "value": "/use_item,slot=trinket2,use_off_gcd=1,if=trinket.2.has_use_buff&(!trinket.1.has_use_buff|trinket.1.cooldown.remains>20)&(cooldown.tigers_fury.remains>=25|trinket.2.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&(cooldown.tigers_fury.remains<2|buff.tigers_fury.up))&(buff.potion.up|variable.slot2CountRemaining!=variable.potCountRemaining)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.2.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.2.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.2.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining-1&buff.potion.up|trinket.1.has_use_buff&(variable.secondLowestCDremaining>trinket.2.cooldown.duration&variable.lowestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.1.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))",
-            "rawValue": "/use_item,slot=trinket2,use_off_gcd=1,if=trinket.2.has_use_buff&(!trinket.1.has_use_buff|trinket.1.cooldown.remains>20)&(cooldown.tigers_fury.remains>=25|trinket.2.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&(cooldown.tigers_fury.remains<2|buff.tigers_fury.up))&(buff.potion.up|variable.slot2CountRemaining!=variable.potCountRemaining)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.2.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.2.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.2.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining-1&buff.potion.up|trinket.1.has_use_buff&(variable.secondLowestCDremaining>trinket.2.cooldown.duration&variable.lowestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.1.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))",
+            "ruleId": "profile-apl:line:129:actions.cooldown",
+            "sourceKind": "simc-profile-apl",
+            "list": "cooldown",
+            "action": "use_item",
+            "condition": "trinket.2.has_use_buff&(!trinket.1.has_use_buff|trinket.1.cooldown.remains>20)&(cooldown.tigers_fury.remains>=25|trinket.2.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&(cooldown.tigers_fury.remains<2|buff.tigers_fury.up))&(buff.potion.up|variable.slot2CountRemaining!=variable.potCountRemaining)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.2.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.2.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.2.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining-1&buff.potion.up|trinket.1.has_use_buff&(variable.secondLowestCDremaining>trinket.2.cooldown.duration&variable.lowestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.1.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))",
+            "targetIf": null,
+            "options": {
+              "slot": "trinket2",
+              "use_off_gcd": "1",
+              "if": "trinket.2.has_use_buff&(!trinket.1.has_use_buff|trinket.1.cooldown.remains>20)&(cooldown.tigers_fury.remains>=25|trinket.2.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&(cooldown.tigers_fury.remains<2|buff.tigers_fury.up))&(buff.potion.up|variable.slot2CountRemaining!=variable.potCountRemaining)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.2.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.2.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.2.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining-1&buff.potion.up|trinket.1.has_use_buff&(variable.secondLowestCDremaining>trinket.2.cooldown.duration&variable.lowestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.1.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))"
+            },
             "lineNumber": 129,
             "rawLine": "actions.cooldown+=/use_item,slot=trinket2,use_off_gcd=1,if=trinket.2.has_use_buff&(!trinket.1.has_use_buff|trinket.1.cooldown.remains>20)&(cooldown.tigers_fury.remains>=25|trinket.2.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&(cooldown.tigers_fury.remains<2|buff.tigers_fury.up))&(buff.potion.up|variable.slot2CountRemaining!=variable.potCountRemaining)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.2.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.2.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.2.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining-1&buff.potion.up|trinket.1.has_use_buff&(variable.secondLowestCDremaining>trinket.2.cooldown.duration&variable.lowestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.1.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 129"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:131:actions.cooldown",
-            "key": "actions.cooldown",
-            "operator": "+=",
-            "value": "/use_item,slot=trinket1,if=fight_remains<=(21<?trinket.1.proc.any_dps.duration)",
-            "rawValue": "/use_item,slot=trinket1,if=fight_remains<=(21<?trinket.1.proc.any_dps.duration)",
+            "ruleId": "profile-apl:line:131:actions.cooldown",
+            "sourceKind": "simc-profile-apl",
+            "list": "cooldown",
+            "action": "use_item",
+            "condition": "fight_remains<=(21<?trinket.1.proc.any_dps.duration)",
+            "targetIf": null,
+            "options": {
+              "slot": "trinket1",
+              "if": "fight_remains<=(21<?trinket.1.proc.any_dps.duration)"
+            },
             "lineNumber": 131,
             "rawLine": "actions.cooldown+=/use_item,slot=trinket1,if=fight_remains<=(21<?trinket.1.proc.any_dps.duration)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 131"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:132:actions.cooldown",
-            "key": "actions.cooldown",
-            "operator": "+=",
-            "value": "/use_item,slot=trinket2,if=fight_remains<=(21<?trinket.2.proc.any_dps.duration)",
-            "rawValue": "/use_item,slot=trinket2,if=fight_remains<=(21<?trinket.2.proc.any_dps.duration)",
+            "ruleId": "profile-apl:line:132:actions.cooldown",
+            "sourceKind": "simc-profile-apl",
+            "list": "cooldown",
+            "action": "use_item",
+            "condition": "fight_remains<=(21<?trinket.2.proc.any_dps.duration)",
+            "targetIf": null,
+            "options": {
+              "slot": "trinket2",
+              "if": "fight_remains<=(21<?trinket.2.proc.any_dps.duration)"
+            },
             "lineNumber": 132,
             "rawLine": "actions.cooldown+=/use_item,slot=trinket2,if=fight_remains<=(21<?trinket.2.proc.any_dps.duration)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 132"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:133:actions.cooldown",
-            "key": "actions.cooldown",
-            "operator": "+=",
-            "value": "/berserk,if=buff.tigers_fury.up&!variable.holdBerserk",
-            "rawValue": "/berserk,if=buff.tigers_fury.up&!variable.holdBerserk",
-            "lineNumber": 133,
-            "rawLine": "actions.cooldown+=/berserk,if=buff.tigers_fury.up&!variable.holdBerserk",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
-          },
-          {
-            "schemaVersion": 1,
-            "fieldId": "line:135:actions.cooldown",
-            "key": "actions.cooldown",
-            "operator": "+=",
-            "value": "/feral_frenzy,if=!talent.frantic_frenzy&combo_points<=2+(2*buff.bs_inc.up)",
-            "rawValue": "/feral_frenzy,if=!talent.frantic_frenzy&combo_points<=2+(2*buff.bs_inc.up)",
-            "lineNumber": 135,
-            "rawLine": "actions.cooldown+=/feral_frenzy,if=!talent.frantic_frenzy&combo_points<=2+(2*buff.bs_inc.up)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
-          },
-          {
-            "schemaVersion": 1,
-            "fieldId": "line:137:actions.cooldown",
-            "key": "actions.cooldown",
-            "operator": "+=",
-            "value": "/frantic_frenzy,if=(!fight_style.dungeonroute&!fight_style.dungeonslice|raid_event.adds.remains>5)&(buff.tigers_fury.up&spell_targets>=2|combo_points<=2+(2*buff.bs_inc.up))",
-            "rawValue": "/frantic_frenzy,if=(!fight_style.dungeonroute&!fight_style.dungeonslice|raid_event.adds.remains>5)&(buff.tigers_fury.up&spell_targets>=2|combo_points<=2+(2*buff.bs_inc.up))",
+            "ruleId": "profile-apl:line:137:actions.cooldown",
+            "sourceKind": "simc-profile-apl",
+            "list": "cooldown",
+            "action": "frantic_frenzy",
+            "condition": "(!fight_style.dungeonroute&!fight_style.dungeonslice|raid_event.adds.remains>5)&(buff.tigers_fury.up&spell_targets>=2|combo_points<=2+(2*buff.bs_inc.up))",
+            "targetIf": null,
+            "options": {
+              "if": "(!fight_style.dungeonroute&!fight_style.dungeonslice|raid_event.adds.remains>5)&(buff.tigers_fury.up&spell_targets>=2|combo_points<=2+(2*buff.bs_inc.up))"
+            },
             "lineNumber": 137,
             "rawLine": "actions.cooldown+=/frantic_frenzy,if=(!fight_style.dungeonroute&!fight_style.dungeonslice|raid_event.adds.remains>5)&(buff.tigers_fury.up&spell_targets>=2|combo_points<=2+(2*buff.bs_inc.up))",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 137"
+            ]
           },
           {
             "schemaVersion": 1,
-            "fieldId": "line:139:actions.cooldown",
-            "key": "actions.cooldown",
-            "operator": "+=",
-            "value": "/convoke_the_spirits,if=(buff.bs_inc.up|talent.ashamanes_guidance&(cooldown.bs_inc.remains>45|variable.holdBerserk))&buff.tigers_fury.up&(prev_gcd.1.rip|prev_gcd.1.ferocious_bite|prev_gcd.1.primal_wrath|buff.tigers_fury.remains<=1+action.convoke_the_spirits.execute_time)|fight_remains<5",
-            "rawValue": "/convoke_the_spirits,if=(buff.bs_inc.up|talent.ashamanes_guidance&(cooldown.bs_inc.remains>45|variable.holdBerserk))&buff.tigers_fury.up&(prev_gcd.1.rip|prev_gcd.1.ferocious_bite|prev_gcd.1.primal_wrath|buff.tigers_fury.remains<=1+action.convoke_the_spirits.execute_time)|fight_remains<5",
-            "lineNumber": 139,
-            "rawLine": "actions.cooldown+=/convoke_the_spirits,if=(buff.bs_inc.up|talent.ashamanes_guidance&(cooldown.bs_inc.remains>45|variable.holdBerserk))&buff.tigers_fury.up&(prev_gcd.1.rip|prev_gcd.1.ferocious_bite|prev_gcd.1.primal_wrath|buff.tigers_fury.remains<=1+action.convoke_the_spirits.execute_time)|fight_remains<5",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
-          },
-          {
-            "schemaVersion": 1,
-            "fieldId": "line:142:actions.finisher",
-            "key": "actions.finisher",
-            "operator": "=",
-            "value": "rip,if=combo_points>=5&refreshable&(buff.tigers_fury.up|remains<cooldown.tigers_fury.remains)",
-            "rawValue": "rip,if=combo_points>=5&refreshable&(buff.tigers_fury.up|remains<cooldown.tigers_fury.remains)",
-            "lineNumber": 142,
-            "rawLine": "actions.finisher=rip,if=combo_points>=5&refreshable&(buff.tigers_fury.up|remains<cooldown.tigers_fury.remains)",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
-          },
-          {
-            "schemaVersion": 1,
-            "fieldId": "line:143:actions.finisher",
-            "key": "actions.finisher",
-            "operator": "+=",
-            "value": "/pool_resource,for_next=1",
-            "rawValue": "/pool_resource,for_next=1",
+            "ruleId": "profile-apl:line:143:actions.finisher",
+            "sourceKind": "simc-profile-apl",
+            "list": "finisher",
+            "action": "pool_resource",
+            "condition": null,
+            "targetIf": null,
+            "options": {
+              "for_next": "1"
+            },
             "lineNumber": 143,
             "rawLine": "actions.finisher+=/pool_resource,for_next=1",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
-          },
-          {
-            "schemaVersion": 1,
-            "fieldId": "line:144:actions.finisher",
-            "key": "actions.finisher",
-            "operator": "+=",
-            "value": "/ferocious_bite,max_energy=1,if=combo_points>=5",
-            "rawValue": "/ferocious_bite,max_energy=1,if=combo_points>=5",
-            "lineNumber": 144,
-            "rawLine": "actions.finisher+=/ferocious_bite,max_energy=1,if=combo_points>=5",
-            "fieldKind": "action-list",
-            "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-            "impact": "combat-or-build-semantics"
+            "reasonCode": "action_or_command_not_supported",
+            "reason": "该 SimC APL 动作或命令尚未进入交互训练器 APL Catalog。",
+            "impact": "recommendation-fidelity",
+            "evidenceRefs": [
+              "SimC profile line 143"
+            ]
           }
         ]
       }
@@ -17358,916 +17754,6 @@
           "rawLine": "temporary_enchant=main_hand:thalassian_phoenix_oil_2",
           "fieldKind": "consumable",
           "reason": "消耗品字段已解析并保留，等待 ItemResolver 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:28:actions.precombat",
-          "key": "actions.precombat",
-          "operator": "=",
-          "value": "snapshot_stats",
-          "rawValue": "snapshot_stats",
-          "lineNumber": 28,
-          "rawLine": "actions.precombat=snapshot_stats",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:30:actions.precombat",
-          "key": "actions.precombat",
-          "operator": "+=",
-          "value": "/variable,name=regrowth,op=reset",
-          "rawValue": "/variable,name=regrowth,op=reset",
-          "lineNumber": 30,
-          "rawLine": "actions.precombat+=/variable,name=regrowth,op=reset",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:32:actions.precombat",
-          "key": "actions.precombat",
-          "operator": "+=",
-          "value": "/variable,name=dotc_rake_threshold,op=set,value=99",
-          "rawValue": "/variable,name=dotc_rake_threshold,op=set,value=99",
-          "lineNumber": 32,
-          "rawLine": "actions.precombat+=/variable,name=dotc_rake_threshold,op=set,value=99",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:33:actions.precombat",
-          "key": "actions.precombat",
-          "operator": "+=",
-          "value": "/variable,name=dotc_rake_threshold,op=set,if=talent.wild_slashes&talent.merciless_claws,value=5",
-          "rawValue": "/variable,name=dotc_rake_threshold,op=set,if=talent.wild_slashes&talent.merciless_claws,value=5",
-          "lineNumber": 33,
-          "rawLine": "actions.precombat+=/variable,name=dotc_rake_threshold,op=set,if=talent.wild_slashes&talent.merciless_claws,value=5",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:34:actions.precombat",
-          "key": "actions.precombat",
-          "operator": "+=",
-          "value": "/variable,name=dotc_rake_threshold,op=set,if=talent.wild_slashes&!talent.merciless_claws,value=8",
-          "rawValue": "/variable,name=dotc_rake_threshold,op=set,if=talent.wild_slashes&!talent.merciless_claws,value=8",
-          "lineNumber": 34,
-          "rawLine": "actions.precombat+=/variable,name=dotc_rake_threshold,op=set,if=talent.wild_slashes&!talent.merciless_claws,value=8",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:36:actions.precombat",
-          "key": "actions.precombat",
-          "operator": "+=",
-          "value": "/variable,name=algethar_puzzle_box_precombat_cast,value=3,if=trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff",
-          "rawValue": "/variable,name=algethar_puzzle_box_precombat_cast,value=3,if=trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff",
-          "lineNumber": 36,
-          "rawLine": "actions.precombat+=/variable,name=algethar_puzzle_box_precombat_cast,value=3,if=trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:37:actions.precombat",
-          "key": "actions.precombat",
-          "operator": "+=",
-          "value": "/use_item,name=algethar_puzzle_box,if=trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff",
-          "rawValue": "/use_item,name=algethar_puzzle_box,if=trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff",
-          "lineNumber": 37,
-          "rawLine": "actions.precombat+=/use_item,name=algethar_puzzle_box,if=trinket.1.is.algethar_puzzle_box|!trinket.1.has_use_buff",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:38:actions.precombat",
-          "key": "actions.precombat",
-          "operator": "+=",
-          "value": "/cat_form,if=buff.cat_form.down",
-          "rawValue": "/cat_form,if=buff.cat_form.down",
-          "lineNumber": 38,
-          "rawLine": "actions.precombat+=/cat_form,if=buff.cat_form.down",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:39:actions.precombat",
-          "key": "actions.precombat",
-          "operator": "+=",
-          "value": "/prowl",
-          "rawValue": "/prowl",
-          "lineNumber": 39,
-          "rawLine": "actions.precombat+=/prowl",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:42:actions",
-          "key": "actions",
-          "operator": "=",
-          "value": "prowl,if=buff.bs_inc.down&!buff.prowl.up&!buff.shadowmeld.up",
-          "rawValue": "prowl,if=buff.bs_inc.down&!buff.prowl.up&!buff.shadowmeld.up",
-          "lineNumber": 42,
-          "rawLine": "actions=prowl,if=buff.bs_inc.down&!buff.prowl.up&!buff.shadowmeld.up",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:43:actions",
-          "key": "actions",
-          "operator": "+=",
-          "value": "/cat_form,if=!buff.cat_form.up&!talent.fluid_form",
-          "rawValue": "/cat_form,if=!buff.cat_form.up&!talent.fluid_form",
-          "lineNumber": 43,
-          "rawLine": "actions+=/cat_form,if=!buff.cat_form.up&!talent.fluid_form",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:45:actions",
-          "key": "actions",
-          "operator": "+=",
-          "value": "/invoke_external_buff,name=power_infusion,if=buff.bs_inc.up|!talent.berserk_heart_of_the_lion",
-          "rawValue": "/invoke_external_buff,name=power_infusion,if=buff.bs_inc.up|!talent.berserk_heart_of_the_lion",
-          "lineNumber": 45,
-          "rawLine": "actions+=/invoke_external_buff,name=power_infusion,if=buff.bs_inc.up|!talent.berserk_heart_of_the_lion",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:46:actions",
-          "key": "actions",
-          "operator": "+=",
-          "value": "/auto_attack,if=!buff.prowl.up&!buff.shadowmeld.up",
-          "rawValue": "/auto_attack,if=!buff.prowl.up&!buff.shadowmeld.up",
-          "lineNumber": 46,
-          "rawLine": "actions+=/auto_attack,if=!buff.prowl.up&!buff.shadowmeld.up",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:48:actions",
-          "key": "actions",
-          "operator": "+=",
-          "value": "/tigers_fury,if=(cooldown.bs_inc.remains<=1|cooldown.bs_inc.remains>10|variable.holdBerserk)&(cooldown.frantic_frenzy.remains<buff.tigers_fury.duration-1.5|cooldown.frantic_frenzy.remains>22|!talent.frantic_frenzy|spell_targets=1|fight_style.dungeonroute|fight_style.dungeonslice)",
-          "rawValue": "/tigers_fury,if=(cooldown.bs_inc.remains<=1|cooldown.bs_inc.remains>10|variable.holdBerserk)&(cooldown.frantic_frenzy.remains<buff.tigers_fury.duration-1.5|cooldown.frantic_frenzy.remains>22|!talent.frantic_frenzy|spell_targets=1|fight_style.dungeonroute|fight_style.dungeonslice)",
-          "lineNumber": 48,
-          "rawLine": "actions+=/tigers_fury,if=(cooldown.bs_inc.remains<=1|cooldown.bs_inc.remains>10|variable.holdBerserk)&(cooldown.frantic_frenzy.remains<buff.tigers_fury.duration-1.5|cooldown.frantic_frenzy.remains>22|!talent.frantic_frenzy|spell_targets=1|fight_style.dungeonroute|fight_style.dungeonslice)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:50:actions",
-          "key": "actions",
-          "operator": "+=",
-          "value": "/rake,if=buff.prowl.up|buff.shadowmeld.up",
-          "rawValue": "/rake,if=buff.prowl.up|buff.shadowmeld.up",
-          "lineNumber": 50,
-          "rawLine": "actions+=/rake,if=buff.prowl.up|buff.shadowmeld.up",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:52:actions",
-          "key": "actions",
-          "operator": "+=",
-          "value": "/chomp,if=buff.chomp_enabler.up",
-          "rawValue": "/chomp,if=buff.chomp_enabler.up",
-          "lineNumber": 52,
-          "rawLine": "actions+=/chomp,if=buff.chomp_enabler.up",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:53:actions",
-          "key": "actions",
-          "operator": "+=",
-          "value": "/call_action_list,name=cooldown",
-          "rawValue": "/call_action_list,name=cooldown",
-          "lineNumber": 53,
-          "rawLine": "actions+=/call_action_list,name=cooldown",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:55:actions",
-          "key": "actions",
-          "operator": "+=",
-          "value": "/ferocious_bite,if=buff.apex_predators_craving.up",
-          "rawValue": "/ferocious_bite,if=buff.apex_predators_craving.up",
-          "lineNumber": 55,
-          "rawLine": "actions+=/ferocious_bite,if=buff.apex_predators_craving.up",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:56:actions",
-          "key": "actions",
-          "operator": "+=",
-          "value": "/call_action_list,name=finisher,if=spell_targets=1",
-          "rawValue": "/call_action_list,name=finisher,if=spell_targets=1",
-          "lineNumber": 56,
-          "rawLine": "actions+=/call_action_list,name=finisher,if=spell_targets=1",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:57:actions",
-          "key": "actions",
-          "operator": "+=",
-          "value": "/call_action_list,name=aoe_finisher,if=spell_targets>=2",
-          "rawValue": "/call_action_list,name=aoe_finisher,if=spell_targets>=2",
-          "lineNumber": 57,
-          "rawLine": "actions+=/call_action_list,name=aoe_finisher,if=spell_targets>=2",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:58:actions",
-          "key": "actions",
-          "operator": "+=",
-          "value": "/call_action_list,name=builder,if=spell_targets=1&combo_points<=4",
-          "rawValue": "/call_action_list,name=builder,if=spell_targets=1&combo_points<=4",
-          "lineNumber": 58,
-          "rawLine": "actions+=/call_action_list,name=builder,if=spell_targets=1&combo_points<=4",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:59:actions",
-          "key": "actions",
-          "operator": "+=",
-          "value": "/call_action_list,name=aoe_builder,if=spell_targets>1&combo_points<=4",
-          "rawValue": "/call_action_list,name=aoe_builder,if=spell_targets>1&combo_points<=4",
-          "lineNumber": 59,
-          "rawLine": "actions+=/call_action_list,name=aoe_builder,if=spell_targets>1&combo_points<=4",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:60:actions",
-          "key": "actions",
-          "operator": "+=",
-          "value": "/regrowth,if=buff.predatory_swiftness.up&variable.regrowth",
-          "rawValue": "/regrowth,if=buff.predatory_swiftness.up&variable.regrowth",
-          "lineNumber": 60,
-          "rawLine": "actions+=/regrowth,if=buff.predatory_swiftness.up&variable.regrowth",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:63:actions.aoe_builder",
-          "key": "actions.aoe_builder",
-          "operator": "=",
-          "value": "rake,target_if=refreshable,if=(talent.doubleclawed_rake&(!talent.lunar_inspiration|!talent.panthers_guile|active_dot.rake<5))|hero_tree.wildstalker&(active_dot.rake<2+!talent.panthers_guile+talent.lunar_inspiration)",
-          "rawValue": "rake,target_if=refreshable,if=(talent.doubleclawed_rake&(!talent.lunar_inspiration|!talent.panthers_guile|active_dot.rake<5))|hero_tree.wildstalker&(active_dot.rake<2+!talent.panthers_guile+talent.lunar_inspiration)",
-          "lineNumber": 63,
-          "rawLine": "actions.aoe_builder=rake,target_if=refreshable,if=(talent.doubleclawed_rake&(!talent.lunar_inspiration|!talent.panthers_guile|active_dot.rake<5))|hero_tree.wildstalker&(active_dot.rake<2+!talent.panthers_guile+talent.lunar_inspiration)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:65:actions.aoe_builder",
-          "key": "actions.aoe_builder",
-          "operator": "+=",
-          "value": "/moonfire_cat,target_if=refreshable",
-          "rawValue": "/moonfire_cat,target_if=refreshable",
-          "lineNumber": 65,
-          "rawLine": "actions.aoe_builder+=/moonfire_cat,target_if=refreshable",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:67:actions.aoe_builder",
-          "key": "actions.aoe_builder",
-          "operator": "+=",
-          "value": "/swipe_cat,if=hero_tree.druid_of_the_claw&buff.bs_inc.up|buff.clearcasting.react&(hero_tree.druid_of_the_claw|spell_targets<7)",
-          "rawValue": "/swipe_cat,if=hero_tree.druid_of_the_claw&buff.bs_inc.up|buff.clearcasting.react&(hero_tree.druid_of_the_claw|spell_targets<7)",
-          "lineNumber": 67,
-          "rawLine": "actions.aoe_builder+=/swipe_cat,if=hero_tree.druid_of_the_claw&buff.bs_inc.up|buff.clearcasting.react&(hero_tree.druid_of_the_claw|spell_targets<7)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:69:actions.aoe_builder",
-          "key": "actions.aoe_builder",
-          "operator": "+=",
-          "value": "/swipe_cat,if=buff.sudden_ambush.up&spell_targets.swipe_cat>=5+(2*hero_tree.wildstalker)",
-          "rawValue": "/swipe_cat,if=buff.sudden_ambush.up&spell_targets.swipe_cat>=5+(2*hero_tree.wildstalker)",
-          "lineNumber": 69,
-          "rawLine": "actions.aoe_builder+=/swipe_cat,if=buff.sudden_ambush.up&spell_targets.swipe_cat>=5+(2*hero_tree.wildstalker)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:71:actions.aoe_builder",
-          "key": "actions.aoe_builder",
-          "operator": "+=",
-          "value": "/rake,target_if=refreshable,if=hero_tree.wildstalker|spell_targets.swipe_cat<=variable.dotc_rake_threshold",
-          "rawValue": "/rake,target_if=refreshable,if=hero_tree.wildstalker|spell_targets.swipe_cat<=variable.dotc_rake_threshold",
-          "lineNumber": 71,
-          "rawLine": "actions.aoe_builder+=/rake,target_if=refreshable,if=hero_tree.wildstalker|spell_targets.swipe_cat<=variable.dotc_rake_threshold",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:73:actions.aoe_builder",
-          "key": "actions.aoe_builder",
-          "operator": "+=",
-          "value": "/rake,target_if=min:pmultiplier,if=persistent_multiplier>pmultiplier&spell_targets=2",
-          "rawValue": "/rake,target_if=min:pmultiplier,if=persistent_multiplier>pmultiplier&spell_targets=2",
-          "lineNumber": 73,
-          "rawLine": "actions.aoe_builder+=/rake,target_if=min:pmultiplier,if=persistent_multiplier>pmultiplier&spell_targets=2",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:75:actions.aoe_builder",
-          "key": "actions.aoe_builder",
-          "operator": "+=",
-          "value": "/shred,if=combo_points<=1&spell_targets=2&talent.panthers_guile",
-          "rawValue": "/shred,if=combo_points<=1&spell_targets=2&talent.panthers_guile",
-          "lineNumber": 75,
-          "rawLine": "actions.aoe_builder+=/shred,if=combo_points<=1&spell_targets=2&talent.panthers_guile",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:76:actions.aoe_builder",
-          "key": "actions.aoe_builder",
-          "operator": "+=",
-          "value": "/swipe_cat,if=combo_points>1|spell_targets>2|!talent.panthers_guile",
-          "rawValue": "/swipe_cat,if=combo_points>1|spell_targets>2|!talent.panthers_guile",
-          "lineNumber": 76,
-          "rawLine": "actions.aoe_builder+=/swipe_cat,if=combo_points>1|spell_targets>2|!talent.panthers_guile",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:79:actions.aoe_finisher",
-          "key": "actions.aoe_finisher",
-          "operator": "=",
-          "value": "primal_wrath,target_if=min:remains,if=combo_points>=5&spell_targets.primal_wrath>1&(dot.primal_wrath.remains<6.5&!buff.bs_inc.up|dot.primal_wrath.refreshable)",
-          "rawValue": "primal_wrath,target_if=min:remains,if=combo_points>=5&spell_targets.primal_wrath>1&(dot.primal_wrath.remains<6.5&!buff.bs_inc.up|dot.primal_wrath.refreshable)",
-          "lineNumber": 79,
-          "rawLine": "actions.aoe_finisher=primal_wrath,target_if=min:remains,if=combo_points>=5&spell_targets.primal_wrath>1&(dot.primal_wrath.remains<6.5&!buff.bs_inc.up|dot.primal_wrath.refreshable)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:81:actions.aoe_finisher",
-          "key": "actions.aoe_finisher",
-          "operator": "+=",
-          "value": "/ferocious_bite,if=buff.ravage.up&combo_points>=5&!talent.primal_wrath&spell_targets>=2+(3*!talent.rampant_ferocity)",
-          "rawValue": "/ferocious_bite,if=buff.ravage.up&combo_points>=5&!talent.primal_wrath&spell_targets>=2+(3*!talent.rampant_ferocity)",
-          "lineNumber": 81,
-          "rawLine": "actions.aoe_finisher+=/ferocious_bite,if=buff.ravage.up&combo_points>=5&!talent.primal_wrath&spell_targets>=2+(3*!talent.rampant_ferocity)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:83:actions.aoe_finisher",
-          "key": "actions.aoe_finisher",
-          "operator": "+=",
-          "value": "/rip,target_if=min:remains,if=combo_points>=5&!talent.primal_wrath&refreshable",
-          "rawValue": "/rip,target_if=min:remains,if=combo_points>=5&!talent.primal_wrath&refreshable",
-          "lineNumber": 83,
-          "rawLine": "actions.aoe_finisher+=/rip,target_if=min:remains,if=combo_points>=5&!talent.primal_wrath&refreshable",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:85:actions.aoe_finisher",
-          "key": "actions.aoe_finisher",
-          "operator": "+=",
-          "value": "/ferocious_bite,target_if=min:dot.rip.remains,if=combo_points>=5&(talent.rampant_ferocity|buff.ravage.up&spell_targets<8|dot.bloodseeker_vines.ticking&spell_targets<5)",
-          "rawValue": "/ferocious_bite,target_if=min:dot.rip.remains,if=combo_points>=5&(talent.rampant_ferocity|buff.ravage.up&spell_targets<8|dot.bloodseeker_vines.ticking&spell_targets<5)",
-          "lineNumber": 85,
-          "rawLine": "actions.aoe_finisher+=/ferocious_bite,target_if=min:dot.rip.remains,if=combo_points>=5&(talent.rampant_ferocity|buff.ravage.up&spell_targets<8|dot.bloodseeker_vines.ticking&spell_targets<5)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:87:actions.aoe_finisher",
-          "key": "actions.aoe_finisher",
-          "operator": "+=",
-          "value": "/primal_wrath,if=combo_points>=5",
-          "rawValue": "/primal_wrath,if=combo_points>=5",
-          "lineNumber": 87,
-          "rawLine": "actions.aoe_finisher+=/primal_wrath,if=combo_points>=5",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:89:actions.aoe_finisher",
-          "key": "actions.aoe_finisher",
-          "operator": "+=",
-          "value": "/ferocious_bite,target_if=min:dot.rip.remains,if=combo_points>=5",
-          "rawValue": "/ferocious_bite,target_if=min:dot.rip.remains,if=combo_points>=5",
-          "lineNumber": 89,
-          "rawLine": "actions.aoe_finisher+=/ferocious_bite,target_if=min:dot.rip.remains,if=combo_points>=5",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:91:actions.builder",
-          "key": "actions.builder",
-          "operator": "=",
-          "value": "prowl,if=!buff.shadowmeld.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)",
-          "rawValue": "prowl,if=!buff.shadowmeld.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)",
-          "lineNumber": 91,
-          "rawLine": "actions.builder=prowl,if=!buff.shadowmeld.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:92:actions.builder",
-          "key": "actions.builder",
-          "operator": "+=",
-          "value": "/shadowmeld,if=!buff.prowl.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)",
-          "rawValue": "/shadowmeld,if=!buff.prowl.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)",
-          "lineNumber": 92,
-          "rawLine": "actions.builder+=/shadowmeld,if=!buff.prowl.up&(action.rake.pmultiplier<1.6|dot.rake.refreshable)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:94:actions.builder",
-          "key": "actions.builder",
-          "operator": "+=",
-          "value": "/shred,if=buff.sudden_ambush.up&hero_tree.druid_of_the_claw",
-          "rawValue": "/shred,if=buff.sudden_ambush.up&hero_tree.druid_of_the_claw",
-          "lineNumber": 94,
-          "rawLine": "actions.builder+=/shred,if=buff.sudden_ambush.up&hero_tree.druid_of_the_claw",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:96:actions.builder",
-          "key": "actions.builder",
-          "operator": "+=",
-          "value": "/rake,if=(buff.tigers_fury.up|remains<cooldown.tigers_fury.remains)&(refreshable&persistent_multiplier>=pmultiplier|remains<2|persistent_multiplier>pmultiplier)",
-          "rawValue": "/rake,if=(buff.tigers_fury.up|remains<cooldown.tigers_fury.remains)&(refreshable&persistent_multiplier>=pmultiplier|remains<2|persistent_multiplier>pmultiplier)",
-          "lineNumber": 96,
-          "rawLine": "actions.builder+=/rake,if=(buff.tigers_fury.up|remains<cooldown.tigers_fury.remains)&(refreshable&persistent_multiplier>=pmultiplier|remains<2|persistent_multiplier>pmultiplier)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:98:actions.builder",
-          "key": "actions.builder",
-          "operator": "+=",
-          "value": "/moonfire_cat,if=(buff.tigers_fury.up|remains<cooldown.tigers_fury.remains)&(refreshable&persistent_multiplier>=pmultiplier|remains<2|persistent_multiplier>pmultiplier)",
-          "rawValue": "/moonfire_cat,if=(buff.tigers_fury.up|remains<cooldown.tigers_fury.remains)&(refreshable&persistent_multiplier>=pmultiplier|remains<2|persistent_multiplier>pmultiplier)",
-          "lineNumber": 98,
-          "rawLine": "actions.builder+=/moonfire_cat,if=(buff.tigers_fury.up|remains<cooldown.tigers_fury.remains)&(refreshable&persistent_multiplier>=pmultiplier|remains<2|persistent_multiplier>pmultiplier)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:100:actions.builder",
-          "key": "actions.builder",
-          "operator": "+=",
-          "value": "/shred",
-          "rawValue": "/shred",
-          "lineNumber": 100,
-          "rawLine": "actions.builder+=/shred",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:103:actions.cd_variable",
-          "key": "actions.cd_variable",
-          "operator": "=",
-          "value": "variable,name=convokeCountRemaining,value=floor(cooldown.convoke_the_spirits.charges_fractional+fight_remains%cooldown.convoke_the_spirits.duration-0.05)",
-          "rawValue": "variable,name=convokeCountRemaining,value=floor(cooldown.convoke_the_spirits.charges_fractional+fight_remains%cooldown.convoke_the_spirits.duration-0.05)",
-          "lineNumber": 103,
-          "rawLine": "actions.cd_variable=variable,name=convokeCountRemaining,value=floor(cooldown.convoke_the_spirits.charges_fractional+fight_remains%cooldown.convoke_the_spirits.duration-0.05)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:104:actions.cd_variable",
-          "key": "actions.cd_variable",
-          "operator": "+=",
-          "value": "/variable,name=zerkCountRemaining,value=floor(cooldown.bs_inc.charges_fractional+fight_remains%cooldown.bs_inc.duration-0.05)",
-          "rawValue": "/variable,name=zerkCountRemaining,value=floor(cooldown.bs_inc.charges_fractional+fight_remains%cooldown.bs_inc.duration-0.05)",
-          "lineNumber": 104,
-          "rawLine": "actions.cd_variable+=/variable,name=zerkCountRemaining,value=floor(cooldown.bs_inc.charges_fractional+fight_remains%cooldown.bs_inc.duration-0.05)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:105:actions.cd_variable",
-          "key": "actions.cd_variable",
-          "operator": "+=",
-          "value": "/variable,name=potCountRemaining,value=floor(cooldown.potion.charges_fractional+fight_remains%cooldown.potion.duration-0.06)",
-          "rawValue": "/variable,name=potCountRemaining,value=floor(cooldown.potion.charges_fractional+fight_remains%cooldown.potion.duration-0.06)",
-          "lineNumber": 105,
-          "rawLine": "actions.cd_variable+=/variable,name=potCountRemaining,value=floor(cooldown.potion.charges_fractional+fight_remains%cooldown.potion.duration-0.06)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:106:actions.cd_variable",
-          "key": "actions.cd_variable",
-          "operator": "+=",
-          "value": "/variable,name=slot1CountRemaining,value=floor(trinket.1.cooldown.charges_fractional+fight_remains%trinket.1.cooldown.duration-0.05)",
-          "rawValue": "/variable,name=slot1CountRemaining,value=floor(trinket.1.cooldown.charges_fractional+fight_remains%trinket.1.cooldown.duration-0.05)",
-          "lineNumber": 106,
-          "rawLine": "actions.cd_variable+=/variable,name=slot1CountRemaining,value=floor(trinket.1.cooldown.charges_fractional+fight_remains%trinket.1.cooldown.duration-0.05)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:107:actions.cd_variable",
-          "key": "actions.cd_variable",
-          "operator": "+=",
-          "value": "/variable,name=slot2CountRemaining,value=floor(trinket.2.cooldown.charges_fractional+fight_remains%trinket.2.cooldown.duration-0.05)",
-          "rawValue": "/variable,name=slot2CountRemaining,value=floor(trinket.2.cooldown.charges_fractional+fight_remains%trinket.2.cooldown.duration-0.05)",
-          "lineNumber": 107,
-          "rawLine": "actions.cd_variable+=/variable,name=slot2CountRemaining,value=floor(trinket.2.cooldown.charges_fractional+fight_remains%trinket.2.cooldown.duration-0.05)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:109:actions.cd_variable",
-          "key": "actions.cd_variable",
-          "operator": "+=",
-          "value": "/variable,name=holdBerserk,value=variable.zerkCountRemaining=1&variable.potCountRemaining=1&cooldown.potion.remains",
-          "rawValue": "/variable,name=holdBerserk,value=variable.zerkCountRemaining=1&variable.potCountRemaining=1&cooldown.potion.remains",
-          "lineNumber": 109,
-          "rawLine": "actions.cd_variable+=/variable,name=holdBerserk,value=variable.zerkCountRemaining=1&variable.potCountRemaining=1&cooldown.potion.remains",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:111:actions.cd_variable",
-          "key": "actions.cd_variable",
-          "operator": "+=",
-          "value": "/variable,name=holdPot,value=variable.potCountRemaining=floor((fight_remains-cooldown.bs_inc.remains-10)%cooldown.potion.duration+(fight_remains>cooldown.bs_inc.remains))",
-          "rawValue": "/variable,name=holdPot,value=variable.potCountRemaining=floor((fight_remains-cooldown.bs_inc.remains-10)%cooldown.potion.duration+(fight_remains>cooldown.bs_inc.remains))",
-          "lineNumber": 111,
-          "rawLine": "actions.cd_variable+=/variable,name=holdPot,value=variable.potCountRemaining=floor((fight_remains-cooldown.bs_inc.remains-10)%cooldown.potion.duration+(fight_remains>cooldown.bs_inc.remains))",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:113:actions.cd_variable",
-          "key": "actions.cd_variable",
-          "operator": "+=",
-          "value": "/variable,name=highestCDremaining,op=setif,condition=talent.convoke_the_spirits,value=cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains<?cooldown.potion.remains,value_else=cooldown.bs_inc.remains<?cooldown.potion.remains",
-          "rawValue": "/variable,name=highestCDremaining,op=setif,condition=talent.convoke_the_spirits,value=cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains<?cooldown.potion.remains,value_else=cooldown.bs_inc.remains<?cooldown.potion.remains",
-          "lineNumber": 113,
-          "rawLine": "actions.cd_variable+=/variable,name=highestCDremaining,op=setif,condition=talent.convoke_the_spirits,value=cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains<?cooldown.potion.remains,value_else=cooldown.bs_inc.remains<?cooldown.potion.remains",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:114:actions.cd_variable",
-          "key": "actions.cd_variable",
-          "operator": "+=",
-          "value": "/variable,name=lowestCDremaining,op=setif,condition=talent.convoke_the_spirits,value=cooldown.convoke_the_spirits.remains>?cooldown.bs_inc.remains>?cooldown.potion.remains,value_else=cooldown.bs_inc.remains>?cooldown.potion.remains",
-          "rawValue": "/variable,name=lowestCDremaining,op=setif,condition=talent.convoke_the_spirits,value=cooldown.convoke_the_spirits.remains>?cooldown.bs_inc.remains>?cooldown.potion.remains,value_else=cooldown.bs_inc.remains>?cooldown.potion.remains",
-          "lineNumber": 114,
-          "rawLine": "actions.cd_variable+=/variable,name=lowestCDremaining,op=setif,condition=talent.convoke_the_spirits,value=cooldown.convoke_the_spirits.remains>?cooldown.bs_inc.remains>?cooldown.potion.remains,value_else=cooldown.bs_inc.remains>?cooldown.potion.remains",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:115:actions.cd_variable",
-          "key": "actions.cd_variable",
-          "operator": "+=",
-          "value": "/variable,name=secondLowestCDremaining,op=setif,condition=cooldown.convoke_the_spirits.remains>cooldown.bs_inc.remains,value=cooldown.convoke_the_spirits.remains>?cooldown.potion.remains,value_else=cooldown.bs_inc.remains>?cooldown.potion.remains",
-          "rawValue": "/variable,name=secondLowestCDremaining,op=setif,condition=cooldown.convoke_the_spirits.remains>cooldown.bs_inc.remains,value=cooldown.convoke_the_spirits.remains>?cooldown.potion.remains,value_else=cooldown.bs_inc.remains>?cooldown.potion.remains",
-          "lineNumber": 115,
-          "rawLine": "actions.cd_variable+=/variable,name=secondLowestCDremaining,op=setif,condition=cooldown.convoke_the_spirits.remains>cooldown.bs_inc.remains,value=cooldown.convoke_the_spirits.remains>?cooldown.potion.remains,value_else=cooldown.bs_inc.remains>?cooldown.potion.remains",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:118:actions.cooldown",
-          "key": "actions.cooldown",
-          "operator": "=",
-          "value": "call_action_list,name=cd_variable,if=!cooldown.bs_inc.remains|!cooldown.potion.remains|!trinket.1.cooldown.remains|!trinket.2.cooldown.remains",
-          "rawValue": "call_action_list,name=cd_variable,if=!cooldown.bs_inc.remains|!cooldown.potion.remains|!trinket.1.cooldown.remains|!trinket.2.cooldown.remains",
-          "lineNumber": 118,
-          "rawLine": "actions.cooldown=call_action_list,name=cd_variable,if=!cooldown.bs_inc.remains|!cooldown.potion.remains|!trinket.1.cooldown.remains|!trinket.2.cooldown.remains",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:120:actions.cooldown",
-          "key": "actions.cooldown",
-          "operator": "+=",
-          "value": "/use_item,slot=trinket1,if=trinket.1.has_use_damage&(trinket.2.cooldown.remains>20|!trinket.2.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.1.is.font_of_venomous_rage|!buff.bs_inc.up)",
-          "rawValue": "/use_item,slot=trinket1,if=trinket.1.has_use_damage&(trinket.2.cooldown.remains>20|!trinket.2.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.1.is.font_of_venomous_rage|!buff.bs_inc.up)",
-          "lineNumber": 120,
-          "rawLine": "actions.cooldown+=/use_item,slot=trinket1,if=trinket.1.has_use_damage&(trinket.2.cooldown.remains>20|!trinket.2.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.1.is.font_of_venomous_rage|!buff.bs_inc.up)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:121:actions.cooldown",
-          "key": "actions.cooldown",
-          "operator": "+=",
-          "value": "/use_item,slot=trinket2,if=trinket.2.has_use_damage&(trinket.1.cooldown.remains>20|!trinket.1.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.2.is.font_of_venomous_rage|!buff.bs_inc.up)",
-          "rawValue": "/use_item,slot=trinket2,if=trinket.2.has_use_damage&(trinket.1.cooldown.remains>20|!trinket.1.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.2.is.font_of_venomous_rage|!buff.bs_inc.up)",
-          "lineNumber": 121,
-          "rawLine": "actions.cooldown+=/use_item,slot=trinket2,if=trinket.2.has_use_damage&(trinket.1.cooldown.remains>20|!trinket.1.has_use_buff|(cooldown.tigers_fury.remains<25&cooldown.tigers_fury.remains>20))&(!trinket.2.is.font_of_venomous_rage|!buff.bs_inc.up)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:122:actions.cooldown",
-          "key": "actions.cooldown",
-          "operator": "+=",
-          "value": "/berserking",
-          "rawValue": "/berserking",
-          "lineNumber": 122,
-          "rawLine": "actions.cooldown+=/berserking",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:124:actions.cooldown",
-          "key": "actions.cooldown",
-          "operator": "+=",
-          "value": "/potion,if=buff.bs_inc.up|fight_remains<32|buff.tigers_fury.up&!variable.holdPot",
-          "rawValue": "/potion,if=buff.bs_inc.up|fight_remains<32|buff.tigers_fury.up&!variable.holdPot",
-          "lineNumber": 124,
-          "rawLine": "actions.cooldown+=/potion,if=buff.bs_inc.up|fight_remains<32|buff.tigers_fury.up&!variable.holdPot",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:126:actions.cooldown",
-          "key": "actions.cooldown",
-          "operator": "+=",
-          "value": "/use_items",
-          "rawValue": "/use_items",
-          "lineNumber": 126,
-          "rawLine": "actions.cooldown+=/use_items",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:128:actions.cooldown",
-          "key": "actions.cooldown",
-          "operator": "+=",
-          "value": "/use_item,slot=trinket1,use_off_gcd=1,if=trinket.1.has_use_buff&(cooldown.tigers_fury.remains>=25|trinket.1.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&cooldown.tigers_fury.remains<2)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.1.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.1.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.1.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining+1&buff.potion.up|trinket.2.has_use_buff&(variable.secondLowestCDremaining>trinket.1.cooldown.duration&variable.lowestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.2.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))",
-          "rawValue": "/use_item,slot=trinket1,use_off_gcd=1,if=trinket.1.has_use_buff&(cooldown.tigers_fury.remains>=25|trinket.1.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&cooldown.tigers_fury.remains<2)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.1.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.1.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.1.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining+1&buff.potion.up|trinket.2.has_use_buff&(variable.secondLowestCDremaining>trinket.1.cooldown.duration&variable.lowestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.2.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))",
-          "lineNumber": 128,
-          "rawLine": "actions.cooldown+=/use_item,slot=trinket1,use_off_gcd=1,if=trinket.1.has_use_buff&(cooldown.tigers_fury.remains>=25|trinket.1.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&cooldown.tigers_fury.remains<2)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.1.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.1.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.1.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining+1&buff.potion.up|trinket.2.has_use_buff&(variable.secondLowestCDremaining>trinket.1.cooldown.duration&variable.lowestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.2.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.2.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:129:actions.cooldown",
-          "key": "actions.cooldown",
-          "operator": "+=",
-          "value": "/use_item,slot=trinket2,use_off_gcd=1,if=trinket.2.has_use_buff&(!trinket.1.has_use_buff|trinket.1.cooldown.remains>20)&(cooldown.tigers_fury.remains>=25|trinket.2.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&(cooldown.tigers_fury.remains<2|buff.tigers_fury.up))&(buff.potion.up|variable.slot2CountRemaining!=variable.potCountRemaining)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.2.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.2.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.2.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining-1&buff.potion.up|trinket.1.has_use_buff&(variable.secondLowestCDremaining>trinket.2.cooldown.duration&variable.lowestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.1.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))",
-          "rawValue": "/use_item,slot=trinket2,use_off_gcd=1,if=trinket.2.has_use_buff&(!trinket.1.has_use_buff|trinket.1.cooldown.remains>20)&(cooldown.tigers_fury.remains>=25|trinket.2.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&(cooldown.tigers_fury.remains<2|buff.tigers_fury.up))&(buff.potion.up|variable.slot2CountRemaining!=variable.potCountRemaining)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.2.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.2.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.2.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining-1&buff.potion.up|trinket.1.has_use_buff&(variable.secondLowestCDremaining>trinket.2.cooldown.duration&variable.lowestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.1.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))",
-          "lineNumber": 129,
-          "rawLine": "actions.cooldown+=/use_item,slot=trinket2,use_off_gcd=1,if=trinket.2.has_use_buff&(!trinket.1.has_use_buff|trinket.1.cooldown.remains>20)&(cooldown.tigers_fury.remains>=25|trinket.2.is.algethar_puzzle_box&(!raid_event.adds.up|raid_event.adds.remains>13)&(cooldown.tigers_fury.remains<2|buff.tigers_fury.up))&(buff.potion.up|variable.slot2CountRemaining!=variable.potCountRemaining)&((cooldown.bs_inc.remains<5|buff.bs_inc.remains>=14)&!variable.holdBerserk|cooldown.convoke_the_spirits.remains<10&talent.ashamanes_guidance&talent.convoke_the_spirits|variable.lowestCDremaining>trinket.2.cooldown.duration|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&(variable.highestCDremaining+3)>trinket.2.cooldown.duration|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.bs_inc.remains<?cooldown.convoke_the_spirits.remains)>trinket.2.cooldown.duration|variable.slot1CountRemaining=variable.potCountRemaining-1&buff.potion.up|trinket.1.has_use_buff&(variable.secondLowestCDremaining>trinket.2.cooldown.duration&variable.lowestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=1&(!talent.convoke_the_spirits|variable.convokeCountRemaining=1)&variable.potCountRemaining=1&variable.highestCDremaining>trinket.1.cooldown.remains|variable.zerkCountRemaining=variable.convokeCountRemaining&talent.convoke_the_spirits&variable.zerkCountRemaining!=variable.potCountRemaining&(cooldown.convoke_the_spirits.remains<?cooldown.bs_inc.remains)>trinket.1.cooldown.remains|variable.convokeCountRemaining=0&variable.zerkCountRemaining=0&variable.potCountRemaining=0))",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:131:actions.cooldown",
-          "key": "actions.cooldown",
-          "operator": "+=",
-          "value": "/use_item,slot=trinket1,if=fight_remains<=(21<?trinket.1.proc.any_dps.duration)",
-          "rawValue": "/use_item,slot=trinket1,if=fight_remains<=(21<?trinket.1.proc.any_dps.duration)",
-          "lineNumber": 131,
-          "rawLine": "actions.cooldown+=/use_item,slot=trinket1,if=fight_remains<=(21<?trinket.1.proc.any_dps.duration)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:132:actions.cooldown",
-          "key": "actions.cooldown",
-          "operator": "+=",
-          "value": "/use_item,slot=trinket2,if=fight_remains<=(21<?trinket.2.proc.any_dps.duration)",
-          "rawValue": "/use_item,slot=trinket2,if=fight_remains<=(21<?trinket.2.proc.any_dps.duration)",
-          "lineNumber": 132,
-          "rawLine": "actions.cooldown+=/use_item,slot=trinket2,if=fight_remains<=(21<?trinket.2.proc.any_dps.duration)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:133:actions.cooldown",
-          "key": "actions.cooldown",
-          "operator": "+=",
-          "value": "/berserk,if=buff.tigers_fury.up&!variable.holdBerserk",
-          "rawValue": "/berserk,if=buff.tigers_fury.up&!variable.holdBerserk",
-          "lineNumber": 133,
-          "rawLine": "actions.cooldown+=/berserk,if=buff.tigers_fury.up&!variable.holdBerserk",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:135:actions.cooldown",
-          "key": "actions.cooldown",
-          "operator": "+=",
-          "value": "/feral_frenzy,if=!talent.frantic_frenzy&combo_points<=2+(2*buff.bs_inc.up)",
-          "rawValue": "/feral_frenzy,if=!talent.frantic_frenzy&combo_points<=2+(2*buff.bs_inc.up)",
-          "lineNumber": 135,
-          "rawLine": "actions.cooldown+=/feral_frenzy,if=!talent.frantic_frenzy&combo_points<=2+(2*buff.bs_inc.up)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:137:actions.cooldown",
-          "key": "actions.cooldown",
-          "operator": "+=",
-          "value": "/frantic_frenzy,if=(!fight_style.dungeonroute&!fight_style.dungeonslice|raid_event.adds.remains>5)&(buff.tigers_fury.up&spell_targets>=2|combo_points<=2+(2*buff.bs_inc.up))",
-          "rawValue": "/frantic_frenzy,if=(!fight_style.dungeonroute&!fight_style.dungeonslice|raid_event.adds.remains>5)&(buff.tigers_fury.up&spell_targets>=2|combo_points<=2+(2*buff.bs_inc.up))",
-          "lineNumber": 137,
-          "rawLine": "actions.cooldown+=/frantic_frenzy,if=(!fight_style.dungeonroute&!fight_style.dungeonslice|raid_event.adds.remains>5)&(buff.tigers_fury.up&spell_targets>=2|combo_points<=2+(2*buff.bs_inc.up))",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:139:actions.cooldown",
-          "key": "actions.cooldown",
-          "operator": "+=",
-          "value": "/convoke_the_spirits,if=(buff.bs_inc.up|talent.ashamanes_guidance&(cooldown.bs_inc.remains>45|variable.holdBerserk))&buff.tigers_fury.up&(prev_gcd.1.rip|prev_gcd.1.ferocious_bite|prev_gcd.1.primal_wrath|buff.tigers_fury.remains<=1+action.convoke_the_spirits.execute_time)|fight_remains<5",
-          "rawValue": "/convoke_the_spirits,if=(buff.bs_inc.up|talent.ashamanes_guidance&(cooldown.bs_inc.remains>45|variable.holdBerserk))&buff.tigers_fury.up&(prev_gcd.1.rip|prev_gcd.1.ferocious_bite|prev_gcd.1.primal_wrath|buff.tigers_fury.remains<=1+action.convoke_the_spirits.execute_time)|fight_remains<5",
-          "lineNumber": 139,
-          "rawLine": "actions.cooldown+=/convoke_the_spirits,if=(buff.bs_inc.up|talent.ashamanes_guidance&(cooldown.bs_inc.remains>45|variable.holdBerserk))&buff.tigers_fury.up&(prev_gcd.1.rip|prev_gcd.1.ferocious_bite|prev_gcd.1.primal_wrath|buff.tigers_fury.remains<=1+action.convoke_the_spirits.execute_time)|fight_remains<5",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:142:actions.finisher",
-          "key": "actions.finisher",
-          "operator": "=",
-          "value": "rip,if=combo_points>=5&refreshable&(buff.tigers_fury.up|remains<cooldown.tigers_fury.remains)",
-          "rawValue": "rip,if=combo_points>=5&refreshable&(buff.tigers_fury.up|remains<cooldown.tigers_fury.remains)",
-          "lineNumber": 142,
-          "rawLine": "actions.finisher=rip,if=combo_points>=5&refreshable&(buff.tigers_fury.up|remains<cooldown.tigers_fury.remains)",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:143:actions.finisher",
-          "key": "actions.finisher",
-          "operator": "+=",
-          "value": "/pool_resource,for_next=1",
-          "rawValue": "/pool_resource,for_next=1",
-          "lineNumber": 143,
-          "rawLine": "actions.finisher+=/pool_resource,for_next=1",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
-          "impact": "combat-or-build-semantics"
-        },
-        {
-          "schemaVersion": 1,
-          "fieldId": "line:144:actions.finisher",
-          "key": "actions.finisher",
-          "operator": "+=",
-          "value": "/ferocious_bite,max_energy=1,if=combo_points>=5",
-          "rawValue": "/ferocious_bite,max_energy=1,if=combo_points>=5",
-          "lineNumber": 144,
-          "rawLine": "actions.finisher+=/ferocious_bite,max_energy=1,if=combo_points>=5",
-          "fieldKind": "action-list",
-          "reason": "APL 字段已解析并保留，等待 APLCompiler 应用。",
           "impact": "combat-or-build-semantics"
         }
       ]

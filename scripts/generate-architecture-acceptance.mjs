@@ -99,6 +99,18 @@ function unsupportedFieldSummary(profile) {
   };
 }
 
+function unsupportedAplSummary(profile) {
+  const byReason = {};
+  for (const rule of profile.unsupportedAplRules) {
+    byReason[rule.reasonCode] = (byReason[rule.reasonCode] ?? 0) + 1;
+  }
+  return {
+    count: profile.unsupportedAplRules.length,
+    byReason,
+    rules: profile.unsupportedAplRules,
+  };
+}
+
 function profileSummary(profile) {
   return {
     id: profile.id,
@@ -133,7 +145,15 @@ function profileSummary(profile) {
     resolvedModifiers: profile.resolvedModifiers,
     trackedDotIds: profile.tracked.dots.map((dot) => dot.id),
     trackedAuraIds: profile.tracked.auras.map((aura) => aura.id),
-    aplRules: profile.apl.rules.map(({ id, actionId }) => ({ id, actionId })),
+    apl: {
+      adapter: profile.apl.adapter,
+      schemaVersion: profile.apl.schemaVersion,
+      source: profile.apl.source,
+      profileRuleCount: profile.apl.profileRuleCount,
+      accountedProfileRuleCount: profile.apl.accountedProfileRuleCount,
+      rules: profile.apl.rules.map(({ id, actionId, profileSource }) => ({ id, actionId, profileSource })),
+      filteredRules: profile.apl.filteredRules,
+    },
     convoke: profile.actionById.convoke
       ? {
           cooldownMs: profile.actionById.convoke.cooldownMs,
@@ -142,6 +162,7 @@ function profileSummary(profile) {
       : null,
     unsupportedSummary: unsupportedSummary(profile),
     unsupportedFieldSummary: unsupportedFieldSummary(profile),
+    unsupportedAplSummary: unsupportedAplSummary(profile),
   };
 }
 
@@ -162,7 +183,7 @@ const fullSimcProfile = resolver.resolve(normalizeBuildInput({
   source: "vendor/simc/profiles/MID1/MID1_Druid_Feral.simc",
 }));
 const report = {
-  schemaVersion: 2,
+  schemaVersion: 3,
   purpose: "12.1 Feral build-switch architecture acceptance",
   versionLock: SIMC_VERSION_LOCK,
   fixtures: [
