@@ -557,6 +557,47 @@ try {
   })`);
   assert.equal(reservedSpace.listeningText, "按新键…");
   assert.match(reservedSpace.hint, /空格键保留/);
+  const trustedBackSetup = await evaluate(`(() => {
+    const originalHref = location.href;
+    const url = new URL(location.href);
+    url.searchParams.set("trusted-side-button", "back");
+    history.pushState({ trustedSideButton: true }, "", url);
+    const rect = document.querySelector('[data-bind-skill="rake"]').getBoundingClientRect();
+    return {
+      originalHref,
+      guardedHref: location.href,
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2,
+    };
+  })()`);
+  await command("Input.dispatchMouseEvent", {
+    type: "mousePressed",
+    x: trustedBackSetup.x,
+    y: trustedBackSetup.y,
+    button: "back",
+    buttons: 8,
+    clickCount: 1,
+    pointerType: "mouse",
+  });
+  await command("Input.dispatchMouseEvent", {
+    type: "mouseReleased",
+    x: trustedBackSetup.x,
+    y: trustedBackSetup.y,
+    button: "back",
+    buttons: 0,
+    clickCount: 1,
+    pointerType: "mouse",
+  });
+  await wait(100);
+  const trustedBack = await evaluate(`({
+    href: location.href,
+    label: document.querySelector('[data-bind-skill="rake"]').textContent.trim(),
+    dialogOpen: document.querySelector("#keybind-dialog").open,
+  })`);
+  assert.equal(trustedBack.href, trustedBackSetup.guardedHref, "受信任后退侧键不得触发浏览器历史导航");
+  assert.equal(trustedBack.label, "鼠标侧键（后退）");
+  assert.equal(trustedBack.dialogOpen, true);
+  await evaluate(`history.replaceState(null, "", ${JSON.stringify(trustedBackSetup.originalHref)})`);
   const pointingBindings = await evaluate(`(() => {
     const dispatchMouse = (type, button) => {
       const event = new MouseEvent(type, {
@@ -982,6 +1023,7 @@ try {
     rebound: "斜掠 → Z",
     shortcuts: { space: "开始/暂停", backspace: "重置" },
     pointingBindings,
+    trustedSideNavigationSuppression: trustedBack,
     sideNavigationSuppression: sideCast,
     targetCounts,
     switchedBuild,

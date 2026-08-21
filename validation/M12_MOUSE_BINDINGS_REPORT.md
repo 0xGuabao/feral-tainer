@@ -28,9 +28,10 @@
 npm test
 80 / 80 passed
 
-CDP_PORT=9323 node demo/browser-smoke.mjs
+CDP_PORT=9324 node demo/browser-smoke.mjs
 desktop 1828×1028: passed
 mobile 390×844: passed
+trusted Chrome back-button input in keybind dialog: captured, dialog open, URL unchanged
 mouse back/forward/middle/wheel up/wheel down capture: passed
 unbound side-button mousedown/mouseup/auxclick defaultPrevented: true
 bound side-button cast: passed
@@ -59,6 +60,7 @@ all passed
 ## 6. 已知风险、回滚与下一目标
 
 - Chromium 已验证标准按钮编号：滚轮按下 `1`、后退 `3`、前进 `4`；不同鼠标驱动若把侧键改映射为键盘快捷键，将按驱动输出的键盘码处理。
+- 线上 `20260821-g5-v3` 不包含鼠标绑定代码；只有部署本候选版本后，公网页面才会启用侧键导航拦截。
 - 滚轮输入使用 250ms 节流，避免单次滚动事件簇连续施法；高分辨率滚轮和触控板仍建议在目标设备上人工抽验手感。
 - 部署前仍须完成发行包门禁和公网冷启动验收。
 
