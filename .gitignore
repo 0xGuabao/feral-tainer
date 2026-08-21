@@ -18,7 +18,6 @@ validation/M9_DEPLOYMENT_REPORT.md
 validation/M10_SIMC_IMPORT_DEPLOYMENT_REPORT.md
 validation/M11_DIALOG_HOTFIX_DEPLOYMENT_REPORT.md
 validation/wasm-smoke/*.wasm
-scripts/promote-remote-release.sh
 
 # Local visual references and smoke-test screenshots are not source inputs.
 demo/*.png

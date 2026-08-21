@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "g5-20260821-fefb881-69404",
+  "reviewedAt": "2026-08-21",
+  "targetCommit": "fefb8816af0aaa97819c9a8ba61cca058a81822e",
+  "targetWowVersion": "12.1.0.69404",
+  "reviewedCategories": {
+    "new_generic_mechanism": {
+      "expectedLineCount": 10,
+      "disposition": "reviewed_no_current_profile_impact",
+      "reason": "All seven G5 scan inputs are byte-identical to the already reviewed 70c46902 target. The additions remain SimC stats attribution, buff construction and callback registration lines in unique gear code; they do not add a Feral action, resource, aura or APL rule to the current trainer profile."
+    },
+    "custom_mechanism_candidate": {
+      "expectedLineCount": 7,
+      "disposition": "reviewed_structured_unsupported_if_adopted",
+      "reason": "The byte-identical custom callback remains Venomcursed Ascendance random-stat selection. Its item, driver and buff identifiers are absent from the current MID1 profile, equipment oracle and item-effect catalog. Future adoption must emit a structured unsupported item effect until a generic handler exists."
+    }
+  },
+  "equivalenceEvidence": {
+    "priorReviewedCommit": "70c46902f3a1218a5d03c46607d07ec443ffe356",
+    "statement": "Every file in SCAN_PATHS has the same SHA-256 at the prior reviewed commit and the current target commit.",
+    "scanInputSha256": {
+      "engine/class_modules/apl/druid/feral_apl.inc": "9882cb431b35144e46fa76316d590f0b87fb56b090da3c296ab3ae21c9e0b73e",
+      "engine/class_modules/sc_druid.cpp": "3d5f1cb1c4fb40ba7cbb7e0bb7b85927476ab3921356ce52a971a3bc4b55acdc",
+      "engine/dbc/generated/item_effect.inc": "1a3a12f0d500de4570d6447863fdc6cf4795ca3c83b007967222da0366c3c4b3",
+      "engine/dbc/generated/item_set_bonus.inc": "4e674263c115e764b667f4c2d5f8bed981a58dbbd802e16473b60ddd75b035b9",
+      "engine/dbc/generated/sc_spell_data.inc": "789541363b28c9862f88b95ba6efb28e69b4d636b716624559a75d44b513e057",
+      "engine/dbc/generated/trait_data.inc": "1923f208f17aa1c33e546e0d85d51eb2da36b5e357fdeb714a8cc710b89824a3",
+      "engine/player/unique_gear_midnight.cpp": "b515d9eb34d4ed93782033df7a767b5e9a8adc4f80d38753caf1a6dbaad2705a"
+    }
+  },
+  "semanticGroups": [
+    {
+      "id": "simc-stats-attribution-bookkeeping",
+      "paths": [
+        "engine/player/unique_gear_midnight.cpp"
+      ],
+      "symbols": [
+        "weighted_boomshots",
+        "devouring_banding",
+        "polished_lightwood_channeler",
+        "sporecallers_blooming_loop",
+        "create_mrm_action"
+      ],
+      "decision": "No trainer runtime change. The byte-identical delta only changes SimC report ownership through dual/actions and stats action_list bookkeeping."
+    },
+    {
+      "id": "simc-existing-buff-refresh-corrections",
+      "paths": [
+        "engine/player/unique_gear_midnight.cpp"
+      ],
+      "symbols": [
+        "liquid_luster",
+        "void_execution_mandate",
+        "venomcursed"
+      ],
+      "decision": "No current-profile change. Keep visible in the update report; reassess only if one of these effects enters an imported profile."
+    },
+    {
+      "id": "venomcursed-ascendance-random-stat-callback",
+      "paths": [
+        "engine/player/unique_gear_midnight.cpp",
+        "engine/dbc/generated/item_effect.inc"
+      ],
+      "symbols": [
+        "venomcursed_ascendance",
+        "venomcursed_ascendance_cb_t"
+      ],
+      "identifiers": [
+        237622,
+        1317581,
+        1317582
+      ],
+      "decision": "Do not implement in G5. If an adopted or imported build references an identifier, emit a structured unsupported item-effect record; never silently ignore it."
+    }
+  ],
+  "scopeChecks": {
+    "feralCoreSourceChanged": false,
+    "feralAplChanged": false,
+    "currentProfileReferencesReviewedIdentifiers": false,
+    "trainerCatalogReferencesReviewedIdentifiers": false
+  }
+}

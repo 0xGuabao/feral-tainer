@@ -1,0 +1,604 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-21T04:03:17.154Z",
+  "scope": "WoW 12.1 Feral SimulationCraft update scan",
+  "base": {
+    "source": "versions/simc.lock.json",
+    "simcCommit": "5b82654ba96c9dc7f611f527a41584dc94e17677",
+    "simcCommitVerification": "partial-source-match",
+    "simcVersion": "1210-01",
+    "wowVersion": "12.1.0.69299",
+    "wowBuild": 69299,
+    "hotfixBuild": 69299,
+    "hotfixHash": "053d0278b09f333cb943d4307c586bc0b1250cf563eea5435f249f9738b52ce7",
+    "snapshotKind": "mixed",
+    "vendorFingerprint": "e71acf35764e9bbd16f5b0ca17c14e4a0e497e1b49c91ef70256340dbde07341"
+  },
+  "target": {
+    "repository": "https://github.com/simulationcraft/simc.git",
+    "branch": "midnight",
+    "simcCommit": "fefb8816af0aaa97819c9a8ba61cca058a81822e",
+    "wowVersion": "12.1.0.69404",
+    "wowBuild": 69404,
+    "sourceAcquisition": "official sparse checkout from simulationcraft/simc full commit SHA"
+  },
+  "scannedPaths": [
+    "engine/class_modules/sc_druid.cpp",
+    "engine/class_modules/apl/druid/feral_apl.inc",
+    "engine/dbc/generated/trait_data.inc",
+    "engine/dbc/generated/sc_spell_data.inc",
+    "engine/dbc/generated/item_set_bonus.inc",
+    "engine/dbc/generated/item_effect.inc",
+    "engine/player/unique_gear_midnight.cpp"
+  ],
+  "categories": {
+    "version_only": 24,
+    "talent": 0,
+    "action_number_or_resource": 12234,
+    "timing_or_cooldown": 1,
+    "aura_or_dot": 17,
+    "apl": 0,
+    "tier_set": 0,
+    "gear_or_trinket": 2722,
+    "new_generic_mechanism": 10,
+    "custom_mechanism_candidate": 7,
+    "unknown": 0
+  },
+  "files": [
+    {
+      "path": "engine/class_modules/sc_druid.cpp",
+      "changed": false,
+      "base": {
+        "bytes": 478659,
+        "sha256": "3d5f1cb1c4fb40ba7cbb7e0bb7b85927476ab3921356ce52a971a3bc4b55acdc",
+        "wowVersion": null,
+        "wowBuild": null
+      },
+      "target": {
+        "bytes": 478659,
+        "sha256": "3d5f1cb1c4fb40ba7cbb7e0bb7b85927476ab3921356ce52a971a3bc4b55acdc",
+        "wowVersion": null,
+        "wowBuild": null
+      },
+      "additions": 0,
+      "deletions": 0,
+      "changedLineCount": 0,
+      "categories": {
+        "version_only": 0,
+        "talent": 0,
+        "action_number_or_resource": 0,
+        "timing_or_cooldown": 0,
+        "aura_or_dot": 0,
+        "apl": 0,
+        "tier_set": 0,
+        "gear_or_trinket": 0,
+        "new_generic_mechanism": 0,
+        "custom_mechanism_candidate": 0,
+        "unknown": 0
+      },
+      "samples": {}
+    },
+    {
+      "path": "engine/class_modules/apl/druid/feral_apl.inc",
+      "changed": false,
+      "base": {
+        "bytes": 16832,
+        "sha256": "9882cb431b35144e46fa76316d590f0b87fb56b090da3c296ab3ae21c9e0b73e",
+        "wowVersion": null,
+        "wowBuild": null
+      },
+      "target": {
+        "bytes": 16832,
+        "sha256": "9882cb431b35144e46fa76316d590f0b87fb56b090da3c296ab3ae21c9e0b73e",
+        "wowVersion": null,
+        "wowBuild": null
+      },
+      "additions": 0,
+      "deletions": 0,
+      "changedLineCount": 0,
+      "categories": {
+        "version_only": 0,
+        "talent": 0,
+        "action_number_or_resource": 0,
+        "timing_or_cooldown": 0,
+        "aura_or_dot": 0,
+        "apl": 0,
+        "tier_set": 0,
+        "gear_or_trinket": 0,
+        "new_generic_mechanism": 0,
+        "custom_mechanism_candidate": 0,
+        "unknown": 0
+      },
+      "samples": {}
+    },
+    {
+      "path": "engine/dbc/generated/trait_data.inc",
+      "changed": true,
+      "base": {
+        "bytes": 686182,
+        "sha256": "2471472ebeef6028016a189f38cb6852f86cdfdbe809bc938a0d67428a9cf1ca",
+        "wowVersion": "12.1.0.69299",
+        "wowBuild": 69299
+      },
+      "target": {
+        "bytes": 686182,
+        "sha256": "1923f208f17aa1c33e546e0d85d51eb2da36b5e357fdeb714a8cc710b89824a3",
+        "wowVersion": "12.1.0.69404",
+        "wowBuild": 69404
+      },
+      "additions": 3,
+      "deletions": 3,
+      "changedLineCount": 6,
+      "categories": {
+        "version_only": 6,
+        "talent": 0,
+        "action_number_or_resource": 0,
+        "timing_or_cooldown": 0,
+        "aura_or_dot": 0,
+        "apl": 0,
+        "tier_set": 0,
+        "gear_or_trinket": 0,
+        "new_generic_mechanism": 0,
+        "custom_mechanism_candidate": 0,
+        "unknown": 0
+      },
+      "samples": {
+        "version_only": [
+          {
+            "kind": "removed",
+            "text": "// Player trait definitions, wow build 12.1.0.69299"
+          },
+          {
+            "kind": "added",
+            "text": "// Player trait definitions, wow build 12.1.0.69404"
+          },
+          {
+            "kind": "removed",
+            "text": "// Player trait definition effect entries, wow build 12.1.0.69299"
+          },
+          {
+            "kind": "added",
+            "text": "// Player trait definition effect entries, wow build 12.1.0.69404"
+          },
+          {
+            "kind": "removed",
+            "text": "// Hero trees, wow build 12.1.0.69299"
+          },
+          {
+            "kind": "added",
+            "text": "// Hero trees, wow build 12.1.0.69404"
+          }
+        ]
+      }
+    },
+    {
+      "path": "engine/dbc/generated/sc_spell_data.inc",
+      "changed": true,
+      "base": {
+        "bytes": 29455622,
+        "sha256": "0bd6a4b4c4965f5acd14f62d578e6809a584101cdd762aab099e3c87c17750f8",
+        "wowVersion": "12.1.0.69299",
+        "wowBuild": 69299
+      },
+      "target": {
+        "bytes": 29460021,
+        "sha256": "789541363b28c9862f88b95ba6efb28e69b4d636b716624559a75d44b513e057",
+        "wowVersion": "12.1.0.69404",
+        "wowBuild": 69404
+      },
+      "additions": 6126,
+      "deletions": 6122,
+      "changedLineCount": 12248,
+      "categories": {
+        "version_only": 14,
+        "talent": 0,
+        "action_number_or_resource": 12234,
+        "timing_or_cooldown": 0,
+        "aura_or_dot": 0,
+        "apl": 0,
+        "tier_set": 0,
+        "gear_or_trinket": 0,
+        "new_generic_mechanism": 0,
+        "custom_mechanism_candidate": 0,
+        "unknown": 0
+      },
+      "samples": {
+        "version_only": [
+          {
+            "kind": "removed",
+            "text": "// 31579 spells, wow build level 12.1.0.69299"
+          },
+          {
+            "kind": "added",
+            "text": "// 31582 spells, wow build level 12.1.0.69404"
+          },
+          {
+            "kind": "removed",
+            "text": "// 53155 effects, wow build level 12.1.0.69299"
+          },
+          {
+            "kind": "added",
+            "text": "// 53172 effects, wow build level 12.1.0.69404"
+          },
+          {
+            "kind": "removed",
+            "text": "// Spell powers, wow build 12.1.0.69299"
+          },
+          {
+            "kind": "added",
+            "text": "// Spell powers, wow build 12.1.0.69404"
+          }
+        ],
+        "action_number_or_resource": [
+          {
+            "kind": "removed",
+            "text": "static spell_data_t __spell_data[31579] = {"
+          },
+          {
+            "kind": "added",
+            "text": "static spell_data_t __spell_data[31582] = {"
+          },
+          {
+            "kind": "removed",
+            "text": "  { \"Unbreakable Spirit\"                ,  114154, 1, 0.000000, 0.000000, 0.000000, 0x0000000000000000, 0x00000002, 0, 0, 0, 0, 0, 0, 0.000000, 0.000000,       0, 0, 0, 0, 0, 0, 0,    0, 0, 0, 0.000000, 0.000000, 0, 0, 0, 0, 0x0000000000000000, 0, 0.000000,  0, 0x00000000, 0x00000000, 0, { 320, 0, 0, 0, 32768, 0, 0, 0, 0, 0, 0, 8, 0, 1, 0, 0, 0 }, { 0, 0, 0, 0 }, 10, { 0, 0 }, { 0, 0 }, 0x00000000, 0,   0,  0, 0, 0, 0, 0, 1, 0, 0, 3 }, /* 127297 */"
+          },
+          {
+            "kind": "added",
+            "text": "  { \"Unbreakable Spirit\"                ,  114154, 1, 0.000000, 0.000000, 0.000000, 0x0000000000000000, 0x00000002, 0, 0, 0, 0, 0, 0, 0.000000, 0.000000,       0, 0, 0, 0, 0, 0, 0,    0, 0, 0, 0.000000, 0.000000, 0, 0, 0, 0, 0x0000000000000000, 0, 0.000000,  0, 0x00000000, 0x00000000, 0, { 320, 0, 0, 0, 32768, 0, 0, 0, 0, 0, 0, 8, 0, 1, 0, 0, 0 }, { 0, 0, 0, 0 }, 10, { 0, 0 }, { 0, 0 }, 0x00000000, 0,   0,  0, 0, 0, 0, 0, 1, 0, 0, 4 }, /* 127297 */"
+          },
+          {
+            "kind": "removed",
+            "text": "  { \"Holy Priest\"                       ,  137031, 1, 0.000000, 0.000000, 0.000000, 0x0000000000000000, 0x00000010, 0, 0, 0, 0, 0, 0, 0.000000, 0.000000,       0, 0, 0, 0, 0, 0, 0,    0, 0, 0, 0.000000, 0.000000, 0, 0, 0, 0, 0x0000000000000000, 0, 0.000000,  0, 0x00000000, 0x00000000, 0, { 464, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0 }, { 0, 0, 0, 0 }, 6, { 0, 0 }, { 0, 0 }, 0x00000000, 0,   0,  0, 0, 0, 0, 0, 17, 0, 0, 3 }, /* 179715, 191076, 191077, 191078, 191079, 869198, 871790, 87179…"
+          },
+          {
+            "kind": "added",
+            "text": "  { \"Holy Priest\"                       ,  137031, 1, 0.000000, 0.000000, 0.000000, 0x0000000000000000, 0x00000010, 0, 0, 0, 0, 0, 0, 0.000000, 0.000000,       0, 0, 0, 0, 0, 0, 0,    0, 0, 0, 0.000000, 0.000000, 0, 0, 0, 0, 0x0000000000000000, 0, 0.000000,  0, 0x00000000, 0x00000000, 0, { 464, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0 }, { 0, 0, 0, 0 }, 6, { 0, 0 }, { 0, 0 }, 0x00000000, 0,   0,  0, 0, 0, 0, 0, 20, 0, 0, 3 }, /* 179715, 191076, 191077, 191078, 191079, 869198, 871790, 87179…"
+          }
+        ]
+      }
+    },
+    {
+      "path": "engine/dbc/generated/item_set_bonus.inc",
+      "changed": true,
+      "base": {
+        "bytes": 239987,
+        "sha256": "dc63d8a0463b2cce935aefe60570ddc388c53ee8ba2da148233cbb02802c27f5",
+        "wowVersion": "12.1.0.69299",
+        "wowBuild": 69299
+      },
+      "target": {
+        "bytes": 239987,
+        "sha256": "4e674263c115e764b667f4c2d5f8bed981a58dbbd802e16473b60ddd75b035b9",
+        "wowVersion": "12.1.0.69404",
+        "wowBuild": 69404
+      },
+      "additions": 1,
+      "deletions": 1,
+      "changedLineCount": 2,
+      "categories": {
+        "version_only": 2,
+        "talent": 0,
+        "action_number_or_resource": 0,
+        "timing_or_cooldown": 0,
+        "aura_or_dot": 0,
+        "apl": 0,
+        "tier_set": 0,
+        "gear_or_trinket": 0,
+        "new_generic_mechanism": 0,
+        "custom_mechanism_candidate": 0,
+        "unknown": 0
+      },
+      "samples": {
+        "version_only": [
+          {
+            "kind": "removed",
+            "text": "// Set bonus data, wow build 12.1.0.69299"
+          },
+          {
+            "kind": "added",
+            "text": "// Set bonus data, wow build 12.1.0.69404"
+          }
+        ]
+      }
+    },
+    {
+      "path": "engine/dbc/generated/item_effect.inc",
+      "changed": true,
+      "base": {
+        "bytes": 1033546,
+        "sha256": "5bcf2e3440e4e60bca6c74edb4638d3db895973f9abe40dee112d4aaa22c9b15",
+        "wowVersion": "12.1.0.69299",
+        "wowBuild": 69299
+      },
+      "target": {
+        "bytes": 1033644,
+        "sha256": "1a3a12f0d500de4570d6447863fdc6cf4795ca3c83b007967222da0366c3c4b3",
+        "wowVersion": "12.1.0.69404",
+        "wowBuild": 69404
+      },
+      "additions": 1320,
+      "deletions": 1319,
+      "changedLineCount": 2639,
+      "categories": {
+        "version_only": 2,
+        "talent": 0,
+        "action_number_or_resource": 0,
+        "timing_or_cooldown": 0,
+        "aura_or_dot": 0,
+        "apl": 0,
+        "tier_set": 0,
+        "gear_or_trinket": 2637,
+        "new_generic_mechanism": 0,
+        "custom_mechanism_candidate": 0,
+        "unknown": 0
+      },
+      "samples": {
+        "version_only": [
+          {
+            "kind": "removed",
+            "text": "// Item effects, wow build 12.1.0.69299"
+          },
+          {
+            "kind": "added",
+            "text": "// Item effects, wow build 12.1.0.69404"
+          }
+        ],
+        "gear_or_trinket": [
+          {
+            "kind": "removed",
+            "text": "static constexpr std::array<item_effect_t, 11038> __item_effect_data { {"
+          },
+          {
+            "kind": "added",
+            "text": "static constexpr std::array<item_effect_t, 11039> __item_effect_data { {"
+          },
+          {
+            "kind": "added",
+            "text": "  { 237622, 1317582,      0,   0,   1,    0,      -1,      -1 }, // Venomcursed Ascendance"
+          },
+          {
+            "kind": "removed",
+            "text": "static const std::array<uint16_t, 11038> __item_effect_id_index { {"
+          },
+          {
+            "kind": "removed",
+            "text": "   1132,  1133,  1134,  1135,  1136,  1137,  1138,  1141,"
+          },
+          {
+            "kind": "removed",
+            "text": "   1142,  1143,  1144,  1145,  1146,  1147,  1148,  1149,"
+          }
+        ]
+      }
+    },
+    {
+      "path": "engine/player/unique_gear_midnight.cpp",
+      "changed": true,
+      "base": {
+        "bytes": 200843,
+        "sha256": "871ab618c5727f29ffce6d2ba612dbae9ffaf08cc5a0d4fbccfd4f41984537b0",
+        "wowVersion": null,
+        "wowBuild": null
+      },
+      "target": {
+        "bytes": 202513,
+        "sha256": "b515d9eb34d4ed93782033df7a767b5e9a8adc4f80d38753caf1a6dbaad2705a",
+        "wowVersion": null,
+        "wowBuild": null
+      },
+      "additions": 84,
+      "deletions": 36,
+      "changedLineCount": 120,
+      "categories": {
+        "version_only": 0,
+        "talent": 0,
+        "action_number_or_resource": 0,
+        "timing_or_cooldown": 1,
+        "aura_or_dot": 17,
+        "apl": 0,
+        "tier_set": 0,
+        "gear_or_trinket": 85,
+        "new_generic_mechanism": 10,
+        "custom_mechanism_candidate": 7,
+        "unknown": 0
+      },
+      "samples": {
+        "timing_or_cooldown": [
+          {
+            "kind": "added",
+            "text": "      set_refresh_behavior( buff_refresh_behavior::DURATION );"
+          }
+        ],
+        "aura_or_dot": [
+          {
+            "kind": "added",
+            "text": "// 1307910 crit buff"
+          },
+          {
+            "kind": "added",
+            "text": "// 1307922 mast buff"
+          },
+          {
+            "kind": "added",
+            "text": "// 1307927 haste buff"
+          },
+          {
+            "kind": "removed",
+            "text": "  stat_buff_t* buff ="
+          },
+          {
+            "kind": "removed",
+            "text": "  if ( !buff )"
+          },
+          {
+            "kind": "added",
+            "text": "// 1317581 Ascendace (random stat) buff"
+          }
+        ],
+        "gear_or_trinket": [
+          {
+            "kind": "removed",
+            "text": "  missile->stats = aoe->stats;  // just report the damage"
+          },
+          {
+            "kind": "added",
+            "text": ""
+          },
+          {
+            "kind": "added",
+            "text": "  missile->dual = true;"
+          },
+          {
+            "kind": "added",
+            "text": "  missile->stats = aoe->stats;  // just report the damage"
+          },
+          {
+            "kind": "removed",
+            "text": "      stats         = impact_action->stats;  // report the damage only"
+          },
+          {
+            "kind": "added",
+            "text": "      stats = impact_action->stats;  // report the damage only"
+          }
+        ],
+        "new_generic_mechanism": [
+          {
+            "kind": "added",
+            "text": "  aoe->stats->action_list.push_back( missile );"
+          },
+          {
+            "kind": "added",
+            "text": "      impact_action->stats->action_list.push_back( this );"
+          },
+          {
+            "kind": "added",
+            "text": "  damage->stats->action_list.push_back( missile );"
+          },
+          {
+            "kind": "added",
+            "text": "      dot->stats->action_list.push_back( this );"
+          },
+          {
+            "kind": "added",
+            "text": "      dot->stats->action_list.push_back( damage );"
+          },
+          {
+            "kind": "added",
+            "text": "  effect.custom_buff = create_buff<stat_buff_t>( effect.player, effect.trigger() )"
+          }
+        ],
+        "custom_mechanism_candidate": [
+          {
+            "kind": "added",
+            "text": "  struct venomcursed_ascendance_cb_t : public dbc_proc_callback_t"
+          },
+          {
+            "kind": "added",
+            "text": "      // hacked execute using update_player_buff_stat and directly stat amount manipulation."
+          },
+          {
+            "kind": "added",
+            "text": "          buff->update_player_buff_stat( s, 0 );"
+          },
+          {
+            "kind": "added",
+            "text": "          buff->update_player_buff_stat( s, 1 );"
+          },
+          {
+            "kind": "added",
+            "text": "    void execute( const spell_data_t*, player_t*, action_state_t* ) override"
+          },
+          {
+            "kind": "added",
+            "text": "      auto rng_stat = rng().range( buff->stats );"
+          }
+        ]
+      }
+    }
+  ],
+  "aplReferenceAudit": {
+    "baseReferenceCount": 26,
+    "targetReferenceCount": 26,
+    "newReferences": [],
+    "missingActionReferences": []
+  },
+  "mechanismReview": {
+    "status": "reviewed",
+    "reviewId": "g5-20260821-fefb881-69404",
+    "reviewedAt": "2026-08-21",
+    "targetCommit": "fefb8816af0aaa97819c9a8ba61cca058a81822e",
+    "detectedLineCount": 17,
+    "reviewedLineCount": 17,
+    "unreviewedLineCount": 0,
+    "reviewedCategories": {
+      "new_generic_mechanism": {
+        "expectedLineCount": 10,
+        "disposition": "reviewed_no_current_profile_impact",
+        "reason": "All seven G5 scan inputs are byte-identical to the already reviewed 70c46902 target. The additions remain SimC stats attribution, buff construction and callback registration lines in unique gear code; they do not add a Feral action, resource, aura or APL rule to the current trainer profile."
+      },
+      "custom_mechanism_candidate": {
+        "expectedLineCount": 7,
+        "disposition": "reviewed_structured_unsupported_if_adopted",
+        "reason": "The byte-identical custom callback remains Venomcursed Ascendance random-stat selection. Its item, driver and buff identifiers are absent from the current MID1 profile, equipment oracle and item-effect catalog. Future adoption must emit a structured unsupported item effect until a generic handler exists."
+      }
+    },
+    "semanticGroups": [
+      {
+        "id": "simc-stats-attribution-bookkeeping",
+        "paths": [
+          "engine/player/unique_gear_midnight.cpp"
+        ],
+        "symbols": [
+          "weighted_boomshots",
+          "devouring_banding",
+          "polished_lightwood_channeler",
+          "sporecallers_blooming_loop",
+          "create_mrm_action"
+        ],
+        "decision": "No trainer runtime change. The byte-identical delta only changes SimC report ownership through dual/actions and stats action_list bookkeeping."
+      },
+      {
+        "id": "simc-existing-buff-refresh-corrections",
+        "paths": [
+          "engine/player/unique_gear_midnight.cpp"
+        ],
+        "symbols": [
+          "liquid_luster",
+          "void_execution_mandate",
+          "venomcursed"
+        ],
+        "decision": "No current-profile change. Keep visible in the update report; reassess only if one of these effects enters an imported profile."
+      },
+      {
+        "id": "venomcursed-ascendance-random-stat-callback",
+        "paths": [
+          "engine/player/unique_gear_midnight.cpp",
+          "engine/dbc/generated/item_effect.inc"
+        ],
+        "symbols": [
+          "venomcursed_ascendance",
+          "venomcursed_ascendance_cb_t"
+        ],
+        "identifiers": [
+          237622,
+          1317581,
+          1317582
+        ],
+        "decision": "Do not implement in G5. If an adopted or imported build references an identifier, emit a structured unsupported item-effect record; never silently ignore it."
+      }
+    ]
+  },
+  "summary": {
+    "scannedFileCount": 7,
+    "changedFileCount": 5,
+    "unchangedFileCount": 2,
+    "changedLineCount": 15015,
+    "unknownChangeLineCount": 0,
+    "reviewedMechanismCount": 17,
+    "unreviewedMechanismCount": 0,
+    "silentUnsupportedDropCount": 0,
+    "aplReferencesMissingActionCount": 0,
+    "resolvedProfileImpact": "not_evaluated_by_scanner",
+    "releaseGate": "g1_scan_passed_target_not_promoted"
+  }
+}

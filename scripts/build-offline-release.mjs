@@ -26,7 +26,10 @@ const version = browserVersionMetadata(simcLock);
 const releaseId = process.env.RELEASE_ID ?? new Date().toISOString().replaceAll(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z");
 if (!/^[A-Za-z0-9._-]+$/.test(releaseId)) throw new Error(`非法 RELEASE_ID：${releaseId}`);
 
-const releaseRoot = join(repositoryRoot, "releases", releaseId);
+const releasesRoot = process.env.RELEASES_ROOT
+  ? resolve(process.env.RELEASES_ROOT)
+  : join(repositoryRoot, "releases");
+const releaseRoot = join(releasesRoot, releaseId);
 if (existsSync(releaseRoot)) throw new Error(`发布目录已存在，拒绝覆盖：${releaseRoot}`);
 mkdirSync(releaseRoot, { recursive: true });
 
@@ -137,12 +140,8 @@ const manifest = {
     sha256: sha256(path),
   })),
   verification: {
-    unitTests: "node --test demo/tests/*.test.mjs passed before packaging",
-    browserDesktop: "1828x1028 passed",
-    browserMobile: "390x844 passed",
-    simcImport: "valid/invalid/persistence/XSS-safe/mobile passed",
-    dialogCompatibility: "native showModal and no-showModal fallback passed",
-    browserRelease: "release.json required fields, content hashes and cache policy validated",
+    status: "package_built_pending_release_gate",
+    note: "Packaging alone does not claim tests passed. scripts/run-release-gate.mjs replaces this section only after scan, generation, tests, browser smoke and package verification all pass.",
   },
 };
 writeFileSync(join(releaseRoot, "manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`);

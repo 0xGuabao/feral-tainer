@@ -65,6 +65,10 @@ test("SimC update scanner covers every G1 file and required change category", ()
     () => applyMechanismReview(review, { ...totals, custom_mechanism_candidate: 8 }, { simcCommit: review.targetCommit }),
     /Mechanism review drift/,
   );
+  assert.throws(
+    () => applyMechanismReview(review, totals, { simcCommit: "fefb8816af0aaa97819c9a8ba61cca058a81822e" }),
+    /targetCommit mismatch/,
+  );
 });
 
 test("checked-in G1 report is bound to its semantic review and passes every hard gate", async () => {
@@ -82,4 +86,26 @@ test("checked-in G1 report is bound to its semantic review and passes every hard
   assert.equal(report.summary.aplReferencesMissingActionCount, 0);
   assert.equal(report.summary.unknownChangeLineCount, 0);
   assert.equal(report.summary.releaseGate, "g1_scan_passed_target_not_promoted");
+});
+
+test("latest G5 upstream report is commit-bound and byte-equivalent to the prior reviewed scan inputs", async () => {
+  const [priorReport, review, report] = await Promise.all([
+    readFile(new URL("../../validation/updates/12.1.0.69404/simc-update-report.json", import.meta.url), "utf8").then(JSON.parse),
+    readFile(new URL("../../versions/simc-update-reviews/12.1.0.69404-fefb8816.json", import.meta.url), "utf8").then(JSON.parse),
+    readFile(new URL("../../validation/updates/12.1.0.69404-fefb8816/simc-update-report.json", import.meta.url), "utf8").then(JSON.parse),
+  ]);
+
+  assert.equal(report.target.simcCommit, "fefb8816af0aaa97819c9a8ba61cca058a81822e");
+  assert.equal(report.target.simcCommit, review.targetCommit);
+  assert.equal(report.mechanismReview.reviewId, review.reviewId);
+  assert.equal(report.summary.unreviewedMechanismCount, 0);
+  assert.equal(report.summary.silentUnsupportedDropCount, 0);
+  assert.equal(report.summary.aplReferencesMissingActionCount, 0);
+  assert.equal(report.summary.unknownChangeLineCount, 0);
+  assert.equal(report.summary.releaseGate, "g1_scan_passed_target_not_promoted");
+
+  const priorHashes = Object.fromEntries(priorReport.files.map((file) => [file.path, file.target.sha256]));
+  const currentHashes = Object.fromEntries(report.files.map((file) => [file.path, file.target.sha256]));
+  assert.deepEqual(currentHashes, priorHashes);
+  assert.deepEqual(currentHashes, review.equivalenceEvidence.scanInputSha256);
 });

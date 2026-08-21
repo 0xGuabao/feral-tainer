@@ -43,7 +43,7 @@ cd demo
 npm test
 ```
 
-The current suite contains 70 deterministic unit and architecture tests. The
+The current suite contains 75 deterministic unit and architecture tests. The
 local browser smoke test is documented in `demo/browser-smoke.mjs` and requires
 Chromium DevTools on port 9223.
 
@@ -94,16 +94,41 @@ SIMC_BIN=/path/to/simc bash validation/run-matrix.sh
 
 ## Offline packages
 
-Create local macOS, Windows, and web archives with:
+The G5 release gate is the supported way to create a distributable candidate.
+It requires a clean commit already present on GitHub, a Git checkout of the
+currently reviewed SimulationCraft `midnight` commit, and a local compatible
+SimC binary. One command rechecks the live upstream branch, scans the seven
+inputs, regenerates all facts, proves generation is idempotent, runs tests and
+syntax gates, stages all packages, verifies checksums and legal notices, then
+runs the packaged web build in desktop and 390×844 mobile Chromium:
+
+```bash
+node scripts/run-release-gate.mjs \
+  --release-id 20260821-g5-rc1 \
+  --simc-target-root /path/to/simc-midnight-checkout \
+  --simc-target-commit fefb8816af0aaa97819c9a8ba61cca058a81822e \
+  --simc-target-version 12.1.0.69404 \
+  --simc-review-file versions/simc-update-reviews/12.1.0.69404-fefb8816.json \
+  --simc-report validation/updates/12.1.0.69404-fefb8816/simc-update-report.json
+```
+
+The final `releases/RELEASE_ID` directory appears only after every gate passes.
+Failure removes the hidden staging directory and never publishes a partial
+candidate. This command does not upload files or deploy the public site.
+
+For packaging diagnostics only, without a release claim, create local macOS,
+Windows, and web archives with:
 
 ```bash
 node scripts/build-offline-release.mjs
 ```
 
 Generated packages are written under `releases/`, which is intentionally not
-tracked. Every package carries the project license, third-party notices, and the
-SimulationCraft license set. Review third-party asset obligations before
-redistributing a package.
+tracked. A package-only manifest is explicitly marked pending until the G5 gate
+replaces it with actual verification evidence. Every package carries the
+project license, third-party notices, and the SimulationCraft license set.
+Review third-party asset obligations before redistributing a package. Windows
+10/11 launcher double-click validation remains a separate real-machine gate.
 
 ## License
 
