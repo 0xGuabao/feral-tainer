@@ -133,7 +133,7 @@ git push origin main
 | 三平台解包 `FILES.sha256` | 全部通过 |
 | 三归档 `SHA256SUMS.txt` | 全部通过 |
 | 开源声明 | 每个平台包均包含根 LICENSE、THIRD_PARTY_NOTICES.md 和 `vendor/simc/COPYING` + 全部 `LICENSE*` |
-| GitHub | `origin/main` 已前进到 `1f123472f194bdf39bfedfb4779f251d19ff5722`；仓库开源声明随提交发布 |
+| GitHub | `origin/main` 已包含 `1f123472f194bdf39bfedfb4779f251d19ff5722`；仓库开源声明随提交发布 |
 
 最终本地门禁包（未部署、`releases/` 不跟踪）：
 
