@@ -18,6 +18,8 @@ version-locked SimulationCraft evidence.
   proc seeds, desktop layouts, and a 390×844 mobile layout.
 - Preserves unsupported fields, mechanics, and unmatched Profile APL rules as
   structured output.
+- Publishes a version-locked `release.json`, content-hashed browser resources,
+  and namespaced Profile cache migration with rollback-on-failure.
 - Keeps the UI and `InteractiveController` free of talent/ability-specific
   mechanism branches.
 
@@ -29,7 +31,7 @@ damage simulator and does not replace SimulationCraft.
 No package installation is required:
 
 ```bash
-python3 -m http.server 4173
+python3 packaging/cache_server.py --port 4173 --directory .
 ```
 
 Open <http://localhost:4173/demo/>.
@@ -41,7 +43,7 @@ cd demo
 npm test
 ```
 
-The current suite contains 60 deterministic unit and architecture tests. The
+The current suite contains 70 deterministic unit and architecture tests. The
 local browser smoke test is documented in `demo/browser-smoke.mjs` and requires
 Chromium DevTools on port 9223.
 
@@ -83,8 +85,8 @@ SIMC_BIN=/path/to/simc bash validation/run-matrix.sh
 - `demo/`: browser application, runtime, tests, generated SimC facts under
   `data/12.1/generated/`, and reviewed trainer semantics under
   `data/12.1/authored/`; stable top-level data modules are compatibility facades.
-- `scripts/`: version generation, oracle generation, architecture reports, and
-  SimC update scanning.
+- `scripts/`: version/release generation, oracle generation, architecture
+  reports, and SimC update scanning.
 - `versions/`: immutable local snapshot lock and commit-bound mechanism reviews.
 - `validation/`: public architecture/oracle evidence and reproducible inputs.
 - `vendor/simc/`: minimal licensed upstream subset, not a complete checkout.
@@ -99,7 +101,9 @@ node scripts/build-offline-release.mjs
 ```
 
 Generated packages are written under `releases/`, which is intentionally not
-tracked. Review third-party asset obligations before redistributing a package.
+tracked. Every package carries the project license, third-party notices, and the
+SimulationCraft license set. Review third-party asset obligations before
+redistributing a package.
 
 ## License
 

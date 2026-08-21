@@ -1,13 +1,20 @@
-import { buildInputFromFixture, normalizeBuildInput } from "./core/build-input.js?v=20260821-dialog-hotfix-v1";
-import { BUILD_FIXTURES } from "./data/12.1/build-fixtures.js?v=20260821-dialog-hotfix-v1";
-import { FeralTrainerController } from "./trainer-controller.js?v=20260821-dialog-hotfix-v1";
+import { buildInputFromFixture, normalizeBuildInput } from "./core/build-input.js";
+import {
+  IMPORTED_BUILD_KEY,
+  clearImportedProfile,
+  loadAndMigrateImportedProfile,
+  loadSelectedBuildKey,
+  saveImportedProfile,
+  saveSelectedBuildKey as saveNamespacedSelectedBuildKey,
+} from "./core/profile-cache.js";
+import { checkForReleaseUpdate } from "./core/release-update.js";
+import { BUILD_FIXTURES } from "./data/12.1/build-fixtures.js";
+import { FeralTrainerController } from "./trainer-controller.js";
+import { versionedAssetUrl } from "./release.generated.js";
 
 const STORAGE_KEY = "ashamane-lab-keybinds-v2";
 const AURA_MONITOR_STORAGE_KEY = "ashamane-lab-aura-monitor-selections-v1";
 const DURATION_STORAGE_KEY = "ashamane-lab-session-duration-v1";
-const SIMC_PROFILE_STORAGE_KEY = "ashamane-lab-simc-profile-v1";
-const SELECTED_BUILD_STORAGE_KEY = "ashamane-lab-selected-build-v1";
-const IMPORTED_BUILD_KEY = "__simc_import__";
 const MAX_SIMC_PROFILE_BYTES = 512 * 1024;
 const MIN_DURATION_SECONDS = 15;
 const MAX_DURATION_SECONDS = 600;
@@ -82,10 +89,15 @@ const elements = {
   auraMonitorHint: document.querySelector("#aura-monitor-hint"),
   clearAuraMonitors: document.querySelector("#clear-aura-monitors"),
   footerProfile: document.querySelector("#footer-profile"),
+  releaseUpdate: document.querySelector("#release-update"),
   toast: document.querySelector("#toast"),
 };
 
-let importedBuildInput = loadStoredSimcBuildInput();
+const importedCacheResult = loadAndMigrateImportedProfile();
+let importedBuildInput = importedCacheResult.profileText
+  ? createImportedBuildInput(importedCacheResult.profileText)
+  : null;
+let importedResolvedProfile = importedCacheResult.resolvedProfile ?? null;
 let selectedBuildKey = loadStoredSelectedBuildKey();
 let selectedTargetCount = 1;
 let selectedDurationSeconds = loadStoredDurationSeconds();
@@ -160,47 +172,15 @@ function createImportedBuildInput(profileText) {
   });
 }
 
-function loadStoredSimcBuildInput() {
-  try {
-    const profileText = localStorage.getItem(SIMC_PROFILE_STORAGE_KEY);
-    return profileText ? createImportedBuildInput(profileText) : null;
-  } catch {
-    return null;
-  }
-}
-
 function loadStoredSelectedBuildKey() {
-  try {
-    const stored = localStorage.getItem(SELECTED_BUILD_STORAGE_KEY);
-    if (stored === IMPORTED_BUILD_KEY && importedBuildInput) return stored;
-    if (stored && BUILD_FIXTURES[stored]) return stored;
-  } catch {
-    // localStorage may be unavailable; the first fixture remains a safe fallback.
-  }
+  const stored = loadSelectedBuildKey();
+  if (stored === IMPORTED_BUILD_KEY && importedBuildInput) return stored;
+  if (stored && BUILD_FIXTURES[stored]) return stored;
   return fixtureEntries[0][0];
 }
 
 function saveSelectedBuildKey() {
-  localStorage.setItem(SELECTED_BUILD_STORAGE_KEY, selectedBuildKey);
-}
-
-function persistImportedProfile(profileText) {
-  const previousProfile = localStorage.getItem(SIMC_PROFILE_STORAGE_KEY);
-  const previousSelection = localStorage.getItem(SELECTED_BUILD_STORAGE_KEY);
-  try {
-    localStorage.setItem(SIMC_PROFILE_STORAGE_KEY, profileText);
-    localStorage.setItem(SELECTED_BUILD_STORAGE_KEY, IMPORTED_BUILD_KEY);
-  } catch (error) {
-    try {
-      if (previousProfile == null) localStorage.removeItem(SIMC_PROFILE_STORAGE_KEY);
-      else localStorage.setItem(SIMC_PROFILE_STORAGE_KEY, previousProfile);
-      if (previousSelection == null) localStorage.removeItem(SELECTED_BUILD_STORAGE_KEY);
-      else localStorage.setItem(SELECTED_BUILD_STORAGE_KEY, previousSelection);
-    } catch {
-      // The original storage error is the useful failure to report to the user.
-    }
-    throw error;
-  }
+  saveNamespacedSelectedBuildKey(selectedBuildKey);
 }
 
 function currentActions() {
@@ -282,7 +262,7 @@ function iconMarkup(definition) {
   const icon = definition?.icon;
   if (!icon?.path) return '<span class="wow-icon-missing" aria-hidden="true"></span>';
   const iconKey = icon.fileDataId ?? icon.iconName;
-  return `<img class="wow-icon-image" src="${icon.path}" data-icon-file-id="${iconKey}" alt="" draggable="false" />`;
+  return `<img class="wow-icon-image" src="${versionedAssetUrl(icon.path)}" data-icon-file-id="${iconKey}" alt="" draggable="false" />`;
 }
 
 function getSkillForCode(code) {
@@ -378,7 +358,7 @@ function validateSimcProfile(profileText) {
     procMode: "seeded",
     seed: 1210001,
   });
-  return { buildInput, preview };
+  return { buildInput, preview, resolvedProfile: previewController.profile };
 }
 
 function renderSimcImportStatus({ type = "idle", message, snapshot: reportSnapshot = null } = {}) {
@@ -444,9 +424,10 @@ function openSimcImportDialog() {
 function applySimcImport() {
   const profileText = elements.simcProfileInput.value;
   try {
-    const { buildInput, preview } = validateSimcProfile(profileText);
-    persistImportedProfile(profileText);
+    const { buildInput, preview, resolvedProfile } = validateSimcProfile(profileText);
+    saveImportedProfile({ profileText, resolvedProfile });
     importedBuildInput = buildInput;
+    importedResolvedProfile = resolvedProfile;
     selectedBuildKey = IMPORTED_BUILD_KEY;
     createBuildOptions();
     prepareSession();
@@ -461,8 +442,9 @@ function applySimcImport() {
 
 function clearSimcImport() {
   try {
-    localStorage.removeItem(SIMC_PROFILE_STORAGE_KEY);
+    clearImportedProfile();
     importedBuildInput = null;
+    importedResolvedProfile = null;
     elements.simcProfileInput.value = "";
     if (selectedBuildKey === IMPORTED_BUILD_KEY) {
       selectedBuildKey = fixtureEntries[0][0];
@@ -482,7 +464,9 @@ function clearSimcImport() {
 function prepareSession({ preserveStarted = false } = {}) {
   const buildInput = currentBuildInput();
   snapshot = controller.startSession({
-    buildInput,
+    ...(selectedBuildKey === IMPORTED_BUILD_KEY && importedResolvedProfile
+      ? { resolvedProfile: importedResolvedProfile }
+      : { buildInput }),
     targetCount: selectedTargetCount,
     durationMs: selectedDurationSeconds * 1000,
     procMode: "seeded",
@@ -501,6 +485,47 @@ function prepareSession({ preserveStarted = false } = {}) {
   lastSequenceSignature = "";
   lastLogSignature = "";
   render();
+}
+
+function applyProfileCacheNotice() {
+  if (importedCacheResult.status === "migrated") {
+    const unsupported = importedCacheResult.unsupportedDiff;
+    const detail = unsupported
+      ? `未支持字段 ${unsupported.unsupportedFields.leftCount}→${unsupported.unsupportedFields.rightCount}、效果 ${unsupported.unsupportedEffects.leftCount}→${unsupported.unsupportedEffects.rightCount}、APL ${unsupported.unsupportedAplRules.leftCount}→${unsupported.unsupportedAplRules.rightCount}`
+      : `当前未支持字段 ${importedResolvedProfile?.unsupportedFields.length ?? 0}、效果 ${importedResolvedProfile?.unsupportedEffects.length ?? 0}、APL ${importedResolvedProfile?.unsupportedAplRules.length ?? 0}`;
+    const rollback = importedCacheResult.retainedRollback
+      ? "旧缓存保留为回滚点。"
+      : "原记录仅在解析和写入均成功后更新。";
+    feedback = { type: "success", message: `已在新版本中安全重解析已保存 Profile；${detail}。${rollback}` };
+    render();
+    showToast("Profile 已迁移并重解析");
+  } else if (importedCacheResult.status === "migration-failed") {
+    feedback = importedResolvedProfile
+      ? { type: "warning", message: `Profile 重解析失败，已继续使用兼容的旧 ResolvedProfile；旧缓存未覆盖。${importedCacheResult.error?.message ?? ""}` }
+      : { type: "warning", message: `Profile 重解析失败，旧缓存未覆盖；当前已回退到首个测试构筑。${importedCacheResult.error?.message ?? ""}` };
+    render();
+    showToast("Profile 迁移失败，已安全回退");
+  }
+}
+
+let releaseCheckInFlight = false;
+let lastReleaseCheckAt = 0;
+
+async function discoverReleaseUpdate() {
+  if (releaseCheckInFlight || Date.now() - lastReleaseCheckAt < 60_000) return;
+  releaseCheckInFlight = true;
+  lastReleaseCheckAt = Date.now();
+  try {
+    const result = await checkForReleaseUpdate();
+    if (result.status !== "update-available") return;
+    elements.releaseUpdate.hidden = false;
+    elements.releaseUpdate.textContent = `新版本 ${result.remoteReleaseId} 可用`;
+    elements.releaseUpdate.title = `${result.changedResources.length} 个资源变化；点击刷新后迁移 Profile`;
+  } catch (error) {
+    console.warn("Release discovery failed; the active training session is unchanged.", error);
+  } finally {
+    releaseCheckInFlight = false;
+  }
 }
 
 function rebuildActionSurfaces() {
@@ -1197,6 +1222,12 @@ elements.clearAuraMonitors.addEventListener("click", () => {
   renderAuraMonitors();
   elements.auraMonitorHint.textContent = "已清空当前构筑的增益监控。";
 });
+elements.releaseUpdate.addEventListener("click", () => {
+  globalThis.location.reload();
+});
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") void discoverReleaseUpdate();
+});
 for (const dialog of [elements.keybindDialog, elements.auraMonitorDialog, elements.simcImportDialog]) {
   dialog.querySelectorAll("[data-dialog-close]").forEach((button) => {
     button.addEventListener("click", () => closeModalDialog(dialog));
@@ -1211,6 +1242,8 @@ document.addEventListener("keydown", onGlobalKeydown, true);
 
 createBuildOptions();
 prepareSession();
+applyProfileCacheNotice();
+void discoverReleaseUpdate();
 
 let previousFrame = performance.now();
 function frame(now) {

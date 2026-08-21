@@ -29,9 +29,10 @@ function Send-Response {
     [Parameter(Mandatory = $true)] [string] $Reason,
     [Parameter(Mandatory = $true)] [byte[]] $Body,
     [Parameter(Mandatory = $true)] [string] $ContentType,
+    [string] $CacheControl = "no-store",
     [bool] $HeadOnly = $false
   )
-  $header = "HTTP/1.1 $Status $Reason`r`nContent-Type: $ContentType`r`nContent-Length: $($Body.Length)`r`nCache-Control: no-store`r`nConnection: close`r`n`r`n"
+  $header = "HTTP/1.1 $Status $Reason`r`nContent-Type: $ContentType`r`nContent-Length: $($Body.Length)`r`nCache-Control: $CacheControl`r`nX-Content-Type-Options: nosniff`r`nConnection: close`r`n`r`n"
   $headerBytes = [Text.Encoding]::ASCII.GetBytes($header)
   $Stream.Write($headerBytes, 0, $headerBytes.Length)
   if (-not $HeadOnly -and $Body.Length -gt 0) {
@@ -66,6 +67,7 @@ try {
 
       $requestTarget = $parts[1]
       $queryIndex = $requestTarget.IndexOf("?")
+      $queryString = if ($queryIndex -ge 0) { $requestTarget.Substring($queryIndex + 1) } else { "" }
       if ($queryIndex -ge 0) { $requestTarget = $requestTarget.Substring(0, $queryIndex) }
       $requestPath = [Uri]::UnescapeDataString($requestTarget).Replace("/", [IO.Path]::DirectorySeparatorChar)
       if ($requestPath -eq [IO.Path]::DirectorySeparatorChar) {
@@ -89,7 +91,15 @@ try {
       $body = [IO.File]::ReadAllBytes($candidate)
       $extension = [IO.Path]::GetExtension($candidate).ToLowerInvariant()
       $contentType = if ($mimeTypes.ContainsKey($extension)) { $mimeTypes[$extension] } else { "application/octet-stream" }
-      Send-Response -Stream $stream -Status 200 -Reason "OK" -Body $body -ContentType $contentType -HeadOnly ($parts[0] -eq "HEAD")
+      $filename = [IO.Path]::GetFileName($candidate).ToLowerInvariant()
+      $cacheControl = if ($filename -eq "index.html" -or $filename -eq "release.json") {
+        "no-cache, no-store, must-revalidate"
+      } elseif ($queryString -match "(^|&)h=[0-9a-f]{64}(&|$)") {
+        "public, max-age=31536000, immutable"
+      } else {
+        "no-cache"
+      }
+      Send-Response -Stream $stream -Status 200 -Reason "OK" -Body $body -ContentType $contentType -CacheControl $cacheControl -HeadOnly ($parts[0] -eq "HEAD")
     }
     catch {
       Write-Warning $_.Exception.Message

@@ -76,6 +76,8 @@ flowchart LR
 | `apl/apl-ir.js` | 校验并解释通用白名单表达式/目标选择 IR | 按具体技能或天赋名分派条件 |
 | `apl/apl-compiler.js` | 按精确来源绑定编译 Profile APL、过滤不可用动作、结构化未匹配规则 | 猜测或宽松接受发生漂移的 SimC 条件 |
 | `apl/feral-apl-adapter.js` | 在已编译和过滤的规则上做交互式推荐 | 推荐 `ResolvedProfile` 中不存在的技能 |
+| `core/profile-cache.js` | 按 game build/catalog hash 命名空间保存原始 SimC、ResolvedProfile、unsupported 列表和迁移历史；重解析失败保留旧记录 | 静默覆盖旧 Profile、判断具体技能或天赋机制 |
+| `core/release-update.js` | 以 no-store 获取并校验 `release.json`，比较组哈希和资源哈希，只报告更新 | 自动中断训练、自动覆盖当前版本或解释战斗机制 |
 | `core/interactive-controller.js` | 提供稳定训练接口，维护时间轴并输出 Snapshot/Events | 按具体天赋名称改变公开接口 |
 | `app.js` | 从 Catalog、Snapshot、Events 动态渲染和转发输入 | 判断天赋机制、触发概率或技能数值 |
 
@@ -93,6 +95,14 @@ flowchart LR
 - 明确的真实性边界。
 
 控制器接口固定为 `startSession`、`pressAction`、`advanceTime`、`setActiveTarget`、`getSnapshot`、`getRecommendation`、`drainEvents`、`resetSession`。切换构筑通过 `startSession({ buildInput })` 完成。
+
+## 浏览器发布与 Profile 迁移
+
+`demo/release.json` 是浏览器发布事实，包含 release、Profile schema、WoW build、SimC commit，以及 runtime/catalog/APL/icon 四组内容哈希。`scripts/generate-browser-release.mjs` 同时生成 import map 和 `release.generated.js`：JavaScript、CSS 与图标使用 `?h=<sha256>` 内容地址，未变化资源继续命中 immutable 缓存；`index.html` 与 `release.json` 必须 no-cache。第一阶段不注册 Service Worker，避免额外更新状态机。
+
+更新检查只读取 `release.json` 并展示刷新提示，不修改正在进行的训练。刷新后，`core/profile-cache.js` 先读取当前命名空间；若 game build、catalog hash、缓存 schema 或 ResolvedProfile schema 变化，则从保留的原始 SimC 文本重新解析，输出 `resolvedProfileDiff()` 以及 `unsupportedFields` / `unsupportedEffects` / `unsupportedAplRules` 数量和标识差异。只有解析和新命名空间写入都成功后才切换；任何解析或 localStorage 写入失败都不覆盖旧记录，兼容的旧 ResolvedProfile 可继续作为回退输入。
+
+旧的 `ashamane-lab-simc-profile-v1` / `ashamane-lab-selected-build-v1` 只作为首次迁移来源保留。用户主动清除导入时才删除旧键和所有命名空间记录。缓存层、更新层、UI 和 `InteractiveController` 都不包含具体技能或天赋机制判断。
 
 ## 受控 APL IR 与 Profile 核算
 

@@ -1,6 +1,13 @@
 import assert from "node:assert/strict";
 
 const USER_VALIDATION_TALENT_CODE = "CcGADBD3hSPCL9Y9gz68WcKvMAAAAAAwgZwYmZmxstMPwyYbmZGzMDAAAAbgZzwYmBzYWGzMzYMDDAAAAAgBGAAAAmZZWmZmZWmZxsMzyGMz8AALmBDAgZGMzGGA";
+const BROWSER_IMPORTED_PROFILE = [
+  'druid="Imported <img src=x onerror=globalThis.__simcInjected=true>"',
+  "spec=feral",
+  "level=90",
+  `talents=${USER_VALIDATION_TALENT_CODE}`,
+  "iterations=100",
+].join("\n");
 
 const port = process.env.CDP_PORT ?? "9223";
 const targets = await fetch(`http://127.0.0.1:${port}/json/list`).then((response) => response.json());
@@ -105,13 +112,30 @@ try {
     mobile: false,
   });
   await evaluate(`{
-    localStorage.removeItem("ashamane-lab-keybinds-v2");
-    localStorage.removeItem("ashamane-lab-aura-monitor-selections-v1");
-    localStorage.removeItem("ashamane-lab-session-duration-v1");
-    localStorage.removeItem("ashamane-lab-simc-profile-v1");
-    localStorage.removeItem("ashamane-lab-selected-build-v1");
+    for (const key of Object.keys(localStorage)) {
+      if (key.startsWith("ashamane-lab-")) localStorage.removeItem(key);
+    }
+    localStorage.setItem("ashamane-lab-simc-profile-v1", ${JSON.stringify(BROWSER_IMPORTED_PROFILE)});
+    localStorage.setItem("ashamane-lab-selected-build-v1", "__simc_import__");
   }`);
   await command("Page.reload", { ignoreCache: true });
+  await wait(100);
+  await waitForPageReady();
+  const legacyMigration = await evaluate(`({
+    buildValue: document.querySelector("#build-select").value,
+    profileCacheKeys: Object.keys(localStorage).filter((key) => key.startsWith("ashamane-lab-profile-cache-v1:")),
+    selectionKeys: Object.keys(localStorage).filter((key) => key.startsWith("ashamane-lab-selected-build-v2:")),
+    legacyRetained: localStorage.getItem("ashamane-lab-simc-profile-v1") !== null,
+    feedback: document.querySelector("#feedback").textContent,
+  })`);
+  assert.equal(legacyMigration.buildValue, "__simc_import__");
+  assert.equal(legacyMigration.profileCacheKeys.length, 1);
+  assert.equal(legacyMigration.selectionKeys.length, 1);
+  assert.equal(legacyMigration.legacyRetained, true, "迁移成功后必须保留旧键作为回滚点");
+  assert.match(legacyMigration.feedback, /安全重解析/);
+  await evaluate(`document.querySelector("#clear-simc-import").click()`);
+  await command("Page.reload", { ignoreCache: true });
+  await wait(100);
   await waitForPageReady();
   const initial = await evaluate(`({
     title: document.title,
@@ -156,7 +180,14 @@ try {
     versionedAssets: [
       ...document.querySelectorAll('link[rel="stylesheet"]'),
       document.querySelector('script[type="module"]')
-    ].every((element) => element?.getAttribute(element.tagName === "LINK" ? "href" : "src")?.includes("v=20260821-dialog-hotfix-v1")),
+    ].every((element) => /[?&]h=[0-9a-f]{64}(?:&|$)/.test(element?.getAttribute(element.tagName === "LINK" ? "href" : "src") ?? "")),
+    unhashedLoadedAssets: performance.getEntriesByType("resource").filter((entry) => {
+      const url = new URL(entry.name);
+      return url.pathname.startsWith("/demo/")
+        && !url.pathname.endsWith("/release.json")
+        && /\.(?:js|css|jpg|jpeg|png|svg)$/.test(url.pathname)
+        && !/[?&]h=[0-9a-f]{64}(?:&|$)/.test(url.search);
+    }).map((entry) => entry.name),
     actionIds: [...document.querySelectorAll(".skill-button")].map((button) => button.dataset.skillId),
     viewportWidth: window.innerWidth,
     viewportHeight: window.innerHeight
@@ -171,7 +202,8 @@ try {
   assert(initial.dotMonitorIcons > 0);
   assert.equal(initial.channelHidden, true);
   assert.equal(initial.buildOptions, 4);
-  assert.equal(initial.versionedAssets, true, "入口 CSS/JS 必须带发行版本，避免 H5 混用新 HTML 与旧脚本");
+  assert.equal(initial.versionedAssets, true, "入口 CSS/JS 必须带内容哈希，避免 H5 混用新 HTML 与旧脚本");
+  assert.deepEqual(initial.unhashedLoadedAssets, [], "浏览器加载的 JS/CSS/图标必须使用内容哈希 URL");
   assert(initial.actionIds.includes("moonfire"));
   assert(!initial.actionIds.includes("primalWrath"));
   assert(initial.sequenceTop < initial.resourceTop, "施法顺序应位于资源与监控区上方");
@@ -193,13 +225,7 @@ try {
   assert.equal(initial.selectedAuraEmpty, 1);
   assert.equal(initial.sessionDuration, "/ 01:00");
 
-  const importedProfile = [
-    'druid="Imported <img src=x onerror=globalThis.__simcInjected=true>"',
-    "spec=feral",
-    "level=90",
-    `talents=${USER_VALIDATION_TALENT_CODE}`,
-    "iterations=100",
-  ].join("\n");
+  const importedProfile = BROWSER_IMPORTED_PROFILE;
   const simcImport = await evaluate(`(() => {
     globalThis.__simcInjected = false;
     document.querySelector("#open-simc-import").click();
@@ -213,7 +239,7 @@ try {
       selectedLabel: document.querySelector("#build-select").selectedOptions[0].textContent,
       nestedImages: document.querySelectorAll("#build-select img").length,
       injected: globalThis.__simcInjected,
-      persisted: localStorage.getItem("ashamane-lab-simc-profile-v1"),
+      persisted: JSON.parse(localStorage.getItem(Object.keys(localStorage).find((key) => key.startsWith("ashamane-lab-profile-cache-v1:")))).rawProfileText,
       statusClass: document.querySelector("#simc-import-status").className,
       statusText: document.querySelector("#simc-import-status").textContent,
       feedback: document.querySelector("#feedback").textContent,
@@ -235,13 +261,14 @@ try {
   assert(!simcImport.actionIds.includes("primalWrath"));
 
   const failedImport = await evaluate(`(() => {
-    const previousProfile = localStorage.getItem("ashamane-lab-simc-profile-v1");
+    const profileCacheKey = Object.keys(localStorage).find((key) => key.startsWith("ashamane-lab-profile-cache-v1:"));
+    const previousProfile = localStorage.getItem(profileCacheKey);
     const previousBuild = document.querySelector("#build-select").value;
     document.querySelector("#simc-profile-input").value = ${JSON.stringify(`druid=WrongSpec\nspec=balance\ntalents=${USER_VALIDATION_TALENT_CODE}`)};
     document.querySelector("#apply-simc-import").click();
     return {
       previousProfile,
-      persistedProfile: localStorage.getItem("ashamane-lab-simc-profile-v1"),
+      persistedProfile: localStorage.getItem(profileCacheKey),
       previousBuild,
       currentBuild: document.querySelector("#build-select").value,
       statusClass: document.querySelector("#simc-import-status").className,
@@ -610,6 +637,7 @@ try {
     mobile: true,
   });
   await command("Page.reload", { ignoreCache: true });
+  await wait(100);
   await waitForPageReady();
   const responsive = await evaluate(`({
     innerWidth: window.innerWidth,
@@ -777,6 +805,7 @@ try {
       invalidProfilePreserved: failedImport.persistedProfile === failedImport.previousProfile,
       mobile: mobileSimcImport,
       fallbackDialog,
+      legacyMigration,
     },
     equippedCatalog,
   }, null, 2));

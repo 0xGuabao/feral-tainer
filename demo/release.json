@@ -1,0 +1,573 @@
+{
+  "releaseId": "20260821-g4-local-v1",
+  "schemaVersion": 1,
+  "gameVersion": "12.1.0.69299",
+  "gameBuild": 69299,
+  "simcCommit": "5b82654ba96c9dc7f611f527a41584dc94e17677",
+  "runtimeHash": "db33b954554793451163bfb3df1fe92abf5eeed100892233dc3ef2796f820928",
+  "catalogHash": "66d087833cf788ae64adc08e44b49038c77e5ce97934c41d134efc6b5e011275",
+  "aplHash": "c3cb3bda4ce62eeda8389fb131b3ae57e23fe3ac3d8395fe746d3cd37e17a694",
+  "iconManifestHash": "f46a3ae87c141080e3e68af5fd847213a26997c07f33f898f4b6385e5984396b",
+  "minimumCompatibleProfileSchema": 1,
+  "profileCacheNamespace": "wow-feral:69299:e71acf35764e:p1:66d087833cf7",
+  "createdAt": "2026-08-21T03:28:00.000Z",
+  "cachePolicy": {
+    "indexAndManifest": "no-cache",
+    "hashedResources": "public, max-age=31536000, immutable",
+    "serviceWorker": false
+  },
+  "resources": [
+    {
+      "path": "apl/apl-compiler.js",
+      "group": "apl",
+      "bytes": 5238,
+      "sha256": "eeb89542bf60cc8c411977a9527b929f09d71c95ed231a0cdf944b3f0e4a92b3"
+    },
+    {
+      "path": "apl/apl-ir.js",
+      "group": "apl",
+      "bytes": 9432,
+      "sha256": "19f1b6e40dbb1ecdbb902a71b4c3f0d3edf886917c4763d4a9b63988e307e77c"
+    },
+    {
+      "path": "apl/feral-apl-adapter.js",
+      "group": "apl",
+      "bytes": 2300,
+      "sha256": "a47ee5bcd5d96c94995004f22163a7ead6c5adf5ff3eeb5d76090db586f0c3b7"
+    },
+    {
+      "path": "app.js",
+      "group": "runtime",
+      "bytes": 55451,
+      "sha256": "771335ea130735c7e57097598778ef9c077748b55881bdf9f54dfd983a6250bc"
+    },
+    {
+      "path": "assets/icons/1033484.jpg",
+      "group": "icon",
+      "bytes": 2421,
+      "sha256": "dc34a9e74897631c822a69db413f49b31a5ca2be17f8f5ef51e131606763a819"
+    },
+    {
+      "path": "assets/icons/132105.jpg",
+      "group": "icon",
+      "bytes": 2411,
+      "sha256": "06364733c5e4374ca41f38c6e6c03f8933e8818ccc1f8df73bcd595ac3d41aeb"
+    },
+    {
+      "path": "assets/icons/132122.jpg",
+      "group": "icon",
+      "bytes": 1972,
+      "sha256": "b8d4a013568fbfd2d8f231ec4e6658d160a6967bbf91c0cbc195acaaa32e8b34"
+    },
+    {
+      "path": "assets/icons/132127.jpg",
+      "group": "icon",
+      "bytes": 2646,
+      "sha256": "111db68ee05498892520843bba734070bfb82ab92dbd699924440cf7373e03c7"
+    },
+    {
+      "path": "assets/icons/132130.jpg",
+      "group": "icon",
+      "bytes": 2351,
+      "sha256": "271aac4b9645ea693834244dca6ae84ae0024b0e8e3fb1dfdc8af4c0433af25c"
+    },
+    {
+      "path": "assets/icons/132138.jpg",
+      "group": "icon",
+      "bytes": 2140,
+      "sha256": "2f372fcf1eda22a035bbc752c883b49c21ff70325f118ac4eab873b526360b94"
+    },
+    {
+      "path": "assets/icons/132140.jpg",
+      "group": "icon",
+      "bytes": 2562,
+      "sha256": "eb7a18c31a593ebfe3bec3771c5e7f527d7e327db09db0359beca6ac409d49f9"
+    },
+    {
+      "path": "assets/icons/132142.jpg",
+      "group": "icon",
+      "bytes": 2679,
+      "sha256": "e0f677ae9472ebacc79b9c3d7c90df9c24e3810dabd9ba36aab15f03675da66e"
+    },
+    {
+      "path": "assets/icons/132152.jpg",
+      "group": "icon",
+      "bytes": 2340,
+      "sha256": "d4863b9af3fbad8da9bfc4528d02d97d4f79e7ea96a7ab74709b72f608f7d9db"
+    },
+    {
+      "path": "assets/icons/132167.jpg",
+      "group": "icon",
+      "bytes": 2386,
+      "sha256": "755912932207b33a4879d6af04161056b1498381695fd5e9868c010428952003"
+    },
+    {
+      "path": "assets/icons/132242.jpg",
+      "group": "icon",
+      "bytes": 2849,
+      "sha256": "0061e08f807f3f2ec6428d2794ef7e13ec4d61ca688c9587ccc9d6fcba9799c1"
+    },
+    {
+      "path": "assets/icons/133876.jpg",
+      "group": "icon",
+      "bytes": 2424,
+      "sha256": "e537d0af2d8bd677975ce30d954c3563dea3ee3f29af1785ea107b90d095cc4e"
+    },
+    {
+      "path": "assets/icons/134197.jpg",
+      "group": "icon",
+      "bytes": 2540,
+      "sha256": "bb4ab29b29724a1fbe978f7d9243f55249c1bbeec520bf00bdda96e35e920b67"
+    },
+    {
+      "path": "assets/icons/134296.jpg",
+      "group": "icon",
+      "bytes": 2786,
+      "sha256": "1853fdf512a55bc2add00876c0a685ec7376d4fa899adeab79c14976e33373c4"
+    },
+    {
+      "path": "assets/icons/134912.jpg",
+      "group": "icon",
+      "bytes": 2609,
+      "sha256": "4417508a9de4abf3884dde20e216ca14f619acfc8ae117340d346db28519d7f4"
+    },
+    {
+      "path": "assets/icons/136006.jpg",
+      "group": "icon",
+      "bytes": 2226,
+      "sha256": "ef2191a2e1eef8c8827b2e98c2dbec25377e7754b99f4960ca3ee01fee8d3371"
+    },
+    {
+      "path": "assets/icons/136017.jpg",
+      "group": "icon",
+      "bytes": 2466,
+      "sha256": "89362e0c2558c7c1f06a7e2b873dffc8823e8ac210d68b89bc7bc8ed28cddb82"
+    },
+    {
+      "path": "assets/icons/136081.jpg",
+      "group": "icon",
+      "bytes": 3082,
+      "sha256": "0b1e68427ef22b8ccb0a7b3d0876ced804b67c2e9b081519f9ada23133695178"
+    },
+    {
+      "path": "assets/icons/136085.jpg",
+      "group": "icon",
+      "bytes": 2698,
+      "sha256": "30a300dc7c0292725140bd6e35abdb7d8e472de4282aa3be955ed06f53b6d9f2"
+    },
+    {
+      "path": "assets/icons/136096.jpg",
+      "group": "icon",
+      "bytes": 2292,
+      "sha256": "854e876e25c0068d0e83b1704a6198c3358be399c074aae5599b02abc89290fb"
+    },
+    {
+      "path": "assets/icons/136231.jpg",
+      "group": "icon",
+      "bytes": 2587,
+      "sha256": "53a9f8c848ff148637c5a8e09edfd88204b71af0a188a5acf7edf27deebd888f"
+    },
+    {
+      "path": "assets/icons/1392547.jpg",
+      "group": "icon",
+      "bytes": 2424,
+      "sha256": "d353744c75165dce363988370ea2d3ef5677bd2635b1f25d154f8232134c9273"
+    },
+    {
+      "path": "assets/icons/236149.jpg",
+      "group": "icon",
+      "bytes": 2442,
+      "sha256": "7b2cf35fc4ab56ed604b52df687be62a39efa6e6e9e18dfc604e58051185fda2"
+    },
+    {
+      "path": "assets/icons/236159.jpg",
+      "group": "icon",
+      "bytes": 2418,
+      "sha256": "be9d91e764f87f38b1dd262a62801b993da1075c6e3223ef6d520b2f9215384f"
+    },
+    {
+      "path": "assets/icons/237395.jpg",
+      "group": "icon",
+      "bytes": 2781,
+      "sha256": "c261f2fbdf0f37bdc41b67695f2034cca356f10bdf63fbf38a632cdf043182cb"
+    },
+    {
+      "path": "assets/icons/451161.jpg",
+      "group": "icon",
+      "bytes": 2613,
+      "sha256": "fc5920b6269006a082d9c4911ce15e0a03bb0860d6fe395abfa20a0d0df53703"
+    },
+    {
+      "path": "assets/icons/514640.jpg",
+      "group": "icon",
+      "bytes": 2707,
+      "sha256": "be403da2c00e2f804daa8e78dec585ce3dd2b4365a7fe6f6eddc7a81ab659d79"
+    },
+    {
+      "path": "assets/icons/571586.jpg",
+      "group": "icon",
+      "bytes": 2659,
+      "sha256": "e6723d9b822ba81b2b8d4dc498482203b94feee5189585ec590a1bc1a855bfba"
+    },
+    {
+      "path": "assets/icons/6035309.jpg",
+      "group": "icon",
+      "bytes": 2901,
+      "sha256": "aa431555b05bcd13edd62b6e4d1ebf3c0d95370ce625356840db76236c00d644"
+    },
+    {
+      "path": "assets/icons/6712958.jpg",
+      "group": "icon",
+      "bytes": 2892,
+      "sha256": "8559fd9f7edeb7219416d0b1e8f621274648947dfe9b5e039de88dcd144d0fad"
+    },
+    {
+      "path": "assets/icons/7195161.jpg",
+      "group": "icon",
+      "bytes": 2841,
+      "sha256": "cc5d549364d15ebad7682b73b92c2ae24c23faac242c01207cd053358e6a5b6b"
+    },
+    {
+      "path": "assets/icons/7636702.jpg",
+      "group": "icon",
+      "bytes": 2328,
+      "sha256": "c9ca7357bceb1058c72d1cd88b1f55e104eb827580a780d47669376293be5e4f"
+    },
+    {
+      "path": "assets/icons/ability_creature_poison_04.jpg",
+      "group": "icon",
+      "bytes": 2519,
+      "sha256": "e94b1dc7bb84aff659d5e8a6c499b29a1d9e74cb1e987e77cb77d743b1054851"
+    },
+    {
+      "path": "assets/icons/artifactability_survivalhunter_eaglesbite.jpg",
+      "group": "icon",
+      "bytes": 2848,
+      "sha256": "b677972c7d35e0a701cf11ae2e4cbe46e91e7b487e37905c3db8a89808b90617"
+    },
+    {
+      "path": "assets/icons/inv_capybara_orange.jpg",
+      "group": "icon",
+      "bytes": 2207,
+      "sha256": "69e23ecc25e457f6726f7c4fdc0a74719ee77b4c229ea3423633b4095a99aba1"
+    },
+    {
+      "path": "assets/icons/inv_elemental_primal_mana.jpg",
+      "group": "icon",
+      "bytes": 2268,
+      "sha256": "51828d816952abb2911882f45fda69f7e1162ff3df75ece5adffbe9151c5aff1"
+    },
+    {
+      "path": "assets/icons/README.md",
+      "group": "runtime",
+      "bytes": 455,
+      "sha256": "9e9886ffff715cdf9f868f4e40a8105296d822b348d81b7ba6a2bb62c5d4fd70"
+    },
+    {
+      "path": "assets/icons/ui_profession_enchanting.jpg",
+      "group": "icon",
+      "bytes": 2857,
+      "sha256": "e5f636d39ec0f4a050422d2b90a9d020de1807476e7687b504ac414aa41ea333"
+    },
+    {
+      "path": "core/build-input.js",
+      "group": "runtime",
+      "bytes": 2774,
+      "sha256": "365680879ecfccae4a88b7124bd9c8e44a4165f3e454666f7e9d14e0551b7f1d"
+    },
+    {
+      "path": "core/build-resolver.js",
+      "group": "runtime",
+      "bytes": 22577,
+      "sha256": "0a9b330787b1992715c882868157b9fb98e14fb6b41fc9bfb426816a1a628c73"
+    },
+    {
+      "path": "core/character-resolver.js",
+      "group": "runtime",
+      "bytes": 1818,
+      "sha256": "50513381209e280ebbfdc8848013ee86ad632b54ce8def21e9841528dc6af03b"
+    },
+    {
+      "path": "core/contracts.js",
+      "group": "runtime",
+      "bytes": 11778,
+      "sha256": "361af094bb08fc52ec1f4eff039ad919c3c1430b4e82d1434ef74e0c05e3ecae"
+    },
+    {
+      "path": "core/equipment-parser.js",
+      "group": "runtime",
+      "bytes": 2135,
+      "sha256": "e48f7f43494e6b0c10d8dbbf1fd446075f521e49e19673ed96d1ac098a92e10e"
+    },
+    {
+      "path": "core/equipment-resolver.js",
+      "group": "runtime",
+      "bytes": 5780,
+      "sha256": "cb0ad85fb656a934f7086ed1d942fac50ac2a94a0dca7134afd20bcd3ec83476"
+    },
+    {
+      "path": "core/equipment-signature.js",
+      "group": "runtime",
+      "bytes": 514,
+      "sha256": "af5e8378684a8576304d49646c3106418abca8071c83824a4bc679c02157c48a"
+    },
+    {
+      "path": "core/interactive-controller.js",
+      "group": "runtime",
+      "bytes": 62621,
+      "sha256": "618a26c7de0cf5e1575fb8b596e3bb96d955f17c2cf425c44685af62c18c5474"
+    },
+    {
+      "path": "core/item-effect-resolver.js",
+      "group": "runtime",
+      "bytes": 2412,
+      "sha256": "5edae0e2c23a9e5423845203ddda6c1246df8950ae2e1c912a416c66333f76fc"
+    },
+    {
+      "path": "core/profile-cache.js",
+      "group": "runtime",
+      "bytes": 12253,
+      "sha256": "c9868e57e4b7a9f3fefaf9f4fc7da8de24bfac463a4665792c01d8ef34c1a8b4"
+    },
+    {
+      "path": "core/release-update.js",
+      "group": "runtime",
+      "bytes": 3436,
+      "sha256": "ca4182d0520fdad7aa2b373e240569a57b434efd054625bccb89380db02ca055"
+    },
+    {
+      "path": "core/resolved-profile-compat.js",
+      "group": "runtime",
+      "bytes": 1445,
+      "sha256": "4cb7e5f891af92ea1df63fcd631a4a777772548378c5d949fc377356b3903e6c"
+    },
+    {
+      "path": "core/set-bonus-resolver.js",
+      "group": "runtime",
+      "bytes": 3770,
+      "sha256": "bd31f00c14f6b79aa1ae6cf1b713e89d736ea0a8a13a12abdbb0c76afda97597"
+    },
+    {
+      "path": "core/simc-profile-parser.js",
+      "group": "runtime",
+      "bytes": 7789,
+      "sha256": "38cbd85c20abb671c63709d2ae1d874f581a9d057df49bafef4a10a08839e595"
+    },
+    {
+      "path": "core/stat-resolver.js",
+      "group": "runtime",
+      "bytes": 10652,
+      "sha256": "deee0bc6fc0fa5e844e9b781a818bc3ae1680915930ae54458369ef13dcfb138"
+    },
+    {
+      "path": "core/talent-decoder.js",
+      "group": "runtime",
+      "bytes": 11103,
+      "sha256": "a7c6d84117117a246f610502dd78bedeefd6696dc7ced28bc72377d126cbbf72"
+    },
+    {
+      "path": "data/12.1/authored/build-fixtures.js",
+      "group": "catalog",
+      "bytes": 3915,
+      "sha256": "3ca51c7ebb815eb9bb3b4d4bb44dfa59f164f8e1d0af8b0b10297c294bfb6b09"
+    },
+    {
+      "path": "data/12.1/authored/catalog-layer-manifest.js",
+      "group": "catalog",
+      "bytes": 3735,
+      "sha256": "e08dfbbd2e468dfd7d4d842031f118c5601a4d6c1fa79b0dfd831840226f5a46"
+    },
+    {
+      "path": "data/12.1/authored/feral-apl-ir.js",
+      "group": "apl",
+      "bytes": 11842,
+      "sha256": "9abb1e41d2c3acf92391ec4e27593a26d111bd18df2b39f38d7f7838eca8e7d2"
+    },
+    {
+      "path": "data/12.1/authored/feral-game-data.js",
+      "group": "catalog",
+      "bytes": 47926,
+      "sha256": "ad97f156dab5752fd8efd5ea868a5f17b9d290d193b1882f910d8f81066eef6b"
+    },
+    {
+      "path": "data/12.1/authored/feral-item-effect-data.js",
+      "group": "catalog",
+      "bytes": 14556,
+      "sha256": "efe44ce52070f9f29c52761f59c89e79a3ef4af783bcf9fa34d71c9bdf1f1942"
+    },
+    {
+      "path": "data/12.1/authored/feral-semantic-provenance.js",
+      "group": "catalog",
+      "bytes": 10245,
+      "sha256": "c4a6ffd41407f57941d9789dda44d079e52855fef079e1a9b9b939eec6ce02bc"
+    },
+    {
+      "path": "data/12.1/authored/feral-stat-data.js",
+      "group": "catalog",
+      "bytes": 1287,
+      "sha256": "a08fa459c61f35541d9cac75e204c72fdf900e093945e9a9f11f52b1e6d85ee3"
+    },
+    {
+      "path": "data/12.1/build-fixtures.js",
+      "group": "catalog",
+      "bytes": 262,
+      "sha256": "120b8110661bdd5dc15ba491ceba303be53395325e3a7c387eeb1af7aaa4f7a9"
+    },
+    {
+      "path": "data/12.1/catalog-layer-manifest.js",
+      "group": "catalog",
+      "bytes": 139,
+      "sha256": "af9c0f955c6008b7d0cc7f6e317c35e5f87f6cda915ec395d841c12de7988afd"
+    },
+    {
+      "path": "data/12.1/druid-talent-tree.generated.js",
+      "group": "catalog",
+      "bytes": 151,
+      "sha256": "8c329c5bf5ba304fcd291bb62e7bcab9ea61a796adfe8fa648a5586f801ef746"
+    },
+    {
+      "path": "data/12.1/feral-apl-ir.js",
+      "group": "apl",
+      "bytes": 125,
+      "sha256": "b516ed1e000e06dea3e28b76cd555ca3b017e97f4b5d28ac5852c4e1f22113f9"
+    },
+    {
+      "path": "data/12.1/feral-game-data.js",
+      "group": "catalog",
+      "bytes": 321,
+      "sha256": "c093839fb0f5622adaa61373a0b67e56b240b887df155917b4c2d26d977b2387"
+    },
+    {
+      "path": "data/12.1/feral-item-effect-data.js",
+      "group": "catalog",
+      "bytes": 275,
+      "sha256": "d25547a3f031fc5cd1379b19bd0b480f25c4923f801e099dd94bd7f98a563c81"
+    },
+    {
+      "path": "data/12.1/feral-semantic-provenance.js",
+      "group": "catalog",
+      "bytes": 155,
+      "sha256": "5354b7d3471c1e3539af714f57efd382bfd58cc971dc4990485c2c80da2e9cd9"
+    },
+    {
+      "path": "data/12.1/feral-stat-data.js",
+      "group": "catalog",
+      "bytes": 146,
+      "sha256": "07f30276b7d1edf9934c59b470a42f802754d764393eaea5f4cd06244b374ce7"
+    },
+    {
+      "path": "data/12.1/feral-tier-sets.generated.js",
+      "group": "catalog",
+      "bytes": 149,
+      "sha256": "7e7725810c483706e3ad51f48356133081721b607aa8a669fef6d00fc3f2a991"
+    },
+    {
+      "path": "data/12.1/generated/druid-talent-tree.generated.js",
+      "group": "catalog",
+      "bytes": 238045,
+      "sha256": "04fd0fd338986226e3d77f5dea6e996c1fcc035f0cc08e8f7527b4867f0b03e0"
+    },
+    {
+      "path": "data/12.1/generated/feral-tier-sets.generated.js",
+      "group": "catalog",
+      "bytes": 2866,
+      "sha256": "326d2d9a6ff9bd7260b6f8ecda4dba8f0e313cbbd8fe74f3b01f688b453eb4e6"
+    },
+    {
+      "path": "data/12.1/generated/simc-oracle-catalog.generated.js",
+      "group": "catalog",
+      "bytes": 14979,
+      "sha256": "345d4e5ef9169eba43612181a548c36fb34455f507800d81ea9c231d8774d8f4"
+    },
+    {
+      "path": "data/12.1/generated/version.generated.js",
+      "group": "catalog",
+      "bytes": 720,
+      "sha256": "57cb726d3accc8c7a8b37e2ae21610940fa0bfb4115c0680b93820726c95b430"
+    },
+    {
+      "path": "data/12.1/simc-oracle-catalog.generated.js",
+      "group": "catalog",
+      "bytes": 212,
+      "sha256": "ace0e7d08b15bc352a01d30b7da4b7837c4ceea2e7538c4c0eaccdcfe80462d1"
+    },
+    {
+      "path": "data/12.1/version.generated.js",
+      "group": "catalog",
+      "bytes": 136,
+      "sha256": "321b595f0df3213fd8902c7230e5d5b5246e0c40cf62070a0f48d4078cae1029"
+    },
+    {
+      "path": "feral-catalog.js",
+      "group": "runtime",
+      "bytes": 1054,
+      "sha256": "40d9c8c8417240e24342ff86dc1774baa2aa6b3d8af500d0572bdd5d7ed3462b"
+    },
+    {
+      "path": "feral-engine.js",
+      "group": "runtime",
+      "bytes": 1041,
+      "sha256": "3703f84263ba97a30f2cee887dfff1e9b52c5715a669cf0431976e3c3cd9f108"
+    },
+    {
+      "path": "reference-layout.css",
+      "group": "runtime",
+      "bytes": 32981,
+      "sha256": "c4bc9f7e2e8ce4b8e86b4fadb0f8e72e7ced358b03319996082668a9b0b257a6"
+    },
+    {
+      "path": "release.generated.js",
+      "group": "metadata",
+      "bytes": 10402,
+      "sha256": "c95ce543aa2ba299e19b9668ae92e416ebbdda8e7ff68f1edc0fd5ed87eb620a"
+    },
+    {
+      "path": "runtime/action-result-resolver.js",
+      "group": "runtime",
+      "bytes": 1641,
+      "sha256": "9ba74d6d883390f607dacf4ad280200d090c140029d956887728c34c40e09def"
+    },
+    {
+      "path": "runtime/custom-handler-registry.js",
+      "group": "runtime",
+      "bytes": 1557,
+      "sha256": "2507a920978a9d95ba4396fd9b4d66339d7038d98f595f1b30c73227ec9b5683"
+    },
+    {
+      "path": "runtime/effect-runtime.js",
+      "group": "runtime",
+      "bytes": 19734,
+      "sha256": "22ea3a2a8d8be774a702bb46c86990f36ff0fb76e10c1a11d5aa6ff4fb071c04"
+    },
+    {
+      "path": "runtime/handlers/feral-convoke.js",
+      "group": "runtime",
+      "bytes": 6036,
+      "sha256": "779cc90c48f1a48d0812484186172f2f42ef95640fd229d181ea35ffc50f75b6"
+    },
+    {
+      "path": "runtime/handlers/feral-unseen-predator.js",
+      "group": "runtime",
+      "bytes": 1504,
+      "sha256": "95e471cbd995cce377cf8136e2254d2c13c850b7cbffdc527eacc36bfa80e2e4"
+    },
+    {
+      "path": "runtime/proc-random.js",
+      "group": "runtime",
+      "bytes": 2516,
+      "sha256": "e32ae959deedf17e806f0f88117659a9da40379ef6ee4ca10f9e4ff18f6a7e0b"
+    },
+    {
+      "path": "trainer-controller.js",
+      "group": "runtime",
+      "bytes": 1217,
+      "sha256": "9771e7f2707f606abfffb030378a7a009a9facd9612c61d8cdfcba56f231b99e"
+    },
+    {
+      "path": "wow-hud.css",
+      "group": "runtime",
+      "bytes": 41784,
+      "sha256": "e92032a7ac1955c56fd0620758146feedceb220b01eb929d7df974bf71ffe331"
+    }
+  ]
+}

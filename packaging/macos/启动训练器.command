@@ -22,7 +22,7 @@ fi
 echo "Ashamane Lab 正在启动：http://127.0.0.1:${TRAINER_PORT}/demo/"
 echo "关闭此终端窗口即可停止本地服务。"
 
-python3 -m http.server "$TRAINER_PORT" --bind 127.0.0.1 --directory "$SITE_DIR" &
+python3 "$SCRIPT_DIR/cache_server.py" --port "$TRAINER_PORT" --directory "$SITE_DIR" &
 SERVER_PID=$!
 
 cleanup() {

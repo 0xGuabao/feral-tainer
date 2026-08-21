@@ -220,6 +220,24 @@ button {
   color: var(--brass-light);
 }
 
+.release-update {
+  border: 1px solid rgba(255, 194, 82, 0.62);
+  border-radius: 999px;
+  background: rgba(111, 64, 9, 0.72);
+  color: #ffe0a3;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  padding: 5px 10px;
+}
+
+.release-update:hover,
+.release-update:focus-visible {
+  border-color: #ffd782;
+  background: rgba(143, 85, 13, 0.88);
+  outline: none;
+}
+
 .button {
   display: inline-flex;
   min-height: 32px;

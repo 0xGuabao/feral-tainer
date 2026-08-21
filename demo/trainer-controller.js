@@ -1,6 +1,6 @@
-import { buildInputFromFixture } from "./core/build-input.js?v=20260821-dialog-hotfix-v1";
-import { InteractiveController } from "./core/interactive-controller.js?v=20260821-dialog-hotfix-v1";
-import { BUILD_FIXTURES } from "./data/12.1/build-fixtures.js?v=20260821-dialog-hotfix-v1";
+import { buildInputFromFixture } from "./core/build-input.js";
+import { InteractiveController } from "./core/interactive-controller.js";
+import { BUILD_FIXTURES } from "./data/12.1/build-fixtures.js";
 
 const DEFAULT_BUILD_INPUT = buildInputFromFixture(BUILD_FIXTURES.userValidation);
 
