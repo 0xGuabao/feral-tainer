@@ -43,7 +43,7 @@ cd demo
 npm test
 ```
 
-The current suite contains 76 deterministic unit and architecture tests. The
+The current suite contains 77 deterministic unit and architecture tests. The
 local browser smoke test is documented in `demo/browser-smoke.mjs` and requires
 Chromium DevTools on port 9223.
 

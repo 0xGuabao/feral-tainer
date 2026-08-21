@@ -42,6 +42,11 @@ export function parseChecksumManifest(text) {
     });
 }
 
+export function parseNodeTestCount(output) {
+  const match = output.match(/^(?:#|ℹ)\s+tests\s+(\d+)\s*$/m);
+  return match ? Number(match[1]) : null;
+}
+
 export function verifyChecksumManifest(root, manifestPath) {
   const entries = parseChecksumManifest(readFileSync(manifestPath, "utf8"));
   for (const entry of entries) {

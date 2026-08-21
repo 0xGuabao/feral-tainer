@@ -17,10 +17,17 @@ import {
   assertReleaseId,
   assertSimcScanPassed,
   parseChecksumManifest,
+  parseNodeTestCount,
   sha256File,
   verifyChecksumManifest,
   withStagedRelease,
 } from "../../scripts/lib/release-gate.mjs";
+
+test("release gate reads Node 22 TAP and Node 26 spec test totals", () => {
+  assert.equal(parseNodeTestCount("# tests 76\n# pass 76\n"), 76);
+  assert.equal(parseNodeTestCount("ℹ tests 76\nℹ pass 76\n"), 76);
+  assert.equal(parseNodeTestCount("tests completed without a machine-readable summary"), null);
+});
 
 test("release gate entrypoint resolves every runtime import before parsing options", () => {
   const repositoryRoot = new URL("../../", import.meta.url).pathname;

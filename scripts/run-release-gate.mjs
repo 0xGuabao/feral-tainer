@@ -21,6 +21,7 @@ import { fileURLToPath } from "node:url";
 import {
   assertReleaseId,
   assertSimcScanPassed,
+  parseNodeTestCount,
   verifyReleaseArtifacts,
   withStagedRelease,
 } from "./lib/release-gate.mjs";
@@ -447,8 +448,7 @@ try {
   await gateStep("Unit, architecture and native SimC 1/3/5-target tests", async () => {
     const testFiles = walkFiles(resolve(repositoryRoot, "demo/tests"), (path) => path.endsWith(".test.mjs")).sort();
     const result = await runCommand("node", ["--test", ...testFiles]);
-    const match = result.stdout.match(/# tests (\d+)/);
-    unitTestCount = match ? Number(match[1]) : null;
+    unitTestCount = parseNodeTestCount(result.stdout);
     assert(unitTestCount && unitTestCount > 0, "未能从测试输出读取测试数量");
     await runCommand("bash", ["validation/run-matrix.sh"]);
     nativeMatrix = [1, 3, 5].map((targetCount) => {
