@@ -106,10 +106,10 @@ runs the packaged web build in desktop and 390×844 mobile Chromium:
 node scripts/run-release-gate.mjs \
   --release-id 20260821-g5-rc1 \
   --simc-target-root /path/to/simc-midnight-checkout \
-  --simc-target-commit fefb8816af0aaa97819c9a8ba61cca058a81822e \
+  --simc-target-commit 69a46e15b4b0b364e837998ce329801c5525a968 \
   --simc-target-version 12.1.0.69404 \
-  --simc-review-file versions/simc-update-reviews/12.1.0.69404-fefb8816.json \
-  --simc-report validation/updates/12.1.0.69404-fefb8816/simc-update-report.json
+  --simc-review-file versions/simc-update-reviews/12.1.0.69404-69a46e15.json \
+  --simc-report validation/updates/12.1.0.69404-69a46e15/simc-update-report.json
 ```
 
 The final `releases/RELEASE_ID` directory appears only after every gate passes.

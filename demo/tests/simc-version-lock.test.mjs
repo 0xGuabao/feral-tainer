@@ -90,12 +90,12 @@ test("checked-in G1 report is bound to its semantic review and passes every hard
 
 test("latest G5 upstream report is commit-bound and byte-equivalent to the prior reviewed scan inputs", async () => {
   const [priorReport, review, report] = await Promise.all([
-    readFile(new URL("../../validation/updates/12.1.0.69404/simc-update-report.json", import.meta.url), "utf8").then(JSON.parse),
-    readFile(new URL("../../versions/simc-update-reviews/12.1.0.69404-fefb8816.json", import.meta.url), "utf8").then(JSON.parse),
     readFile(new URL("../../validation/updates/12.1.0.69404-fefb8816/simc-update-report.json", import.meta.url), "utf8").then(JSON.parse),
+    readFile(new URL("../../versions/simc-update-reviews/12.1.0.69404-69a46e15.json", import.meta.url), "utf8").then(JSON.parse),
+    readFile(new URL("../../validation/updates/12.1.0.69404-69a46e15/simc-update-report.json", import.meta.url), "utf8").then(JSON.parse),
   ]);
 
-  assert.equal(report.target.simcCommit, "fefb8816af0aaa97819c9a8ba61cca058a81822e");
+  assert.equal(report.target.simcCommit, "69a46e15b4b0b364e837998ce329801c5525a968");
   assert.equal(report.target.simcCommit, review.targetCommit);
   assert.equal(report.mechanismReview.reviewId, review.reviewId);
   assert.equal(report.summary.unreviewedMechanismCount, 0);
