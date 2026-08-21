@@ -4,6 +4,7 @@
 - 开始时间：2026-08-21 11:28 +0800
 - 完成时间：2026-08-21 11:49 +0800
 - 修改前 Git 回滚点：`2bc5d02e938a8f4cf0c2afa9514b8e0a784363a0`
+- G4 完成提交 / GitHub：`1f123472f194bdf39bfedfb4779f251d19ff5722`，已推送 `origin/main`
 - 当前线上发行：`20260821-dialog-hotfix-v1`（未改动）
 - 下一目标：G5 发布验收与经人工确认后的部署
 
@@ -13,7 +14,7 @@ G4 验收通过。浏览器发布现在由 `release.json`、`release.generated.j
 
 Profile 缓存已从两个全局旧键迁移为 `game build + SimC vendor fingerprint + cache schema + catalogHash` 命名空间。每条记录保存原始 SimC、ResolvedProfile、版本事实、三类 unsupported 和迁移历史。版本/目录变化时只从原始 SimC 重解析；成功后写新命名空间并保留旧记录，解析或 localStorage 写入失败不会覆盖旧记录，兼容的旧 ResolvedProfile 可继续训练。更新发现只展示刷新按钮，不改变当前训练会话。
 
-源码目录和最终 Web 解包包均完成桌面 1828×1028 与 H5 390×844 烟测。旧键迁移、刷新后持久化、1/3/5 目标、构筑切换、非法 Profile 不覆盖、XSS 纯文本、弹窗回退和无横向溢出全部通过。没有部署、覆盖线上或推送远端。
+源码目录和最终 Web 解包包均完成桌面 1828×1028 与 H5 390×844 烟测。旧键迁移、刷新后持久化、1/3/5 目标、构筑切换、非法 Profile 不覆盖、XSS 纯文本、弹窗回退和无横向溢出全部通过。完成提交已按用户此前明确授权推送到 GitHub；没有部署或覆盖线上。
 
 ## 2. 发布清单与缓存契约
 
@@ -117,6 +118,7 @@ RELEASE_ID=20260821-g4-final-gate-v2 node scripts/build-offline-release.mjs
 shasum -a 256 -c SHA256SUMS.txt --status
 shasum -a 256 -c FILES.sha256 --status
 cd demo && npm run test:browser
+git push origin main
 ```
 
 | 验证 | 结果 |
@@ -131,6 +133,7 @@ cd demo && npm run test:browser
 | 三平台解包 `FILES.sha256` | 全部通过 |
 | 三归档 `SHA256SUMS.txt` | 全部通过 |
 | 开源声明 | 每个平台包均包含根 LICENSE、THIRD_PARTY_NOTICES.md 和 `vendor/simc/COPYING` + 全部 `LICENSE*` |
+| GitHub | `origin/main` 已前进到 `1f123472f194bdf39bfedfb4779f251d19ff5722`；仓库开源声明随提交发布 |
 
 最终本地门禁包（未部署、`releases/` 不跟踪）：
 
@@ -152,4 +155,4 @@ cd demo && npm run test:browser
 
 本阶段修改前 Git 回滚点为 `2bc5d02e938a8f4cf0c2afa9514b8e0a784363a0`。如需撤销，使用可审计的反向提交或按本报告文件清单选择性恢复，不执行破坏性 reset。G0 灾备快照继续作为文件级恢复依据。由于 G4 未部署，线上无需回滚，仍保留 `20260821-dialog-hotfix-v1` 的既有回滚方法。
 
-下一目标为 G5：先把腾讯文档状态改为“进行中”，复验版本锁、三平台发行包、暂存/线上缓存头、Profile 迁移和回滚脚本；任何推送、部署或覆盖线上版本前，必须先报告完整验证结果并等待人工确认。
+下一目标为 G5：先把腾讯文档状态改为“进行中”，复验版本锁、三平台发行包、暂存/线上缓存头、Profile 迁移和回滚脚本；任何部署或覆盖线上版本前，必须先报告完整验证结果并等待人工确认。
