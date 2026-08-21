@@ -10,6 +10,11 @@ const BROWSER_IMPORTED_PROFILE = [
 ].join("\n");
 
 const port = process.env.CDP_PORT ?? "9223";
+const pageReadyTimeoutMs = Number(process.env.PAGE_READY_TIMEOUT_MS ?? "30000");
+assert(
+  Number.isInteger(pageReadyTimeoutMs) && pageReadyTimeoutMs >= 1000 && pageReadyTimeoutMs <= 120000,
+  "PAGE_READY_TIMEOUT_MS 必须是 1000～120000 的整数",
+);
 const targets = await fetch(`http://127.0.0.1:${port}/json/list`).then((response) => response.json());
 const pageTarget = process.env.CDP_TARGET_ID
   ? targets.find((target) => target.id === process.env.CDP_TARGET_ID)
@@ -86,7 +91,7 @@ async function clickAt(selector) {
 
 const wait = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
 
-async function waitForPageReady(timeoutMs = 10000) {
+async function waitForPageReady(timeoutMs = pageReadyTimeoutMs) {
   const startedAt = Date.now();
   while (Date.now() - startedAt < timeoutMs) {
     const ready = await evaluate(`Boolean(

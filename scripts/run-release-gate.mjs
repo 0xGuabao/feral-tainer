@@ -186,11 +186,15 @@ async function verifyBrowserPackage(candidateRoot) {
   const webName = readdirSync(unpackedRoot).find((name) => name.startsWith("wow-feral-trainer-web-"));
   if (!webName) throw new Error("发行候选缺少 Web 解包目录");
   const webRoot = resolve(unpackedRoot, webName);
-  const httpPort = await freePort();
-  const cdpPort = await freePort();
+  const distinctPorts = new Set();
+  while (distinctPorts.size < 4) distinctPorts.add(await freePort());
+  const [httpPort, cdpPort, productionHttpPort, productionCdpPort] = distinctPorts;
   const chromeProfile = mkdtempSync(join(tmpdir(), "wow-feral-g5-chrome-"));
+  const productionChromeProfile = mkdtempSync(join(tmpdir(), "wow-feral-g5-production-root-chrome-"));
   let serverProcess;
   let chromeProcess;
+  let productionServerProcess;
+  let productionChromeProcess;
   try {
     serverProcess = startManagedProcess("python3", [
       resolve(webRoot, "cache_server.py"),
@@ -232,8 +236,57 @@ async function verifyBrowserPackage(candidateRoot) {
     });
     const result = JSON.parse(smoke.stdout);
     assert.equal(result.ok, true);
+
+    productionServerProcess = startManagedProcess("python3", [
+      resolve(webRoot, "cache_server.py"),
+      "--bind", "127.0.0.1",
+      "--directory", resolve(webRoot, "demo"),
+      "--port", String(productionHttpPort),
+    ]);
+    const productionRootUrl = `http://127.0.0.1:${productionHttpPort}/`;
+    const productionIndexResponse = await waitForUrl(productionRootUrl, 10000, productionServerProcess);
+    assert.equal(productionIndexResponse.headers.get("cache-control"), "no-cache, no-store, must-revalidate");
+    productionChromeProcess = startManagedProcess(chromeExecutable(), [
+      "--headless=new",
+      "--disable-background-networking",
+      "--disable-component-update",
+      "--disable-default-apps",
+      "--disable-extensions",
+      "--disable-gpu",
+      "--no-default-browser-check",
+      "--no-first-run",
+      `--remote-debugging-port=${productionCdpPort}`,
+      "--remote-allow-origins=*",
+      `--user-data-dir=${productionChromeProfile}`,
+      "--window-size=1828,1028",
+      productionRootUrl,
+    ]);
+    await waitForUrl(`http://127.0.0.1:${productionCdpPort}/json/list`, 15000, productionChromeProcess);
+    const productionTargets = await fetch(`http://127.0.0.1:${productionCdpPort}/json/list`)
+      .then((response) => response.json());
+    const productionTarget = productionTargets.find((target) => (
+      target.type === "page" && target.url.startsWith(productionRootUrl)
+    ));
+    assert(productionTarget, "生产根挂载烟测没有找到页面目标");
+    const productionSmoke = await runCommand("node", ["demo/browser-smoke.mjs"], {
+      env: {
+        CDP_PORT: String(productionCdpPort),
+        CDP_TARGET_ID: productionTarget.id,
+        PAGE_READY_TIMEOUT_MS: "30000",
+      },
+    });
+    const productionResult = JSON.parse(productionSmoke.stdout);
+    assert.equal(productionResult.ok, true);
     return {
       result,
+      productionRootMount: {
+        ok: productionResult.ok,
+        title: productionResult.title,
+        targetCounts: productionResult.targetCounts,
+        responsive: productionResult.responsive,
+        brokenActionIcons: productionResult.switchedBuild.brokenActionIcons,
+        migrationStatus: productionResult.simcImport.legacyMigration.migrationEvent.status,
+      },
       cacheHeaders: {
         index: "no-cache, no-store, must-revalidate",
         release: "no-cache, no-store, must-revalidate",
@@ -241,8 +294,11 @@ async function verifyBrowserPackage(candidateRoot) {
       },
     };
   } finally {
+    await stopManagedProcess(productionChromeProcess);
+    await stopManagedProcess(productionServerProcess);
     await stopManagedProcess(chromeProcess);
     await stopManagedProcess(serverProcess);
+    rmSync(productionChromeProfile, { recursive: true, force: true });
     rmSync(chromeProfile, { recursive: true, force: true });
   }
 }
@@ -527,8 +583,8 @@ try {
           unitAndArchitectureTests: `${unitTestCount}/${unitTestCount} passed`,
           nativeSimcMatrix: nativeMatrix,
           syntax: "JavaScript/MJS, Shell, Python AST and git diff passed",
-          browserDesktop: "1828x1028 passed",
-          browserMobile: "390x844 passed",
+          browserDesktop: "offline /demo and production root mount 1828x1028 passed",
+          browserMobile: "offline /demo and production root mount 390x844 passed",
           simcImport: "valid/invalid/persistence/XSS-safe/mobile passed",
           dialogCompatibility: "native showModal and no-showModal fallback passed",
           cachePolicy: browser.cacheHeaders,
@@ -560,7 +616,10 @@ try {
           archives: artifacts.archives,
           packages: artifacts.packages,
           rollbackRehearsal: rollback,
-          browser: browser.result,
+          browser: {
+            ...browser.result,
+            productionRootMount: browser.productionRootMount,
+          },
           steps: [
             ...steps,
             {
