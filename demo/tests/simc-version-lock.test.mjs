@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 import { SIMC_VERSION_LOCK } from "../data/12.1/version.generated.js";
@@ -44,24 +45,41 @@ test("SimC update scanner covers every G1 file and required change category", ()
   assert.equal(classifyChange("engine/player/unique_gear_midnight.cpp", "rppm = 2.0", "added"), "new_generic_mechanism");
 
   const totals = Object.fromEntries(CHANGE_CATEGORIES.map((category) => [category, 0]));
-  totals.new_generic_mechanism = 11;
+  totals.new_generic_mechanism = 10;
   totals.custom_mechanism_candidate = 7;
   const review = {
     schemaVersion: 1,
     reviewId: "test-review",
     reviewedAt: "2026-08-21",
-    targetCommit: "b458aea6898f3b169310ed243e9934bfa37044bd",
+    targetCommit: "70c46902f3a1218a5d03c46607d07ec443ffe356",
     reviewedCategories: {
-      new_generic_mechanism: { expectedLineCount: 11 },
+      new_generic_mechanism: { expectedLineCount: 10 },
       custom_mechanism_candidate: { expectedLineCount: 7 },
     },
     semanticGroups: [{ id: "reviewed-group" }],
   };
   const reviewed = applyMechanismReview(review, totals, { simcCommit: review.targetCommit });
-  assert.equal(reviewed.reviewedLineCount, 18);
+  assert.equal(reviewed.reviewedLineCount, 17);
   assert.equal(reviewed.unreviewedLineCount, 0);
   assert.throws(
     () => applyMechanismReview(review, { ...totals, custom_mechanism_candidate: 8 }, { simcCommit: review.targetCommit }),
     /Mechanism review drift/,
   );
+});
+
+test("checked-in G1 report is bound to its semantic review and passes every hard gate", async () => {
+  const [review, report] = await Promise.all([
+    readFile(new URL("../../versions/simc-update-reviews/12.1.0.69404.json", import.meta.url), "utf8").then(JSON.parse),
+    readFile(new URL("../../validation/updates/12.1.0.69404/simc-update-report.json", import.meta.url), "utf8").then(JSON.parse),
+  ]);
+
+  assert.equal(report.target.simcCommit, review.targetCommit);
+  assert.equal(report.mechanismReview.reviewId, review.reviewId);
+  assert.equal(report.mechanismReview.status, "reviewed");
+  assert.equal(report.summary.reviewedMechanismCount, 17);
+  assert.equal(report.summary.unreviewedMechanismCount, 0);
+  assert.equal(report.summary.silentUnsupportedDropCount, 0);
+  assert.equal(report.summary.aplReferencesMissingActionCount, 0);
+  assert.equal(report.summary.unknownChangeLineCount, 0);
+  assert.equal(report.summary.releaseGate, "g1_scan_passed_target_not_promoted");
 });

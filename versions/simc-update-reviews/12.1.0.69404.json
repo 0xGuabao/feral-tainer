@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
-  "reviewId": "g1-20260821-b458aea-69404",
+  "reviewId": "g1-20260821-70c4690-69404",
   "reviewedAt": "2026-08-21",
-  "targetCommit": "b458aea6898f3b169310ed243e9934bfa37044bd",
+  "targetCommit": "70c46902f3a1218a5d03c46607d07ec443ffe356",
   "targetWowVersion": "12.1.0.69404",
   "reviewedCategories": {
     "new_generic_mechanism": {
-      "expectedLineCount": 11,
+      "expectedLineCount": 10,
       "disposition": "reviewed_no_current_profile_impact",
-      "reason": "The additions are SimC stats attribution, buff construction and callback registration lines in unique gear code. They do not add a Feral action, resource, aura or APL rule to the current trainer profile."
+      "reason": "The additions are SimC stats attribution, buff construction and callback registration lines in unique gear code. The 70c4690 continuation removes a temporary Venomcursed compatibility path but does not add a Feral action, resource, aura or APL rule to the current trainer profile."
     },
     "custom_mechanism_candidate": {
       "expectedLineCount": 7,
       "disposition": "reviewed_structured_unsupported_if_adopted",
-      "reason": "The custom callback implements Venomcursed Ascendance random-stat selection. Its spell/item identifiers are absent from the current MID1 profile, equipment oracle and item-effect catalog. A future adoption must emit it as a structured unsupported item effect until a generic handler exists."
+      "reason": "The custom callback implements Venomcursed Ascendance random-stat selection. Its current spell, buff and item identifiers are absent from the current MID1 profile, equipment oracle and item-effect catalog. A future adoption must emit it as a structured unsupported item effect until a generic handler exists."
     }
   },
   "semanticGroups": [
@@ -51,13 +51,14 @@
       ],
       "symbols": [
         "venomcursed_ascendance",
-        "venomcursed_cb_t"
+        "venomcursed_ascendance_cb_t"
       ],
       "identifiers": [
-        1317036,
+        237622,
+        1317581,
         1317582
       ],
-      "decision": "Do not implement in G1. If an adopted/imported build references it, emit a structured unsupported item-effect record; never silently ignore it."
+      "decision": "Do not implement in G1. Build 69404 now maps item 237622 directly to driver 1317582 and buff 1317581, replacing the temporary 1317036 path. If an adopted/imported build references any current identifier, emit a structured unsupported item-effect record; never silently ignore it."
     }
   ],
   "scopeChecks": {

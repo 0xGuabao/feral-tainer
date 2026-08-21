@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-21T01:35:19.121Z",
+  "generatedAt": "2026-08-21T02:21:32.358Z",
   "scope": "WoW 12.1 Feral SimulationCraft update scan",
   "base": {
     "source": "versions/simc.lock.json",
@@ -17,10 +17,10 @@
   "target": {
     "repository": "https://github.com/simulationcraft/simc.git",
     "branch": "midnight",
-    "simcCommit": "b458aea6898f3b169310ed243e9934bfa37044bd",
+    "simcCommit": "70c46902f3a1218a5d03c46607d07ec443ffe356",
     "wowVersion": "12.1.0.69404",
     "wowBuild": 69404,
-    "sourceAcquisition": "https://github.com/simulationcraft/simc/tree/b458aea6898f3b169310ed243e9934bfa37044bd"
+    "sourceAcquisition": "official sparse checkout from simulationcraft/simc full commit SHA"
   },
   "scannedPaths": [
     "engine/class_modules/sc_druid.cpp",
@@ -34,13 +34,13 @@
   "categories": {
     "version_only": 24,
     "talent": 0,
-    "action_number_or_resource": 12207,
+    "action_number_or_resource": 12234,
     "timing_or_cooldown": 1,
     "aura_or_dot": 17,
     "apl": 0,
     "tier_set": 0,
-    "gear_or_trinket": 2741,
-    "new_generic_mechanism": 11,
+    "gear_or_trinket": 2722,
+    "new_generic_mechanism": 10,
     "custom_mechanism_candidate": 7,
     "unknown": 0
   },
@@ -181,18 +181,18 @@
         "wowBuild": 69299
       },
       "target": {
-        "bytes": 29457745,
-        "sha256": "ee1e2580e2b1862d138a28b077311cae39d2e0efbf10c6d0df54e9a033adf778",
+        "bytes": 29460021,
+        "sha256": "789541363b28c9862f88b95ba6efb28e69b4d636b716624559a75d44b513e057",
         "wowVersion": "12.1.0.69404",
         "wowBuild": 69404
       },
-      "additions": 6101,
-      "deletions": 6120,
-      "changedLineCount": 12221,
+      "additions": 6126,
+      "deletions": 6122,
+      "changedLineCount": 12248,
       "categories": {
         "version_only": 14,
         "talent": 0,
-        "action_number_or_resource": 12207,
+        "action_number_or_resource": 12234,
         "timing_or_cooldown": 0,
         "aura_or_dot": 0,
         "apl": 0,
@@ -210,7 +210,7 @@
           },
           {
             "kind": "added",
-            "text": "// 31581 spells, wow build level 12.1.0.69404"
+            "text": "// 31582 spells, wow build level 12.1.0.69404"
           },
           {
             "kind": "removed",
@@ -218,7 +218,7 @@
           },
           {
             "kind": "added",
-            "text": "// 53167 effects, wow build level 12.1.0.69404"
+            "text": "// 53172 effects, wow build level 12.1.0.69404"
           },
           {
             "kind": "removed",
@@ -236,7 +236,7 @@
           },
           {
             "kind": "added",
-            "text": "static spell_data_t __spell_data[31581] = {"
+            "text": "static spell_data_t __spell_data[31582] = {"
           },
           {
             "kind": "removed",
@@ -311,8 +311,8 @@
         "wowBuild": 69299
       },
       "target": {
-        "bytes": 1033649,
-        "sha256": "5b452363ca3e0a80069d46ad44d8521cff3d4c1c1775a07c281099b1d8cc7a9f",
+        "bytes": 1033644,
+        "sha256": "1a3a12f0d500de4570d6447863fdc6cf4795ca3c83b007967222da0366c3c4b3",
         "wowVersion": "12.1.0.69404",
         "wowBuild": 69404
       },
@@ -354,7 +354,7 @@
           },
           {
             "kind": "added",
-            "text": "  { 237622, 1317036,      0,   0,   1,    0,      -1,      -1 }, // Venomcursed Critical Strike"
+            "text": "  { 237622, 1317582,      0,   0,   1,    0,      -1,      -1 }, // Venomcursed Ascendance"
           },
           {
             "kind": "removed",
@@ -381,14 +381,14 @@
         "wowBuild": null
       },
       "target": {
-        "bytes": 203294,
-        "sha256": "2f989cebb85d0466907490b751bdf92e10662ad5065495cbafd4fb8fa6fc1df8",
+        "bytes": 202513,
+        "sha256": "b515d9eb34d4ed93782033df7a767b5e9a8adc4f80d38753caf1a6dbaad2705a",
         "wowVersion": null,
         "wowBuild": null
       },
-      "additions": 105,
-      "deletions": 35,
-      "changedLineCount": 140,
+      "additions": 84,
+      "deletions": 36,
+      "changedLineCount": 120,
       "categories": {
         "version_only": 0,
         "talent": 0,
@@ -397,8 +397,8 @@
         "aura_or_dot": 17,
         "apl": 0,
         "tier_set": 0,
-        "gear_or_trinket": 104,
-        "new_generic_mechanism": 11,
+        "gear_or_trinket": 85,
+        "new_generic_mechanism": 10,
         "custom_mechanism_candidate": 7,
         "unknown": 0
       },
@@ -431,8 +431,8 @@
             "text": "  if ( !buff )"
           },
           {
-            "kind": "removed",
-            "text": "    buff    = create_buff<stat_buff_t>( effect.player, effect.trigger() );"
+            "kind": "added",
+            "text": "// 1317581 Ascendace (random stat) buff"
           }
         ],
         "gear_or_trinket": [
@@ -490,7 +490,7 @@
         "custom_mechanism_candidate": [
           {
             "kind": "added",
-            "text": "  struct venomcursed_cb_t : public dbc_proc_callback_t"
+            "text": "  struct venomcursed_ascendance_cb_t : public dbc_proc_callback_t"
           },
           {
             "kind": "added",
@@ -524,22 +524,22 @@
   },
   "mechanismReview": {
     "status": "reviewed",
-    "reviewId": "g1-20260821-b458aea-69404",
+    "reviewId": "g1-20260821-70c4690-69404",
     "reviewedAt": "2026-08-21",
-    "targetCommit": "b458aea6898f3b169310ed243e9934bfa37044bd",
-    "detectedLineCount": 18,
-    "reviewedLineCount": 18,
+    "targetCommit": "70c46902f3a1218a5d03c46607d07ec443ffe356",
+    "detectedLineCount": 17,
+    "reviewedLineCount": 17,
     "unreviewedLineCount": 0,
     "reviewedCategories": {
       "new_generic_mechanism": {
-        "expectedLineCount": 11,
+        "expectedLineCount": 10,
         "disposition": "reviewed_no_current_profile_impact",
-        "reason": "The additions are SimC stats attribution, buff construction and callback registration lines in unique gear code. They do not add a Feral action, resource, aura or APL rule to the current trainer profile."
+        "reason": "The additions are SimC stats attribution, buff construction and callback registration lines in unique gear code. The 70c4690 continuation removes a temporary Venomcursed compatibility path but does not add a Feral action, resource, aura or APL rule to the current trainer profile."
       },
       "custom_mechanism_candidate": {
         "expectedLineCount": 7,
         "disposition": "reviewed_structured_unsupported_if_adopted",
-        "reason": "The custom callback implements Venomcursed Ascendance random-stat selection. Its spell/item identifiers are absent from the current MID1 profile, equipment oracle and item-effect catalog. A future adoption must emit it as a structured unsupported item effect until a generic handler exists."
+        "reason": "The custom callback implements Venomcursed Ascendance random-stat selection. Its current spell, buff and item identifiers are absent from the current MID1 profile, equipment oracle and item-effect catalog. A future adoption must emit it as a structured unsupported item effect until a generic handler exists."
       }
     },
     "semanticGroups": [
@@ -577,13 +577,14 @@
         ],
         "symbols": [
           "venomcursed_ascendance",
-          "venomcursed_cb_t"
+          "venomcursed_ascendance_cb_t"
         ],
         "identifiers": [
-          1317036,
+          237622,
+          1317581,
           1317582
         ],
-        "decision": "Do not implement in G1. If an adopted/imported build references it, emit a structured unsupported item-effect record; never silently ignore it."
+        "decision": "Do not implement in G1. Build 69404 now maps item 237622 directly to driver 1317582 and buff 1317581, replacing the temporary 1317036 path. If an adopted/imported build references any current identifier, emit a structured unsupported item-effect record; never silently ignore it."
       }
     ]
   },
@@ -591,9 +592,9 @@
     "scannedFileCount": 7,
     "changedFileCount": 5,
     "unchangedFileCount": 2,
-    "changedLineCount": 15008,
+    "changedLineCount": 15015,
     "unknownChangeLineCount": 0,
-    "reviewedMechanismCount": 18,
+    "reviewedMechanismCount": 17,
     "unreviewedMechanismCount": 0,
     "silentUnsupportedDropCount": 0,
     "aplReferencesMissingActionCount": 0,
