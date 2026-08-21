@@ -60,7 +60,7 @@ G4 没有修改 Resolver、Catalog、APL 或战斗运行时语义，因此同一
 - 首个测试构筑 → Primal Wrath：Talent `lunar_inspiration 1→0`、`primal_wrath 0→1`；Action `moonfire true→false`、`primalWrath false→true`；其他 diff 空；
 - 两构筑 `unsupportedEffects`：45 → 45；`unsupportedAplRules`：0 → 0；
 - 完整 Profile APL：70 = 15 compiled + 1 filtered + 54 structured unsupported，核算差 0；
-- 完整 Profile 普通 `unsupportedFields` 仍为 6，`unsupportedEffects` 仍为 70，`unsupportedAplRules` 仍为 54。
+- 完整 Profile 普通 `unsupportedFields` 仍为 6，`unsupportedEffects` 仍为 52，`unsupportedAplRules` 仍为 54。
 
 ## 4. 变更文件与报告
 
@@ -151,7 +151,7 @@ git push origin main
 - 兼容旧 ResolvedProfile 的失败回退要求其 schema 不低于 `minimumCompatibleProfileSchema`；不兼容时会保留原始/旧缓存并回退首个测试构筑，不会猜测迁移。
 - localStorage 容量由浏览器决定；代表性记录 328,960 bytes 已通过，接近浏览器配额的超大历史仍可能触发写入回退。
 - Windows PowerShell 服务通过静态审计和打包校验，但 Windows 10/11 实机双击与响应头验收仍属于 G5 发布门禁。
-- 完整 Profile 仍有 54 条 APL 和 70 项效果未支持；G4 不改变该真实性边界。
+- 完整 Profile 仍有 54 条 APL 和 52 项效果未支持；G4 不改变该真实性边界。
 
 本阶段修改前 Git 回滚点为 `2bc5d02e938a8f4cf0c2afa9514b8e0a784363a0`。如需撤销，使用可审计的反向提交或按本报告文件清单选择性恢复，不执行破坏性 reset。G0 灾备快照继续作为文件级恢复依据。由于 G4 未部署，线上无需回滚，仍保留 `20260821-dialog-hotfix-v1` 的既有回滚方法。
 
