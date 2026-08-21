@@ -1,16 +1,16 @@
 {
-  "releaseId": "20260821-g5-v3",
+  "releaseId": "20260821-mouse-bindings-v1",
   "schemaVersion": 1,
   "gameVersion": "12.1.0.69299",
   "gameBuild": 69299,
   "simcCommit": "5b82654ba96c9dc7f611f527a41584dc94e17677",
-  "runtimeHash": "d78dc6c391a8272c6eaddda568c71d223f15d626a47facde9f18d0907f296b87",
+  "runtimeHash": "d745166c88bed9fdbf41662dc674440997850d1504d44ef921a1f757bec57bfc",
   "catalogHash": "66d087833cf788ae64adc08e44b49038c77e5ce97934c41d134efc6b5e011275",
   "aplHash": "c3cb3bda4ce62eeda8389fb131b3ae57e23fe3ac3d8395fe746d3cd37e17a694",
   "iconManifestHash": "f46a3ae87c141080e3e68af5fd847213a26997c07f33f898f4b6385e5984396b",
   "minimumCompatibleProfileSchema": 1,
   "profileCacheNamespace": "wow-feral:69299:e71acf35764e:p1:66d087833cf7",
-  "createdAt": "2026-08-21T13:26:00+08:00",
+  "createdAt": "2026-08-21T13:49:57+08:00",
   "cachePolicy": {
     "indexAndManifest": "no-cache",
     "hashedResources": "public, max-age=31536000, immutable",
@@ -38,8 +38,8 @@
     {
       "path": "app.js",
       "group": "runtime",
-      "bytes": 56711,
-      "sha256": "bb013dd02cf7da5f60a2317f4aa0eba353965eff35705c816094690d59b8a0f1"
+      "bytes": 59391,
+      "sha256": "bcafed1572bab7301fd1d55a70b044572e1c0f0ab61975897518c9437477d8fa"
     },
     {
       "path": "assets/icons/1033484.jpg",
@@ -312,6 +312,12 @@
       "sha256": "af5e8378684a8576304d49646c3106418abca8071c83824a4bc679c02157c48a"
     },
     {
+      "path": "core/input-bindings.js",
+      "group": "runtime",
+      "bytes": 1446,
+      "sha256": "50fa40576b0863202b246940e6d727ad040c7cb5e233c454c90c15e5bab29c74"
+    },
+    {
       "path": "core/interactive-controller.js",
       "group": "runtime",
       "bytes": 62621,
@@ -518,8 +524,8 @@
     {
       "path": "release.generated.js",
       "group": "metadata",
-      "bytes": 10397,
-      "sha256": "b286e9038fa6f940be77a5cb4b3104dc6e2d4d7979ac28c0ae71d39534e52c62"
+      "bytes": 10505,
+      "sha256": "929564595c9b45e990794df9a1c692567e800826a4e38cb069d4bef5e69bbeeb"
     },
     {
       "path": "runtime/action-result-resolver.js",

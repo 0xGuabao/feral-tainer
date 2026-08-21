@@ -27,7 +27,7 @@
           "./apl/apl-compiler.js": "./apl/apl-compiler.js?h=eeb89542bf60cc8c411977a9527b929f09d71c95ed231a0cdf944b3f0e4a92b3",
           "./apl/apl-ir.js": "./apl/apl-ir.js?h=19f1b6e40dbb1ecdbb902a71b4c3f0d3edf886917c4763d4a9b63988e307e77c",
           "./apl/feral-apl-adapter.js": "./apl/feral-apl-adapter.js?h=a47ee5bcd5d96c94995004f22163a7ead6c5adf5ff3eeb5d76090db586f0c3b7",
-          "./app.js": "./app.js?h=bb013dd02cf7da5f60a2317f4aa0eba353965eff35705c816094690d59b8a0f1",
+          "./app.js": "./app.js?h=bcafed1572bab7301fd1d55a70b044572e1c0f0ab61975897518c9437477d8fa",
           "./core/build-input.js": "./core/build-input.js?h=365680879ecfccae4a88b7124bd9c8e44a4165f3e454666f7e9d14e0551b7f1d",
           "./core/build-resolver.js": "./core/build-resolver.js?h=0a9b330787b1992715c882868157b9fb98e14fb6b41fc9bfb426816a1a628c73",
           "./core/character-resolver.js": "./core/character-resolver.js?h=50513381209e280ebbfdc8848013ee86ad632b54ce8def21e9841528dc6af03b",
@@ -35,6 +35,7 @@
           "./core/equipment-parser.js": "./core/equipment-parser.js?h=e48f7f43494e6b0c10d8dbbf1fd446075f521e49e19673ed96d1ac098a92e10e",
           "./core/equipment-resolver.js": "./core/equipment-resolver.js?h=cb0ad85fb656a934f7086ed1d942fac50ac2a94a0dca7134afd20bcd3ec83476",
           "./core/equipment-signature.js": "./core/equipment-signature.js?h=af5e8378684a8576304d49646c3106418abca8071c83824a4bc679c02157c48a",
+          "./core/input-bindings.js": "./core/input-bindings.js?h=50fa40576b0863202b246940e6d727ad040c7cb5e233c454c90c15e5bab29c74",
           "./core/interactive-controller.js": "./core/interactive-controller.js?h=618a26c7de0cf5e1575fb8b596e3bb96d955f17c2cf425c44685af62c18c5474",
           "./core/item-effect-resolver.js": "./core/item-effect-resolver.js?h=5edae0e2c23a9e5423845203ddda6c1246df8950ae2e1c912a416c66333f76fc",
           "./core/profile-cache.js": "./core/profile-cache.js?h=c9868e57e4b7a9f3fefaf9f4fc7da8de24bfac463a4665792c01d8ef34c1a8b4",
@@ -68,7 +69,7 @@
           "./data/12.1/version.generated.js": "./data/12.1/version.generated.js?h=321b595f0df3213fd8902c7230e5d5b5246e0c40cf62070a0f48d4078cae1029",
           "./feral-catalog.js": "./feral-catalog.js?h=40d9c8c8417240e24342ff86dc1774baa2aa6b3d8af500d0572bdd5d7ed3462b",
           "./feral-engine.js": "./feral-engine.js?h=3703f84263ba97a30f2cee887dfff1e9b52c5715a669cf0431976e3c3cd9f108",
-          "./release.generated.js": "./release.generated.js?h=b286e9038fa6f940be77a5cb4b3104dc6e2d4d7979ac28c0ae71d39534e52c62",
+          "./release.generated.js": "./release.generated.js?h=929564595c9b45e990794df9a1c692567e800826a4e38cb069d4bef5e69bbeeb",
           "./runtime/action-result-resolver.js": "./runtime/action-result-resolver.js?h=9ba74d6d883390f607dacf4ad280200d090c140029d956887728c34c40e09def",
           "./runtime/custom-handler-registry.js": "./runtime/custom-handler-registry.js?h=2507a920978a9d95ba4396fd9b4d66339d7038d98f595f1b30c73227ec9b5683",
           "./runtime/effect-runtime.js": "./runtime/effect-runtime.js?h=22ea3a2a8d8be774a702bb46c86990f36ff0fb76e10c1a11d5aa6ff4fb071c04",
@@ -357,7 +358,7 @@
           <div>
             <span class="section-kicker">KEY BINDINGS</span>
             <h2>配置技能键位</h2>
-            <p>点击一个键位，再按下新的按键。冲突键位会自动从原技能移除。</p>
+            <p>点击一个键位，再按键、鼠标前进/后退侧键、滚轮按下或滚动滚轮。冲突绑定会自动从原技能移除。</p>
           </div>
           <button class="dialog-close" type="button" data-dialog-close aria-label="关闭键位配置">×</button>
         </div>
@@ -365,7 +366,7 @@
         <div id="keybind-list" class="keybind-list"></div>
 
         <div class="dialog-footer">
-          <span id="keybind-hint">键位会自动保存在当前浏览器。</span>
+          <span id="keybind-hint">键盘与鼠标绑定会自动保存在当前浏览器。</span>
           <div>
             <button id="reset-keybinds" class="button button-quiet" type="button">恢复默认</button>
             <button class="button button-primary" type="button" data-dialog-close>完成</button>
@@ -443,7 +444,7 @@
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
     <!-- release-entry:start -->
-    <script type="module" src="./app.js?h=bb013dd02cf7da5f60a2317f4aa0eba353965eff35705c816094690d59b8a0f1"></script>
+    <script type="module" src="./app.js?h=bcafed1572bab7301fd1d55a70b044572e1c0f0ab61975897518c9437477d8fa"></script>
     <!-- release-entry:end -->
   </body>
 </html>

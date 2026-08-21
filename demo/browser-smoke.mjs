@@ -557,6 +557,79 @@ try {
   })`);
   assert.equal(reservedSpace.listeningText, "按新键…");
   assert.match(reservedSpace.hint, /空格键保留/);
+  const pointingBindings = await evaluate(`(() => {
+    const dispatchMouse = (type, button) => {
+      const event = new MouseEvent(type, {
+        button,
+        buttons: type === "mousedown" ? 1 << button : 0,
+        bubbles: true,
+        cancelable: true,
+      });
+      document.dispatchEvent(event);
+      return event.defaultPrevented;
+    };
+    const bindMouse = (skillId, button) => {
+      document.querySelector('[data-bind-skill="' + skillId + '"]').click();
+      return {
+        down: dispatchMouse("mousedown", button),
+        up: dispatchMouse("mouseup", button),
+        aux: dispatchMouse("auxclick", button),
+        label: document.querySelector('[data-bind-skill="' + skillId + '"]').textContent.trim(),
+      };
+    };
+    const bindWheel = (skillId, deltaY) => {
+      document.querySelector('[data-bind-skill="' + skillId + '"]').click();
+      const event = new WheelEvent("wheel", { deltaY, bubbles: true, cancelable: true });
+      document.dispatchEvent(event);
+      return {
+        defaultPrevented: event.defaultPrevented,
+        label: document.querySelector('[data-bind-skill="' + skillId + '"]').textContent.trim(),
+      };
+    };
+    const configured = {
+      back: bindMouse("shred", 3),
+      forward: bindMouse("swipe", 4),
+      middle: bindMouse("rip", 1),
+      wheelUp: bindWheel("ferociousBite", -120),
+      wheelDown: bindWheel("feralFrenzy", 120),
+    };
+    document.querySelector("#reset-keybinds").click();
+    const unboundSide = {
+      down: dispatchMouse("mousedown", 3),
+      up: dispatchMouse("mouseup", 3),
+      aux: dispatchMouse("auxclick", 3),
+    };
+    const unboundWheelEvent = new WheelEvent("wheel", { deltaY: -120, bubbles: true, cancelable: true });
+    document.dispatchEvent(unboundWheelEvent);
+    return {
+      ...configured,
+      unboundSide,
+      unboundWheelDefaultPrevented: unboundWheelEvent.defaultPrevented,
+    };
+  })()`);
+  assert.deepEqual(pointingBindings.back, {
+    down: true,
+    up: true,
+    aux: true,
+    label: "鼠标侧键（后退）",
+  });
+  assert.deepEqual(pointingBindings.forward, {
+    down: true,
+    up: true,
+    aux: true,
+    label: "鼠标侧键（前进）",
+  });
+  assert.deepEqual(pointingBindings.middle, {
+    down: true,
+    up: true,
+    aux: true,
+    label: "滚轮按下",
+  });
+  assert.deepEqual(pointingBindings.wheelUp, { defaultPrevented: true, label: "滚轮向上" });
+  assert.deepEqual(pointingBindings.wheelDown, { defaultPrevented: true, label: "滚轮向下" });
+  assert.deepEqual(pointingBindings.unboundSide, { down: true, up: true, aux: true });
+  assert.equal(pointingBindings.unboundWheelDefaultPrevented, false, "未绑定滚轮时必须保留页面滚动");
+  await evaluate(`document.querySelector('[data-bind-skill="rake"]').click()`);
   await press("KeyZ", "z");
   const rebound = await evaluate(`({
     rakeKey: document.querySelector('[data-bind-skill="rake"]').textContent.trim(),
@@ -570,6 +643,62 @@ try {
   await press("KeyZ", "z");
   const reboundSequenceCount = await evaluate(`document.querySelectorAll(".sequence-entry").length`);
   assert.equal(reboundSequenceCount, 5);
+
+  const sideBindingCapture = await evaluate(`(() => {
+    document.querySelector("#open-keybinds").click();
+    document.querySelector('[data-bind-skill="shred"]').click();
+    const event = new MouseEvent("mousedown", { button: 3, buttons: 8, bubbles: true, cancelable: true });
+    document.dispatchEvent(event);
+    const label = document.querySelector('[data-bind-skill="shred"]').textContent.trim();
+    document.querySelector("#keybind-dialog").close();
+    return { defaultPrevented: event.defaultPrevented, label };
+  })()`);
+  assert.deepEqual(sideBindingCapture, { defaultPrevented: true, label: "鼠标侧键（后退）" });
+  await wait(1650);
+  const sideCast = await evaluate(`(() => {
+    const before = document.querySelectorAll(".sequence-entry").length;
+    const href = location.href;
+    const dispatch = (type) => {
+      const event = new MouseEvent(type, {
+        button: 3,
+        buttons: type === "mousedown" ? 8 : 0,
+        bubbles: true,
+        cancelable: true,
+      });
+      document.dispatchEvent(event);
+      return event.defaultPrevented;
+    };
+    return {
+      before,
+      down: dispatch("mousedown"),
+      up: dispatch("mouseup"),
+      aux: dispatch("auxclick"),
+      after: document.querySelectorAll(".sequence-entry").length,
+      lastSkillId: document.querySelector(".sequence-entry:last-child")?.dataset.skillId,
+      navigationPrevented: location.href === href,
+    };
+  })()`);
+  assert.deepEqual(sideCast, {
+    before: 5,
+    down: true,
+    up: true,
+    aux: true,
+    after: 6,
+    lastSkillId: "shred",
+    navigationPrevented: true,
+  });
+  await evaluate(`{
+    document.querySelector("#open-keybinds").click();
+    document.querySelector('[data-bind-skill="shred"]').click();
+  }`);
+  await press("Digit2", "2");
+  await evaluate(`document.querySelector("#keybind-dialog").close()`);
+
+  // The runtime mouse cast consumes the deterministic proc stream. Reload so
+  // the pre-existing combat assertions continue from their original seed.
+  await command("Page.reload", { ignoreCache: true });
+  await wait(100);
+  await waitForPageReady();
 
   await press("Backspace", "Backspace");
   const resetByBackspace = await evaluate(`({
@@ -849,9 +978,11 @@ try {
   console.log(JSON.stringify({
     ok: true,
     title: initial.title,
-    successfulCasts: reboundSequenceCount,
+    successfulCasts: sideCast.after,
     rebound: "斜掠 → Z",
     shortcuts: { space: "开始/暂停", backspace: "重置" },
+    pointingBindings,
+    sideNavigationSuppression: sideCast,
     targetCounts,
     switchedBuild,
     responsive,

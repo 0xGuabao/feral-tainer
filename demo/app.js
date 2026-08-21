@@ -8,6 +8,12 @@ import {
   saveSelectedBuildKey as saveNamespacedSelectedBuildKey,
 } from "./core/profile-cache.js";
 import { checkForReleaseUpdate } from "./core/release-update.js";
+import {
+  bindingFromMouseButton,
+  bindingFromWheelDelta,
+  displayInputBinding as displayKeyCode,
+  isSideMouseBinding,
+} from "./core/input-bindings.js";
 import { BUILD_FIXTURES } from "./data/12.1/build-fixtures.js";
 import { FeralTrainerController } from "./trainer-controller.js";
 import { versionedAssetUrl } from "./release.generated.js";
@@ -19,6 +25,8 @@ const MAX_SIMC_PROFILE_BYTES = 512 * 1024;
 const MIN_DURATION_SECONDS = 15;
 const MAX_DURATION_SECONDS = 600;
 const ICON_RETRY_DELAYS_MS = [250, 1000, 2500];
+const WHEEL_TRIGGER_INTERVAL_MS = 250;
+const WHEEL_CAPTURE_SUPPRESSION_MS = 500;
 const controller = new FeralTrainerController();
 const fixtureEntries = Object.entries(BUILD_FIXTURES);
 
@@ -113,6 +121,7 @@ let lastTargetSignature = "";
 let lastSequenceSignature = "";
 let lastLogSignature = "";
 let toastTimer = null;
+let wheelInputBlockedUntil = 0;
 let feedback = { type: "info", message: "点击“开始训练”，随后使用键位或技能按钮施法。" };
 const skillButtons = new Map();
 const cooldownItems = new Map();
@@ -230,14 +239,6 @@ function syncDefaultKeybinds() {
     if (!(action.id in keybinds)) keybinds[action.id] = action.defaultCode ?? "";
   }
   saveKeybinds();
-}
-
-function displayKeyCode(code) {
-  if (!code) return "未绑定";
-  if (code.startsWith("Key")) return code.slice(3);
-  if (code.startsWith("Digit")) return code.slice(5);
-  const aliases = { Space: "空格", Backquote: "`", Minus: "-", Equal: "=" };
-  return aliases[code] ?? code.replace("Arrow", "");
 }
 
 function formatTime(milliseconds) {
@@ -778,7 +779,7 @@ function applyAuraMonitorFilter() {
 
 function beginListening(skillId) {
   listeningSkillId = skillId;
-  elements.keybindHint.textContent = `正在设置「${actionById(skillId).name}」：请按新键，Delete 清除，Esc 取消。`;
+  elements.keybindHint.textContent = `正在设置「${actionById(skillId).name}」：请按键、鼠标侧键、滚轮按下或滚动滚轮；Delete 清除，Esc 取消。`;
   renderKeybinds();
 }
 
@@ -789,6 +790,27 @@ function renderKeybinds() {
     button.classList.toggle("is-listening", listening);
     button.textContent = listening ? "按新键…" : displayKeyCode(keybinds[skillId]);
   }
+}
+
+function assignListeningBinding(binding) {
+  if (!listeningSkillId || !binding) return false;
+  const displaced = getSkillForCode(binding);
+  if (displaced && displaced !== listeningSkillId) keybinds[displaced] = "";
+  const action = actionById(listeningSkillId);
+  keybinds[listeningSkillId] = binding;
+  listeningSkillId = null;
+  elements.keybindHint.textContent = `已将 ${displayKeyCode(binding)} 绑定给「${action.name}」。`;
+  saveKeybinds();
+  renderKeybinds();
+  renderSkills();
+  return true;
+}
+
+function capturePointingBinding(event, binding) {
+  if (!listeningSkillId || !binding) return false;
+  event.preventDefault();
+  event.stopPropagation();
+  return assignListeningBinding(binding);
 }
 
 function captureKeybind(event) {
@@ -806,13 +828,7 @@ function captureKeybind(event) {
     elements.keybindHint.textContent = "已清除键位。";
     saveKeybinds();
   } else if (!(event.metaKey || event.ctrlKey || event.altKey || event.code.startsWith("Shift"))) {
-    const displaced = getSkillForCode(event.code);
-    if (displaced && displaced !== listeningSkillId) keybinds[displaced] = "";
-    const action = actionById(listeningSkillId);
-    keybinds[listeningSkillId] = event.code;
-    listeningSkillId = null;
-    elements.keybindHint.textContent = `已将 ${displayKeyCode(event.code)} 绑定给「${action.name}」。`;
-    saveKeybinds();
+    return assignListeningBinding(event.code);
   }
   renderKeybinds();
   renderSkills();
@@ -1176,6 +1192,59 @@ function onGlobalKeydown(event) {
   castSkill(skillId, "keyboard");
 }
 
+function isEditableEventTarget(target) {
+  return target instanceof HTMLInputElement
+    || target instanceof HTMLTextAreaElement
+    || target instanceof HTMLSelectElement
+    || target?.isContentEditable;
+}
+
+function onGlobalMouseDown(event) {
+  const binding = bindingFromMouseButton(event.button);
+  if (!binding) return;
+  if (isSideMouseBinding(binding)) event.preventDefault();
+  if (isDialogOpen(elements.keybindDialog)) {
+    if (listeningSkillId) capturePointingBinding(event, binding);
+    return;
+  }
+  if (isDialogOpen(elements.auraMonitorDialog) || isDialogOpen(elements.simcImportDialog)) return;
+  if (event.metaKey || event.ctrlKey || event.altKey || isEditableEventTarget(event.target)) return;
+  const skillId = getSkillForCode(binding);
+  if (!skillId || !actionById(skillId)) return;
+  event.preventDefault();
+  castSkill(skillId, "mouse-binding");
+}
+
+function suppressAuxiliaryMouseDefault(event) {
+  const binding = bindingFromMouseButton(event.button);
+  if (!binding) return;
+  if (isSideMouseBinding(binding)
+    || getSkillForCode(binding)
+    || (isDialogOpen(elements.keybindDialog) && listeningSkillId)) {
+    event.preventDefault();
+  }
+}
+
+function onGlobalWheel(event) {
+  const binding = bindingFromWheelDelta(event.deltaY);
+  if (!binding) return;
+  if (isDialogOpen(elements.keybindDialog)) {
+    if (listeningSkillId && capturePointingBinding(event, binding)) {
+      wheelInputBlockedUntil = performance.now() + WHEEL_CAPTURE_SUPPRESSION_MS;
+    }
+    return;
+  }
+  if (isDialogOpen(elements.auraMonitorDialog) || isDialogOpen(elements.simcImportDialog)) return;
+  if (event.metaKey || event.ctrlKey || event.altKey || isEditableEventTarget(event.target)) return;
+  const skillId = getSkillForCode(binding);
+  if (!skillId || !actionById(skillId)) return;
+  event.preventDefault();
+  const now = performance.now();
+  if (now < wheelInputBlockedUntil) return;
+  wheelInputBlockedUntil = now + WHEEL_TRIGGER_INTERVAL_MS;
+  castSkill(skillId, "wheel-binding");
+}
+
 elements.startPause.addEventListener("click", toggleSession);
 elements.restart.addEventListener("click", restartSession);
 elements.buildSelect.addEventListener("change", () => {
@@ -1267,6 +1336,10 @@ for (const dialog of [elements.keybindDialog, elements.auraMonitorDialog, elemen
   });
 }
 document.addEventListener("keydown", onGlobalKeydown, true);
+document.addEventListener("mousedown", onGlobalMouseDown, true);
+document.addEventListener("mouseup", suppressAuxiliaryMouseDefault, true);
+document.addEventListener("auxclick", suppressAuxiliaryMouseDefault, true);
+document.addEventListener("wheel", onGlobalWheel, { capture: true, passive: false });
 installIconLoadRecovery();
 
 createBuildOptions();
