@@ -111,6 +111,7 @@ try {
     deviceScaleFactor: 1,
     mobile: false,
   });
+  await waitForPageReady();
   await evaluate(`{
     for (const key of Object.keys(localStorage)) {
       if (key.startsWith("ashamane-lab-")) localStorage.removeItem(key);
