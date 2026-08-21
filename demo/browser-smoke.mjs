@@ -127,12 +127,20 @@ try {
     selectionKeys: Object.keys(localStorage).filter((key) => key.startsWith("ashamane-lab-selected-build-v2:")),
     legacyRetained: localStorage.getItem("ashamane-lab-simc-profile-v1") !== null,
     feedback: document.querySelector("#feedback").textContent,
+    toast: document.querySelector("#toast").textContent,
+    migrationEvent: (() => {
+      const key = Object.keys(localStorage).find((entry) => entry.startsWith("ashamane-lab-profile-cache-v1:"));
+      const record = key ? JSON.parse(localStorage.getItem(key)) : null;
+      return record?.migrationHistory?.at(-1) ?? null;
+    })(),
   })`);
   assert.equal(legacyMigration.buildValue, "__simc_import__");
   assert.equal(legacyMigration.profileCacheKeys.length, 1);
   assert.equal(legacyMigration.selectionKeys.length, 1);
   assert.equal(legacyMigration.legacyRetained, true, "迁移成功后必须保留旧键作为回滚点");
-  assert.match(legacyMigration.feedback, /安全重解析/);
+  assert.equal(legacyMigration.migrationEvent?.type, "legacy-key-migration");
+  assert.equal(legacyMigration.migrationEvent?.status, "succeeded");
+  assert.match(`${legacyMigration.feedback} ${legacyMigration.toast}`, /安全重解析|迁移并重解析/);
   await evaluate(`document.querySelector("#clear-simc-import").click()`);
   await command("Page.reload", { ignoreCache: true });
   await wait(100);
