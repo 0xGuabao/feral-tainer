@@ -12,7 +12,7 @@ const sourcePath = resolve(
 );
 const outputPath = resolve(
   projectRoot,
-  "demo/data/12.1/druid-talent-tree.generated.js",
+  "demo/data/12.1/generated/druid-talent-tree.generated.js",
 );
 
 const DRUID_CLASS_ID = 11;

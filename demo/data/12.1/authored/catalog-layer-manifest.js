@@ -1,0 +1,80 @@
+export const CATALOG_LAYER_MANIFEST = Object.freeze({
+  schemaVersion: 1,
+  generated: Object.freeze([
+    Object.freeze({
+      id: "simc-version-lock",
+      module: "generated/version.generated.js",
+      generatedBy: "scripts/generate-simc-version-module.mjs",
+      sources: ["versions/simc.lock.json"],
+    }),
+    Object.freeze({
+      id: "druid-talent-tree",
+      module: "generated/druid-talent-tree.generated.js",
+      generatedBy: "scripts/generate-druid-talent-tree.mjs",
+      sources: ["vendor/simc/engine/dbc/generated/trait_data.inc", "versions/simc.lock.json"],
+    }),
+    Object.freeze({
+      id: "feral-tier-sets",
+      module: "generated/feral-tier-sets.generated.js",
+      generatedBy: "scripts/generate-feral-tier-set-catalog.mjs",
+      sources: ["vendor/simc/engine/dbc/generated/item_set_bonus.inc", "versions/simc.lock.json"],
+    }),
+    Object.freeze({
+      id: "simc-profile-oracle",
+      module: "generated/simc-oracle-catalog.generated.js",
+      generatedBy: "scripts/generate-simc-profile-oracle.mjs",
+      sources: ["validation/oracles/simc-profile-manifest.json", "versions/simc.lock.json", "SIMC_BIN"],
+    }),
+  ]),
+  authored: Object.freeze([
+    Object.freeze({
+      id: "feral-runtime-semantics",
+      module: "authored/feral-game-data.js",
+      role: "action, internal-action, effect, APL, coverage and custom-handler mappings",
+      evidencePolicy: "Each runtime entry carries a versioned source reference or explicit coverage evidence.",
+    }),
+    Object.freeze({
+      id: "equipment-runtime-semantics",
+      module: "authored/feral-item-effect-data.js",
+      role: "verified item variants, item actions, effects and equipment modifiers",
+      evidencePolicy: "Only exact verified variants may enable authored item semantics.",
+    }),
+    Object.freeze({
+      id: "stat-normalization-semantics",
+      module: "authored/feral-stat-data.js",
+      role: "mapping of locked SimC facts into trainer stat names and completeness boundaries",
+      evidencePolicy: "Every normalized stat group lists its SimC source paths.",
+    }),
+    Object.freeze({
+      id: "acceptance-inputs",
+      module: "authored/build-fixtures.js",
+      role: "curated first-build, alternate-build and complete-profile acceptance inputs",
+      evidencePolicy: "Fixtures retain their origin and are never copied into runtime mechanism branches.",
+    }),
+    Object.freeze({
+      id: "semantic-provenance",
+      module: "authored/feral-semantic-provenance.js",
+      role: "machine-readable source, version, identifier and verification-test index for every authored rule",
+      evidencePolicy: "Explicit and catalog-default evidence precision remain distinguishable; line precision is never invented.",
+    }),
+  ]),
+  compatibilityFacades: Object.freeze([
+    "version.generated.js",
+    "druid-talent-tree.generated.js",
+    "feral-tier-sets.generated.js",
+    "simc-oracle-catalog.generated.js",
+    "feral-game-data.js",
+    "feral-item-effect-data.js",
+    "feral-stat-data.js",
+    "build-fixtures.js",
+    "feral-semantic-provenance.js",
+    "catalog-layer-manifest.js",
+  ]),
+  dependencyRules: Object.freeze({
+    generatedMayImportAuthored: false,
+    authoredMayReadGeneratedFacts: true,
+    uiMayReadLayerInternalsDirectly: false,
+    controllerMayReadLayerInternalsDirectly: false,
+    unsupportedMustRemainStructured: true,
+  }),
+});

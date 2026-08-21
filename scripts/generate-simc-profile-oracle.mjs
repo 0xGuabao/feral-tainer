@@ -21,7 +21,7 @@ const simcPath = process.env.SIMC_BIN
   ? resolve(process.env.SIMC_BIN)
   : join(projectRoot, "vendor/simc/engine/simc");
 const defaultManifestPath = join(projectRoot, "validation/oracles/simc-profile-manifest.json");
-const defaultGeneratedModulePath = join(projectRoot, "demo/data/12.1/simc-oracle-catalog.generated.js");
+const defaultGeneratedModulePath = join(projectRoot, "demo/data/12.1/generated/simc-oracle-catalog.generated.js");
 const simcLock = await loadSimcVersionLock({ verifyVendorFiles: true });
 
 function optionValue(name, fallback) {

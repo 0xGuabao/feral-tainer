@@ -108,7 +108,7 @@ const manifest = {
     sha256: sha256(path),
   })),
   verification: {
-    unitTests: "47/47",
+    unitTests: "54/54",
     browserDesktop: "1828x1028 passed",
     browserMobile: "390x844 passed",
     simcImport: "valid/invalid/persistence/XSS-safe/mobile passed",

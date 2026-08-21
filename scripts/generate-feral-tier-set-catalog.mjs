@@ -3,7 +3,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { loadSimcVersionLock } from "./lib/simc-version-lock.mjs";
 
 const sourceUrl = new URL("../vendor/simc/engine/dbc/generated/item_set_bonus.inc", import.meta.url);
-const outputUrl = new URL("../demo/data/12.1/feral-tier-sets.generated.js", import.meta.url);
+const outputUrl = new URL("../demo/data/12.1/generated/feral-tier-sets.generated.js", import.meta.url);
 const simcLock = await loadSimcVersionLock({ verifyVendorFiles: true });
 const source = await readFile(sourceUrl, "utf8");
 

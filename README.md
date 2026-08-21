@@ -40,7 +40,7 @@ cd demo
 npm test
 ```
 
-The current suite contains 47 deterministic unit and architecture tests. The
+The current suite contains 54 deterministic unit and architecture tests. The
 local browser smoke test is documented in `demo/browser-smoke.mjs` and requires
 Chromium DevTools on port 9223.
 
@@ -79,7 +79,9 @@ SIMC_BIN=/path/to/simc bash validation/run-matrix.sh
 
 ## Project layout
 
-- `demo/`: browser application, catalogs, runtime, generated data, and tests.
+- `demo/`: browser application, runtime, tests, generated SimC facts under
+  `data/12.1/generated/`, and reviewed trainer semantics under
+  `data/12.1/authored/`; stable top-level data modules are compatibility facades.
 - `scripts/`: version generation, oracle generation, architecture reports, and
   SimC update scanning.
 - `versions/`: immutable local snapshot lock and commit-bound mechanism reviews.

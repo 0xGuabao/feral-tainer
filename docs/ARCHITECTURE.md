@@ -30,6 +30,29 @@ flowchart LR
     J --> K["UI"]
 ```
 
+## Catalog 数据分层
+
+`data/12.1/` 的公开导入路径保持稳定，但实际所有权分为两层：
+
+| 层 | 目录 | 内容 | 修改方式 |
+| --- | --- | --- | --- |
+| Generated facts | `data/12.1/generated/` | SimC 版本锁、天赋树、套装 DBC、Profile Oracle | 只允许对应 `scripts/generate-*.mjs` 生成，禁止手改，也禁止反向依赖 authored 层 |
+| Authored semantics | `data/12.1/authored/` | Action/Effect/APL、装备机制、属性映射、验收输入和证据索引 | 人工评审后修改；可读取锁定的 generated facts，不得把某套构筑复制成新引擎 |
+| Compatibility facades | `data/12.1/*.js` | 对旧导入路径的纯 re-export | 不保存数据、不变换数据、不实现行为 |
+
+机器可读边界由 `data/12.1/catalog-layer-manifest.js` 声明，架构测试会检查目录、生成器目标、依赖方向、Facade 同一性以及 UI/控制器不能直接读取内部层。`data/12.1/feral-semantic-provenance.js` 为每条手写运行时规则记录游戏/SimC 版本、来源、Spell/Talent/Item/Enchant/Set 标识和验证测试。证据精度只有两类：`explicit` 表示条目或直接关联条目存在具体引用，`catalog-default` 表示只有权威目录级来源；后者不得伪造行号。
+
+```mermaid
+flowchart LR
+    S["SimC / DBC / Profile"] --> G["generated facts"]
+    G --> A["authored semantics"]
+    G --> F["compatibility facades"]
+    A --> F
+    F --> R["Resolver / Runtime"]
+    R --> C["InteractiveController"]
+    C --> U["UI"]
+```
+
 ## 模块边界
 
 | 模块 | 职责 | 禁止承担的职责 |
@@ -40,11 +63,12 @@ flowchart LR
 | `core/equipment-resolver.js` | 从版本化 SimC Oracle 与 Equipment Modifier Catalog 解析已登记装备、宝石和附魔静态属性，按数据目录识别物品特效来源 | 静默接受未知变体或把饰品判断写死在 UI |
 | `core/item-effect-resolver.js` | 把装备来源匹配到经过变体校验的动作/效果实现，汇总部分支持与明确排除项 | 执行 proc 或猜测未验证物品等级数值 |
 | `core/set-bonus-resolver.js` | 从装备物品 ID 自动识别 2/4 件套，并报告显式配置与装备赛季冲突 | 把不同赛季套装视作同一效果 |
-| `data/12.1/feral-stat-data.js` | 固化 12.1/90 级基础属性、评分分母、递减曲线和野性精通/AP 系数 | 保存某个 Profile 的最终 buffed 面板 |
+| `data/12.1/feral-stat-data.js`（Facade）/ `authored/feral-stat-data.js` | 固化 12.1/90 级基础属性、评分分母、递减曲线和野性精通/AP 系数 | 保存某个 Profile 的最终 buffed 面板 |
 | `core/stat-resolver.js` | 汇总角色与装备静态属性，按 SimC 规则计算暴击、急速、精通、全能和 AP，并保留完成度 | 在缺少换算依据时伪造完整面板属性 |
 | `core/build-resolver.js` | 计算 requirements、资源修正、替换技能、过滤 APL，输出 `ResolvedProfile` | 执行战斗、渲染 UI |
-| `data/12.1/feral-game-data.js` | 版本化 Action/InternalAction/Effect/APL/套装目录与覆盖状态 | 保存某套构筑专用的启用布尔值 |
-| `data/12.1/feral-item-effect-data.js` | 保存精确装备变体、物品动作、触发效果、静态宝石/附魔修正及覆盖状态 | 在控制器中按物品名执行特效 |
+| `data/12.1/feral-game-data.js`（Facade）/ `authored/feral-game-data.js` | 版本化 Action/InternalAction/Effect/APL/套装目录与覆盖状态 | 保存某套构筑专用的启用布尔值 |
+| `data/12.1/feral-item-effect-data.js`（Facade）/ `authored/feral-item-effect-data.js` | 保存精确装备变体、物品动作、触发效果、静态宝石/附魔修正及覆盖状态 | 在控制器中按物品名执行特效 |
+| `data/12.1/feral-semantic-provenance.js`（Facade）/ `authored/feral-semantic-provenance.js` | 追溯每条手写规则的版本、来源、业务 ID 和验证测试 | 参与运行时机制决策或掩盖目录级证据精度 |
 | `runtime/effect-runtime.js` | 执行通用 hook、触发、ICD、Aura 和资源操作 | 读取 DOM 或选择推荐技能 |
 | `runtime/action-result-resolver.js` | 用独立随机流生成逐目标 hit/crit 结果并输出统一事件 | 直接实现具体天赋触发 |
 | `runtime/custom-handler-registry.js` | 集中登记不可通用化的特殊机制 | 允许特殊机制散落到控制器/UI |
